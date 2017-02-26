@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26-feb-2017 17:35:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="tienda" name="cr.ac.una.fucem.inge.hawac.domain.Apartado" optimistic-lock="version" table="apartado">
+    <id name="idApartado" type="java.lang.Integer">
+      <column name="idApartado"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="cr.ac.una.fucem.inge.hawac.domain.Cliente" fetch="select" name="cliente">
+      <column name="cliente" not-null="true"/>
+    </many-to-one>
+    <property name="fechaRealizado" type="date">
+      <column length="10" name="fechaRealizado" not-null="true"/>
+    </property>
+    <property name="fechaLimite" type="date">
+      <column length="10" name="fechaLimite" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="apartadoproductos" table="apartadoproducto">
+      <key>
+        <column name="apartado" not-null="true"/>
+      </key>
+      <one-to-many class="cr.ac.una.fucem.inge.hawac.domain.Apartadoproducto"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="facturas" table="factura">
+      <key>
+        <column name="apartado"/>
+      </key>
+      <one-to-many class="cr.ac.una.fucem.inge.hawac.domain.Factura"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="abonos" table="abono">
+      <key>
+        <column name="apartado" not-null="true"/>
+      </key>
+      <one-to-many class="cr.ac.una.fucem.inge.hawac.domain.Abono"/>
+    </set>
+  </class>
+</hibernate-mapping>

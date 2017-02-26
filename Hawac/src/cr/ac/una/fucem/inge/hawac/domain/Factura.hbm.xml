@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26-feb-2017 17:35:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="tienda" name="cr.ac.una.fucem.inge.hawac.domain.Factura" optimistic-lock="version" table="factura">
+    <id name="codigoFactura" type="java.lang.Integer">
+      <column name="codigoFactura"/>
+      <generator class="identity"/>
+    </id>
+    <many-to-one class="cr.ac.una.fucem.inge.hawac.domain.Apartado" fetch="select" name="apartado">
+      <column name="apartado"/>
+    </many-to-one>
+    <many-to-one class="cr.ac.una.fucem.inge.hawac.domain.Cliente" fetch="select" name="cliente">
+      <column name="cliente" not-null="true"/>
+    </many-to-one>
+    <many-to-one class="cr.ac.una.fucem.inge.hawac.domain.Dependiente" fetch="select" name="dependiente">
+      <column name="dependiente" not-null="true"/>
+    </many-to-one>
+    <property name="monto" type="float">
+      <column name="monto" not-null="true" precision="12" scale="0"/>
+    </property>
+    <property name="fecha" type="date">
+      <column length="10" name="fecha" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="lineas" table="linea">
+      <key>
+        <column name="factura" not-null="true"/>
+      </key>
+      <one-to-many class="cr.ac.una.fucem.inge.hawac.domain.Linea"/>
+    </set>
+  </class>
+</hibernate-mapping>

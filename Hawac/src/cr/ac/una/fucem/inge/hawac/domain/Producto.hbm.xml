@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26-feb-2017 17:35:53 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="tienda" name="cr.ac.una.fucem.inge.hawac.domain.Producto" optimistic-lock="version" table="producto">
+    <id name="idProducto" type="java.lang.Integer">
+      <column name="idProducto"/>
+      <generator class="identity"/>
+    </id>
+    <property name="precio" type="float">
+      <column name="precio" not-null="true" precision="12" scale="0"/>
+    </property>
+    <property name="descripcion" type="string">
+      <column length="200" name="descripcion" not-null="true"/>
+    </property>
+    <property name="talla" type="string">
+      <column length="5" name="talla" not-null="true"/>
+    </property>
+    <property name="color" type="string">
+      <column length="30" name="color" not-null="true"/>
+    </property>
+    <property name="genero" type="boolean">
+      <column name="genero" not-null="true"/>
+    </property>
+    <set fetch="select" inverse="true" lazy="true" name="lineas" table="linea">
+      <key>
+        <column name="producto" not-null="true"/>
+      </key>
+      <one-to-many class="cr.ac.una.fucem.inge.hawac.domain.Linea"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="apartadoproductos" table="apartadoproducto">
+      <key>
+        <column name="producto" not-null="true"/>
+      </key>
+      <one-to-many class="cr.ac.una.fucem.inge.hawac.domain.Apartadoproducto"/>
+    </set>
+    <set fetch="select" inverse="true" lazy="true" name="inventarios" table="inventario">
+      <key>
+        <column name="producto" not-null="true"/>
+      </key>
+      <one-to-many class="cr.ac.una.fucem.inge.hawac.domain.Inventario"/>
+    </set>
+  </class>
+</hibernate-mapping>
