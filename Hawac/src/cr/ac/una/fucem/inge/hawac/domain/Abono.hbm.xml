@@ -1,20 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26-feb-2017 17:35:53 by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-feb-2017 0:13:17 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="tienda" name="cr.ac.una.fucem.inge.hawac.domain.Abono" optimistic-lock="version" table="abono">
-    <id name="idAbonos" type="java.lang.Integer">
-      <column name="idAbonos"/>
-      <generator class="identity"/>
-    </id>
-    <many-to-one class="cr.ac.una.fucem.inge.hawac.domain.Apartado" fetch="select" name="apartado">
-      <column name="apartado" not-null="true"/>
-    </many-to-one>
-    <property name="fechaRealizado" type="date">
-      <column length="10" name="fechaRealizado" not-null="true"/>
-    </property>
-    <property name="monto" type="float">
-      <column name="monto" not-null="true" precision="12" scale="0"/>
-    </property>
-  </class>
+    <class name="cr.ac.una.fucem.inge.hawac.domain.Abono" table="abono" catalog="tienda" optimistic-lock="version">
+        <id name="idAbonos" type="java.lang.Integer">
+            <column name="idAbonos" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="apartado" class="cr.ac.una.fucem.inge.hawac.domain.Apartado" fetch="select">
+            <column name="apartado" not-null="true" />
+        </many-to-one>
+        <property name="fechaRealizado" type="date">
+            <column name="fechaRealizado" length="10" not-null="true" />
+        </property>
+        <property name="monto" type="float">
+            <column name="monto" precision="12" scale="0" not-null="true" />
+        </property>
+    </class>
 </hibernate-mapping>

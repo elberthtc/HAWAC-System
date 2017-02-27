@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 26-feb-2017 17:35:52 by Hibernate Tools 4.3.1
+// Generated 27-feb-2017 0:13:16 by Hibernate Tools 4.3.1
 
 
 
@@ -9,25 +9,25 @@ package cr.ac.una.fucem.inge.hawac.domain;
 public class Inventario  implements java.io.Serializable {
 
 
-     private String local;
+     private InventarioId id;
      private Producto producto;
      private int cantidad;
 
     public Inventario() {
     }
 
-    public Inventario(String local, Producto producto, int cantidad) {
-       this.local = local;
+    public Inventario(InventarioId id, Producto producto, int cantidad) {
+       this.id = id;
        this.producto = producto;
        this.cantidad = cantidad;
     }
    
-    public String getLocal() {
-        return this.local;
+    public InventarioId getId() {
+        return this.id;
     }
     
-    public void setLocal(String local) {
-        this.local = local;
+    public void setId(InventarioId id) {
+        this.id = id;
     }
     public Producto getProducto() {
         return this.producto;

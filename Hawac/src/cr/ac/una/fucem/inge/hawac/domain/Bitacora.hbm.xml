@@ -1,20 +1,21 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26-feb-2017 17:35:53 by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-feb-2017 0:13:17 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="tienda" name="cr.ac.una.fucem.inge.hawac.domain.Bitacora" optimistic-lock="version" table="bitacora">
-    <id name="entrada" type="int">
-      <column name="entrada"/>
-      <generator class="assigned"/>
-    </id>
-    <many-to-one class="cr.ac.una.fucem.inge.hawac.domain.Usuario" fetch="select" name="usuario">
-      <column name="usuario" not-null="true"/>
-    </many-to-one>
-    <property name="descripcion" type="string">
-      <column length="300" name="descripcion" not-null="true"/>
-    </property>
-    <property name="fecha" type="date">
-      <column length="10" name="fecha" not-null="true"/>
-    </property>
-  </class>
+    <class name="cr.ac.una.fucem.inge.hawac.domain.Bitacora" table="bitacora" catalog="tienda" optimistic-lock="version">
+        <id name="entrada" type="int">
+            <column name="entrada" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuario" class="cr.ac.una.fucem.inge.hawac.domain.Usuario" fetch="select">
+            <column name="usuario" not-null="true" />
+        </many-to-one>
+        <property name="descripcion" type="string">
+            <column name="descripcion" length="300" not-null="true" />
+        </property>
+        <property name="fecha" type="date">
+            <column name="fecha" length="10" not-null="true" />
+        </property>
+    </class>
 </hibernate-mapping>

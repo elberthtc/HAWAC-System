@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 26-feb-2017 17:35:52 by Hibernate Tools 4.3.1
+// Generated 27-feb-2017 0:13:16 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -18,8 +18,8 @@ public class Producto  implements java.io.Serializable {
      private String color;
      private boolean genero;
      private Set<Linea> lineas = new HashSet<Linea>(0);
-     private Set<Apartadoproducto> apartadoproductos = new HashSet<Apartadoproducto>(0);
      private Set<Inventario> inventarios = new HashSet<Inventario>(0);
+     private Set<Apartadoproducto> apartadoproductos = new HashSet<Apartadoproducto>(0);
 
     public Producto() {
     }
@@ -32,15 +32,15 @@ public class Producto  implements java.io.Serializable {
         this.color = color;
         this.genero = genero;
     }
-    public Producto(float precio, String descripcion, String talla, String color, boolean genero, Set<Linea> lineas, Set<Apartadoproducto> apartadoproductos, Set<Inventario> inventarios) {
+    public Producto(float precio, String descripcion, String talla, String color, boolean genero, Set<Linea> lineas, Set<Inventario> inventarios, Set<Apartadoproducto> apartadoproductos) {
        this.precio = precio;
        this.descripcion = descripcion;
        this.talla = talla;
        this.color = color;
        this.genero = genero;
        this.lineas = lineas;
-       this.apartadoproductos = apartadoproductos;
        this.inventarios = inventarios;
+       this.apartadoproductos = apartadoproductos;
     }
    
     public Integer getIdProducto() {
@@ -92,19 +92,19 @@ public class Producto  implements java.io.Serializable {
     public void setLineas(Set<Linea> lineas) {
         this.lineas = lineas;
     }
-    public Set<Apartadoproducto> getApartadoproductos() {
-        return this.apartadoproductos;
-    }
-    
-    public void setApartadoproductos(Set<Apartadoproducto> apartadoproductos) {
-        this.apartadoproductos = apartadoproductos;
-    }
     public Set<Inventario> getInventarios() {
         return this.inventarios;
     }
     
     public void setInventarios(Set<Inventario> inventarios) {
         this.inventarios = inventarios;
+    }
+    public Set<Apartadoproducto> getApartadoproductos() {
+        return this.apartadoproductos;
+    }
+    
+    public void setApartadoproductos(Set<Apartadoproducto> apartadoproductos) {
+        this.apartadoproductos = apartadoproductos;
     }
 
 

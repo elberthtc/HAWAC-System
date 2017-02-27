@@ -1,24 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 26-feb-2017 17:35:53 by Hibernate Tools 4.3.1 -->
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 27-feb-2017 0:13:17 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-  <class catalog="tienda" name="cr.ac.una.fucem.inge.hawac.domain.Usuario" optimistic-lock="version" table="usuario">
-    <id name="idUsuario" type="int">
-      <column name="idUsuario"/>
-      <generator class="assigned"/>
-    </id>
-    <property name="password" type="string">
-      <column length="45" name="password" not-null="true"/>
-    </property>
-    <property name="tipo" type="int">
-      <column name="tipo" not-null="true"/>
-    </property>
-    <one-to-one class="cr.ac.una.fucem.inge.hawac.domain.Dependiente" name="dependiente"/>
-    <set fetch="select" inverse="true" lazy="true" name="bitacoras" table="bitacora">
-      <key>
-        <column name="usuario" not-null="true"/>
-      </key>
-      <one-to-many class="cr.ac.una.fucem.inge.hawac.domain.Bitacora"/>
-    </set>
-  </class>
+    <class name="cr.ac.una.fucem.inge.hawac.domain.Usuario" table="usuario" catalog="tienda" optimistic-lock="version">
+        <id name="idUsuario" type="int">
+            <column name="idUsuario" />
+            <generator class="assigned" />
+        </id>
+        <property name="password" type="string">
+            <column name="password" length="45" not-null="true" />
+        </property>
+        <property name="tipo" type="int">
+            <column name="tipo" not-null="true" />
+        </property>
+        <one-to-one name="dependiente" class="cr.ac.una.fucem.inge.hawac.domain.Dependiente"></one-to-one>
+        <set name="bitacoras" table="bitacora" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="usuario" not-null="true" />
+            </key>
+            <one-to-many class="cr.ac.una.fucem.inge.hawac.domain.Bitacora" />
+        </set>
+    </class>
 </hibernate-mapping>

@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 26-feb-2017 17:35:52 by Hibernate Tools 4.3.1
+// Generated 27-feb-2017 0:13:16 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;

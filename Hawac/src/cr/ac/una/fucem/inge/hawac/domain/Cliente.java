@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 26-feb-2017 17:35:52 by Hibernate Tools 4.3.1
+// Generated 27-feb-2017 0:13:16 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -14,8 +14,8 @@ public class Cliente  implements java.io.Serializable {
      private int cedula;
      private String nombre;
      private float totalComprado;
-     private Set<Factura> facturas = new HashSet<Factura>(0);
      private Set<Apartado> apartados = new HashSet<Apartado>(0);
+     private Set<Factura> facturas = new HashSet<Factura>(0);
 
     public Cliente() {
     }
@@ -26,12 +26,12 @@ public class Cliente  implements java.io.Serializable {
         this.nombre = nombre;
         this.totalComprado = totalComprado;
     }
-    public Cliente(int cedula, String nombre, float totalComprado, Set<Factura> facturas, Set<Apartado> apartados) {
+    public Cliente(int cedula, String nombre, float totalComprado, Set<Apartado> apartados, Set<Factura> facturas) {
        this.cedula = cedula;
        this.nombre = nombre;
        this.totalComprado = totalComprado;
-       this.facturas = facturas;
        this.apartados = apartados;
+       this.facturas = facturas;
     }
    
     public int getCedula() {
@@ -55,19 +55,19 @@ public class Cliente  implements java.io.Serializable {
     public void setTotalComprado(float totalComprado) {
         this.totalComprado = totalComprado;
     }
-    public Set<Factura> getFacturas() {
-        return this.facturas;
-    }
-    
-    public void setFacturas(Set<Factura> facturas) {
-        this.facturas = facturas;
-    }
     public Set<Apartado> getApartados() {
         return this.apartados;
     }
     
     public void setApartados(Set<Apartado> apartados) {
         this.apartados = apartados;
+    }
+    public Set<Factura> getFacturas() {
+        return this.facturas;
+    }
+    
+    public void setFacturas(Set<Factura> facturas) {
+        this.facturas = facturas;
     }
 
 

@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 26-feb-2017 17:35:52 by Hibernate Tools 4.3.1
+// Generated 27-feb-2017 0:13:16 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -16,9 +16,9 @@ public class Apartado  implements java.io.Serializable {
      private Cliente cliente;
      private Date fechaRealizado;
      private Date fechaLimite;
+     private Set<Abono> abonos = new HashSet<Abono>(0);
      private Set<Apartadoproducto> apartadoproductos = new HashSet<Apartadoproducto>(0);
      private Set<Factura> facturas = new HashSet<Factura>(0);
-     private Set<Abono> abonos = new HashSet<Abono>(0);
 
     public Apartado() {
     }
@@ -29,13 +29,13 @@ public class Apartado  implements java.io.Serializable {
         this.fechaRealizado = fechaRealizado;
         this.fechaLimite = fechaLimite;
     }
-    public Apartado(Cliente cliente, Date fechaRealizado, Date fechaLimite, Set<Apartadoproducto> apartadoproductos, Set<Factura> facturas, Set<Abono> abonos) {
+    public Apartado(Cliente cliente, Date fechaRealizado, Date fechaLimite, Set<Abono> abonos, Set<Apartadoproducto> apartadoproductos, Set<Factura> facturas) {
        this.cliente = cliente;
        this.fechaRealizado = fechaRealizado;
        this.fechaLimite = fechaLimite;
+       this.abonos = abonos;
        this.apartadoproductos = apartadoproductos;
        this.facturas = facturas;
-       this.abonos = abonos;
     }
    
     public Integer getIdApartado() {
@@ -66,6 +66,13 @@ public class Apartado  implements java.io.Serializable {
     public void setFechaLimite(Date fechaLimite) {
         this.fechaLimite = fechaLimite;
     }
+    public Set<Abono> getAbonos() {
+        return this.abonos;
+    }
+    
+    public void setAbonos(Set<Abono> abonos) {
+        this.abonos = abonos;
+    }
     public Set<Apartadoproducto> getApartadoproductos() {
         return this.apartadoproductos;
     }
@@ -79,13 +86,6 @@ public class Apartado  implements java.io.Serializable {
     
     public void setFacturas(Set<Factura> facturas) {
         this.facturas = facturas;
-    }
-    public Set<Abono> getAbonos() {
-        return this.abonos;
-    }
-    
-    public void setAbonos(Set<Abono> abonos) {
-        this.abonos = abonos;
     }
 
 
