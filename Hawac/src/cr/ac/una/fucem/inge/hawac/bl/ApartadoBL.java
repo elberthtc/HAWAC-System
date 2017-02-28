@@ -5,40 +5,41 @@
  */
 package cr.ac.una.fucem.inge.hawac.bl;
 
-import cr.ac.una.fucem.inge.hawac.domain.Usuario;
+import cr.ac.una.fucem.inge.hawac.domain.Apartado;
 import java.util.List;
 
 /**
  *
  * @author a4e3g6o0
  */
-public class UsuarioBL extends BaseBL implements IBaseBL<Usuario, Integer>{
-    public UsuarioBL() {
+public class ApartadoBL extends BaseBL implements IBaseBL<Apartado, Integer>{
+    public ApartadoBL() {
         super();
     }
     
     @Override
-    public void save(Usuario o) {
+    public void save(Apartado o) {
+        int n = o.getIdApartado();
         this.getDao(o.getClass().getName()).save(o);
     }
 
     @Override
-    public Usuario merge(Usuario o) {
-        return (Usuario) this.getDao(o.getClass().getName()).merge(o);
+    public Apartado merge(Apartado o) {
+        return (Apartado) this.getDao(o.getClass().getName()).merge(o);
     }
 
     @Override
-    public void delete(Usuario o) {
+    public void delete(Apartado o) {
         this.getDao(o.getClass().getName()).delete(o);
     }
 
     @Override
-    public Usuario findById(Integer o) {
-        return (Usuario) this.getDao(o.getClass().getName()).findById(o);
+    public Apartado findById(Integer o) {
+        return (Apartado) this.getDao(o.getClass().getName()).findById(o);
     }
 
     @Override
-    public List<Usuario> findAll(String className) {
+    public List<Apartado> findAll(String className) {
         return this.getDao(className).findAll();
     }
     

@@ -6,15 +6,16 @@
 package cr.ac.una.fucem.inge.hawac.dao;
 
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
+import cr.ac.una.fucem.inge.hawac.domain.InventarioId;
 import cr.ac.una.fucem.inge.hawac.utils.NewHibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
 
 /**
  *
- * @author chgari
+ * @author a4e3g6o0
  */
-public class InventarioDAO extends NewHibernateUtil implements IBaseDAO<Inventario, String>{
+public class InventarioDAO extends NewHibernateUtil implements IBaseDAO<Inventario, InventarioId>{
 
     @Override
     public void save(Inventario o) {
@@ -60,7 +61,7 @@ public class InventarioDAO extends NewHibernateUtil implements IBaseDAO<Inventar
     }
 
     @Override
-    public Inventario findById(String id) {
+    public Inventario findById(InventarioId id) {
         Inventario abono = null;
 
         try {

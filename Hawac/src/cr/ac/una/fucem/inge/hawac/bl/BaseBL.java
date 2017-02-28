@@ -10,7 +10,7 @@ import java.util.LinkedHashMap;
 
 /**
  *
- * @author chgari
+ * @author a4e3g6o0
  */
 public class BaseBL {
     private final LinkedHashMap<String, IBaseDAO> daos;
@@ -20,6 +20,13 @@ public class BaseBL {
         daos.put("cr.ac.una.fucem.inge.hawac.domain.Abono", new AbonoDAO());
         daos.put("cr.ac.una.fucem.inge.hawac.domain.Usuario", new UsuarioDAO());
         daos.put("cr.ac.una.fucem.inge.hawac.domain.Inventario", new InventarioDAO());
+        daos.put("cr.ac.una.fucem.inge.hawac.domain.Producto", new ProductoDAO());
+        daos.put("cr.ac.una.fucem.inge.hawac.domain.Apartado", new ApartadoDAO());
+        daos.put("cr.ac.una.fucem.inge.hawac.domain.Apartadoproducto", new ApartadoproductoDAO());
+        daos.put("cr.ac.una.fucem.inge.hawac.domain.Bitacora", new BitacoraDAO());
+        daos.put("cr.ac.una.fucem.inge.hawac.domain.Cliente", new ClienteDAO());
+        daos.put("cr.ac.una.fucem.inge.hawac.domain.Dependiente", new DependienteDAO());
+        daos.put("cr.ac.una.fucem.inge.hawac.domain.Factura", new FacturaDAO());
     }
     
     public IBaseDAO getDao(String className){

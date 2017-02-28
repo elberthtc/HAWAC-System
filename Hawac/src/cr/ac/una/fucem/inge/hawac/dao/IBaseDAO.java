@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author chgari
+ * @author Josue
  */
 public interface IBaseDAO <T,K> {
     public abstract void save (T o);

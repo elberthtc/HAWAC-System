@@ -12,7 +12,7 @@ import org.hibernate.HibernateException;
 
 /**
  *
- * @author chgari
+ * @author a4e3g6o0
  */
 public class UsuarioDAO extends NewHibernateUtil implements IBaseDAO<Usuario, Integer>{
 

@@ -5,40 +5,40 @@
  */
 package cr.ac.una.fucem.inge.hawac.bl;
 
-import cr.ac.una.fucem.inge.hawac.domain.Abono;
+import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import java.util.List;
 
 /**
  *
- * @author Josue
+ * @author a4e3g6o0
  */
-public class AbonoBL extends BaseBL implements IBaseBL<Abono, Integer>{
-    public AbonoBL() {
+public class BitacoraBL extends BaseBL implements IBaseBL<Bitacora, Integer>{
+    public BitacoraBL() {
         super();
     }
     
     @Override
-    public void save(Abono o) {
+    public void save(Bitacora o) {
         this.getDao(o.getClass().getName()).save(o);
     }
 
     @Override
-    public Abono merge(Abono o) {
-        return (Abono) this.getDao(o.getClass().getName()).merge(o);
+    public Bitacora merge(Bitacora o) {
+        return (Bitacora) this.getDao(o.getClass().getName()).merge(o);
     }
 
     @Override
-    public void delete(Abono o) {
+    public void delete(Bitacora o) {
         this.getDao(o.getClass().getName()).delete(o);
     }
 
     @Override
-    public Abono findById(Integer o) {
-        return (Abono) this.getDao(o.getClass().getName()).findById(o);
+    public Bitacora findById(Integer o) {
+        return (Bitacora) this.getDao(o.getClass().getName()).findById(o);
     }
 
     @Override
-    public List<Abono> findAll(String className) {
+    public List<Bitacora> findAll(String className) {
         return this.getDao(className).findAll();
     }
     

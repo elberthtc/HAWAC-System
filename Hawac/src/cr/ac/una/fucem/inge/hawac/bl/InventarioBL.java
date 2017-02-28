@@ -6,13 +6,14 @@
 package cr.ac.una.fucem.inge.hawac.bl;
 
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
+import cr.ac.una.fucem.inge.hawac.domain.InventarioId;
 import java.util.List;
 
 /**
  *
- * @author chgari
+ * @author a4e3g6o0
  */
-public class InventarioBL extends BaseBL implements IBaseBL<Inventario, String>{
+public class InventarioBL extends BaseBL implements IBaseBL<Inventario, InventarioId>{
     public InventarioBL() {
         super();
     }
@@ -33,7 +34,7 @@ public class InventarioBL extends BaseBL implements IBaseBL<Inventario, String>{
     }
 
     @Override
-    public Inventario findById(String o) {
+    public Inventario findById(InventarioId o) {
         return (Inventario) this.getDao(o.getClass().getName()).findById(o);
     }
 

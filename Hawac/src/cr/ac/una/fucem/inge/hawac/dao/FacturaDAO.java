@@ -5,19 +5,19 @@
  */
 package cr.ac.una.fucem.inge.hawac.dao;
 
-import cr.ac.una.fucem.inge.hawac.domain.Abono;
+import cr.ac.una.fucem.inge.hawac.domain.Factura;
 import cr.ac.una.fucem.inge.hawac.utils.NewHibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
 
 /**
  *
- * @author Josue
+ * @author a4e3g6o0
  */
-public class AbonoDAO extends NewHibernateUtil implements IBaseDAO<Abono, Integer>{
+public class FacturaDAO extends NewHibernateUtil implements IBaseDAO<Factura, Integer>{
 
     @Override
-    public void save(Abono o) {
+    public void save(Factura o) {
            try {
             iniciaOperacion();
             getSession().save(o);
@@ -31,10 +31,10 @@ public class AbonoDAO extends NewHibernateUtil implements IBaseDAO<Abono, Intege
     }
 
     @Override
-    public Abono merge(Abono o) {
+    public Factura merge(Factura o) {
         try {
             iniciaOperacion();
-            o = (Abono) getSession().merge(o);
+            o = (Factura) getSession().merge(o);
             getTransac().commit();
         } catch (HibernateException he) {
             manejaException(he);
@@ -46,7 +46,7 @@ public class AbonoDAO extends NewHibernateUtil implements IBaseDAO<Abono, Intege
     }
 
     @Override
-    public void delete(Abono o) {
+    public void delete(Factura o) {
         try {
             iniciaOperacion();
             getSession().delete(o);
@@ -60,12 +60,12 @@ public class AbonoDAO extends NewHibernateUtil implements IBaseDAO<Abono, Intege
     }
 
     @Override
-    public Abono findById(Integer id) {
-        Abono abono = null;
+    public Factura findById(Integer id) {
+        Factura abono = null;
 
         try {
             iniciaOperacion();
-            abono = (Abono) getSession().get(Abono.class, id);
+            abono = (Factura) getSession().get(Factura.class, id);
         } finally {
             getSession().close();
         }
@@ -73,16 +73,16 @@ public class AbonoDAO extends NewHibernateUtil implements IBaseDAO<Abono, Intege
     }
 
     @Override
-    public List<Abono> findAll() {
-        List<Abono> listaAbonos;
+    public List<Factura> findAll() {
+        List<Factura> listaFacturas;
         try {
             iniciaOperacion();
-            listaAbonos = getSession().createQuery("from Abono").list();
+            listaFacturas = getSession().createQuery("from Factura").list();
         } finally {
             getSession().close();
         }
 
-        return listaAbonos;
+        return listaFacturas;
     }
     
 }

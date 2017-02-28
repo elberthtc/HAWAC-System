@@ -5,19 +5,19 @@
  */
 package cr.ac.una.fucem.inge.hawac.dao;
 
-import cr.ac.una.fucem.inge.hawac.domain.Abono;
+import cr.ac.una.fucem.inge.hawac.domain.Dependiente;
 import cr.ac.una.fucem.inge.hawac.utils.NewHibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
 
 /**
  *
- * @author Josue
+ * @author a4e3g6o0
  */
-public class AbonoDAO extends NewHibernateUtil implements IBaseDAO<Abono, Integer>{
+public class DependienteDAO extends NewHibernateUtil implements IBaseDAO<Dependiente, Integer>{
 
     @Override
-    public void save(Abono o) {
+    public void save(Dependiente o) {
            try {
             iniciaOperacion();
             getSession().save(o);
@@ -31,10 +31,10 @@ public class AbonoDAO extends NewHibernateUtil implements IBaseDAO<Abono, Intege
     }
 
     @Override
-    public Abono merge(Abono o) {
+    public Dependiente merge(Dependiente o) {
         try {
             iniciaOperacion();
-            o = (Abono) getSession().merge(o);
+            o = (Dependiente) getSession().merge(o);
             getTransac().commit();
         } catch (HibernateException he) {
             manejaException(he);
@@ -46,7 +46,7 @@ public class AbonoDAO extends NewHibernateUtil implements IBaseDAO<Abono, Intege
     }
 
     @Override
-    public void delete(Abono o) {
+    public void delete(Dependiente o) {
         try {
             iniciaOperacion();
             getSession().delete(o);
@@ -60,12 +60,12 @@ public class AbonoDAO extends NewHibernateUtil implements IBaseDAO<Abono, Intege
     }
 
     @Override
-    public Abono findById(Integer id) {
-        Abono abono = null;
+    public Dependiente findById(Integer id) {
+        Dependiente abono = null;
 
         try {
             iniciaOperacion();
-            abono = (Abono) getSession().get(Abono.class, id);
+            abono = (Dependiente) getSession().get(Dependiente.class, id);
         } finally {
             getSession().close();
         }
@@ -73,16 +73,16 @@ public class AbonoDAO extends NewHibernateUtil implements IBaseDAO<Abono, Intege
     }
 
     @Override
-    public List<Abono> findAll() {
-        List<Abono> listaAbonos;
+    public List<Dependiente> findAll() {
+        List<Dependiente> listaDependientes;
         try {
             iniciaOperacion();
-            listaAbonos = getSession().createQuery("from Abono").list();
+            listaDependientes = getSession().createQuery("from Dependiente").list();
         } finally {
             getSession().close();
         }
 
-        return listaAbonos;
+        return listaDependientes;
     }
     
 }

@@ -5,19 +5,19 @@
  */
 package cr.ac.una.fucem.inge.hawac.dao;
 
-import cr.ac.una.fucem.inge.hawac.domain.Abono;
+import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.utils.NewHibernateUtil;
 import java.util.List;
 import org.hibernate.HibernateException;
 
 /**
  *
- * @author Josue
+ * @author a4e3g6o0
  */
-public class AbonoDAO extends NewHibernateUtil implements IBaseDAO<Abono, Integer>{
+public class BitacoraDAO extends NewHibernateUtil implements IBaseDAO<Bitacora, Integer>{
 
     @Override
-    public void save(Abono o) {
+    public void save(Bitacora o) {
            try {
             iniciaOperacion();
             getSession().save(o);
@@ -31,10 +31,10 @@ public class AbonoDAO extends NewHibernateUtil implements IBaseDAO<Abono, Intege
     }
 
     @Override
-    public Abono merge(Abono o) {
+    public Bitacora merge(Bitacora o) {
         try {
             iniciaOperacion();
-            o = (Abono) getSession().merge(o);
+            o = (Bitacora) getSession().merge(o);
             getTransac().commit();
         } catch (HibernateException he) {
             manejaException(he);
@@ -46,7 +46,7 @@ public class AbonoDAO extends NewHibernateUtil implements IBaseDAO<Abono, Intege
     }
 
     @Override
-    public void delete(Abono o) {
+    public void delete(Bitacora o) {
         try {
             iniciaOperacion();
             getSession().delete(o);
@@ -60,12 +60,12 @@ public class AbonoDAO extends NewHibernateUtil implements IBaseDAO<Abono, Intege
     }
 
     @Override
-    public Abono findById(Integer id) {
-        Abono abono = null;
+    public Bitacora findById(Integer id) {
+        Bitacora abono = null;
 
         try {
             iniciaOperacion();
-            abono = (Abono) getSession().get(Abono.class, id);
+            abono = (Bitacora) getSession().get(Bitacora.class, id);
         } finally {
             getSession().close();
         }
@@ -73,16 +73,16 @@ public class AbonoDAO extends NewHibernateUtil implements IBaseDAO<Abono, Intege
     }
 
     @Override
-    public List<Abono> findAll() {
-        List<Abono> listaAbonos;
+    public List<Bitacora> findAll() {
+        List<Bitacora> listaBitacoras;
         try {
             iniciaOperacion();
-            listaAbonos = getSession().createQuery("from Abono").list();
+            listaBitacoras = getSession().createQuery("from Bitacora").list();
         } finally {
             getSession().close();
         }
 
-        return listaAbonos;
+        return listaBitacoras;
     }
     
 }

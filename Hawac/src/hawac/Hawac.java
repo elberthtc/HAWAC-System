@@ -5,9 +5,8 @@
  */
 package hawac;
 
-import cr.ac.una.fucem.inge.hawac.bl.UsuarioBL;
-import cr.ac.una.fucem.inge.hawac.domain.Inventario;
-import cr.ac.una.fucem.inge.hawac.domain.Usuario;
+import cr.ac.una.fucem.inge.hawac.bl.*;
+import cr.ac.una.fucem.inge.hawac.domain.*;
 
 /**
  *
@@ -20,10 +19,14 @@ public class Hawac {
      */
     public static void main(String[] args) {
         //System.out.println("Wlliam es un banano");
-        /*UsuarioBL uBL= new UsuarioBL();
-        Usuario angel = new Usuario(1234,"pass",0);
-        uBL.save(angel);*/
-        //Inventario i = new Inventario();
+        ProductoBL uBL= new ProductoBL();
+        Producto angel = new Producto(5500,"Camisa cuello V","M","Negra",true);
+        //uBL.save(angel);
+        angel.setIdProducto(1);
+        Inventario i = new Inventario(new InventarioId("tienda",1),angel,10); 
+        InventarioBL iBl = new InventarioBL();
+        iBl.save(i);
+        
     }
     
 }

@@ -5,40 +5,40 @@
  */
 package cr.ac.una.fucem.inge.hawac.bl;
 
-import cr.ac.una.fucem.inge.hawac.domain.Abono;
+import cr.ac.una.fucem.inge.hawac.domain.Factura;
 import java.util.List;
 
 /**
  *
- * @author Josue
+ * @author a4e3g6o0
  */
-public class AbonoBL extends BaseBL implements IBaseBL<Abono, Integer>{
-    public AbonoBL() {
+public class FacturaBL extends BaseBL implements IBaseBL<Factura, Integer>{
+    public FacturaBL() {
         super();
     }
     
     @Override
-    public void save(Abono o) {
+    public void save(Factura o) {
         this.getDao(o.getClass().getName()).save(o);
     }
 
     @Override
-    public Abono merge(Abono o) {
-        return (Abono) this.getDao(o.getClass().getName()).merge(o);
+    public Factura merge(Factura o) {
+        return (Factura) this.getDao(o.getClass().getName()).merge(o);
     }
 
     @Override
-    public void delete(Abono o) {
+    public void delete(Factura o) {
         this.getDao(o.getClass().getName()).delete(o);
     }
 
     @Override
-    public Abono findById(Integer o) {
-        return (Abono) this.getDao(o.getClass().getName()).findById(o);
+    public Factura findById(Integer o) {
+        return (Factura) this.getDao(o.getClass().getName()).findById(o);
     }
 
     @Override
-    public List<Abono> findAll(String className) {
+    public List<Factura> findAll(String className) {
         return this.getDao(className).findAll();
     }
     
