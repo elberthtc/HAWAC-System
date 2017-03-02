@@ -6,9 +6,12 @@
 package cr.ac.una.fucem.inge.hawac.controller;
 
 import cr.ac.una.fucem.inge.hawac.domain.Cliente;
+import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
+import cr.ac.una.fucem.inge.hawac.model.ClienteModel;
 import cr.ac.una.fucem.inge.hawac.model.ClientesModel;
 import cr.ac.una.fucem.inge.hawac.view.ClientesView;
+import hawac.Application;
 import hawac.Session;
 import java.util.List;
 import java.util.Arrays;
@@ -36,6 +39,7 @@ public class ClientesController {
         view.setController(this);
         view.setModel(model);
     }
+    
     public void buscar(){
         model.clearErrors();
         model.getFilter().setNombre(view.nombreTextFd.getText());
@@ -57,10 +61,10 @@ public class ClientesController {
         model.setClientes(rows);
     }
     public void borrar(int row){
-      /*  model.clearErrors();
+        model.clearErrors();
         Cliente c1 = model.getClientes().getRowAt(row);
-        Empleado e1 = (Empleado) session.getAttribute(Application.EMPLOYEE_ATTRIBUTE);
-         if( !Arrays.asList(Application.ROL_SELLER).contains(e1.getRol().getDescripcion())){
+        Usuario e1 = (Usuario) session.getAttribute(Application.EMPLOYEE_ATTRIBUTE);
+         if( true ){
             model.setMensaje(Application.ROL_NOTAUTHORIZED);
             model.commit();
             return;
@@ -68,14 +72,18 @@ public class ClientesController {
         try{
             domainModel.getClienteBl().delete(c1);
         }catch (Exception ex) { }
-        List<Cliente> rowsMod = domainModel.searchClientes(model.getFilter());
-        model.setClientes(rowsMod); */
+        
+        List<Cliente> rowsMod = domainModel.getClienteBl().findAll(Cliente.class.getName());
+        model.setClientes(rowsMod);
     }
+    
+    
     public void preAgregar(){
-        /*
+        
         model.clearErrors();
-        Empleado e1 = (Empleado) session.getAttribute(Application.EMPLOYEE_ATTRIBUTE);
-        if( !Arrays.asList(Application.ROL_SELLER).contains(e1.getRol().getDescripcion())){
+        Usuario e1 = (Usuario) session.getAttribute("Usuario");
+        System.out.println(e1.getPassword());
+        if(((Usuario)session.getAttribute("Usuario")).getTipo()!=0){
             model.setMensaje(Application.ROL_NOTAUTHORIZED);
             model.commit();
             return;
@@ -85,33 +93,26 @@ public class ClientesController {
         clienteModel.setModo(Application.MODO_AGREGAR);
         clienteModel.setCurrent(new Cliente());
         Application.CLIENTE_VIEW.setVisible(true);
-                */
     }
+    
     public void editar(int row){
-        /*
         model.clearErrors();
         ClienteModel clienteModel = Application.CLIENTE_VIEW.getModel();
         Cliente c1 = model.getClientes().getRowAt(row);
         clienteModel.clearErrors();
-        Empleado principal = (Empleado) session.getAttribute(Application.EMPLOYEE_ATTRIBUTE);
-        if(Arrays.asList(Application.ROL_SELLER).contains(principal.getRol().getDescripcion())){
+        Usuario principal = (Usuario) session.getAttribute(Application.EMPLOYEE_ATTRIBUTE);
+        if(true){
             clienteModel.setModo(Application.MODO_EDITAR);
         }else{
             clienteModel.setModo(Application.MODO_CONSULTAR);
         }
         clienteModel.setCurrent(c1);
         Application.CLIENTE_VIEW.setVisible(true);
-                */
     }
 
     public void salir(){
-      /*  model.clearErrors();        
-        domainModel.close();
+        model.clearErrors();        
         view.setVisible(false);
         Application.LOGIN_VIEW.getController().logout();
-              */
     }
-
- 
-    
 }

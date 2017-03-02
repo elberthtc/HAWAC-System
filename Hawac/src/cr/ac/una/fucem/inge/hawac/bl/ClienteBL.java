@@ -39,6 +39,7 @@ public class ClienteBL extends BaseBL implements IBaseBL<Cliente, Integer>{
 
     @Override
     public List<Cliente> findAll(String className) {
+        //Cliente c = new Cliente();
         return this.getDao(className).findAll();
     }
     

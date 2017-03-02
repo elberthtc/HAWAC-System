@@ -138,16 +138,22 @@ public class Application {
         EMPLEADO_VIEW=empleadoView;
         EmpleadoController empleadoController= new EmpleadoController(empleadoView, empleadoModel, domainModel,session);
         
+        */
+        
         ClientesModel clientesModel = new ClientesModel();
         ClientesView clientesView = new ClientesView();
         CLIENTES_VIEW= clientesView;
         applicationView.addInternalFrame(clientesView);
         ClientesController clientescontroller = new ClientesController(clientesView,session,clientesModel,domainModel);
  
+        
+        
         ClienteModel clienteModel = new ClienteModel();
         ClienteView clienteView = new ClienteView(applicationView,true);
         CLIENTE_VIEW = clienteView;
         ClienteController clienteController = new ClienteController(clienteView,clienteModel,domainModel,session);
+        
+        /*
         
         ClientesFacturaView clieFacView = new ClientesFacturaView();
         CLIENTES_FACTURA_VIEW = clieFacView;

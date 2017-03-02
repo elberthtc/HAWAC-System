@@ -167,7 +167,10 @@ public class LoginView extends javax.swing.JFrame implements java.util.Observer 
     @Override
     public void update(java.util.Observable updatedModel,Object parametros){
         Usuario current = model.getCurrent();
-        idTextField.setText(current.getIdUsuario()+"");
+        if(current.getIdUsuario()==0)
+            idTextField.setText("");
+        else
+            idTextField.setText(current.getIdUsuario()+"");
         if(model.getErrores().get("Id")!= null){
             idLabel.setBorder(Application.BORDER_ERROR);
             idLabel.setToolTipText(model.getErrores().get("Id"));

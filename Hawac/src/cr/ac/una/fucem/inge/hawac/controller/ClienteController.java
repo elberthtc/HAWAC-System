@@ -45,10 +45,15 @@ public class ClienteController {
         if(view.nombreTextFd.getText().length()==0){
             model.getErrores().put("Nombre", "Nombre requerido");
         }
-        c1.setCedula(Integer.parseInt(view.idTextFd.getText()));
-        if(view.idTextFd.getText().length()==0 || view.idTextFd.getText().length() > 7){
+        if(view.idTextFd.getText().length()==0 || view.idTextFd.getText().length() > 7 || !cr.ac.una.fucem.inge.hawac.logic.Model.isNumeric(view.idTextFd.getText())){
              model.getErrores().put("Id", "Id Incorrecto");
         }
+        else{
+            c1.setCedula(Integer.parseInt(view.idTextFd.getText()));
+        }
+        
+        c1.setTotalComprado(0);
+        
         //c1.setNumeroTelefono(view.numTelefonoTextFd.getText());
         //c1.setCorreo(view.correoTextFd.getText());
         /*if(view.DescuentoTextFd.getText().length()==0){
@@ -68,7 +73,7 @@ public class ClienteController {
                         domainModel.getClienteBl().save(c1);
                         model.setMensaje("CLIENTE AGREGADO");
                         model.setCurrent(new Cliente());
-                        clientes = domainModel.getClienteBl().findAll(null);
+                        clientes = domainModel.getClienteBl().findAll(Cliente.class.getName());
                         clientesModel.setClientes(clientes);
                         view.setVisible(false);
                         break;

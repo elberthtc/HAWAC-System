@@ -74,14 +74,14 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
 
         nombreTextFd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ferreteria/presentacion/view/icons/search2.png"))); // NOI18N
+        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
             }
         });
 
-        agregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ferreteria/presentacion/view/icons/addUser.png"))); // NOI18N
+        agregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/addUser.png"))); // NOI18N
         agregarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarButtonActionPerformed(evt);
@@ -109,7 +109,7 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
         });
         jScrollPane1.setViewportView(clientesTable);
 
-        deleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ferreteria/presentacion/view/icons/deleteUser.png"))); // NOI18N
+        deleteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/deleteUser.png"))); // NOI18N
         deleteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButtonActionPerformed(evt);
@@ -156,9 +156,8 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(nombreLb, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreLb, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -216,10 +215,8 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarButtonActionPerformed
-       
-        Application.CLIENTE_VIEW.setLocation(this.agregarButton.getLocationOnScreen());
+       Application.CLIENTE_VIEW.setLocation(this.agregarButton.getLocationOnScreen());
        controller.preAgregar();
-
     }//GEN-LAST:event_agregarButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
@@ -301,9 +298,9 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
         clientesTable.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         clientesTable.getColumnModel().getColumn(0).setPreferredWidth(30);
         clientesTable.getColumnModel().getColumn(1).setPreferredWidth(30);
-        clientesTable.getColumnModel().getColumn(2).setPreferredWidth(110);
+       /* clientesTable.getColumnModel().getColumn(2).setPreferredWidth(110);
         clientesTable.getColumnModel().getColumn(3).setPreferredWidth(30);
-        clientesTable.getColumnModel().getColumn(4).setPreferredWidth(30);
+        clientesTable.getColumnModel().getColumn(4).setPreferredWidth(30);*/
 
     }
     /**

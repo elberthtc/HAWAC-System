@@ -38,9 +38,11 @@ public class LoginController {
     public void login(){
         model.clearErrors();
         Usuario e1 = model.getCurrent();
-        e1.setIdUsuario(Integer.parseInt(view.idTextField.getText()));
-        if (view.idTextField.getText().equals("")){
+        if (view.idTextField.getText().equals("") || !cr.ac.una.fucem.inge.hawac.logic.Model.isNumeric(view.idTextField.getText())){
             model.getErrores().put("Id", "Id requerido");
+        }
+        else {
+            e1.setIdUsuario(Integer.parseInt(view.idTextField.getText()));
         }
         e1.setPassword(new String(view.claveTextField.getPassword())); 
         if(view.claveTextField.getPassword().length==0){
@@ -49,13 +51,15 @@ public class LoginController {
         if(model.getErrores().isEmpty()){
         try {
             Usuario real = domainModel.getUsuario(e1.getIdUsuario(),e1.getPassword());
-            session.setAttibute(Application.EMPLOYEE_ATTRIBUTE,real);
+            session.setAttibute("Usuario",real);
             view.setVisible(false);
             Application.APPLICATION_VIEW.getController().enter();
+            System.out.println(((Usuario)session.getAttribute("Usuario")).getPassword());
         } catch (Exception ex) {
             String n = ex.toString();
             if(ex.toString().compareTo("java.lang.NullPointerException")==0){
                 Application.APPLICATION_VIEW.getController().enter();
+                //System.out.println(session.getAttribute(Application.EMPLOYEE_ATTRIBUTE).toString());
             }
             else {
                 model.setMensaje("Datos incorrectos");

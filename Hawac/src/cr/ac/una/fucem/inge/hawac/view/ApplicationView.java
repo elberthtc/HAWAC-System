@@ -59,7 +59,7 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 233, Short.MAX_VALUE)
+            .addGap(0, 231, Short.MAX_VALUE)
         );
 
         getContentPane().add(desktopPane);

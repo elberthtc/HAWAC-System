@@ -52,14 +52,14 @@ public class ApplicationController {
       }
       public void exit(){
           Application.CLIENTES_VIEW.setVisible(false);
-          Application.PRODUCTOS_VIEW.setVisible(false);
+          /*Application.PRODUCTOS_VIEW.setVisible(false);
           Application.EMPLEADOS_VIEW.setVisible(false);
           Application.CLIENTES_FACTURA_VIEW.setVisible(false);
           Application.PRODUCTOFACTURA_VIEW.setVisible(false);
           Application.FACTURA_VIEW.setVisible(false);
           Application.FACTURAS_VENTAS_VIEW.setVisible(false);
           Application.FACTURAS_PAGADAS_VIEW.setVisible(false);
-          Application.FACTURA_COMPRA_VIEW.setVisible(false);
+          Application.FACTURA_COMPRA_VIEW.setVisible(false);*/
           view.setVisible(false);
           Application.LOGIN_VIEW.getController().logout();
       }
