@@ -69,10 +69,7 @@ public class Usuario  implements java.io.Serializable {
     public void setBitacoras(Set<Bitacora> bitacoras) {
         this.bitacoras = bitacoras;
     }
-
-
-
-
+    
 }
 
 
