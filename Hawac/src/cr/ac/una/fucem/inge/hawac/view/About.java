@@ -40,34 +40,37 @@ public class About extends javax.swing.JDialog {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("@COPYRIGHT");
 
         jLabel1.setFont(new java.awt.Font("Lucida Console", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(153, 0, 0));
-        jLabel1.setText("UNIVERSIDAD NACIONAL DE COSTA RICA.");
+        jLabel1.setText("FUCEM");
 
         jLabel2.setFont(new java.awt.Font("Lucida Console", 1, 14)); // NOI18N
-        jLabel2.setText("Proyecto Programación III.");
 
         jLabel3.setFont(new java.awt.Font("Lucida Console", 1, 14)); // NOI18N
-        jLabel3.setText("Tema: Ferretería.");
+        jLabel3.setText("PROYECTO: HAWAC.");
 
         jLabel4.setFont(new java.awt.Font("Lucida Console", 1, 14)); // NOI18N
-        jLabel4.setText("Integrantes :");
+        jLabel4.setText("Desarrolladores :");
 
         jLabel5.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
-        jLabel5.setText("Andrey Chaverri Montenegro");
+        jLabel5.setText("Angel Gómez Oviedo");
 
         jLabel6.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
-        jLabel6.setText("Daniel Zamora García.");
+        jLabel6.setText("William Mora Barahona");
 
         jLabel7.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
-        jLabel7.setText("Alonso Aguilar.");
+        jLabel7.setText("Adrian Prendas ");
 
         jLabel8.setFont(new java.awt.Font("Lucida Console", 1, 14)); // NOI18N
-        jLabel8.setText("II CICLO 2016 @COPYRIGHT.");
+        jLabel8.setText("2017 ");
+
+        jLabel9.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
+        jLabel9.setText("Helberth Toruño Casares");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,7 +82,6 @@ public class About extends javax.swing.JDialog {
                         .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel1)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)))
                     .addGroup(layout.createSequentialGroup()
@@ -89,15 +91,19 @@ public class About extends javax.swing.JDialog {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel6)
                                 .addComponent(jLabel5)
-                                .addComponent(jLabel7)))))
-                .addContainerGap(51, Short.MAX_VALUE))
+                                .addComponent(jLabel7)
+                                .addComponent(jLabel9))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(jLabel1)))
+                .addContainerGap(187, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(23, 23, 23)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
@@ -109,7 +115,9 @@ public class About extends javax.swing.JDialog {
                 .addComponent(jLabel6)
                 .addGap(13, 13, 13)
                 .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
                 .addComponent(jLabel8)
                 .addContainerGap())
         );
@@ -169,5 +177,6 @@ public class About extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }
