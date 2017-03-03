@@ -6,6 +6,13 @@
 package cr.ac.una.fucem.inge.hawac.controller;
 
 
+import cr.ac.una.fucem.inge.hawac.domain.Producto;
+import cr.ac.una.fucem.inge.hawac.logic.Model;
+import cr.ac.una.fucem.inge.hawac.model.ProductoModel;
+import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
+import cr.ac.una.fucem.inge.hawac.view.ProductoView;
+import hawac.Application;
+import hawac.Session;
 import java.util.List;
 /*import ferreteria.Application;
 import ferreteria.Session;
@@ -17,7 +24,7 @@ import ferreteria.presentacion.view.ProductoView;
 
 */
 public class ProductoController {
-/*    Model domainModel;    
+    Model domainModel;    
     ProductoView view;
     ProductoModel model;
     Session session;
@@ -36,7 +43,7 @@ public class ProductoController {
         model.clearErrors();
         ProductosModel productosModel =Application.PRODUCTOS_VIEW.getModel();
         Producto p1 = new Producto();
-        p1.setCodigo(view.CodigoText.getText());
+        p1.setIdProducto(Integer.parseInt(view.CodigoText.getText()));
         if(view.CodigoText.getText().length()==0){
             model.getErrores().put("Codigo", "Codigo requerido");
         }
@@ -49,7 +56,7 @@ public class ProductoController {
             if(ex==0){
                 model.getErrores().put("Cantidad","Digito Invalido");
             }
-            p1.setExistencias(ex);
+            //p1.setExistencias(ex);
         }else{
             model.getErrores().put("Cantidad","Digite Solo numeros");
         }
@@ -61,7 +68,7 @@ public class ProductoController {
             if(prec==0.0){
                 model.getErrores().put("Precio","Digito Invalido");
             }
-             p1.setPrecio(prec);
+             p1.setPrecio((float) prec);
         }
         if(view.PrecioText.getText().length()==0){
             model.getErrores().put("Precio","Precio Requerido");
@@ -72,18 +79,18 @@ public class ProductoController {
             try{
                 switch(model.getModo()){
                     case Application.MODO_AGREGAR:
-                        domainModel.addProducto(p1);
+                        domainModel.getProductoBl().save(p1);
                         model.setMensaje("PRODUCTO AGREGADO");
                         model.setCurrent(new Producto());
-                        productos = domainModel.searchProductos(productosModel.getFilter());
+                        productos = domainModel.getProductoBl().findAll(Producto.class.getName());
                         productosModel.setProductos(productos);
                         view.setVisible(false);
                         break;
                     case Application.MODO_EDITAR:
-                        domainModel.updateProducto(p1);
+                        domainModel.getProductoBl().merge(p1);
                         model.setMensaje("PRODUCTO MODIFICADO");
                         model.setCurrent(p1);
-                        productos = domainModel.searchProductos(productosModel.getFilter());
+                        productos = domainModel.getProductoBl().findAll(Producto.class.getName());
                         productosModel.setProductos(productos);
                         view.setVisible(false);
                         break;
@@ -115,5 +122,4 @@ public class ProductoController {
 		return false;
 	}
     }
-    */
 }

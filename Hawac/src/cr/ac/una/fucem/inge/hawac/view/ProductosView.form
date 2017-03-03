@@ -52,7 +52,7 @@
                               <Component id="EliminarLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
-                              <Component id="AgregarButton" min="-2" pref="32" max="-2" attributes="0"/>
+                              <Component id="agregarButton" min="-2" pref="32" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               <Component id="BorrarButton" min="-2" pref="39" max="-2" attributes="0"/>
                           </Group>
@@ -90,7 +90,7 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="CodigoRadioButton2" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="AgregarButton" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
+                          <Component id="agregarButton" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="BorrarButton" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -117,14 +117,14 @@
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="AgregarButton">
+    <Component class="javax.swing.JButton" name="agregarButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/cr/ac/una/fucem/inge/hawac/view/icons/agregar.png"/>
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AgregarButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="agregarButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="BorrarButton">

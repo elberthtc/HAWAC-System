@@ -181,11 +181,15 @@ public class Application {
         applicationView.addInternalFrame(facturasPagadasView);
         FacturasPagadasController factPagadasController = new FacturasPagadasController(facturasPagadasView,facturasPagadasModel,domainModel,session);
  
+        */
+        
         ProductoModel productoModel = new ProductoModel();
         ProductoView productoView = new ProductoView(applicationView,true);
         PRODUCTO_VIEW = productoView;
         ProductoController productoController = new ProductoController(productoView,productoModel,domainModel,session); 
         
+        
+        /*
         ProductoFacturaView productoFacturaView=new ProductoFacturaView();
         PRODUCTOFACTURA_VIEW=productoFacturaView;
         applicationView.addInternalFrame(productoFacturaView);

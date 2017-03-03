@@ -55,17 +55,40 @@ public class ProductosController {
         model.setProductos(rows);
  
     }
-     public void buscar2(){
+    
+    public void buscarPorDescripcion() {
         model.clearErrors();
-        model.getFilter().setIdProducto(Integer.parseInt(view.DescripcionText.getText()));
-        List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName()); 
-        if(rows.isEmpty()){
-            model.getErrores().put("DescripcionText","Ningun registro coincide");
-             model.setMensaje("NINGUN REGISTRO COINCIDE");
+        model.getFilter().setDescripcion(view.DescripcionText.getText());
+        List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
+        for (int i = 0; i < rows.size(); i++) {
+            if (rows.get(i).getDescripcion().indexOf(view.DescripcionText.getText()) == -1) {
+                rows.remove(rows.get(i));
+            }
+        }
+        if (rows.isEmpty()) {
+            model.getErrores().put("DescripcionText", "Ningun registro coincide");
+            model.setMensaje("NINGUN REGISTRO COINCIDE");
         }
         model.setProductos(rows);
- 
     }
+    
+    public void buscarPorCodigo() {
+        model.clearErrors();
+        model.getFilter().setDescripcion(view.DescripcionText.getText());
+        List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
+        for (int i = 0; i < rows.size(); i++) {
+            if (String.valueOf(rows.get(i).getIdProducto()).indexOf(view.DescripcionText.getText()) == -1) {
+                rows.remove(rows.get(i));
+            }
+        }
+        if (rows.isEmpty()) {
+            model.getErrores().put("DescripcionText", "Ningun registro coincide");
+            model.setMensaje("NINGUN REGISTRO COINCIDE");
+        }
+        model.setProductos(rows);
+    }
+     
+     
    public void borrar(int row){
         model.clearErrors();
         Producto p1 = model.getProductos().getRowAt(row);

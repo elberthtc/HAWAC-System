@@ -55,7 +55,6 @@ public class ClientesController {
         model.clearErrors();
         model.getFilter().setNombre(view.nombreTextFd.getText());
         List<Cliente> aux = domainModel.getClienteBl().findAll(Cliente.class.getName());
-       // List<Cliente> rows ; // ACA BUSCA POR NOMBRE
         for(int i=0;i<aux.size();i++){
             if(aux.get(i).getNombre().indexOf(view.nombreTextFd.getText())==-1){
                 aux.remove(aux.get(i));
@@ -70,7 +69,7 @@ public class ClientesController {
 
     public void buscarPorId(){
         model.clearErrors();
-        model.getFilter().setCedula(Integer.parseInt(view.nombreTextFd.getText()));
+        //model.getFilter().setCedula(Integer.parseInt(view.nombreTextFd.getText()));
         List<Cliente> rows = domainModel.getClienteBl().findAll(Cliente.class.getName()); //ACA BUSCA POR ID
         for(int i=0;i<rows.size();i++){
             if(String.valueOf(rows.get(i).getCedula()).indexOf(view.nombreTextFd.getText())==-1){

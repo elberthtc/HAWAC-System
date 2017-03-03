@@ -10,7 +10,9 @@ import ferreteria.presentacion.controller.ProductoController;
 import ferreteriaentidades.Producto;
 import ferreteria.Application;*/
 import cr.ac.una.fucem.inge.hawac.controller.ProductoController;
+import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import cr.ac.una.fucem.inge.hawac.model.ProductoModel;
+import hawac.Application;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
@@ -87,14 +89,14 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
 
         PrecioText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        AgregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/ferreteria/presentacion/view/icons/save2.png"))); // NOI18N
+        AgregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/save2.png"))); // NOI18N
         AgregarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarButtonActionPerformed(evt);
             }
         });
 
-        ExitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/ferreteria/presentacion/view/icons/cancel.png"))); // NOI18N
+        ExitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/cancel.png"))); // NOI18N
         ExitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ExitButtonActionPerformed(evt);
@@ -181,55 +183,54 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
     }//GEN-LAST:event_ExitButtonActionPerformed
 
     @Override
-    public void update(java.util.Observable updatedModel,Object parametros) {
-       /*Producto current = model.getCurrent();
-       this.CodigoText.setEnabled(model.getModo()==Application.MODO_AGREGAR);
-       this.CodigoText.setText(current.getCodigo());
-       if(model.getErrores().get("Codigo")!= null){
-           CodigoLabel.setBorder(Application.BORDER_ERROR);
-           CodigoLabel.setToolTipText(model.getErrores().get("Codigo"));
-       }else{
-           CodigoLabel.setBorder(null);
-           CodigoLabel.setToolTipText("");
-       }
+    public void update(java.util.Observable updatedModel, Object parametros) {
+        Producto current = model.getCurrent();
+        this.CodigoText.setEnabled(model.getModo() == Application.MODO_AGREGAR);
+        this.CodigoText.setText(current.getIdProducto()+"");
+        if (model.getErrores().get("Codigo") != null) {
+            CodigoLabel.setBorder(Application.BORDER_ERROR);
+            CodigoLabel.setToolTipText(model.getErrores().get("Codigo"));
+        } else {
+            CodigoLabel.setBorder(null);
+            CodigoLabel.setToolTipText("");
+        }
         Boolean editable = Arrays.asList(Application.MODO_AGREGAR, Application.MODO_EDITAR).contains(model.getModo());
         this.DescripcionText.setEnabled(editable);
         this.DescripcionText.setText(current.getDescripcion());
-        if(model.getErrores().get("Descripcion")!= null){
-           DescripcionLabel.setBorder(Application.BORDER_ERROR);
-           DescripcionLabel.setToolTipText(model.getErrores().get("Descripcion"));
-         }else{
-           DescripcionLabel.setBorder(null);
-           DescripcionLabel.setToolTipText("");
-       }
-        
+        if (model.getErrores().get("Descripcion") != null) {
+            DescripcionLabel.setBorder(Application.BORDER_ERROR);
+            DescripcionLabel.setToolTipText(model.getErrores().get("Descripcion"));
+        } else {
+            DescripcionLabel.setBorder(null);
+            DescripcionLabel.setToolTipText("");
+        }
+
         this.ExistenciaText.setEnabled(editable);
-        String ex = String.valueOf(current.getExistencias());
+        String ex = String.valueOf(10);
         this.ExistenciaText.setText(ex);
-        if(model.getErrores().get("Cantidad")!= null){
-           ExistenciaLabel.setBorder(Application.BORDER_ERROR);
-           ExistenciaLabel.setToolTipText(model.getErrores().get("Cantidad"));
-         }else{
-           ExistenciaLabel.setBorder(null);
-           ExistenciaLabel.setToolTipText("");
-       }
-        
+        if (model.getErrores().get("Cantidad") != null) {
+            ExistenciaLabel.setBorder(Application.BORDER_ERROR);
+            ExistenciaLabel.setToolTipText(model.getErrores().get("Cantidad"));
+        } else {
+            ExistenciaLabel.setBorder(null);
+            ExistenciaLabel.setToolTipText("");
+        }
+
         this.PrecioText.setEnabled(editable);
         String prec = String.valueOf(current.getPrecio());
         this.PrecioText.setText(prec);
-        if(model.getErrores().get("Precio") != null){
-           PrecioLabel.setBorder(Application.BORDER_ERROR);
-           PrecioLabel.setToolTipText(model.getErrores().get("Precio"));
-         }else{
-           PrecioLabel.setBorder(null);
-           PrecioLabel.setToolTipText("");
-       }
-        AgregarButton.setVisible(editable);
-         this.validate();
-        if (!model.getMensaje().equals("")){
-            JOptionPane.showMessageDialog(this, model.getMensaje(), "",JOptionPane.INFORMATION_MESSAGE);
+        if (model.getErrores().get("Precio") != null) {
+            PrecioLabel.setBorder(Application.BORDER_ERROR);
+            PrecioLabel.setToolTipText(model.getErrores().get("Precio"));
+        } else {
+            PrecioLabel.setBorder(null);
+            PrecioLabel.setToolTipText("");
         }
-        */
+        AgregarButton.setVisible(editable);
+        this.validate();
+        if (!model.getMensaje().equals("")) {
+            JOptionPane.showMessageDialog(this, model.getMensaje(), "", JOptionPane.INFORMATION_MESSAGE);
+        }
     }
     /**
      * @param args the command line arguments
