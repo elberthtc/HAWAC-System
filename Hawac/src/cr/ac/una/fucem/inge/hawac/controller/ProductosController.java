@@ -6,6 +6,14 @@
 package cr.ac.una.fucem.inge.hawac.controller;
 
 
+import cr.ac.una.fucem.inge.hawac.domain.Producto;
+import cr.ac.una.fucem.inge.hawac.domain.Usuario;
+import cr.ac.una.fucem.inge.hawac.logic.Model;
+import cr.ac.una.fucem.inge.hawac.model.ProductoModel;
+import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
+import cr.ac.una.fucem.inge.hawac.view.ProductosView;
+import hawac.Application;
+import hawac.Session;
 import java.util.List;
 import java.util.Arrays;
 /*import ferreteria.Application;
@@ -22,7 +30,7 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class ProductosController {
-    /*Model domainModel;
+    Model domainModel;
     Session session;
     ProductosView view;
     ProductosModel model;
@@ -39,7 +47,7 @@ public class ProductosController {
     public void buscar(){
         model.clearErrors();
         model.getFilter().setDescripcion(view.DescripcionText.getText());
-        List<Producto> rows = domainModel.searchProductos(model.getFilter()); 
+        List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName()); 
         if(rows.isEmpty()){
             model.getErrores().put("DescripcionText","Ningun registro coincide");
              model.setMensaje("NINGUN REGISTRO COINCIDE");
@@ -49,8 +57,8 @@ public class ProductosController {
     }
      public void buscar2(){
         model.clearErrors();
-        model.getFilter().setCodigo(view.DescripcionText.getText());
-        List<Producto> rows = domainModel.searchProductos2(model.getFilter()); 
+        model.getFilter().setIdProducto(Integer.parseInt(view.DescripcionText.getText()));
+        List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName()); 
         if(rows.isEmpty()){
             model.getErrores().put("DescripcionText","Ningun registro coincide");
              model.setMensaje("NINGUN REGISTRO COINCIDE");
@@ -61,22 +69,22 @@ public class ProductosController {
    public void borrar(int row){
         model.clearErrors();
         Producto p1 = model.getProductos().getRowAt(row);
-        Empleado e1 = (Empleado) session.getAttribute(Application.EMPLOYEE_ATTRIBUTE);
-         if( !Arrays.asList(Application.ROL_MANAGER).contains(e1.getRol().getDescripcion())){
+        Usuario e1 = (Usuario) session.getAttribute("Usuario");
+         if(true){
             model.setMensaje(Application.ROL_NOTAUTHORIZED);
             model.commit();
             return;
         }
         try{
-            domainModel.deleteProducto(p1);
+            domainModel.getProductoBl().delete(p1);
         }catch (Exception ex) { }
-        List<Producto> rowsMod = domainModel.searchProductos(model.getFilter());
+        List<Producto> rowsMod = domainModel.getProductoBl().findAll(Producto.class.getName());
         model.setProductos(rowsMod);
     }
     public void preAgregar(){
         model.clearErrors();
-        Empleado e1 = (Empleado) session.getAttribute(Application.EMPLOYEE_ATTRIBUTE);
-        if( !Arrays.asList(Application.ROL_MANAGER).contains(e1.getRol().getDescripcion())){
+        Usuario e1 = (Usuario) session.getAttribute("Usuario");
+        if(e1.getTipo()!=0){
             model.setMensaje(Application.ROL_NOTAUTHORIZED);
             model.commit();
             return;
@@ -92,8 +100,8 @@ public class ProductosController {
         ProductoModel productoModel = Application.PRODUCTO_VIEW.getModel();
         Producto c1 = model.getProductos().getRowAt(row);
         productoModel.clearErrors();
-        Empleado principal = (Empleado) session.getAttribute(Application.EMPLOYEE_ATTRIBUTE);
-        if(Arrays.asList(Application.ROL_MANAGER).contains(principal.getRol().getDescripcion())){
+        Usuario principal = (Usuario) session.getAttribute("Usuario");
+        if(principal.getTipo()==0){
             productoModel.setModo(Application.MODO_EDITAR);
         }else{
             productoModel.setModo(Application.MODO_CONSULTAR);
@@ -103,8 +111,7 @@ public class ProductosController {
  }
 
   public void salir(){
-        model.clearErrors();        
-        domainModel.close();
+        model.clearErrors();   
         view.setVisible(false);
         Application.LOGIN_VIEW.getController().logout();
  }
@@ -117,7 +124,6 @@ public class ProductosController {
 		return false;
 	}
     }
-  */
 }
 
 

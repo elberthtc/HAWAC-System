@@ -160,12 +160,15 @@ public class Application {
         applicationView.addInternalFrame(clieFacView);
         ClientesFacturaController clieFacturaController = new ClientesFacturaController(clieFacView,session,clientesModel,domainModel);
         
+        */
+        
         ProductosModel productosModel = new ProductosModel();
         ProductosView productosView = new ProductosView();
         PRODUCTOS_VIEW= productosView;
         applicationView.addInternalFrame(productosView);
         ProductosController productoscontroller = new ProductosController(productosView,session,productosModel,domainModel);
         
+        /*
         FacturasVentasModel facturasVentasModel = new FacturasVentasModel();
         FacturasVentasView facturasVentasView = new FacturasVentasView();
         FACTURAS_VENTAS_VIEW = facturasVentasView;

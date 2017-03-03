@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package cr.ac.una.fucem.inge.hawac.view;
+import cr.ac.una.fucem.inge.hawac.controller.ProductosController;
+import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
 import javax.swing.JOptionPane;
 /*import ferreteria.Application;
 import ferreteria.presentacion.controller.ProductosController;
@@ -14,7 +16,7 @@ import javax.swing.table.DefaultTableModel;
 
 
 public class ProductosView extends javax.swing.JInternalFrame implements java.util.Observer{
-    /*ProductosController controller;
+    ProductosController controller;
     ProductosModel model;
     DefaultTableModel productos;
     
@@ -44,7 +46,7 @@ public class ProductosView extends javax.swing.JInternalFrame implements java.ut
         model.addObserver(this);
     }
 
-    */
+    
     public ProductosView() {
         super("",false,true);
         initComponents();
@@ -83,21 +85,21 @@ public class ProductosView extends javax.swing.JInternalFrame implements java.ut
 
         DescripcionText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        AgregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/ferreteria/presentacion/view/icons/agregar.png"))); // NOI18N
+        AgregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/agregar.png"))); // NOI18N
         AgregarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarButtonActionPerformed(evt);
             }
         });
 
-        BorrarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/ferreteria/presentacion/view/icons/cancel (2).png"))); // NOI18N
+        BorrarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/cancel (2).png"))); // NOI18N
         BorrarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BorrarButtonActionPerformed(evt);
             }
         });
 
-        BuscarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/ferreteria/presentacion/view/icons/search2.png"))); // NOI18N
+        BuscarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
         BuscarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarButtonActionPerformed(evt);

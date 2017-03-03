@@ -9,13 +9,15 @@ package cr.ac.una.fucem.inge.hawac.view;
 import ferreteria.presentacion.controller.ProductoController;
 import ferreteriaentidades.Producto;
 import ferreteria.Application;*/
+import cr.ac.una.fucem.inge.hawac.controller.ProductoController;
+import cr.ac.una.fucem.inge.hawac.model.ProductoModel;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 
 public class ProductoView extends javax.swing.JDialog implements java.util.Observer{
 
-    /*
+    
     ProductoModel model;
     ProductoController controller;
        
@@ -27,15 +29,15 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
         return controller;
     }
 
-    public void setModel(ferreteria.presentacion.model.ProductoModel model) {
+    public void setModel(cr.ac.una.fucem.inge.hawac.model.ProductoModel model) {
         this.model = model;
         model.addObserver(this);
     }
 
-    public void setController(ferreteria.presentacion.controller.ProductoController controller) {
+    public void setController(cr.ac.una.fucem.inge.hawac.controller.ProductoController controller) {
         this.controller = controller;
     }
-    */
+    
     public ProductoView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

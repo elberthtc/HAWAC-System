@@ -235,7 +235,7 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
                     nombreLb.setToolTipText(model.getErrores().get("nombreTextFd"));
                 }
                 if(NombreRadioButton.isSelected()==true && nombreTextFd.getText().length()!=0){
-                    controller.buscar();
+                    controller.buscarPorNombre();
                 }
                 if(IdRadioButton.isSelected()==true && nombreTextFd.getText().length()==0){
                     model.getErrores().put("nombreTextFd","Digite la descripcion a buscar");
@@ -243,7 +243,7 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
                     nombreLb.setToolTipText(model.getErrores().get("nombreTextFd"));
                 }
                 if(IdRadioButton.isSelected()==true && nombreTextFd.getText().length()!=0){
-                    controller.buscar2();
+                    controller.buscarPorId();
                 }
       }
     }//GEN-LAST:event_searchButtonActionPerformed
@@ -251,19 +251,19 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
     private void clientesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientesTableMouseClicked
         if (evt.getClickCount() == 2) {
             int row = this.clientesTable.getSelectedRow();
-             Application.CLIENTE_VIEW.setLocation(evt.getLocationOnScreen());
-             controller.editar(row);
+            Application.CLIENTE_VIEW.setLocation(evt.getLocationOnScreen());
+            controller.editar(row);
         }
     }//GEN-LAST:event_clientesTableMouseClicked
 
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
-       int row = this.clientesTable.getSelectedRow();
-        if(row != -1){
-        int ax = JOptionPane.showConfirmDialog(null, "Estas seguro que desea eliminarlo?");
-        if(ax == JOptionPane.YES_OPTION){
-            controller.borrar(row);
-       }
-      }
+        int row = this.clientesTable.getSelectedRow();
+        if (row != -1) {
+            int ax = JOptionPane.showConfirmDialog(null, "Estas seguro que desea eliminarlo?");
+            if (ax == JOptionPane.YES_OPTION) {
+                controller.borrar(row);
+            }
+        }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
     private void IdRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdRadioButtonActionPerformed

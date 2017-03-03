@@ -11,10 +11,6 @@ import cr.ac.una.fucem.inge.hawac.model.ClienteModel;
 import hawac.Application;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
-/*import ferreteria.Application;
-import ferreteriaentidades.Cliente;
-import ferreteria.presentacion.controller.ClienteController;
-import ferreteria.presentacion.model.ClienteModel;*/
 
 public class ClienteView extends javax.swing.JDialog implements java.util.Observer{
 
@@ -214,7 +210,11 @@ public class ClienteView extends javax.swing.JDialog implements java.util.Observ
     public void update(java.util.Observable updatedModel,Object parametros) {
         Cliente current = model.getCurrent();
         this.idTextFd.setEnabled(model.getModo()==Application.MODO_AGREGAR);
-        idTextFd.setText(current.getCedula()+"");
+        if(current.getCedula()==0){
+            idTextFd.setText("");
+        } else {
+            idTextFd.setText(current.getCedula()+"");
+        }
          if (model.getErrores().get("Id")!=null){
             idLb.setBorder(Application.BORDER_ERROR);
             idLb.setToolTipText(model.getErrores().get("Id"));
