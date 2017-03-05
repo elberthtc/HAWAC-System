@@ -66,7 +66,7 @@ public class Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) {//William es un banano
         Model domainModel = Model.instance();
         Session session = new Session();
         
