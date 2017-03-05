@@ -29,7 +29,7 @@ public class ClientesModel extends java.util.Observable{
     }
     
     public void setClientes(List<Cliente> clientes){
-        int[] cols={ClienteTableModel.ID,ClienteTableModel.NOMBRE,/*ClienteTableModel.CORREO,ClienteTableModel.TELEFONO,ClienteTableModel.DESCUENTO*/};
+        int[] cols={ClienteTableModel.ID,ClienteTableModel.NOMBRE,ClienteTableModel.CORREO,ClienteTableModel.TELEFONO/*,ClienteTableModel.DESCUENTO*/};
         this.clientes =new ClienteTableModel(cols,clientes);  
         setChanged();
         notifyObservers();        
@@ -73,10 +73,10 @@ public class ClientesModel extends java.util.Observable{
         setErrores(new HashMap<String,String>());
         setMensaje(""); 
     }
+    
     public void commit(){
         setChanged();
         notifyObservers();       
     }
-    
 }
 

@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 04-mar-2017 20:31:30 by Hibernate Tools 4.3.1
+// Generated 05-mar-2017 13:30:26 by Hibernate Tools 4.3.1
 
 
 

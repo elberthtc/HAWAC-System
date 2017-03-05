@@ -6,6 +6,7 @@
 package cr.ac.una.fucem.inge.hawac.controller;
 
 
+import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
@@ -16,16 +17,6 @@ import hawac.Application;
 import hawac.Session;
 import java.util.List;
 import java.util.Arrays;
-/*import ferreteria.Application;
-import ferreteria.logic.Model;
-import ferreteria.Session;
-import ferreteriaentidades.Cliente;
-import ferreteriaentidades.Empleado;
-import ferreteriaentidades.Producto;
-import ferreteria.presentacion.model.ProductoModel;
-import ferreteria.presentacion.model.ProductosModel;
-import ferreteria.presentacion.view.ProductosView;
-import ferreteriaentidades.Linea;*/
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
@@ -89,21 +80,29 @@ public class ProductosController {
     }
      
      
-   public void borrar(int row){
+    public void borrar(int row){
         model.clearErrors();
         Producto p1 = model.getProductos().getRowAt(row);
+        List<Inventario> inventarioLista = domainModel.getInventarioBl().findAll(Inventario.class.getName());
         Usuario e1 = (Usuario) session.getAttribute("Usuario");
-         if(true){
+        if (e1.getTipo() != 0) {
             model.setMensaje(Application.ROL_NOTAUTHORIZED);
             model.commit();
             return;
         }
-        try{
+        try {
+            for (int i = 0; i < inventarioLista.size(); i++) {
+                if (inventarioLista.get(i).getId().getProducto() == p1.getIdProducto()) {
+                    domainModel.getInventarioBl().delete(inventarioLista.get(i));
+                }
+            }
             domainModel.getProductoBl().delete(p1);
-        }catch (Exception ex) { }
+        } catch (Exception ex) {
+        }
         List<Producto> rowsMod = domainModel.getProductoBl().findAll(Producto.class.getName());
         model.setProductos(rowsMod);
     }
+    
     public void preAgregar(){
         model.clearErrors();
         Usuario e1 = (Usuario) session.getAttribute("Usuario");

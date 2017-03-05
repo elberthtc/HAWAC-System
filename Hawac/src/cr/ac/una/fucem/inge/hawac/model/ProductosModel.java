@@ -40,7 +40,7 @@ public class ProductosModel extends java.util.Observable{
     }
     
     public void setProductos(List<Producto> productos){
-        int[] cols={ProductoTableModel.CODIGO,ProductoTableModel.DESCRIPCION,ProductoTableModel.EXISTENCIA,ProductoTableModel.PRECIO};
+        int[] cols={ProductoTableModel.CODIGO,ProductoTableModel.DESCRIPCION,ProductoTableModel.TALLA,ProductoTableModel.PRECIO,ProductoTableModel.COLOR,ProductoTableModel.GENERO};
         this.productos =new ProductoTableModel(cols,productos);  
         setChanged();
         notifyObservers();        

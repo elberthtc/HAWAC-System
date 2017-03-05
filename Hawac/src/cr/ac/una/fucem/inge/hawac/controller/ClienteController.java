@@ -51,20 +51,8 @@ public class ClienteController {
         } else {
             c1.setCedula(Integer.parseInt(view.idTextFd.getText()));
         }
-
-        c1.setTotalComprado(0);
-
-        //c1.setNumeroTelefono(view.numTelefonoTextFd.getText());
-        //c1.setCorreo(view.correoTextFd.getText());
-        /*if(view.DescuentoTextFd.getText().length()==0){
-         c1.setPorcentajeDescuento(0.0);
-         }
-         if(isNumeric2(view.DescuentoTextFd.getText())){
-         double desc = Double.parseDouble(view.DescuentoTextFd.getText());
-         c1.setPorcentajeDescuento(desc);
-         }else{
-         model.getErrores().put("Descuento","Digite Solo numeros");
-         }*/
+        c1.setTelefono(view.numTelefonoTextFd.getText());
+        c1.setCorreo(view.correoTextFd.getText());
         List<Cliente> clientes;
         if (model.getErrores().isEmpty()) {
             try {

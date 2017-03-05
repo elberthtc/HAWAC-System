@@ -3,14 +3,14 @@
 <hibernate-reverse-engineering>
   <schema-selection match-catalog="tienda"/>
   <table-filter match-name="cliente"/>
-  <table-filter match-name="dependiente"/>
-  <table-filter match-name="usuario"/>
-  <table-filter match-name="linea"/>
-  <table-filter match-name="producto"/>
   <table-filter match-name="apartadoproducto"/>
-  <table-filter match-name="abono"/>
-  <table-filter match-name="inventario"/>
   <table-filter match-name="apartado"/>
   <table-filter match-name="factura"/>
+  <table-filter match-name="dependiente"/>
+  <table-filter match-name="abono"/>
   <table-filter match-name="bitacora"/>
+  <table-filter match-name="producto"/>
+  <table-filter match-name="inventario"/>
+  <table-filter match-name="linea"/>
+  <table-filter match-name="usuario"/>
 </hibernate-reverse-engineering>

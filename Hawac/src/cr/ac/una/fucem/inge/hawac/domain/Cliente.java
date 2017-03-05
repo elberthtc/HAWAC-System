@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 04-mar-2017 20:31:30 by Hibernate Tools 4.3.1
+// Generated 05-mar-2017 13:30:26 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -13,7 +13,7 @@ public class Cliente  implements java.io.Serializable {
 
      private int cedula;
      private String nombre;
-     private float totalComprado;
+     private Float totalComprado;
      private String telefono;
      private String correo;
      private Set<Apartado> apartados = new HashSet<Apartado>(0);
@@ -23,14 +23,13 @@ public class Cliente  implements java.io.Serializable {
     }
 
 	
-    public Cliente(int cedula, String nombre, float totalComprado, String telefono, String correo) {
+    public Cliente(int cedula, String nombre, String telefono, String correo) {
         this.cedula = cedula;
         this.nombre = nombre;
-        this.totalComprado = totalComprado;
         this.telefono = telefono;
         this.correo = correo;
     }
-    public Cliente(int cedula, String nombre, float totalComprado, String telefono, String correo, Set<Apartado> apartados, Set<Factura> facturas) {
+    public Cliente(int cedula, String nombre, Float totalComprado, String telefono, String correo, Set<Apartado> apartados, Set<Factura> facturas) {
        this.cedula = cedula;
        this.nombre = nombre;
        this.totalComprado = totalComprado;
@@ -54,11 +53,11 @@ public class Cliente  implements java.io.Serializable {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    public float getTotalComprado() {
+    public Float getTotalComprado() {
         return this.totalComprado;
     }
     
-    public void setTotalComprado(float totalComprado) {
+    public void setTotalComprado(Float totalComprado) {
         this.totalComprado = totalComprado;
     }
     public String getTelefono() {

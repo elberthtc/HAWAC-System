@@ -49,29 +49,43 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        generoBG = new javax.swing.ButtonGroup();
+        inventarioBG = new javax.swing.ButtonGroup();
         DescripcionLabel = new javax.swing.JLabel();
         CodigoLabel = new javax.swing.JLabel();
-        ExistenciaLabel = new javax.swing.JLabel();
+        cantidadLabel = new javax.swing.JLabel();
         PrecioLabel = new javax.swing.JLabel();
         CodigoText = new javax.swing.JTextField();
         DescripcionText = new javax.swing.JTextField();
-        ExistenciaText = new javax.swing.JTextField();
+        cantidadText = new javax.swing.JTextField();
         PrecioText = new javax.swing.JTextField();
         AgregarButton = new javax.swing.JButton();
         ExitButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        ColorLabel = new javax.swing.JLabel();
+        ColorText = new javax.swing.JTextField();
+        GeneroLabel = new javax.swing.JLabel();
+        masculinoRB = new javax.swing.JRadioButton();
+        femeninoRB = new javax.swing.JRadioButton();
+        inventarioLabel = new javax.swing.JLabel();
+        tiendaRB = new javax.swing.JRadioButton();
+        fabricaRB = new javax.swing.JRadioButton();
+        tallaLabel = new javax.swing.JLabel();
+        tallaCB = new javax.swing.JComboBox();
+        estadoLabel = new javax.swing.JLabel();
+        estadoCB = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         DescripcionLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        DescripcionLabel.setText("Descripcion");
+        DescripcionLabel.setText("Descripción");
 
         CodigoLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        CodigoLabel.setText("Codigo");
+        CodigoLabel.setText("Código");
 
-        ExistenciaLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        ExistenciaLabel.setText("Cantidad");
+        cantidadLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        cantidadLabel.setText("Cantidad");
 
         PrecioLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         PrecioLabel.setText("Precio");
@@ -80,7 +94,7 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
 
         DescripcionText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        ExistenciaText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cantidadText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         PrecioText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -104,42 +118,111 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         jLabel2.setText("Salir");
 
+        ColorLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        ColorLabel.setText("Color");
+
+        ColorText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        ColorText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ColorTextActionPerformed(evt);
+            }
+        });
+
+        GeneroLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        GeneroLabel.setText("Género");
+
+        generoBG.add(masculinoRB);
+        masculinoRB.setText("Masculino");
+        masculinoRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                masculinoRBActionPerformed(evt);
+            }
+        });
+
+        generoBG.add(femeninoRB);
+        femeninoRB.setText("Femenino");
+
+        inventarioLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        inventarioLabel.setText("Inventario");
+
+        inventarioBG.add(tiendaRB);
+        tiendaRB.setText("Tienda");
+        tiendaRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tiendaRBActionPerformed(evt);
+            }
+        });
+
+        inventarioBG.add(fabricaRB);
+        fabricaRB.setText("Fábrica");
+
+        tallaLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        tallaLabel.setText("Talla");
+
+        tallaCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "XXS", "XS", "S", "M", "L", "XL", "XXL" }));
+        tallaCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tallaCBActionPerformed(evt);
+            }
+        });
+
+        estadoLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        estadoLabel.setText("Estado");
+
+        estadoCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Pendiente", "Almacenado", "En Proceso", "Listo" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(CodigoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cantidadLabel)
+                                .addComponent(DescripcionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(PrecioLabel))
+                            .addComponent(ColorLabel)
+                            .addComponent(GeneroLabel)
+                            .addComponent(inventarioLabel)
+                            .addComponent(tallaLabel)
+                            .addComponent(estadoLabel))
+                        .addGap(27, 27, 27)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ColorText, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CodigoText, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cantidadText, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(PrecioText, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(masculinoRB)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(femeninoRB))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(tiendaRB)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(fabricaRB))
+                            .addComponent(tallaCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(estadoCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(AgregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel2)
-                        .addGap(20, 20, 20))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGap(93, 93, 93)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(CodigoLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(PrecioLabel)
-                                    .addComponent(ExistenciaLabel)
-                                    .addComponent(DescripcionLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(34, 34, 34)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CodigoText, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ExistenciaText, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(PrecioText, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(10, 10, 10)
+                                .addComponent(jLabel2))
                             .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(82, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CodigoLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CodigoText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -147,40 +230,81 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DescripcionLabel)
                     .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(16, 16, 16)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ExistenciaLabel)
-                    .addComponent(ExistenciaText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cantidadLabel)
+                    .addComponent(cantidadText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(PrecioLabel)
                     .addComponent(PrecioText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(ColorLabel)
+                    .addComponent(ColorText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(GeneroLabel)
+                    .addComponent(masculinoRB)
+                    .addComponent(femeninoRB))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inventarioLabel)
+                    .addComponent(tiendaRB)
+                    .addComponent(fabricaRB))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tallaLabel)
+                    .addComponent(tallaCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(estadoLabel)
+                    .addComponent(estadoCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ExitButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AgregarButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2))
-                .addGap(24, 24, 24))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(AgregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(ExitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarButtonActionPerformed
-       //controller.guardar();
+       controller.guardar();
     }//GEN-LAST:event_AgregarButtonActionPerformed
 
     private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_ExitButtonActionPerformed
 
+    private void ColorTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ColorTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ColorTextActionPerformed
+
+    private void masculinoRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_masculinoRBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_masculinoRBActionPerformed
+
+    private void tiendaRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiendaRBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tiendaRBActionPerformed
+
+    private void tallaCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tallaCBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tallaCBActionPerformed
+
     @Override
     public void update(java.util.Observable updatedModel, Object parametros) {
         Producto current = model.getCurrent();
         this.CodigoText.setEnabled(model.getModo() == Application.MODO_AGREGAR);
+        
         this.CodigoText.setText(current.getIdProducto()+"");
         if (model.getErrores().get("Codigo") != null) {
             CodigoLabel.setBorder(Application.BORDER_ERROR);
@@ -200,15 +324,15 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
             DescripcionLabel.setToolTipText("");
         }
 
-        this.ExistenciaText.setEnabled(editable);
-        String ex = String.valueOf(10);
-        this.ExistenciaText.setText(ex);
+        this.cantidadText.setEnabled(false/*editable*/);
+        String ex = "";
+        this.cantidadText.setText(ex);
         if (model.getErrores().get("Cantidad") != null) {
-            ExistenciaLabel.setBorder(Application.BORDER_ERROR);
-            ExistenciaLabel.setToolTipText(model.getErrores().get("Cantidad"));
+            cantidadLabel.setBorder(Application.BORDER_ERROR);
+            cantidadLabel.setToolTipText(model.getErrores().get("Cantidad"));
         } else {
-            ExistenciaLabel.setBorder(null);
-            ExistenciaLabel.setToolTipText("");
+            cantidadLabel.setBorder(null);
+            cantidadLabel.setToolTipText("");
         }
 
         this.PrecioText.setEnabled(editable);
@@ -221,6 +345,20 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
             PrecioLabel.setBorder(null);
             PrecioLabel.setToolTipText("");
         }
+        tallaCB.setEnabled(editable);
+        this.tallaCB.setSelectedItem(current.getTalla());
+        
+        if(current.isGenero()){
+            masculinoRB.setSelected(true);
+        }
+        else
+            femeninoRB.setSelected(true);
+        
+        estadoCB.setEnabled(false);
+        
+        tiendaRB.setEnabled(false);
+        fabricaRB.setEnabled(false);
+        
         AgregarButton.setVisible(editable);
         this.validate();
         if (!model.getMensaje().equals("")) {
@@ -274,15 +412,29 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
     private javax.swing.JButton AgregarButton;
     private javax.swing.JLabel CodigoLabel;
     public javax.swing.JTextField CodigoText;
+    public javax.swing.JLabel ColorLabel;
+    public javax.swing.JTextField ColorText;
     private javax.swing.JLabel DescripcionLabel;
     public javax.swing.JTextField DescripcionText;
-    private javax.swing.JLabel ExistenciaLabel;
-    public javax.swing.JTextField ExistenciaText;
     private javax.swing.JButton ExitButton;
+    public javax.swing.JLabel GeneroLabel;
     public javax.swing.JLabel PrecioLabel;
     public javax.swing.JTextField PrecioText;
+    private javax.swing.JLabel cantidadLabel;
+    public javax.swing.JTextField cantidadText;
+    public javax.swing.JComboBox estadoCB;
+    public javax.swing.JLabel estadoLabel;
+    public javax.swing.JRadioButton fabricaRB;
+    public javax.swing.JRadioButton femeninoRB;
+    private javax.swing.ButtonGroup generoBG;
+    private javax.swing.ButtonGroup inventarioBG;
+    public javax.swing.JLabel inventarioLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    public javax.swing.JRadioButton masculinoRB;
+    public javax.swing.JComboBox tallaCB;
+    public javax.swing.JLabel tallaLabel;
+    public javax.swing.JRadioButton tiendaRB;
     // End of variables declaration//GEN-END:variables
 
 }

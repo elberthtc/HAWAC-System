@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 04-mar-2017 20:31:30 by Hibernate Tools 4.3.1
+// Generated 05-mar-2017 13:30:26 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -11,7 +11,7 @@ import java.util.Set;
 public class Producto  implements java.io.Serializable {
 
 
-     private Integer idProducto;
+     private int idProducto;
      private float precio;
      private String descripcion;
      private String talla;
@@ -25,14 +25,16 @@ public class Producto  implements java.io.Serializable {
     }
 
 	
-    public Producto(float precio, String descripcion, String talla, String color, boolean genero) {
+    public Producto(int idProducto, float precio, String descripcion, String talla, String color, boolean genero) {
+        this.idProducto = idProducto;
         this.precio = precio;
         this.descripcion = descripcion;
         this.talla = talla;
         this.color = color;
         this.genero = genero;
     }
-    public Producto(float precio, String descripcion, String talla, String color, boolean genero, Set<Linea> lineas, Set<Inventario> inventarios, Set<Apartadoproducto> apartadoproductos) {
+    public Producto(int idProducto, float precio, String descripcion, String talla, String color, boolean genero, Set<Linea> lineas, Set<Inventario> inventarios, Set<Apartadoproducto> apartadoproductos) {
+       this.idProducto = idProducto;
        this.precio = precio;
        this.descripcion = descripcion;
        this.talla = talla;
@@ -43,11 +45,11 @@ public class Producto  implements java.io.Serializable {
        this.apartadoproductos = apartadoproductos;
     }
    
-    public Integer getIdProducto() {
+    public int getIdProducto() {
         return this.idProducto;
     }
     
-    public void setIdProducto(Integer idProducto) {
+    public void setIdProducto(int idProducto) {
         this.idProducto = idProducto;
     }
     public float getPrecio() {

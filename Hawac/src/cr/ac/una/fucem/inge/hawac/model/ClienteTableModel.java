@@ -39,8 +39,8 @@ public class ClienteTableModel extends AbstractTableModel{
         switch (cols[col]){
             case ID: return c1.getCedula();
             case NOMBRE: return c1.getNombre();
-            //case TELEFONO: return c1.getNumeroTelefono();
-            //case CORREO: return c1.getCorreo();
+            case TELEFONO: return c1.getTelefono();
+            case CORREO: return c1.getCorreo();
             //case DESCUENTO: return c1.getPorcentajeDescuento();
             default: return "";
         }
@@ -51,9 +51,9 @@ public class ClienteTableModel extends AbstractTableModel{
     
     public static final int ID=0;
     public static final int NOMBRE=1;
-    /*public static final int TELEFONO=2;
+    public static final int TELEFONO=2;
     public static final int CORREO=3;
-    public static final int DESCUENTO=4;*/
+    //public static final int DESCUENTO=4;
 
    
     
@@ -61,9 +61,9 @@ public class ClienteTableModel extends AbstractTableModel{
     private void initColNames(){
         colNames[ID]= "ID";
         colNames[NOMBRE]= "NOMBRE";
-        /*colNames[TELEFONO]="TELEFONO";
+        colNames[TELEFONO]="TELEFONO";
         colNames[CORREO]="CORREO";
-        colNames[DESCUENTO]="DESCUENTO";*/
+        //colNames[DESCUENTO]="DESCUENTO";
     }
             
 }
