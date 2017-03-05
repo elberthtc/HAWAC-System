@@ -58,10 +58,6 @@ public class Dependiente  implements java.io.Serializable {
     public void setFacturas(Set<Factura> facturas) {
         this.facturas = facturas;
     }
-
-
-
-
 }
 
 

@@ -6,6 +6,7 @@
 package cr.ac.una.fucem.inge.hawac.view;
 
 import cr.ac.una.fucem.inge.hawac.controller.ApplicationController;
+import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.model.ApplicationModel;
 import javax.swing.JInternalFrame;
 /*import ferreteria.presentacion.controller.ApplicationController;
@@ -48,7 +49,8 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         HelpMenu = new javax.swing.JMenu();
         AboutItem = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("HAWAC SYSTEM");
         getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
 
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
@@ -239,13 +241,12 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
    }
 
     @Override
-    public void update(java.util.Observable updatedModel,Object parametros) {
-         if (model.getCurrent()!=null){
-           this.setTitle("FERRETERIA ( AQUI IBA EL ROL)");
-       }
-       else{
-           this.setTitle("FERRETERIA");
-       }  
+    public void update(java.util.Observable updatedModel, Object parametros) {
+        if (model.getCurrent() != null) {
+            this.setTitle("HAWAC SYSTEM \nUsuario: " + model.getCurrent().tipo());
+        } else {
+            this.setTitle("HAWAC SYSTEM");
+        }
     }
        /**
      * @param args the command line arguments

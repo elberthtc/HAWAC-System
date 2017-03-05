@@ -55,7 +55,7 @@ public class ProductoController {
                 model.getErrores().put("Cantidad", "Digito Invalido");
             }
             i1.setCantidad(ex);
-        } else {
+        } else if (view.cantidadText.getText().compareTo("NO PERMITIDO")!=0){
             model.getErrores().put("Cantidad", "Digite Solo numeros");
         }
         
@@ -127,7 +127,7 @@ public class ProductoController {
                         break;
                     case Application.MODO_EDITAR:
                         domainModel.getProductoBl().merge(p1);
-                        domainModel.getInventarioBl().merge(i1);
+                        //domainModel.getInventarioBl().merge(i1);
                         model.setMensaje("PRODUCTO MODIFICADO");
                         model.setCurrent(p1);
                         productos = domainModel.getProductoBl().findAll(Producto.class.getName());

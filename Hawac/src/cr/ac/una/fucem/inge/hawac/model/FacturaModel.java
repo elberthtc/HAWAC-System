@@ -12,10 +12,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Observer;
-//import ferreteriaentidades.Factura;
-//import ferreteriaentidades.Linea;
-//import ferreteriaentidades.Cliente;
-//import ferreteriaentidades.Empleado;
 
 public class FacturaModel extends java.util.Observable {
     Factura current;
@@ -45,14 +41,14 @@ public class FacturaModel extends java.util.Observable {
 
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
-//        setChanged();
-//        notifyObservers(); 
+        setChanged();
+        notifyObservers(); 
     }
 
     public void setEmpleado(Dependiente empleado) {
         this.empleado = empleado;
-//        setChanged();
-//        notifyObservers(); 
+        setChanged();
+        notifyObservers(); 
     }
 
     public Linea getFiltro() {

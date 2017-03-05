@@ -2,6 +2,7 @@ package cr.ac.una.fucem.inge.hawac.domain;
 // Generated 05-mar-2017 13:30:26 by Hibernate Tools 4.3.1
 
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -88,9 +89,19 @@ public class Factura  implements java.io.Serializable {
     public void setLineas(Set<Linea> lineas) {
         this.lineas = lineas;
     }
-
-
-
+    
+    public String getFechaActual(){
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/YYYY");
+        return formatoFecha.format(fecha);
+    }
+     public String getFechaActual2(){
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("YYYY-MM-dd");
+        return formatoFecha.format(fecha);
+    }
+    public String getHoraActual(){
+        SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
+        return formatoHora.format(fecha);
+    }
 
 }
 

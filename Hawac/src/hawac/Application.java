@@ -144,11 +144,15 @@ public class Application {
         applicationView.addInternalFrame(productoFacturaView);
         ProductoFacturaController productoFacturaController=new ProductoFacturaController(productoFacturaView,session,productosModel,domainModel);
         
+        */
+        
         FacturaModel facturaModel = new FacturaModel();
         FacturaView facturaView = new FacturaView();
         FACTURA_VIEW = facturaView;
         applicationView.addInternalFrame(facturaView);
         FacturaController  facturaController = new FacturaController(facturaView,facturaModel,domainModel,session);
+        
+        /*
         
         FacturaCompraModel facturaCompraModel= new FacturaCompraModel();
         FacturaCompraView facturaCompraView = new FacturaCompraView();

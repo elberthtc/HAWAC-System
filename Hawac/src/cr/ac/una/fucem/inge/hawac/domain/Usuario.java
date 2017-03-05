@@ -69,10 +69,14 @@ public class Usuario  implements java.io.Serializable {
     public void setBitacoras(Set<Bitacora> bitacoras) {
         this.bitacoras = bitacoras;
     }
-
-
-
-
+    
+    public String tipo(){
+        switch(tipo){
+            case 0:return "Administrador";
+            case 1:return "Dependiente";
+            default :return "Sin Definir Rol";
+        }
+    }
 }
 
 

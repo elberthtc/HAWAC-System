@@ -45,7 +45,7 @@ public class ApplicationController {
         Application.FACTURAS_VENTAS_VIEW.getModel().init();
         Application.FACTURAS_PAGADAS_VIEW.getModel().init();*/
         Application.APPLICATION_VIEW.getModel().init();
-        Application.APPLICATION_VIEW.getModel().setCurrent((Usuario) session.getAttribute(Application.EMPLOYEE_ATTRIBUTE));
+        Application.APPLICATION_VIEW.getModel().setCurrent((Usuario) session.getAttribute("Usuario"));
         view.setVisible(true);
 
     }

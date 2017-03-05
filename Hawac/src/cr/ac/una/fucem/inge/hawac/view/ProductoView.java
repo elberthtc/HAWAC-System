@@ -305,7 +305,10 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
         Producto current = model.getCurrent();
         this.CodigoText.setEnabled(model.getModo() == Application.MODO_AGREGAR);
         
-        this.CodigoText.setText(current.getIdProducto()+"");
+        if(current.getIdProducto()==0)
+            this.CodigoText.setText("");
+        else
+            this.CodigoText.setText(current.getIdProducto()+"");
         if (model.getErrores().get("Codigo") != null) {
             CodigoLabel.setBorder(Application.BORDER_ERROR);
             CodigoLabel.setToolTipText(model.getErrores().get("Codigo"));
@@ -313,6 +316,7 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
             CodigoLabel.setBorder(null);
             CodigoLabel.setToolTipText("");
         }
+        
         Boolean editable = Arrays.asList(Application.MODO_AGREGAR, Application.MODO_EDITAR).contains(model.getModo());
         this.DescripcionText.setEnabled(editable);
         this.DescripcionText.setText(current.getDescripcion());
@@ -323,8 +327,17 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
             DescripcionLabel.setBorder(null);
             DescripcionLabel.setToolTipText("");
         }
-
-        this.cantidadText.setEnabled(false/*editable*/);
+        
+        this.ColorText.setEnabled(editable);
+        this.ColorText.setText(current.getColor());
+        if (model.getErrores().get("Descripcion") != null) {
+            ColorLabel.setBorder(Application.BORDER_ERROR);
+            ColorLabel.setToolTipText(model.getErrores().get("Descripcion"));
+        } else {
+            ColorLabel.setBorder(null);
+            ColorLabel.setToolTipText("");
+        }
+                
         String ex = "";
         this.cantidadText.setText(ex);
         if (model.getErrores().get("Cantidad") != null) {
@@ -337,7 +350,11 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
 
         this.PrecioText.setEnabled(editable);
         String prec = String.valueOf(current.getPrecio());
-        this.PrecioText.setText(prec);
+        if(current.getPrecio() == 0){
+            this.PrecioText.setText("");
+        }
+        else
+            this.PrecioText.setText(prec);
         if (model.getErrores().get("Precio") != null) {
             PrecioLabel.setBorder(Application.BORDER_ERROR);
             PrecioLabel.setToolTipText(model.getErrores().get("Precio"));
@@ -345,8 +362,10 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
             PrecioLabel.setBorder(null);
             PrecioLabel.setToolTipText("");
         }
+        
         tallaCB.setEnabled(editable);
-        this.tallaCB.setSelectedItem(current.getTalla());
+        if(editable)
+            this.tallaCB.setSelectedItem(current.getTalla());
         
         if(current.isGenero()){
             masculinoRB.setSelected(true);
@@ -354,11 +373,21 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
         else
             femeninoRB.setSelected(true);
         
-        estadoCB.setEnabled(false);
-        
-        tiendaRB.setEnabled(false);
-        fabricaRB.setEnabled(false);
-        
+        if (model.getModo() == Application.MODO_EDITAR){
+            estadoCB.setEnabled(false);
+            tiendaRB.setEnabled(false);
+            tiendaRB.setSelected(true);
+            fabricaRB.setEnabled(false);
+            this.cantidadText.setEnabled(false);
+            cantidadText.setText("NO PERMITIDO");
+        }
+        if (model.getModo() == Application.MODO_AGREGAR){
+            estadoCB.setEnabled(editable);
+            tiendaRB.setEnabled(editable);
+            tiendaRB.setSelected(false);
+            fabricaRB.setEnabled(editable);
+            this.cantidadText.setEnabled(editable);
+        }
         AgregarButton.setVisible(editable);
         this.validate();
         if (!model.getMensaje().equals("")) {

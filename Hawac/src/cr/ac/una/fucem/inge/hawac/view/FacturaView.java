@@ -5,18 +5,17 @@
  */
 package cr.ac.una.fucem.inge.hawac.view;
 
+import cr.ac.una.fucem.inge.hawac.controller.FacturaController;
+import cr.ac.una.fucem.inge.hawac.model.FacturaModel;
+import hawac.Application;
 import javax.swing.JOptionPane;
-/*import ferreteria.Application;
-import ferreteria.presentacion.controller.FacturaController;
-import ferreteria.presentacion.model.FacturaModel;
-import ferreteria.presentacion.model.LineaTableModel;*/
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 public class FacturaView extends javax.swing.JInternalFrame implements java.util.Observer{
 
-    //FacturaController controller;
-    //FacturaModel model;
+    FacturaController controller;
+    FacturaModel model;
   
     public FacturaView() {
         super("",false,true);
@@ -478,7 +477,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
       }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    /*public FacturaController getController() {
+    public FacturaController getController() {
         return controller;
     }
 
@@ -486,11 +485,11 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         return model;
     }
 
-    public void setController(ferreteria.presentacion.controller.FacturaController controller) {
+    public void setController(cr.ac.una.fucem.inge.hawac.controller.FacturaController controller) {
         this.controller = controller;
     }
 
-    public void setModel(ferreteria.presentacion.model.FacturaModel model) {
+    public void setModel(cr.ac.una.fucem.inge.hawac.model.FacturaModel model) {
         this.model = model;
         model.addObserver(this);
     }
@@ -509,19 +508,17 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         double total = this.subtotal()+this.impuesto();
         return total;
     }
-  */
 
        @Override
     public void update(java.util.Observable updatedModel,Object parametros) {
-/*
         nomClienteTextFd.setText(model.getCurrent().getCliente().getNombre());
-        idClienteTextFd.setText(model.getCurrent().getCliente().getIdCliente());
-        telefonoClienteTextFd.setText(model.getCurrent().getCliente().getNumeroTelefono());
+        idClienteTextFd.setText(String.valueOf(model.getCurrent().getCliente().getCedula()));
+        telefonoClienteTextFd.setText(model.getCurrent().getCliente().getTelefono());
         FechaTextFd.setText(model.getCurrent().getFechaActual());
         horaTextFd.setText(model.getCurrent().getHoraActual());
-        String desc = String.valueOf(model.getCurrent().getCliente().getPorcentajeDescuento());
-        descuentoTextFd.setText(desc);
-        vendedorTextFd.setText(model.getCurrent().getEmpleado().getNombre());
+        //String desc = String.valueOf(model.getCurrent().getCliente().getPorcentajeDescuento());
+        descuentoTextFd.setText("NOAI");
+        vendedorTextFd.setText(model.getCurrent().getDependiente().getNombreDependiente());
         if(model.getErrores().get("GRABAR")!= null){
             GrabarLb.setBorder(Application.BORDER_ERROR);
             GrabarLb.setToolTipText(model.getErrores().get("GRABAR"));
@@ -541,7 +538,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         if (!model.getMensaje().equals("")){
             JOptionPane.showMessageDialog(this, model.getMensaje(), "",JOptionPane.INFORMATION_MESSAGE);
         }
-  */     
+        
     }
        public static void main(String args[]) {
         /* Set the Nimbus look and feel */
