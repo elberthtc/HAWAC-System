@@ -64,7 +64,7 @@ public class About extends javax.swing.JDialog {
         jLabel6.setText("William Mora Barahona");
 
         jLabel7.setFont(new java.awt.Font("Lucida Console", 0, 14)); // NOI18N
-        jLabel7.setText("Adrian Prendas ");
+        jLabel7.setText("Adrian Prendas Araya ");
 
         jLabel8.setFont(new java.awt.Font("Lucida Console", 1, 14)); // NOI18N
         jLabel8.setText("2017 ");
