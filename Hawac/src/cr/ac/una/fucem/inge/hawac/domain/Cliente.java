@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 27-feb-2017 0:13:16 by Hibernate Tools 4.3.1
+// Generated 04-mar-2017 20:31:30 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -14,6 +14,8 @@ public class Cliente  implements java.io.Serializable {
      private int cedula;
      private String nombre;
      private float totalComprado;
+     private String telefono;
+     private String correo;
      private Set<Apartado> apartados = new HashSet<Apartado>(0);
      private Set<Factura> facturas = new HashSet<Factura>(0);
 
@@ -21,15 +23,19 @@ public class Cliente  implements java.io.Serializable {
     }
 
 	
-    public Cliente(int cedula, String nombre, float totalComprado) {
+    public Cliente(int cedula, String nombre, float totalComprado, String telefono, String correo) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.totalComprado = totalComprado;
+        this.telefono = telefono;
+        this.correo = correo;
     }
-    public Cliente(int cedula, String nombre, float totalComprado, Set<Apartado> apartados, Set<Factura> facturas) {
+    public Cliente(int cedula, String nombre, float totalComprado, String telefono, String correo, Set<Apartado> apartados, Set<Factura> facturas) {
        this.cedula = cedula;
        this.nombre = nombre;
        this.totalComprado = totalComprado;
+       this.telefono = telefono;
+       this.correo = correo;
        this.apartados = apartados;
        this.facturas = facturas;
     }
@@ -54,6 +60,20 @@ public class Cliente  implements java.io.Serializable {
     
     public void setTotalComprado(float totalComprado) {
         this.totalComprado = totalComprado;
+    }
+    public String getTelefono() {
+        return this.telefono;
+    }
+    
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+    public String getCorreo() {
+        return this.correo;
+    }
+    
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
     public Set<Apartado> getApartados() {
         return this.apartados;

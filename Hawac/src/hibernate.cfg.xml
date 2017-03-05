@@ -15,8 +15,8 @@
     <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Apartadoproducto.hbm.xml"/>
     <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Factura.hbm.xml"/>
     <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Inventario.hbm.xml"/>
-    <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Dependiente.hbm.xml"/>
     <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Usuario.hbm.xml"/>
+    <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Dependiente.hbm.xml"/>
     <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Abono.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

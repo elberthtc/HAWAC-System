@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 27-feb-2017 0:13:16 by Hibernate Tools 4.3.1
+// Generated 04-mar-2017 20:31:30 by Hibernate Tools 4.3.1
 
 
 
@@ -12,14 +12,16 @@ public class Inventario  implements java.io.Serializable {
      private InventarioId id;
      private Producto producto;
      private int cantidad;
+     private String estado;
 
     public Inventario() {
     }
 
-    public Inventario(InventarioId id, Producto producto, int cantidad) {
+    public Inventario(InventarioId id, Producto producto, int cantidad, String estado) {
        this.id = id;
        this.producto = producto;
        this.cantidad = cantidad;
+       this.estado = estado;
     }
    
     public InventarioId getId() {
@@ -42,6 +44,13 @@ public class Inventario  implements java.io.Serializable {
     
     public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
+    }
+    public String getEstado() {
+        return this.estado;
+    }
+    
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
 

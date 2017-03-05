@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 27-feb-2017 0:13:17 by Hibernate Tools 4.3.1 -->
+<!-- Generated 04-mar-2017 20:31:32 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.fucem.inge.hawac.domain.Cliente" table="cliente" catalog="tienda" optimistic-lock="version">
         <id name="cedula" type="int">
@@ -13,6 +13,12 @@
         </property>
         <property name="totalComprado" type="float">
             <column name="totalComprado" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="telefono" length="10" not-null="true" />
+        </property>
+        <property name="correo" type="string">
+            <column name="correo" length="45" not-null="true" />
         </property>
         <set name="apartados" table="apartado" inverse="true" lazy="true" fetch="select">
             <key>

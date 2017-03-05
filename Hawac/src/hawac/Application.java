@@ -58,57 +58,6 @@ import cr.ac.una.fucem.inge.hawac.view.TarjetaCreditoView;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
-/*import ferreteria.logic.Model;
-import ferreteria.presentacion.controller.ApplicationController;
-import ferreteria.presentacion.controller.LoginController;
-import ferreteria.presentacion.controller.ClientesController;
-import ferreteria.presentacion.controller.ClientesFacturaController;
-import ferreteria.presentacion.controller.ProductoFacturaController;
-import ferreteria.presentacion.controller.FacturasVentasController;
-import ferreteria.presentacion.controller.FacturasPagadasController;
-import ferreteria.presentacion.controller.ClienteController;
-import ferreteria.presentacion.controller.EmpleadoController;
-import ferreteria.presentacion.controller.EmpleadosController;
-import ferreteria.presentacion.controller.ProductosController;
-import ferreteria.presentacion.controller.ProductoController;
-import ferreteria.presentacion.controller.FacturaController;
-import ferreteria.presentacion.controller.ChequeController;
-import ferreteria.presentacion.controller.EfectivoController;
-import ferreteria.presentacion.controller.FacturaCompraController;
-import ferreteria.presentacion.controller.TarjetaCreditoController;
-import ferreteria.presentacion.model.ApplicationModel;
-import ferreteria.presentacion.model.LoginModel;
-import ferreteria.presentacion.model.ClientesModel;
-import ferreteria.presentacion.model.ClienteModel;
-import ferreteria.presentacion.model.EmpleadoModel;
-import ferreteria.presentacion.model.EmpleadosModel;
-import ferreteria.presentacion.model.ProductosModel;
-import ferreteria.presentacion.model.ProductoModel;
-import ferreteria.presentacion.model.FacturaModel;
-import ferreteria.presentacion.model.ChequeModel;
-import ferreteria.presentacion.model.EfectivoModel;
-import ferreteria.presentacion.model.FacturaCompraModel;
-import ferreteria.presentacion.model.TarjetaCreditoModel;
-import ferreteria.presentacion.model.FacturasVentasModel;
-import ferreteria.presentacion.model.FacturasPagadasModel;
-import ferreteria.presentacion.view.About;
-import ferreteria.presentacion.view.ApplicationView;
-import ferreteria.presentacion.view.ClientesView;
-import ferreteria.presentacion.view.ClientesFacturaView;
-import ferreteria.presentacion.view.ProductoFacturaView;
-import ferreteria.presentacion.view.FacturasVentasView;
-import ferreteria.presentacion.view.FacturasPagadasView;
-import ferreteria.presentacion.view.ClienteView;
-import ferreteria.presentacion.view.EmpleadoView;
-import ferreteria.presentacion.view.EmpleadosView;
-import ferreteria.presentacion.view.LoginView;
-import ferreteria.presentacion.view.ProductosView;
-import ferreteria.presentacion.view.ProductoView;
-import ferreteria.presentacion.view.FacturaView;
-import ferreteria.presentacion.view.ChequeView;
-import ferreteria.presentacion.view.EfectivoView;
-import ferreteria.presentacion.view.FacturaCompraView;
-import ferreteria.presentacion.view.TarjetaCreditoView;*/
 
 
 
@@ -164,7 +113,7 @@ public class Application {
         
         ProductosModel productosModel = new ProductosModel();
         ProductosView productosView = new ProductosView();
-        PRODUCTOS_VIEW= productosView;
+        PRODUCTOS_VIEW = productosView;
         applicationView.addInternalFrame(productosView);
         ProductosController productoscontroller = new ProductosController(productosView,session,productosModel,domainModel);
         

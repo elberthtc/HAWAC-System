@@ -4,11 +4,6 @@
  * and open the template in the editor.
  */
 package cr.ac.una.fucem.inge.hawac.view;
-
-/*import ferreteria.presentacion.model.ProductoModel;
-import ferreteria.presentacion.controller.ProductoController;
-import ferreteriaentidades.Producto;
-import ferreteria.Application;*/
 import cr.ac.una.fucem.inge.hawac.controller.ProductoController;
 import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import cr.ac.una.fucem.inge.hawac.model.ProductoModel;
