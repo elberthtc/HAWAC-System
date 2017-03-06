@@ -5,38 +5,24 @@
  */
 package hawac;
 import cr.ac.una.fucem.inge.hawac.controller.ApplicationController;
-import cr.ac.una.fucem.inge.hawac.controller.ChequeController;
 import cr.ac.una.fucem.inge.hawac.controller.ClienteController;
 import cr.ac.una.fucem.inge.hawac.controller.ClientesController;
 import cr.ac.una.fucem.inge.hawac.controller.ClientesFacturaController;
-import cr.ac.una.fucem.inge.hawac.controller.EfectivoController;
-import cr.ac.una.fucem.inge.hawac.controller.UsuarioController;
-import cr.ac.una.fucem.inge.hawac.controller.EmpleadosController;
-import cr.ac.una.fucem.inge.hawac.controller.FacturaCompraController;
 import cr.ac.una.fucem.inge.hawac.controller.FacturaController;
-import cr.ac.una.fucem.inge.hawac.controller.FacturasPagadasController;
 import cr.ac.una.fucem.inge.hawac.controller.FacturasVentasController;
 import cr.ac.una.fucem.inge.hawac.controller.LoginController;
 import cr.ac.una.fucem.inge.hawac.controller.ProductoController;
 import cr.ac.una.fucem.inge.hawac.controller.ProductoFacturaController;
 import cr.ac.una.fucem.inge.hawac.controller.ProductosController;
-import cr.ac.una.fucem.inge.hawac.controller.TarjetaCreditoController;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.ApplicationModel;
-import cr.ac.una.fucem.inge.hawac.model.ChequeModel;
 import cr.ac.una.fucem.inge.hawac.model.ClienteModel;
 import cr.ac.una.fucem.inge.hawac.model.ClientesModel;
-import cr.ac.una.fucem.inge.hawac.model.EfectivoModel;
-import cr.ac.una.fucem.inge.hawac.model.FacturaCompraModel;
 import cr.ac.una.fucem.inge.hawac.model.FacturaModel;
-import cr.ac.una.fucem.inge.hawac.model.FacturasPagadasModel;
 import cr.ac.una.fucem.inge.hawac.model.FacturasVentasModel;
 import cr.ac.una.fucem.inge.hawac.model.LoginModel;
 import cr.ac.una.fucem.inge.hawac.model.ProductoModel;
 import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
-import cr.ac.una.fucem.inge.hawac.model.TarjetaCreditoModel;
-import cr.ac.una.fucem.inge.hawac.model.UsuarioModel;
-import cr.ac.una.fucem.inge.hawac.model.UsuariosModel;
 import cr.ac.una.fucem.inge.hawac.view.About;
 import cr.ac.una.fucem.inge.hawac.view.ApplicationView;
 import cr.ac.una.fucem.inge.hawac.view.ChequeView;
@@ -95,21 +81,15 @@ public class Application {
         applicationView.addInternalFrame(clientesView);
         ClientesController clientescontroller = new ClientesController(clientesView,session,clientesModel,domainModel);
  
-        
-        
         ClienteModel clienteModel = new ClienteModel();
         ClienteView clienteView = new ClienteView(applicationView,true);
         CLIENTE_VIEW = clienteView;
-        ClienteController clienteController = new ClienteController(clienteView,clienteModel,domainModel,session);
-        
-        /*
+        ClienteController clienteController = new ClienteController(clienteView,clienteModel,domainModel,session);      
         
         ClientesFacturaView clieFacView = new ClientesFacturaView();
         CLIENTES_FACTURA_VIEW = clieFacView;
         applicationView.addInternalFrame(clieFacView);
         ClientesFacturaController clieFacturaController = new ClientesFacturaController(clieFacView,session,clientesModel,domainModel);
-        
-        */
         
         ProductosModel productosModel = new ProductosModel();
         ProductosView productosView = new ProductosView();
@@ -117,34 +97,32 @@ public class Application {
         applicationView.addInternalFrame(productosView);
         ProductosController productoscontroller = new ProductosController(productosView,session,productosModel,domainModel);
         
-        /*
+        
         FacturasVentasModel facturasVentasModel = new FacturasVentasModel();
         FacturasVentasView facturasVentasView = new FacturasVentasView();
         FACTURAS_VENTAS_VIEW = facturasVentasView;
         applicationView.addInternalFrame(facturasVentasView);
         FacturasVentasController factVentasController = new FacturasVentasController(facturasVentasView,facturasVentasModel,domainModel,session);
         
+        /*
+        
         FacturasPagadasModel facturasPagadasModel = new FacturasPagadasModel();
         FacturasPagadasView facturasPagadasView = new FacturasPagadasView();
         FACTURAS_PAGADAS_VIEW = facturasPagadasView;
         applicationView.addInternalFrame(facturasPagadasView);
         FacturasPagadasController factPagadasController = new FacturasPagadasController(facturasPagadasView,facturasPagadasModel,domainModel,session);
- 
+        
         */
         
         ProductoModel productoModel = new ProductoModel();
         ProductoView productoView = new ProductoView(applicationView,true);
         PRODUCTO_VIEW = productoView;
         ProductoController productoController = new ProductoController(productoView,productoModel,domainModel,session); 
-        
-        
-        /*
+       
         ProductoFacturaView productoFacturaView=new ProductoFacturaView();
         PRODUCTOFACTURA_VIEW=productoFacturaView;
         applicationView.addInternalFrame(productoFacturaView);
         ProductoFacturaController productoFacturaController=new ProductoFacturaController(productoFacturaView,session,productosModel,domainModel);
-        
-        */
         
         FacturaModel facturaModel = new FacturaModel();
         FacturaView facturaView = new FacturaView();

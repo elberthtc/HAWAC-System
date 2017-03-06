@@ -8,7 +8,6 @@ package cr.ac.una.fucem.inge.hawac.model;
 import cr.ac.una.fucem.inge.hawac.domain.Factura;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-//import ferreteriaentidades.Factura;
 
 public class FacturaTableModel extends AbstractTableModel{
     
@@ -43,8 +42,8 @@ public class FacturaTableModel extends AbstractTableModel{
         switch (cols[columnIndex]){
             case NUMERO: return f1.getCodigoFactura();
             case CLIENTE: return f1.getCliente().getNombre();
-            case VENDEDOR: return f1.getDependiente().getNombreDependiente();
-            //case FORMA_DE_PAGO: return f1.getTipoPago();
+            case VENDEDOR: return f1.getUsuario().getNombre();
+            case FORMA_DE_PAGO: return "NORMAL"/*f1.getTipoPago()*/;
             case TOTAL: return f1.getMonto();
             default: return "";
         }
@@ -53,7 +52,7 @@ public class FacturaTableModel extends AbstractTableModel{
     public static final int NUMERO=0;
     public static final int CLIENTE=1;
     public static final int VENDEDOR=2;
-    //public static final int FORMA_DE_PAGO=3;
+    public static final int FORMA_DE_PAGO=3;
     public static final int TOTAL=4;
     
     String[] colNames = new String[5];
@@ -61,7 +60,7 @@ public class FacturaTableModel extends AbstractTableModel{
         colNames[NUMERO]= "NUMERO";
         colNames[CLIENTE]= "CLIENTE";
         colNames[VENDEDOR]= "VENDEDOR";
-      //  colNames[FORMA_DE_PAGO]="FORMA DE PAGO";
+        colNames[FORMA_DE_PAGO]="FORMA DE PAGO";
         colNames[TOTAL]="TOTAL";
     }
     

@@ -15,7 +15,6 @@ public class Model {
     private ApartadoproductoBL apartado_productoBl;
     private BitacoraBL bitacoraBl;
     private ClienteBL clienteBl;
-    private DependienteBL dependienteBl;
     private FacturaBL facturaBl;
     private InventarioBL inventarioBl;
     private LineaBL lineaBl;
@@ -35,7 +34,6 @@ public class Model {
         apartado_productoBl = new ApartadoproductoBL();
         bitacoraBl = new BitacoraBL();
         clienteBl = new ClienteBL();
-        dependienteBl = new DependienteBL();
         facturaBl = new FacturaBL();
         inventarioBl = new InventarioBL();
         lineaBl = new LineaBL();
@@ -72,10 +70,6 @@ public class Model {
         return clienteBl;
     }
 
-    public DependienteBL getDependienteBl() {
-        return dependienteBl;
-    }
-
     public FacturaBL getFacturaBl() {
         return facturaBl;
     }
@@ -99,17 +93,16 @@ public class Model {
     public static Model getUniqueInstance() {
         return uniqueInstance;
     }
-    
-    public static boolean isNumeric(String cadena){
-	try {
-		Integer.parseInt(cadena);
-		return true;
-	} catch (NumberFormatException nfe){
-		return false;
-	}
-}
-    
-    
+ 
+    public static boolean isNumeric(String cadena) {
+        try {
+            Integer.parseInt(cadena);
+            return true;
+        } catch (NumberFormatException nfe) {
+            return false;
+        }
+    }
+
 }
    
 

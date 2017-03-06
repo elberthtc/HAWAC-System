@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05-mar-2017 13:30:27 by Hibernate Tools 4.3.1 -->
+<!-- Generated 05-mar-2017 20:19:47 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.fucem.inge.hawac.domain.Usuario" table="usuario" catalog="tienda" optimistic-lock="version">
         <id name="idUsuario" type="int">
@@ -14,7 +14,15 @@
         <property name="tipo" type="int">
             <column name="tipo" not-null="true" />
         </property>
-        <one-to-one name="dependiente" class="cr.ac.una.fucem.inge.hawac.domain.Dependiente"></one-to-one>
+        <property name="nombre" type="string">
+            <column name="nombre" length="100" not-null="true" />
+        </property>
+        <set name="facturas" table="factura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="dependiente" />
+            </key>
+            <one-to-many class="cr.ac.una.fucem.inge.hawac.domain.Factura" />
+        </set>
         <set name="bitacoras" table="bitacora" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="usuario" not-null="true" />

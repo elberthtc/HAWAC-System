@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Observer;
-//import ferreteriaentidades.FacturaCompra;
-//import ferreteriaentidades.Linea;
-//import ferreteriaentidades.Empleado;
 
 public class FacturaCompraModel extends java.util.Observable {
-    /*FacturaCompra current;
+    
+    /*
+    
+    FacturaCompra current;
     Empleado empleado;
     Linea filtro;
     LineaTableModel lineas;
@@ -100,6 +100,7 @@ public class FacturaCompraModel extends java.util.Observable {
         setChanged();
         notifyObservers();       
     }
-*/
+    
+    */
     
 }

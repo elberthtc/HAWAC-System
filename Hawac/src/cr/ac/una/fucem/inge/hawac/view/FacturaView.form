@@ -547,7 +547,7 @@
     <Component class="javax.swing.JButton" name="AgregarButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/ferreteria/presentacion/view/icons/agregar.png"/>
+          <Image iconType="3" name="/cr/ac/una/fucem/inge/hawac/view/icons/agregar.png"/>
         </Property>
       </Properties>
       <Events>
@@ -557,7 +557,7 @@
     <Component class="javax.swing.JButton" name="jButton1">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/ferreteria/presentacion/view/icons/cancel (2).png"/>
+          <Image iconType="3" name="/cr/ac/una/fucem/inge/hawac/view/icons/cancel (2).png"/>
         </Property>
       </Properties>
       <Events>
@@ -567,7 +567,7 @@
     <Component class="javax.swing.JButton" name="exitButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/ferreteria/presentacion/view/icons/cancel.png"/>
+          <Image iconType="3" name="/cr/ac/una/fucem/inge/hawac/view/icons/cancel.png"/>
         </Property>
       </Properties>
       <Events>
@@ -601,7 +601,7 @@
     <Component class="javax.swing.JButton" name="grabarButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/ferreteria/presentacion/view/icons/save2.png"/>
+          <Image iconType="3" name="/cr/ac/una/fucem/inge/hawac/view/icons/save2.png"/>
         </Property>
       </Properties>
       <Events>
@@ -619,7 +619,7 @@
     <Component class="javax.swing.JButton" name="addClienteButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/ferreteria/presentacion/view/icons/addUser.png"/>
+          <Image iconType="3" name="/cr/ac/una/fucem/inge/hawac/view/icons/addUser.png"/>
         </Property>
       </Properties>
       <Events>

@@ -35,7 +35,7 @@ public class InventarioBL extends BaseBL implements IBaseBL<Inventario, Inventar
 
     @Override
     public Inventario findById(InventarioId o) {
-        return (Inventario) this.getDao(o.getClass().getName()).findById(o);
+        return (Inventario) this.getDao(Inventario.class.getName()).findById(o);
     }
 
     @Override

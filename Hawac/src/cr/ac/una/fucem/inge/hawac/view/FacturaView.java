@@ -45,7 +45,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         descuentoLb = new javax.swing.JLabel();
         descuentoTextFd = new javax.swing.JTextField();
         formadePagoLb = new javax.swing.JLabel();
-        metodoPagoComboBox = new javax.swing.JComboBox<>();
+        metodoPagoComboBox = new javax.swing.JComboBox<String>();
         vendedorLb = new javax.swing.JLabel();
         vendedorTextFd = new javax.swing.JTextField();
         listaProductosLb = new javax.swing.JLabel();
@@ -135,7 +135,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         formadePagoLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         formadePagoLb.setText("Forma De Pago");
 
-        metodoPagoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "TarjetaCredito", "Cheque" }));
+        metodoPagoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Efectivo", "TarjetaCredito", "Cheque" }));
         metodoPagoComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 metodoPagoComboBoxActionPerformed(evt);
@@ -189,21 +189,21 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
         jLabel4.setText("FERRETERIA");
 
-        AgregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ferreteria/presentacion/view/icons/agregar.png"))); // NOI18N
+        AgregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/agregar.png"))); // NOI18N
         AgregarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 AgregarButtonActionPerformed(evt);
             }
         });
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ferreteria/presentacion/view/icons/cancel (2).png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/cancel (2).png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
 
-        exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ferreteria/presentacion/view/icons/cancel.png"))); // NOI18N
+        exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/cancel.png"))); // NOI18N
         exitButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 exitButtonActionPerformed(evt);
@@ -219,7 +219,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         jLabel7.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         jLabel7.setText("SALIR");
 
-        grabarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ferreteria/presentacion/view/icons/save2.png"))); // NOI18N
+        grabarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/save2.png"))); // NOI18N
         grabarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 grabarButtonActionPerformed(evt);
@@ -229,7 +229,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         GrabarLb.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         GrabarLb.setText("GRABAR");
 
-        addClienteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ferreteria/presentacion/view/icons/addUser.png"))); // NOI18N
+        addClienteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/addUser.png"))); // NOI18N
         addClienteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addClienteButtonActionPerformed(evt);
@@ -444,11 +444,11 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
     }//GEN-LAST:event_ivTextFdActionPerformed
 
     private void AgregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarButtonActionPerformed
-        //controller.preAgregarProducto();
+        controller.preAgregarProducto();
     }//GEN-LAST:event_AgregarButtonActionPerformed
 
     private void grabarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grabarButtonActionPerformed
-        //controller.guardar();
+        controller.guardar();
     }//GEN-LAST:event_grabarButtonActionPerformed
 
     private void FechaTextFdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FechaTextFdActionPerformed
@@ -456,11 +456,11 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
     }//GEN-LAST:event_FechaTextFdActionPerformed
 
     private void addClienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClienteButtonActionPerformed
-       //controller.preAgregarCliente();
+        controller.preAgregarCliente();
     }//GEN-LAST:event_addClienteButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
-        //controller.salir();
+        controller.salir();
     }//GEN-LAST:event_exitButtonActionPerformed
 
     private void telefonoClienteTextFdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_telefonoClienteTextFdActionPerformed
@@ -472,7 +472,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         if(row != -1){
         int ax = JOptionPane.showConfirmDialog(null, "Estas seguro que desea eliminarlo?");
         if(ax == JOptionPane.YES_OPTION){
-          //  controller.eliminar(row);
+            controller.eliminar(row);
        }
       }
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -511,14 +511,19 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
 
        @Override
     public void update(java.util.Observable updatedModel,Object parametros) {
+        
+        
+        
         nomClienteTextFd.setText(model.getCurrent().getCliente().getNombre());
         idClienteTextFd.setText(String.valueOf(model.getCurrent().getCliente().getCedula()));
         telefonoClienteTextFd.setText(model.getCurrent().getCliente().getTelefono());
         FechaTextFd.setText(model.getCurrent().getFechaActual());
         horaTextFd.setText(model.getCurrent().getHoraActual());
+        
+        
         //String desc = String.valueOf(model.getCurrent().getCliente().getPorcentajeDescuento());
         descuentoTextFd.setText("NOAI");
-        vendedorTextFd.setText(model.getCurrent().getDependiente().getNombreDependiente());
+       // vendedorTextFd.setText(model.getCurrent().getDependiente().getNombreDependiente());
         if(model.getErrores().get("GRABAR")!= null){
             GrabarLb.setBorder(Application.BORDER_ERROR);
             GrabarLb.setToolTipText(model.getErrores().get("GRABAR"));

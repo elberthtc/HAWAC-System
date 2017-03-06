@@ -4,18 +4,17 @@
  * and open the template in the editor.
  */
 package cr.ac.una.fucem.inge.hawac.view;
+import cr.ac.una.fucem.inge.hawac.controller.ProductoFacturaController;
+import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
+import hawac.Application;
 import javax.swing.JOptionPane;
-/*import ferreteria.Application;
-import ferreteria.presentacion.controller.ProductoFacturaController;
-import ferreteria.presentacion.model.ProductosModel;
-import ferreteriaentidades.Linea;*/
 import javax.swing.ButtonGroup;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
 public class ProductoFacturaView extends javax.swing.JInternalFrame implements java.util.Observer{
-   /* ProductoFacturaController controller;
+    ProductoFacturaController controller;
     ProductosModel model;
     DefaultTableModel productos;
     
@@ -44,7 +43,6 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
         this.productos = productos;
         model.addObserver(this);
     }
-*/
     
     public ProductoFacturaView() {
         super("",false,true);
@@ -83,7 +81,7 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
 
         DescripcionText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        BuscarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/ferreteria/presentacion/view/icons/search2.png"))); // NOI18N
+        BuscarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
         BuscarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BuscarButtonActionPerformed(evt);
@@ -224,7 +222,7 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
     }//GEN-LAST:event_CodigoRadioButton2ActionPerformed
 
     private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
-      /* if(CodigoRadioButton2.isSelected()==false && DescripcionRadioButton.isSelected()==false && verTodoRdButton.isSelected()== false ){
+        if(CodigoRadioButton2.isSelected()==false && DescripcionRadioButton.isSelected()==false && verTodoRdButton.isSelected()== false ){
               buscarLb.setBorder(Application.BORDER_ERROR);
               buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
         }else{
@@ -250,7 +248,6 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
                  controller.buscar2();
              }
         }
-*/
     }//GEN-LAST:event_BuscarButtonActionPerformed
 
     private void ProductosScrollPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductosScrollPaneMouseClicked
@@ -264,13 +261,13 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int row = this.CatalogoTable.getSelectedRow();
         if(row != -1){
-           // controller.seleccionar(row);
+            controller.seleccionar(row);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     @Override
     public void update(java.util.Observable updatedModel,Object parametros) {
-       /* DescripcionText.setText(model.getFilter().getDescripcion());
+        DescripcionText.setText(model.getFilter().getDescripcion());
         if(model.getErrores().get("DescripcionText")!=null){
             buscarLb.setBorder(Application.BORDER_ERROR);
             buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
@@ -291,9 +288,7 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
         this.revalidate();
         if (!model.getMensaje().equals("")){
             JOptionPane.showMessageDialog(this, model.getMensaje(), "",JOptionPane.INFORMATION_MESSAGE);
-        } 
-        
-     */   
+        }    
     }
     /**
      * @param args the command line arguments

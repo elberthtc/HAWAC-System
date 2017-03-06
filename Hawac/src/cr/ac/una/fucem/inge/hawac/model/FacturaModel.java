@@ -7,7 +7,7 @@ package cr.ac.una.fucem.inge.hawac.model;
 import cr.ac.una.fucem.inge.hawac.domain.Cliente;
 import cr.ac.una.fucem.inge.hawac.domain.Factura;
 import cr.ac.una.fucem.inge.hawac.domain.Linea;
-import cr.ac.una.fucem.inge.hawac.domain.Dependiente;
+import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.Observer;
 public class FacturaModel extends java.util.Observable {
     Factura current;
     Cliente cliente;
-    Dependiente empleado;
+    Usuario empleado;
     Linea filtro;
     LineaTableModel lineas;
     HashMap<String,String> errores;
@@ -28,7 +28,7 @@ public class FacturaModel extends java.util.Observable {
     public void init(){ 
         current = new Factura();
         cliente = new Cliente();
-        empleado = new Dependiente();
+        empleado = new Usuario();
         filtro = new Linea();
         clearErrors();
         List<Linea> rows = new ArrayList<Linea>();
@@ -45,7 +45,7 @@ public class FacturaModel extends java.util.Observable {
         notifyObservers(); 
     }
 
-    public void setEmpleado(Dependiente empleado) {
+    public void setEmpleado(Usuario empleado) {
         this.empleado = empleado;
         setChanged();
         notifyObservers(); 
@@ -64,7 +64,7 @@ public class FacturaModel extends java.util.Observable {
         return cliente;
     }
 
-    public Dependiente getEmpleado() {
+    public Usuario getEmpleado() {
         return empleado;
     }
     public void setLineas(List<Linea> lineas) {
@@ -113,6 +113,5 @@ public class FacturaModel extends java.util.Observable {
         setChanged();
         notifyObservers();       
     }
-
     
 }

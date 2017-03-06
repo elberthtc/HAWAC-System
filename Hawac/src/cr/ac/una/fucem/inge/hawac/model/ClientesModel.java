@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Observer;
-//import ferreteriaentidades.Cliente;
 
 
 public class ClientesModel extends java.util.Observable{

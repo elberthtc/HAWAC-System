@@ -4,19 +4,20 @@
  * and open the template in the editor.
  */
 package cr.ac.una.fucem.inge.hawac.view;
+
+import cr.ac.una.fucem.inge.hawac.controller.FacturasVentasController;
+import cr.ac.una.fucem.inge.hawac.model.FacturasVentasModel;
+import hawac.Application;
 import javax.swing.JOptionPane;
-/*import ferreteria.Application;
-import ferreteria.presentacion.controller.FacturasVentasController;
-import ferreteria.presentacion.model.FacturasVentasModel;*/
 import javax.swing.JTable;
 
 public class FacturasVentasView extends javax.swing.JInternalFrame implements java.util.Observer {
 
-/*    FacturasVentasController controller;
+    FacturasVentasController controller;
     FacturasVentasModel model;
-  */  
+
     public FacturasVentasView() {
-        super("",false,true);
+        super("", false, true);
         initComponents();
     }
 
@@ -67,14 +68,14 @@ public class FacturasVentasView extends javax.swing.JInternalFrame implements ja
             }
         });
 
-        buscarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ferreteria/presentacion/view/icons/search2.png"))); // NOI18N
+        buscarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
         buscarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarButtonActionPerformed(evt);
             }
         });
 
-        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setBackground(new java.awt.Color(255, 0, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("                                                                        FACTURAS PENDIENTES");
@@ -135,17 +136,16 @@ public class FacturasVentasView extends javax.swing.JInternalFrame implements ja
     }//GEN-LAST:event_nombreTextFdActionPerformed
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
-    //   controller.buscar();
+        //   controller.buscar();
     }//GEN-LAST:event_buscarButtonActionPerformed
 
     private void seleccionarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarButtonActionPerformed
         int row = this.tablaFacturas.getSelectedRow();
-        if(row != -1){
-      //       controller.seleeccionar(row);
+        if (row != -1) {
+            controller.seleeccionar(row);
         }
     }//GEN-LAST:event_seleccionarButtonActionPerformed
 
-    /*
     public FacturasVentasController getController() {
         return controller;
     }
@@ -154,30 +154,29 @@ public class FacturasVentasView extends javax.swing.JInternalFrame implements ja
         return model;
     }
 
-    public void setController(ferreteria.presentacion.controller.FacturasVentasController controller) {
+    public void setController(cr.ac.una.fucem.inge.hawac.controller.FacturasVentasController controller) {
         this.controller = controller;
     }
 
-    public void setModel(ferreteria.presentacion.model.FacturasVentasModel model) {
+    public void setModel(cr.ac.una.fucem.inge.hawac.model.FacturasVentasModel model) {
         this.model = model;
         model.addObserver(this);
     }
-   
-    */
-   @Override
-    public void update(java.util.Observable updatedModel,Object parametros) {
-//        nombreTextFd.setText(model.getFiltro().getCliente().getNombre());
-    /*    if(model.getErrores().get("nombreTextFd")!= null){
+
+    @Override
+    public void update(java.util.Observable updatedModel, Object parametros) {
+       // nombreTextFd.setText(model.getFiltro().getCliente().getNombre());
+        if (model.getErrores().get("nombreTextFd") != null) {
             nombreLb.setBorder(Application.BORDER_ERROR);
             nombreLb.setToolTipText(model.getErrores().get("nombreTextFd"));
-        }else{
+        } else {
             nombreLb.setBorder(null);
             nombreLb.setToolTipText("");
         }
         tablaFacturas.setModel(model.getFacturas());
         this.revalidate();
-        if (!model.getMensaje().equals("")){
-            JOptionPane.showMessageDialog(this, model.getMensaje(), "",JOptionPane.INFORMATION_MESSAGE);
+        if (!model.getMensaje().equals("")) {
+            JOptionPane.showMessageDialog(this, model.getMensaje(), "", JOptionPane.INFORMATION_MESSAGE);
         }
         tablaFacturas.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         tablaFacturas.getColumnModel().getColumn(0).setPreferredWidth(20);
@@ -185,19 +184,14 @@ public class FacturasVentasView extends javax.swing.JInternalFrame implements ja
         tablaFacturas.getColumnModel().getColumn(2).setPreferredWidth(40);
         tablaFacturas.getColumnModel().getColumn(3).setPreferredWidth(50);
         tablaFacturas.getColumnModel().getColumn(4).setPreferredWidth(30);
-      
-        */
-        
-    } 
-    
-    
-    
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-        * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-        */
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {

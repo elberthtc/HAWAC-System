@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05-mar-2017 13:30:27 by Hibernate Tools 4.3.1 -->
+<!-- Generated 05-mar-2017 20:19:47 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.fucem.inge.hawac.domain.Factura" table="factura" catalog="tienda" optimistic-lock="version">
         <id name="codigoFactura" type="java.lang.Integer">
@@ -12,10 +12,10 @@
             <column name="apartado" />
         </many-to-one>
         <many-to-one name="cliente" class="cr.ac.una.fucem.inge.hawac.domain.Cliente" fetch="select">
-            <column name="cliente" not-null="true" />
+            <column name="cliente" />
         </many-to-one>
-        <many-to-one name="dependiente" class="cr.ac.una.fucem.inge.hawac.domain.Dependiente" fetch="select">
-            <column name="dependiente" not-null="true" />
+        <many-to-one name="usuario" class="cr.ac.una.fucem.inge.hawac.domain.Usuario" fetch="select">
+            <column name="dependiente" />
         </many-to-one>
         <property name="monto" type="float">
             <column name="monto" precision="12" scale="0" not-null="true" />

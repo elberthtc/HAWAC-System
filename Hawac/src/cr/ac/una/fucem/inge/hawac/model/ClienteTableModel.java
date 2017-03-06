@@ -8,7 +8,6 @@ package cr.ac.una.fucem.inge.hawac.model;
 import cr.ac.una.fucem.inge.hawac.domain.Cliente;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-//import ferreteriaentidades.Cliente;
 
 
 public class ClienteTableModel extends AbstractTableModel{

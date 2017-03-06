@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Observer;
-//import ferreteriaentidades.Factura;
 
 public class FacturasPagadasModel extends java.util.Observable {
     Factura filtro;
@@ -29,7 +28,7 @@ public class FacturasPagadasModel extends java.util.Observable {
     }
 
     public void setFacturas(List<Factura> facturas) {
-        int[] cols={FacturaTableModel.NUMERO,FacturaTableModel.CLIENTE,FacturaTableModel.VENDEDOR,/*FacturaTableModel.FORMA_DE_PAGO,*/FacturaTableModel.TOTAL};
+        int[] cols={FacturaTableModel.NUMERO,FacturaTableModel.CLIENTE,FacturaTableModel.VENDEDOR,FacturaTableModel.FORMA_DE_PAGO,FacturaTableModel.TOTAL};
         this.facturas = new FacturaTableModel(cols,facturas);
         setChanged();
         notifyObservers();

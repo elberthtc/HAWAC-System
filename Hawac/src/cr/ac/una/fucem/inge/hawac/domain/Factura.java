@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 05-mar-2017 13:30:26 by Hibernate Tools 4.3.1
+// Generated 05-mar-2017 20:19:45 by Hibernate Tools 4.3.1
 
 
 import java.text.SimpleDateFormat;
@@ -16,7 +16,7 @@ public class Factura  implements java.io.Serializable {
      private Integer codigoFactura;
      private Apartado apartado;
      private Cliente cliente;
-     private Dependiente dependiente;
+     private Usuario usuario;
      private float monto;
      private Date fecha;
      private Set<Linea> lineas = new HashSet<Linea>(0);
@@ -25,16 +25,14 @@ public class Factura  implements java.io.Serializable {
     }
 
 	
-    public Factura(Cliente cliente, Dependiente dependiente, float monto, Date fecha) {
-        this.cliente = cliente;
-        this.dependiente = dependiente;
+    public Factura(float monto, Date fecha) {
         this.monto = monto;
         this.fecha = fecha;
     }
-    public Factura(Apartado apartado, Cliente cliente, Dependiente dependiente, float monto, Date fecha, Set<Linea> lineas) {
+    public Factura(Apartado apartado, Cliente cliente, Usuario usuario, float monto, Date fecha, Set<Linea> lineas) {
        this.apartado = apartado;
        this.cliente = cliente;
-       this.dependiente = dependiente;
+       this.usuario = usuario;
        this.monto = monto;
        this.fecha = fecha;
        this.lineas = lineas;
@@ -61,12 +59,12 @@ public class Factura  implements java.io.Serializable {
     public void setCliente(Cliente cliente) {
         this.cliente = cliente;
     }
-    public Dependiente getDependiente() {
-        return this.dependiente;
+    public Usuario getUsuario() {
+        return this.usuario;
     }
     
-    public void setDependiente(Dependiente dependiente) {
-        this.dependiente = dependiente;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
     public float getMonto() {
         return this.monto;
@@ -89,7 +87,7 @@ public class Factura  implements java.io.Serializable {
     public void setLineas(Set<Linea> lineas) {
         this.lineas = lineas;
     }
-    
+
     public String getFechaActual(){
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/YYYY");
         return formatoFecha.format(fecha);
@@ -102,6 +100,8 @@ public class Factura  implements java.io.Serializable {
         SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
         return formatoHora.format(fecha);
     }
+
+
 
 }
 

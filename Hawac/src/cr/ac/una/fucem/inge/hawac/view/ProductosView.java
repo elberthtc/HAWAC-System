@@ -9,9 +9,6 @@ import cr.ac.una.fucem.inge.hawac.controller.ProductosController;
 import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
 import hawac.Application;
 import javax.swing.JOptionPane;
-/*import ferreteria.Application;
- import ferreteria.presentacion.controller.ProductosController;
- import ferreteria.presentacion.model.ProductosModel;*/
 import javax.swing.ButtonGroup;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;

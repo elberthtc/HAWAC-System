@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 05-mar-2017 13:30:26 by Hibernate Tools 4.3.1
+// Generated 05-mar-2017 20:19:45 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -14,23 +14,30 @@ public class Usuario  implements java.io.Serializable {
      private int idUsuario;
      private String password;
      private int tipo;
-     private Dependiente dependiente;
+     private String nombre;
+     private Set<Factura> facturas = new HashSet<Factura>(0);
      private Set<Bitacora> bitacoras = new HashSet<Bitacora>(0);
 
     public Usuario() {
+        idUsuario = 0;
+        password = "";
+        tipo = -1;
+        nombre = "";
     }
 
 	
-    public Usuario(int idUsuario, String password, int tipo) {
+    public Usuario(int idUsuario, String password, int tipo, String nombre) {
         this.idUsuario = idUsuario;
         this.password = password;
         this.tipo = tipo;
+        this.nombre = nombre;
     }
-    public Usuario(int idUsuario, String password, int tipo, Dependiente dependiente, Set<Bitacora> bitacoras) {
+    public Usuario(int idUsuario, String password, int tipo, String nombre, Set<Factura> facturas, Set<Bitacora> bitacoras) {
        this.idUsuario = idUsuario;
        this.password = password;
        this.tipo = tipo;
-       this.dependiente = dependiente;
+       this.nombre = nombre;
+       this.facturas = facturas;
        this.bitacoras = bitacoras;
     }
    
@@ -55,12 +62,19 @@ public class Usuario  implements java.io.Serializable {
     public void setTipo(int tipo) {
         this.tipo = tipo;
     }
-    public Dependiente getDependiente() {
-        return this.dependiente;
+    public String getNombre() {
+        return this.nombre;
     }
     
-    public void setDependiente(Dependiente dependiente) {
-        this.dependiente = dependiente;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    public Set<Factura> getFacturas() {
+        return this.facturas;
+    }
+    
+    public void setFacturas(Set<Factura> facturas) {
+        this.facturas = facturas;
     }
     public Set<Bitacora> getBitacoras() {
         return this.bitacoras;
@@ -77,6 +91,7 @@ public class Usuario  implements java.io.Serializable {
             default :return "Sin Definir Rol";
         }
     }
+    
 }
 
 

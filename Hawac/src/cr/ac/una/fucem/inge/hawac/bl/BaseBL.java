@@ -25,7 +25,6 @@ public class BaseBL {
         daos.put("cr.ac.una.fucem.inge.hawac.domain.Apartadoproducto", new ApartadoproductoDAO());
         daos.put("cr.ac.una.fucem.inge.hawac.domain.Bitacora", new BitacoraDAO());
         daos.put("cr.ac.una.fucem.inge.hawac.domain.Cliente", new ClienteDAO());
-        daos.put("cr.ac.una.fucem.inge.hawac.domain.Dependiente", new DependienteDAO());
         daos.put("cr.ac.una.fucem.inge.hawac.domain.Factura", new FacturaDAO());
     }
     

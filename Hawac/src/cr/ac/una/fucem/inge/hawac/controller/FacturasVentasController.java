@@ -5,19 +5,18 @@
  */
 package cr.ac.una.fucem.inge.hawac.controller;
 
+import cr.ac.una.fucem.inge.hawac.domain.Factura;
+import cr.ac.una.fucem.inge.hawac.domain.Usuario;
+import cr.ac.una.fucem.inge.hawac.logic.Model;
+import cr.ac.una.fucem.inge.hawac.model.FacturasVentasModel;
+import cr.ac.una.fucem.inge.hawac.view.FacturasVentasView;
+import hawac.Application;
+import hawac.Session;
 import java.util.List;
 import java.util.Arrays;
-/*import ferreteria.Application;
-import ferreteria.logic.Model;
-import ferreteria.Session;
-import ferreteriaentidades.Factura;
-import ferreteriaentidades.Empleado;
-import ferreteria.presentacion.model.FacturasVentasModel;
-import ferreteria.presentacion.view.FacturasVentasView;
-*/
 
 public class FacturasVentasController {
-  /*  Model domainModel;
+    Model domainModel;
     Session session;
     FacturasVentasModel model;
     FacturasVentasView view;
@@ -34,32 +33,34 @@ public class FacturasVentasController {
     
     public void buscar(){
         model.clearErrors();
-         Empleado e1 = (Empleado) session.getAttribute(Application.EMPLOYEE_ATTRIBUTE);
-         if( !Arrays.asList(Application.ROL_CASHIER).contains(e1.getRol().getDescripcion())){
+         Usuario e1 = (Usuario) session.getAttribute("Usuario");
+         if( e1.getTipo() == -1){
             model.setMensaje(Application.ROL_NOTAUTHORIZED);
             model.commit();
             return;
         }
         model.getFiltro().getCliente().setNombre(view.nombreTextFd.getText());
-        List<Factura> rows = domainModel.FacturaSearch(model.getFiltro());
+        List<Factura> rows = domainModel.getFacturaBl().findAll(Factura.class.getName());
         if(rows.isEmpty()){
             model.getErrores().put("nombreTextFd","Ningun registro coincide");
             model.setMensaje("NINGUN REGISTRO COINCIDE");
         }
         model.setFacturas(rows);
     }
+    
     public void seleeccionar(int row){
         model.clearErrors();
         FacturasVentasModel  ventas = Application.FACTURAS_VENTAS_VIEW.getModel();
         Factura f1 = model.getFacturas().getRowAt(row);
-        Empleado e1 = (Empleado) session.getAttribute(Application.EMPLOYEE_ATTRIBUTE);
-        if(!Arrays.asList(Application.ROL_CASHIER).contains(e1.getRol().getDescripcion())){
+        Usuario e1 = (Usuario) session.getAttribute("Usuario");
+        if(e1.getTipo() == -1){
             model.setMensaje(Application.ROL_NOTAUTHORIZED);
             model.commit();
             return;
         }
         ventas.clearErrors();
     
+        /*
         if(f1.getTipoPago().equals("Efectivo")){
             ventas.setFiltro(f1);
             Application.Efectivo_VIEW.setVisible(true);
@@ -72,7 +73,7 @@ public class FacturasVentasController {
               ventas.setFiltro(f1);
               Application.Cheque_VIEW.setVisible(true);
         }
-        
+        */
     }
     
 //     public void RegistraPago(){
@@ -100,10 +101,9 @@ public class FacturasVentasController {
 //    }
     
      public void salir(){
-        model.clearErrors();        
-        domainModel.close();
+        model.clearErrors();  
         view.setVisible(false);
         Application.LOGIN_VIEW.getController().logout();
     }
-    */
+    
 }

@@ -9,9 +9,6 @@ import cr.ac.una.fucem.inge.hawac.controller.ClientesFacturaController;
 import cr.ac.una.fucem.inge.hawac.model.ClientesModel;
 import hawac.Application;
 import javax.swing.JOptionPane;
-/*import ferreteria.Application;
-import ferreteria.presentacion.controller.ClientesFacturaController;
-import ferreteria.presentacion.model.ClientesModel;*/
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 
@@ -76,7 +73,7 @@ public class ClientesFacturaView extends javax.swing.JInternalFrame implements j
             }
         });
 
-        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ferreteria/presentacion/view/icons/search2.png"))); // NOI18N
+        searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
@@ -274,7 +271,7 @@ public class ClientesFacturaView extends javax.swing.JInternalFrame implements j
         clientesTable.getColumnModel().getColumn(1).setPreferredWidth(30);
         clientesTable.getColumnModel().getColumn(2).setPreferredWidth(110);
         clientesTable.getColumnModel().getColumn(3).setPreferredWidth(30);
-        clientesTable.getColumnModel().getColumn(4).setPreferredWidth(30);
+        //clientesTable.getColumnModel().getColumn(4).setPreferredWidth(30);
 
     }
     

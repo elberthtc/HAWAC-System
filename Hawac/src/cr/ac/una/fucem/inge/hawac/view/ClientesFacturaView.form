@@ -122,7 +122,7 @@
     <Component class="javax.swing.JButton" name="searchButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/ferreteria/presentacion/view/icons/search2.png"/>
+          <Image iconType="3" name="/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"/>
         </Property>
       </Properties>
       <Events>
