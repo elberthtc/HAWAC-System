@@ -243,7 +243,7 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     @Override
     public void update(java.util.Observable updatedModel, Object parametros) {
         if (model.getCurrent() != null) {
-            this.setTitle("HAWAC SYSTEM \nUsuario: " + model.getCurrent().tipo());
+            this.setTitle("HAWAC SYSTEM \nUsuario: " + model.getCurrent().tipo() + "("+model.getCurrent().getNombre()+")");
         } else {
             this.setTitle("HAWAC SYSTEM");
         }

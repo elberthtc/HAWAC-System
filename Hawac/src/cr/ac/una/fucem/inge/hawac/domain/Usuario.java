@@ -19,7 +19,7 @@ public class Usuario  implements java.io.Serializable {
      private Set<Bitacora> bitacoras = new HashSet<Bitacora>(0);
 
     public Usuario() {
-        idUsuario = 0;
+        idUsuario = -1;
         password = "";
         tipo = -1;
         nombre = "";

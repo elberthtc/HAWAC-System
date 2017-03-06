@@ -9,10 +9,6 @@ import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.model.LoginModel;
 import hawac.Application;
 import javax.swing.JOptionPane;
-/*import ferreteria.Application;
-import ferreteriaentidades.Empleado;
-import ferreteria.presentacion.controller.LoginController;
-import ferreteria.presentacion.model.LoginModel;*/
 
 
 public class LoginView extends javax.swing.JFrame implements java.util.Observer {
@@ -167,7 +163,7 @@ public class LoginView extends javax.swing.JFrame implements java.util.Observer 
     @Override
     public void update(java.util.Observable updatedModel,Object parametros){
         Usuario current = model.getCurrent();
-        if(current.getIdUsuario()==0)
+        if(current.getIdUsuario()<=0)
             idTextField.setText("");
         else
             idTextField.setText(current.getIdUsuario()+"");

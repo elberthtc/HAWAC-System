@@ -8,8 +8,8 @@
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">rootroot</property>
     <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Cliente.hbm.xml"/>
-    <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Factura.hbm.xml"/>
     <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Bitacora.hbm.xml"/>
+    <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Factura.hbm.xml"/>
     <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Inventario.hbm.xml"/>
     <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Usuario.hbm.xml"/>
     <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Abono.hbm.xml"/>

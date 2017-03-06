@@ -305,7 +305,7 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
         Producto current = model.getCurrent();
         this.CodigoText.setEnabled(model.getModo() == Application.MODO_AGREGAR);
         
-        if(current.getIdProducto()==0)
+        if(current.getIdProducto()<=0)
             this.CodigoText.setText("");
         else
             this.CodigoText.setText(current.getIdProducto()+"");

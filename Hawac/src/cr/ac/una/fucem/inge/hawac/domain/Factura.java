@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 05-mar-2017 20:19:45 by Hibernate Tools 4.3.1
+// Generated 05-mar-2017 23:46:49 by Hibernate Tools 4.3.1
 
 
 import java.text.SimpleDateFormat;
@@ -13,7 +13,7 @@ import java.util.Set;
 public class Factura  implements java.io.Serializable {
 
 
-     private Integer codigoFactura;
+     private int codigoFactura;
      private Apartado apartado;
      private Cliente cliente;
      private Usuario usuario;
@@ -22,14 +22,22 @@ public class Factura  implements java.io.Serializable {
      private Set<Linea> lineas = new HashSet<Linea>(0);
 
     public Factura() {
+        codigoFactura=-1;
+        apartado=new Apartado();
+        cliente=new Cliente();
+        usuario=new Usuario();
+        monto=0;
+        fecha=new Date();
     }
 
 	
-    public Factura(float monto, Date fecha) {
+    public Factura(int codigoFactura, float monto, Date fecha) {
+        this.codigoFactura = codigoFactura;
         this.monto = monto;
         this.fecha = fecha;
     }
-    public Factura(Apartado apartado, Cliente cliente, Usuario usuario, float monto, Date fecha, Set<Linea> lineas) {
+    public Factura(int codigoFactura, Apartado apartado, Cliente cliente, Usuario usuario, float monto, Date fecha, Set<Linea> lineas) {
+       this.codigoFactura = codigoFactura;
        this.apartado = apartado;
        this.cliente = cliente;
        this.usuario = usuario;
@@ -38,11 +46,11 @@ public class Factura  implements java.io.Serializable {
        this.lineas = lineas;
     }
    
-    public Integer getCodigoFactura() {
+    public int getCodigoFactura() {
         return this.codigoFactura;
     }
     
-    public void setCodigoFactura(Integer codigoFactura) {
+    public void setCodigoFactura(int codigoFactura) {
         this.codigoFactura = codigoFactura;
     }
     public Apartado getApartado() {
@@ -92,15 +100,16 @@ public class Factura  implements java.io.Serializable {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/YYYY");
         return formatoFecha.format(fecha);
     }
+    
      public String getFechaActual2(){
         SimpleDateFormat formatoFecha = new SimpleDateFormat("YYYY-MM-dd");
         return formatoFecha.format(fecha);
     }
+     
     public String getHoraActual(){
         SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
         return formatoHora.format(fecha);
     }
-
 
 
 }

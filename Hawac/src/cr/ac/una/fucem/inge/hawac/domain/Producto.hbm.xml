@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05-mar-2017 20:19:47 by Hibernate Tools 4.3.1 -->
+<!-- Generated 05-mar-2017 22:36:54 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.fucem.inge.hawac.domain.Producto" table="producto" catalog="tienda" optimistic-lock="version">
-        <id name="idProducto" type="java.lang.Integer">
+        <id name="idProducto" type="int">
             <column name="idProducto" />
-            <generator class="identity" />
+            <generator class="assigned" />
         </id>
         <property name="precio" type="float">
             <column name="precio" precision="12" scale="0" not-null="true" />
@@ -29,13 +29,13 @@
             </key>
             <one-to-many class="cr.ac.una.fucem.inge.hawac.domain.Linea" />
         </set>
-        <set name="inventarios" table="inventario" inverse="true" lazy="true" fetch="select">
+        <set name="inventarios" table="inventario" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="producto" not-null="true" />
             </key>
             <one-to-many class="cr.ac.una.fucem.inge.hawac.domain.Inventario" />
         </set>
-        <set name="apartadoproductos" table="apartadoproducto" inverse="true" lazy="true" fetch="select">
+        <set name="apartadoproductos" table="apartadoproducto" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="producto" not-null="true" />
             </key>

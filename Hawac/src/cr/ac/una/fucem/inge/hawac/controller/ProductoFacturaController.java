@@ -58,7 +58,7 @@ public class ProductoFacturaController {
         model.clearErrors();
         FacturaModel facturaModel = Application.FACTURA_VIEW.getModel();
         Producto p1 = model.getProductos().getRowAt(row);
-        InventarioId iId = new InventarioId("Tienda", p1.getIdProducto());
+        InventarioId iId = new InventarioId("Tienda", (Integer) p1.getIdProducto());
         Inventario i1 = domainModel.getInventarioBl().findById(iId);
         Usuario e1 = (Usuario) session.getAttribute("Usuario");
         if (e1.getTipo() == -1) {
@@ -97,20 +97,13 @@ public class ProductoFacturaController {
                     case Application.MODO_AGREGAR:
                         Factura f1;
                         List<Factura> facturas = domainModel.getFacturaBl().findAll(Factura.class.getName());
-                        int n = 19;
-                        if (facturas.size() != 0) {
-                            f1 = facturas.get(0);
-                            int index = 0;
-                            for (int i = 0; i < facturas.size() - 1; i++) {
-                                index = i;
-                            }
-                            f1 = facturas.get(index);
-                        }
                         f1 = new Factura();
                         f1.setCodigoFactura(facturas.size()+1);
                         f1.setCliente(null);
                         f1.setFecha(new Date());
                         f1.setMonto(-1);
+                        f1.setUsuario(e1);
+                        f1.setApartado(null);
                         
                         l1.setFactura(f1);
                         l1.getId().setFactura(f1.getCodigoFactura());
@@ -151,6 +144,7 @@ public class ProductoFacturaController {
                         break;
                 }
             } catch (Exception e) {
+                System.out.println(e.toString());
                 model.setMensaje("Problemas con la Base de Datos");
             }
         } else {

@@ -41,15 +41,16 @@ public class LineaTableModel extends AbstractTableModel{
         Linea l1 = rows.get(rowIndex);
         switch (cols[columnIndex]){
             case CANTIDAD: return l1.getCantidad();
-            case ARTICULO: return l1.getProducto().getDescripcion();
-            case PRECIO_UNIT: return l1.getProducto().getPrecio();
+            case ARTICULO: return l1.getId().getProducto();
+            case PRECIO_UNIT: return l1.getId().getFactura();
             case TOTAL: return calculaPrecio(l1);
             default: return "";
     
         }
     }
-    public double calculaPrecio(Linea l1){
-        double precio = l1.getCantidad()*(double)l1.getProducto().getPrecio();
+    
+    public float calculaPrecio(Linea l1){
+        float precio = l1.getCantidad()*(float)l1.getProducto().getPrecio();
         return precio;
     }
     

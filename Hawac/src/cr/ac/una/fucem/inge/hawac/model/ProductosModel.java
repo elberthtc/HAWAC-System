@@ -11,8 +11,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Observer;
-//import ferreteriaentidades.Producto;
-
 
 public class ProductosModel extends java.util.Observable{
     Producto filter; 
@@ -45,6 +43,7 @@ public class ProductosModel extends java.util.Observable{
         setChanged();
         notifyObservers();        
     }    
+    
     public Producto getFilter() {
         return filter;
     }

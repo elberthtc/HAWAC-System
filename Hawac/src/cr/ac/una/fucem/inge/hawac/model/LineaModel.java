@@ -9,10 +9,8 @@ package cr.ac.una.fucem.inge.hawac.model;
 import cr.ac.una.fucem.inge.hawac.domain.Factura;
 import cr.ac.una.fucem.inge.hawac.domain.Linea;
 import cr.ac.una.fucem.inge.hawac.domain.Producto;
+import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import java.util.HashMap;
-/*import ferreteriaentidades.Linea;
-import ferreteriaentidades.Factura;
-import ferreteriaentidades.Producto;*/
 
 public class LineaModel extends java.util.Observable {
     Linea current;
@@ -25,11 +23,11 @@ public class LineaModel extends java.util.Observable {
     public LineaModel(){
         
     }
-//    public void init(){
-//        setPuestos(puestos);
-//        setCurrent(new Empleado());
-//        clearErrors();
-//    }
+    public void init(){
+        //setPuestos(puestos);
+        setCurrent(new Linea());
+        clearErrors();
+    }
 
     public Linea getCurrent() {
         return current;

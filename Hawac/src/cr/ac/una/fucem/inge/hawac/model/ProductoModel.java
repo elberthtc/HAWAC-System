@@ -11,7 +11,6 @@ package cr.ac.una.fucem.inge.hawac.model;
  */
 import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import java.util.HashMap;
-//import ferreteriaentidades.Producto;
 
 
 public class ProductoModel extends java.util.Observable {

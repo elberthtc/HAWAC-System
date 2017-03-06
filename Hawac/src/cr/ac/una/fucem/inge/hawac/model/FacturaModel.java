@@ -23,8 +23,8 @@ public class FacturaModel extends java.util.Observable {
     String mensaje;
     
     public FacturaModel(){
-        
     }
+    
     public void init(){ 
         current = new Factura();
         cliente = new Cliente();
@@ -67,6 +67,7 @@ public class FacturaModel extends java.util.Observable {
     public Usuario getEmpleado() {
         return empleado;
     }
+    
     public void setLineas(List<Linea> lineas) {
         int[] cols={LineaTableModel.CANTIDAD,LineaTableModel.ARTICULO,LineaTableModel.PRECIO_UNIT,LineaTableModel.TOTAL}; 
         this.lineas = new LineaTableModel(cols,lineas);

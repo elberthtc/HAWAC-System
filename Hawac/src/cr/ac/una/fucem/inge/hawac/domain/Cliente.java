@@ -20,6 +20,7 @@ public class Cliente  implements java.io.Serializable {
      private Set<Factura> facturas = new HashSet<Factura>(0);
 
     public Cliente() {
+        cedula=-1;
         nombre = "";
         totalComprado = 0;
         telefono="";

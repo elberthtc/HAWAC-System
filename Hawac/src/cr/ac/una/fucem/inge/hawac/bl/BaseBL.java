@@ -26,6 +26,7 @@ public class BaseBL {
         daos.put("cr.ac.una.fucem.inge.hawac.domain.Bitacora", new BitacoraDAO());
         daos.put("cr.ac.una.fucem.inge.hawac.domain.Cliente", new ClienteDAO());
         daos.put("cr.ac.una.fucem.inge.hawac.domain.Factura", new FacturaDAO());
+        daos.put("cr.ac.una.fucem.inge.hawac.domain.Linea", new LineaDAO());
     }
     
     public IBaseDAO getDao(String className){
