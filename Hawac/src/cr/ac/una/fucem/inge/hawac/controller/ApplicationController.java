@@ -37,13 +37,13 @@ public class ApplicationController {
     public void enter() {
         Application.CLIENTES_VIEW.getModel().init();
         Application.PRODUCTOS_VIEW.getModel().init();
-        /*Application.CLIENTES_FACTURA_VIEW.getModel().init();
+        Application.CLIENTES_FACTURA_VIEW.getModel().init();
         Application.EMPLEADOS_VIEW.getModel().inicializar();
         Application.FACTURA_VIEW.getModel().init();
-        Application.FACTURA_COMPRA_VIEW.getModel().init();
+        //Application.FACTURA_COMPRA_VIEW.getModel().init();
         Application.PRODUCTOFACTURA_VIEW.getModel().init();
         Application.FACTURAS_VENTAS_VIEW.getModel().init();
-        Application.FACTURAS_PAGADAS_VIEW.getModel().init();*/
+        //Application.FACTURAS_PAGADAS_VIEW.getModel().init();
         Application.APPLICATION_VIEW.getModel().init();
         Application.APPLICATION_VIEW.getModel().setCurrent((Usuario) session.getAttribute("Usuario"));
         view.setVisible(true);
@@ -53,14 +53,13 @@ public class ApplicationController {
     public void exit() {
         Application.CLIENTES_VIEW.setVisible(false);
         Application.PRODUCTOS_VIEW.setVisible(false);
-        /*
-         Application.EMPLEADOS_VIEW.setVisible(false);
-         Application.CLIENTES_FACTURA_VIEW.setVisible(false);
-         Application.PRODUCTOFACTURA_VIEW.setVisible(false);
-         Application.FACTURA_VIEW.setVisible(false);
-         Application.FACTURAS_VENTAS_VIEW.setVisible(false);
-         Application.FACTURAS_PAGADAS_VIEW.setVisible(false);
-         Application.FACTURA_COMPRA_VIEW.setVisible(false);*/
+        Application.EMPLEADOS_VIEW.setVisible(false);
+        Application.CLIENTES_FACTURA_VIEW.setVisible(false);
+        Application.PRODUCTOFACTURA_VIEW.setVisible(false);
+        Application.FACTURA_VIEW.setVisible(false);
+        Application.FACTURAS_VENTAS_VIEW.setVisible(false);
+        //Application.FACTURAS_PAGADAS_VIEW.setVisible(false);
+        //Application.FACTURA_COMPRA_VIEW.setVisible(false);
         view.setVisible(false);
         Application.LOGIN_VIEW.getController().logout();
     }

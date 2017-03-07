@@ -8,12 +8,14 @@ import cr.ac.una.fucem.inge.hawac.controller.ApplicationController;
 import cr.ac.una.fucem.inge.hawac.controller.ClienteController;
 import cr.ac.una.fucem.inge.hawac.controller.ClientesController;
 import cr.ac.una.fucem.inge.hawac.controller.ClientesFacturaController;
+import cr.ac.una.fucem.inge.hawac.controller.UsuariosController;
 import cr.ac.una.fucem.inge.hawac.controller.FacturaController;
 import cr.ac.una.fucem.inge.hawac.controller.FacturasVentasController;
 import cr.ac.una.fucem.inge.hawac.controller.LoginController;
 import cr.ac.una.fucem.inge.hawac.controller.ProductoController;
 import cr.ac.una.fucem.inge.hawac.controller.ProductoFacturaController;
 import cr.ac.una.fucem.inge.hawac.controller.ProductosController;
+import cr.ac.una.fucem.inge.hawac.controller.UsuarioController;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.ApplicationModel;
 import cr.ac.una.fucem.inge.hawac.model.ClienteModel;
@@ -23,6 +25,8 @@ import cr.ac.una.fucem.inge.hawac.model.FacturasVentasModel;
 import cr.ac.una.fucem.inge.hawac.model.LoginModel;
 import cr.ac.una.fucem.inge.hawac.model.ProductoModel;
 import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
+import cr.ac.una.fucem.inge.hawac.model.UsuarioModel;
+import cr.ac.una.fucem.inge.hawac.model.UsuariosModel;
 import cr.ac.una.fucem.inge.hawac.view.About;
 import cr.ac.una.fucem.inge.hawac.view.ApplicationView;
 import cr.ac.una.fucem.inge.hawac.view.ChequeView;
@@ -30,8 +34,8 @@ import cr.ac.una.fucem.inge.hawac.view.ClienteView;
 import cr.ac.una.fucem.inge.hawac.view.ClientesFacturaView;
 import cr.ac.una.fucem.inge.hawac.view.ClientesView;
 import cr.ac.una.fucem.inge.hawac.view.EfectivoView;
-import cr.ac.una.fucem.inge.hawac.view.EmpleadoView;
-import cr.ac.una.fucem.inge.hawac.view.EmpleadosView;
+import cr.ac.una.fucem.inge.hawac.view.UsuarioView;
+import cr.ac.una.fucem.inge.hawac.view.UsuariosView;
 import cr.ac.una.fucem.inge.hawac.view.FacturaCompraView;
 import cr.ac.una.fucem.inge.hawac.view.FacturaView;
 import cr.ac.una.fucem.inge.hawac.view.FacturasPagadasView;
@@ -52,7 +56,7 @@ public class Application {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {//William es un banano
+    public static void main(String[] args) {
         Model domainModel = Model.instance();
         Session session = new Session();
         
@@ -61,19 +65,17 @@ public class Application {
         APPLICATION_VIEW=applicationView;
         ApplicationController applicationController = new ApplicationController(applicationView,applicationModel,domainModel,session);
         
-        /*UsuariosModel empleadosModel = new UsuariosModel();
-        EmpleadosView empleadosView=new EmpleadosView();
+        UsuariosModel empleadosModel = new UsuariosModel();
+        UsuariosView empleadosView=new UsuariosView();
         EMPLEADOS_VIEW=empleadosView;
         applicationView.addInternalFrame(empleadosView);
-        EmpleadosController empleadosController= new EmpleadosController(empleadosView,empleadosModel,domainModel,session);
+        UsuariosController empleadosController= new UsuariosController(empleadosView,empleadosModel,domainModel,session);
  
         
         UsuarioModel empleadoModel = new UsuarioModel();
-        EmpleadoView empleadoView= new EmpleadoView(applicationView,true);
+        UsuarioView empleadoView= new UsuarioView(applicationView,true);
         EMPLEADO_VIEW=empleadoView;
-        EmpleadoController empleadoController= new EmpleadoController(empleadoView, empleadoModel, domainModel,session);
-        
-        */
+        UsuarioController empleadoController= new UsuarioController(empleadoView, empleadoModel, domainModel,session);
         
         ClientesModel clientesModel = new ClientesModel();
         ClientesView clientesView = new ClientesView();
@@ -175,8 +177,8 @@ public class Application {
     public static ClienteView CLIENTE_VIEW;
     public static ProductosView PRODUCTOS_VIEW;
     public static ProductoView PRODUCTO_VIEW;
-    public static EmpleadosView EMPLEADOS_VIEW;
-    public static EmpleadoView EMPLEADO_VIEW;
+    public static UsuariosView EMPLEADOS_VIEW;
+    public static UsuarioView EMPLEADO_VIEW;
     public static FacturaView FACTURA_VIEW;
     public static FacturaCompraView FACTURA_COMPRA_VIEW;
     public static ProductoFacturaView PRODUCTOFACTURA_VIEW;
@@ -193,7 +195,7 @@ public class Application {
     public static Border BORDER_ERROR = BorderFactory.createLineBorder(Color.red);
     public static Border BORDER_NOBORDER = BorderFactory.createLineBorder(Color.red);
     
-    public static  final String  EMPLOYEE_ATTRIBUTE="Empleado";
+    public static  final String  EMPLOYEE_ATTRIBUTE="Usuario";
     
     public static  final String  ROL_MANAGER="Administrador";
     public static  final String  ROL_SELLER="Vendedor";

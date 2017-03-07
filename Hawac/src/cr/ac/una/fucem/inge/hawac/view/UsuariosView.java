@@ -4,41 +4,39 @@
  * and open the template in the editor.
  */
 package cr.ac.una.fucem.inge.hawac.view;
-/*import ferreteria.Application;
-import ferreteria.presentacion.controller.EmpleadosController;
-import ferreteria.presentacion.model.EmpleadosModel;*/
+import cr.ac.una.fucem.inge.hawac.controller.UsuariosController;
+import cr.ac.una.fucem.inge.hawac.model.UsuariosModel;
+import hawac.Application;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-public class EmpleadosView extends javax.swing.JInternalFrame implements java.util.Observer {
-    //EmpleadosController controller;
-    //EmpleadosModel model;
+public class UsuariosView extends javax.swing.JInternalFrame implements java.util.Observer {
+    UsuariosController controller;
+    UsuariosModel model;
     /**
-     * Creates new form EmpleadosView
+     * Creates new form UsuariosView
      */
-    public EmpleadosView() {
+    public UsuariosView() {
         super("",false,true);
         initComponents();
     }
 
-    /*public void setController(EmpleadosController controller) {
+    public void setController(UsuariosController controller) {
         this.controller = controller;
     }
 
-    public EmpleadosModel getModel() {
+    public UsuariosModel getModel() {
         return model;
     }
 
-    public void setModel(EmpleadosModel model) {
+    public void setModel(UsuariosModel model) {
         this.model = model;
         model.addObserver(this);
     }
 
-    public EmpleadosController getController() {
+    public UsuariosController getController() {
         return controller;
     }
-
-  */
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -77,7 +75,7 @@ public class EmpleadosView extends javax.swing.JInternalFrame implements java.ut
             }
         });
 
-        buscarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ferreteria/presentacion/view/icons/search2.png"))); // NOI18N
+        buscarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
         buscarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarButtonActionPerformed(evt);
@@ -87,7 +85,7 @@ public class EmpleadosView extends javax.swing.JInternalFrame implements java.ut
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         jLabel1.setText("Buscar");
 
-        agregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ferreteria/presentacion/view/icons/addUser.png"))); // NOI18N
+        agregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/addUser.png"))); // NOI18N
         agregarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarButtonActionPerformed(evt);
@@ -115,7 +113,7 @@ public class EmpleadosView extends javax.swing.JInternalFrame implements java.ut
         });
         jScrollPane1.setViewportView(tablaEmpleados);
 
-        eliminarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ferreteria/presentacion/view/icons/deleteUser.png"))); // NOI18N
+        eliminarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/deleteUser.png"))); // NOI18N
         eliminarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarButtonActionPerformed(evt);
@@ -204,38 +202,37 @@ public class EmpleadosView extends javax.swing.JInternalFrame implements java.ut
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
-    /*      if(IdRadioButton.isSelected()==false && NombreRadioButton.isSelected()==false && allRadioButton.isSelected()== false ){
-              nombreLb.setBorder(Application.BORDER_ERROR);
-              nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
-        }else{
-                nombreLb.setBorder(null);
-                nombreLb.setToolTipText("");
-                if(allRadioButton.isSelected()== true){
-                    controller.buscar();
-                }
-                if(NombreRadioButton.isSelected()==true && nomjTextField.getText().length()==0){
-                    model.getErrores().put("nombreTextFd","Digite la descripcion a buscar");
-                    nombreLb.setBorder(Application.BORDER_ERROR);
-                    nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
-                }
-                if(NombreRadioButton.isSelected()==true && nomjTextField.getText().length()!=0){
-                    controller.buscar();
-                }
-                if(IdRadioButton.isSelected()==true && nomjTextField.getText().length()==0){
-                    model.getErrores().put("nombreTextFd","Digite la descripcion a buscar");
-                    nombreLb.setBorder(Application.BORDER_ERROR);
-                    nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
-                }
-                if(IdRadioButton.isSelected()==true && nomjTextField.getText().length()!=0){
-                    controller.buscar2();
-                }
-      }
-        */
+        if (IdRadioButton.isSelected() == false && NombreRadioButton.isSelected() == false && allRadioButton.isSelected() == false) {
+            nombreLb.setBorder(Application.BORDER_ERROR);
+            nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
+        } else {
+            nombreLb.setBorder(null);
+            nombreLb.setToolTipText("");
+            if (allRadioButton.isSelected() == true) {
+                controller.buscar();
+            }
+            if (NombreRadioButton.isSelected() == true && nomjTextField.getText().length() == 0) {
+                model.getErrores().put("nombreTextFd", "Digite la descripcion a buscar");
+                nombreLb.setBorder(Application.BORDER_ERROR);
+                nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
+            }
+            if (NombreRadioButton.isSelected() == true && nomjTextField.getText().length() != 0) {
+                controller.buscar();
+            }
+            if (IdRadioButton.isSelected() == true && nomjTextField.getText().length() == 0) {
+                model.getErrores().put("nombreTextFd", "Digite la descripcion a buscar");
+                nombreLb.setBorder(Application.BORDER_ERROR);
+                nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
+            }
+            if (IdRadioButton.isSelected() == true && nomjTextField.getText().length() != 0) {
+                controller.buscar2();
+            }
+        }
     }//GEN-LAST:event_buscarButtonActionPerformed
 
     private void agregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarButtonActionPerformed
-        //Application.EMPLEADO_VIEW.setLocation(this.agregarButton.getLocationOnScreen());
-        //controller.preAgregar();
+        Application.EMPLEADO_VIEW.setLocation(this.agregarButton.getLocationOnScreen());
+        controller.preAgregar();
     }//GEN-LAST:event_agregarButtonActionPerformed
 
     private void eliminarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarButtonActionPerformed
@@ -243,7 +240,7 @@ public class EmpleadosView extends javax.swing.JInternalFrame implements java.ut
             if(fila!=-1){
             int resp= JOptionPane.showConfirmDialog(this,"¿Desea eliminar al empleado?");
             if(resp==JOptionPane.YES_OPTION){
-          //      controller.borrar(fila);
+                controller.borrar(fila);
             }
         }
     }//GEN-LAST:event_eliminarButtonActionPerformed
@@ -251,8 +248,8 @@ public class EmpleadosView extends javax.swing.JInternalFrame implements java.ut
     private void tablaEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaEmpleadosMouseClicked
          if(evt.getClickCount()==2){
             int fila=this.tablaEmpleados.getSelectedRow();
-            //Application.EMPLEADO_VIEW.setLocation(evt.getLocationOnScreen());
-            //controller.editar(fila);
+            Application.EMPLEADO_VIEW.setLocation(evt.getLocationOnScreen());
+            controller.editar(fila);
         }
 
     }//GEN-LAST:event_tablaEmpleadosMouseClicked
@@ -267,7 +264,7 @@ public class EmpleadosView extends javax.swing.JInternalFrame implements java.ut
 
     @Override
     public void update(java.util.Observable updatedModel,Object parametros) {
-        /*nomjTextField.setText(model.getFiltro().getNombre());
+        nomjTextField.setText(model.getFiltro().getNombre());
         if(model.getErrores().get("nomjTextField")!= null){
             nombreLb.setBorder(Application.BORDER_ERROR);
             nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
@@ -275,17 +272,17 @@ public class EmpleadosView extends javax.swing.JInternalFrame implements java.ut
              nombreLb.setBorder(null);
              nombreLb.setToolTipText("");
         }
-        tablaEmpleados.setModel(model.getEmpleados());
+        tablaEmpleados.setModel(model.getUsuarios());
         this.revalidate();
         if (!model.getMensaje().equals("")){
             JOptionPane.showMessageDialog(this, model.getMensaje(), "",JOptionPane.INFORMATION_MESSAGE);
         } 
-//        tablaEmpleados.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
-//        tablaEmpleados.getColumnModel().getColumn(0).setPreferredWidth(20);
-//        tablaEmpleados.getColumnModel().getColumn(1).setPreferredWidth(30);
-//        tablaEmpleados.getColumnModel().getColumn(2).setPreferredWidth(40);
+        tablaEmpleados.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+        tablaEmpleados.getColumnModel().getColumn(0).setPreferredWidth(20);
+        tablaEmpleados.getColumnModel().getColumn(1).setPreferredWidth(30);
+        tablaEmpleados.getColumnModel().getColumn(2).setPreferredWidth(40);
   
-        */
+        
     }
 
     /**
@@ -318,7 +315,7 @@ public class EmpleadosView extends javax.swing.JInternalFrame implements java.ut
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new EmpleadosView().setVisible(true);
+                new UsuariosView().setVisible(true);
             }
         });
     }

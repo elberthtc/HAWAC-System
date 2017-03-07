@@ -113,7 +113,7 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         });
         MantenimientoMenu.add(ListaClientesItem);
 
-        ListaEmpleadosItem.setText("Empleados");
+        ListaEmpleadosItem.setText("Usuarios");
         ListaEmpleadosItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ListaEmpleadosItemActionPerformed(evt);

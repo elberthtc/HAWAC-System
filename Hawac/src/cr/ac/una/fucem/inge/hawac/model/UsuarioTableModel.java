@@ -43,15 +43,14 @@ public class UsuarioTableModel extends AbstractTableModel {
         switch(columnas[columna]){
             case ID: return empl.getIdUsuario();
             case CLAVE: return empl.getPassword();
-            case TIPO: return puesto(empl);
+            case TIPO: {
+                if (empl.getTipo() == 0) {
+                    return "Administrador";
+                } else
+                    return "Dependiente";
+            }
             default: return "";
         }
-    }
-    private String puesto(Usuario e){
-        String puesto="";
-        if(e.getTipo()==0) puesto="Administrador";
-        if(e.getTipo()==1) puesto="Dependiente";
-        return puesto;
     }
   
     

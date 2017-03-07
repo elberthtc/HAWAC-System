@@ -2,9 +2,6 @@
 package cr.ac.una.fucem.inge.hawac.model;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import java.util.HashMap;
-//import ferreteriaentidades.Empleado;
-//import ferreteriaentidades.Rol;
-
 
 public class UsuarioModel extends java.util.Observable {
     Usuario current;

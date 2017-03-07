@@ -23,7 +23,7 @@
         <property name="fecha" type="date">
             <column name="fecha" length="10" not-null="true" />
         </property>
-        <set name="lineas" table="linea" inverse="true" lazy="true" fetch="select">
+        <set name="lineas" table="linea" inverse="true" lazy="false" fetch="select">
             <key>
                 <column name="factura" not-null="true" />
             </key>
