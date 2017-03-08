@@ -11,6 +11,7 @@ import cr.ac.una.fucem.inge.hawac.controller.ClientesFacturaController;
 import cr.ac.una.fucem.inge.hawac.controller.UsuariosController;
 import cr.ac.una.fucem.inge.hawac.controller.FacturaController;
 import cr.ac.una.fucem.inge.hawac.controller.FacturasVentasController;
+import cr.ac.una.fucem.inge.hawac.controller.InventariosController;
 import cr.ac.una.fucem.inge.hawac.controller.LoginController;
 import cr.ac.una.fucem.inge.hawac.controller.ProductoController;
 import cr.ac.una.fucem.inge.hawac.controller.ProductoFacturaController;
@@ -22,6 +23,7 @@ import cr.ac.una.fucem.inge.hawac.model.ClienteModel;
 import cr.ac.una.fucem.inge.hawac.model.ClientesModel;
 import cr.ac.una.fucem.inge.hawac.model.FacturaModel;
 import cr.ac.una.fucem.inge.hawac.model.FacturasVentasModel;
+import cr.ac.una.fucem.inge.hawac.model.InventariosModel;
 import cr.ac.una.fucem.inge.hawac.model.LoginModel;
 import cr.ac.una.fucem.inge.hawac.model.ProductoModel;
 import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
@@ -29,22 +31,20 @@ import cr.ac.una.fucem.inge.hawac.model.UsuarioModel;
 import cr.ac.una.fucem.inge.hawac.model.UsuariosModel;
 import cr.ac.una.fucem.inge.hawac.view.About;
 import cr.ac.una.fucem.inge.hawac.view.ApplicationView;
-import cr.ac.una.fucem.inge.hawac.view.ChequeView;
 import cr.ac.una.fucem.inge.hawac.view.ClienteView;
 import cr.ac.una.fucem.inge.hawac.view.ClientesFacturaView;
 import cr.ac.una.fucem.inge.hawac.view.ClientesView;
-import cr.ac.una.fucem.inge.hawac.view.EfectivoView;
 import cr.ac.una.fucem.inge.hawac.view.UsuarioView;
 import cr.ac.una.fucem.inge.hawac.view.UsuariosView;
-import cr.ac.una.fucem.inge.hawac.view.FacturaCompraView;
 import cr.ac.una.fucem.inge.hawac.view.FacturaView;
 import cr.ac.una.fucem.inge.hawac.view.FacturasPagadasView;
 import cr.ac.una.fucem.inge.hawac.view.FacturasVentasView;
+import cr.ac.una.fucem.inge.hawac.view.InventarioMenuView;
+import cr.ac.una.fucem.inge.hawac.view.InventariosView;
 import cr.ac.una.fucem.inge.hawac.view.LoginView;
 import cr.ac.una.fucem.inge.hawac.view.ProductoFacturaView;
 import cr.ac.una.fucem.inge.hawac.view.ProductoView;
 import cr.ac.una.fucem.inge.hawac.view.ProductosView;
-import cr.ac.una.fucem.inge.hawac.view.TarjetaCreditoView;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
@@ -99,6 +99,12 @@ public class Application {
         applicationView.addInternalFrame(productosView);
         ProductosController productoscontroller = new ProductosController(productosView,session,productosModel,domainModel);
         
+        
+        InventariosModel inventariosModel = new InventariosModel();
+        InventariosView inventariosView = new InventariosView();
+        INVENTARIOS_VIEW = inventariosView;
+        applicationView.addInternalFrame(inventariosView);
+        InventariosController inventariosController = new InventariosController(inventariosView,inventariosModel,domainModel,session);
         
         FacturasVentasModel facturasVentasModel = new FacturasVentasModel();
         FacturasVentasView facturasVentasView = new FacturasVentasView();
@@ -164,12 +170,16 @@ public class Application {
         LoginController logincontroller = new LoginController(loginView,loginModel,domainModel,session);
         loginView.setVisible(true);
         
+        InventarioMenuView inventarioMenu = new InventarioMenuView(applicationView,true);
+        INVENTARIO_MENU = inventarioMenu;
+        
         About about= new About();
         ABOUT= about;
         
     }
  
     public static About ABOUT;
+    public static InventarioMenuView INVENTARIO_MENU;
     public static ApplicationView APPLICATION_VIEW;     
     public static LoginView LOGIN_VIEW; 
     public static ClientesView CLIENTES_VIEW;
@@ -180,13 +190,14 @@ public class Application {
     public static UsuariosView EMPLEADOS_VIEW;
     public static UsuarioView EMPLEADO_VIEW;
     public static FacturaView FACTURA_VIEW;
-    public static FacturaCompraView FACTURA_COMPRA_VIEW;
+    public static InventariosView INVENTARIOS_VIEW;
+    //public static FacturaCompraView FACTURA_COMPRA_VIEW;
     public static ProductoFacturaView PRODUCTOFACTURA_VIEW;
     public static FacturasVentasView FACTURAS_VENTAS_VIEW;
     public static FacturasPagadasView FACTURAS_PAGADAS_VIEW;
-    public static ChequeView Cheque_VIEW;
-    public static EfectivoView Efectivo_VIEW;
-    public static TarjetaCreditoView TarjetaCredito_VIEW;
+    //public static ChequeView Cheque_VIEW;
+    //public static EfectivoView Efectivo_VIEW;
+    //public static TarjetaCreditoView TarjetaCredito_VIEW;
        
     public static final int MODO_AGREGAR=0;
     public static final int MODO_EDITAR=1;

@@ -30,9 +30,9 @@ public class UsuarioController {
         UsuariosModel empleadosModel= Application.EMPLEADOS_VIEW.getModel();
         
         Usuario empleadoNuevo= new Usuario();
-        if(view.nombreTextField.getText().length()==0){
+        if(view.idTextField.getText().length()==0){
             model.getErrores().put("id", "Id requerido");
-        } else if(!Model.isNumeric(view.nombreTextField.getText())){
+        } else if(!Model.isNumeric(view.idTextField.getText())){
             model.getErrores().put("id", "Id debe ser numerico");
         } else{
             empleadoNuevo.setIdUsuario(Integer.parseInt(view.idTextField.getText()));

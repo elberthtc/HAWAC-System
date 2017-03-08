@@ -5,16 +5,16 @@
  */
 package cr.ac.una.fucem.inge.hawac.model;
 
-import cr.ac.una.fucem.inge.hawac.domain.Usuario;
+import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 
-public class UsuarioTableModel extends AbstractTableModel {
+public class InventarioTableModel extends AbstractTableModel {
     
-    List<Usuario> filas;
+    List<Inventario> filas;
     int[] columnas;
     
-    public UsuarioTableModel(int[] cols, List<Usuario> fils){
+    public InventarioTableModel(int[] cols, List<Inventario> fils){
         this.columnas=cols;
         this.filas=fils;
         inicializarNombCols();
@@ -24,7 +24,7 @@ public class UsuarioTableModel extends AbstractTableModel {
         return colNombs[columnas[col]];
     }
     
-    public Usuario getFila(int fil){
+    public Inventario getFila(int fil){
         return filas.get(fil);
     }
        
@@ -37,34 +37,28 @@ public class UsuarioTableModel extends AbstractTableModel {
     }
 
     public Object getValueAt(int fila, int columna) {
-        Usuario empl= filas.get(fila);
+        Inventario empl= filas.get(fila);
         switch(columnas[columna]){
-            case ID: return empl.getIdUsuario();
-            case CLAVE: return empl.getPassword();
-            case NOMBRE: return empl.getNombre();
-            case TIPO: {
-                if (empl.getTipo() == 0) {
-                    return "Administrador";
-                } else
-                    return "Dependiente";
-            }
+            case PRODUCTO: return empl.getId().getProducto();
+            case CANTIDAD: return empl.getCantidad();
+            case INVENTARIO: return empl.getId().getLocal();
+            case ESTADO: empl.getEstado();
             default: return "";
         }
     }
   
     
-    public static final int ID=0;
-    public static final int CLAVE=1;
-    public static final int NOMBRE=2;
-    public static final int TIPO=3;
+    public static final int PRODUCTO=0;
+    public static final int CANTIDAD=1;
+    public static final int INVENTARIO=2;
+    public static final int ESTADO=3;
 
     
     String [] colNombs= new String[4];
     private void inicializarNombCols(){
-        colNombs[ID]="ID";
-        colNombs[CLAVE]="CLAVE";
-        colNombs[NOMBRE]="NOMBRE";
-        colNombs[TIPO]="TIPO";
+        colNombs[PRODUCTO]="PRODUCTO";
+        colNombs[CANTIDAD]="CANTIDAD";
+        colNombs[INVENTARIO]="INVENTARIO";
+        colNombs[ESTADO]="ESTADO";
     }
-
 }

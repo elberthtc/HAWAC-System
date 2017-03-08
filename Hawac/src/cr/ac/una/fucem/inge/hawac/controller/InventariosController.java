@@ -1,24 +1,25 @@
 
 package cr.ac.una.fucem.inge.hawac.controller;
 
+import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
+import cr.ac.una.fucem.inge.hawac.model.InventariosModel;
 import cr.ac.una.fucem.inge.hawac.model.UsuarioModel;
-import cr.ac.una.fucem.inge.hawac.model.UsuariosModel;
-import cr.ac.una.fucem.inge.hawac.view.UsuariosView;
+import cr.ac.una.fucem.inge.hawac.view.InventariosView;
 import hawac.Application;
 import hawac.Session;
 import java.util.Arrays;
 import java.util.List;
 
 
-public class UsuariosController {
+public class InventariosController {
     Model domainModel;
     Session session;
-    UsuariosView vista;
-    UsuariosModel modelo;
+    InventariosView vista;
+    InventariosModel modelo;
     
-    public UsuariosController(UsuariosView vista, UsuariosModel modelo, Model domainModel,Session session){
+    public InventariosController(InventariosView vista, InventariosModel modelo, Model domainModel,Session session){
         modelo.inicializar();
         this.session=session;
         this.vista=vista;
@@ -31,8 +32,8 @@ public class UsuariosController {
     
     public void buscar(){
         modelo.borrarErrores();
-        modelo.getFiltro().setNombre(vista.nomjTextField.getText());
-        List<Usuario> filas= domainModel.getUsuarioBl().findAll(Usuario.class.getName());
+        //modelo.getFiltro().setNombre(vista.nomjTextField.getText());
+        List<Inventario> filas= domainModel.getInventarioBl().findAll(Inventario.class.getName());
         if(filas.isEmpty()){
             modelo.getErrores().put("nomjTextField", "Ningún registro coincide con la busqueda");
             modelo.setMensaje("NINGUN REGISTRO COINCIDE CON LA BUSQUEDA");
@@ -42,7 +43,7 @@ public class UsuariosController {
     
     public void buscarPorNombre(){
         modelo.borrarErrores();
-        modelo.getFiltro().setNombre(vista.nomjTextField.getText());
+       // modelo.getFiltro().setNombre(vista.nomjTextField.getText());
         String nombre = vista.nomjTextField.getText();
         List<Usuario> filas= domainModel.getUsuarioBl().findAll(Usuario.class.getName());
         for(int i = 0; i<filas.size();i++){
@@ -54,12 +55,12 @@ public class UsuariosController {
             modelo.getErrores().put("nomjTextField", "Ningún registro coincide con la busqueda");
             modelo.setMensaje("NINGUN REGISTRO COINCIDE CON LA BUSQUEDA");
         }
-        modelo.setUsuarios(filas);
+        //modelo.setUsuarios(filas);
     }
     
     public void buscarPorId(){
         modelo.borrarErrores();
-        modelo.getFiltro().setIdUsuario(Integer.parseInt(vista.nomjTextField.getText()));
+        //modelo.getFiltro().setIdUsuario(Integer.parseInt(vista.nomjTextField.getText()));
         String nombre = vista.nomjTextField.getText();
         List<Usuario> filas= domainModel.getUsuarioBl().findAll(Usuario.class.getName());
         for(int i = 0; i<filas.size();i++){
@@ -71,7 +72,7 @@ public class UsuariosController {
             modelo.getErrores().put("nomjTextField", "Ningún registro coincide con la busqueda");
             modelo.setMensaje("NINGUN REGISTRO COINCIDE CON LA BUSQUEDA");
         }
-        modelo.setUsuarios(filas);
+       // modelo.setUsuarios(filas);
     }
     
     public void preAgregar(){
@@ -90,7 +91,7 @@ public class UsuariosController {
     }
     
     public void editar(int fil){
-        modelo.borrarErrores();
+        /*modelo.borrarErrores();
         UsuarioModel empleadoModel=Application.EMPLEADO_VIEW.getModelo();
         Usuario seleccionado= modelo.getUsuarios().getFila(fil);
         empleadoModel.clearErrors();
@@ -101,11 +102,11 @@ public class UsuariosController {
             empleadoModel.setModo(Application.MODO_CONSULTAR);
         }
         empleadoModel.setCurrent(seleccionado);
-        Application.EMPLEADO_VIEW.setVisible(true);
+        Application.EMPLEADO_VIEW.setVisible(true);*/
     }
     
     public void borrar(int fil){
-       modelo.borrarErrores();
+       /*modelo.borrarErrores();
        Usuario seleccionado= modelo.getUsuarios().getFila(fil);
        Usuario principal = (Usuario) session.getAttribute("Usuario");
        if(principal.getTipo()!=0){
@@ -117,7 +118,7 @@ public class UsuariosController {
            domainModel.getUsuarioBl().delete(seleccionado);
        }catch(Exception ex){}
        List<Usuario> filas = domainModel.getUsuarioBl().findAll(Usuario.class.getName());
-       modelo.setUsuarios(filas);
+       modelo.setUsuarios(filas);*/
     }
 
     public void salir(){

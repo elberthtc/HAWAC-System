@@ -66,9 +66,10 @@ public class ClientesFacturaController {
             Factura f1 = new Factura();
             f1.setCliente(c1);
             f1.setCodigoFactura(CONTADOR);
+            
             //f1.setTipoPago((String)Application.FACTURA_VIEW.metodoPagoComboBox.getSelectedItem());
-            domainModel.getFacturaBl().save(f1);
-            f1.setCodigoFactura(CONTADOR);
+            //domainModel.getFacturaBl().save(f1);
+            //f1.setCodigoFactura(CONTADOR);
             Application.FACTURA_VIEW.getModel().setCurrent(f1);
             Application.FACTURA_VIEW.getModel().setCliente(c1);
             CONTADOR++;

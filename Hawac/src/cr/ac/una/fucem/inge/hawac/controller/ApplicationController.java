@@ -13,11 +13,6 @@ import cr.ac.una.fucem.inge.hawac.view.ApplicationView;
 import hawac.Application;
 import hawac.Session;
 
-//import ferreteria.Session;
-//import ferreteriaentidades.Empleado;
-//import ferreteria.logic.Model;
-//import ferreteria.presentacion.model.ApplicationModel;
-//import ferreteria.presentacion.view.ApplicationView;
 public class ApplicationController {
 
     Model domainModel;
@@ -40,6 +35,7 @@ public class ApplicationController {
         Application.CLIENTES_FACTURA_VIEW.getModel().init();
         Application.EMPLEADOS_VIEW.getModel().inicializar();
         Application.FACTURA_VIEW.getModel().init();
+        Application.INVENTARIOS_VIEW.getModel().inicializar();
         //Application.FACTURA_COMPRA_VIEW.getModel().init();
         Application.PRODUCTOFACTURA_VIEW.getModel().init();
         Application.FACTURAS_VENTAS_VIEW.getModel().init();
@@ -85,15 +81,18 @@ public class ApplicationController {
     }
 
     public void despachosShow() {
-        Application.FACTURAS_PAGADAS_VIEW.setVisible(true);
+        //Application.FACTURAS_PAGADAS_VIEW.setVisible(true);
     }
 
     public void facturaCompraShow() {
-        Application.FACTURA_COMPRA_VIEW.setVisible(true);
+        //Application.FACTURA_COMPRA_VIEW.setVisible(true);
     }
 
     public void about() {
         Application.ABOUT.setVisible(true);
     }
 
+    public void inventarioMenuShow(){
+        Application.INVENTARIO_MENU.setVisible(true);
+    }
 }

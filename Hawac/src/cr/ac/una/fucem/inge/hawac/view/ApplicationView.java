@@ -8,6 +8,7 @@ package cr.ac.una.fucem.inge.hawac.view;
 import cr.ac.una.fucem.inge.hawac.controller.ApplicationController;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.model.ApplicationModel;
+import hawac.Application;
 import javax.swing.JInternalFrame;
 /*import ferreteria.presentacion.controller.ApplicationController;
 import ferreteria.presentacion.model.ApplicationModel;*/
@@ -44,6 +45,8 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         productosItem = new javax.swing.JMenuItem();
         CobrosMenu = new javax.swing.JMenu();
         cobrosMenuItem = new javax.swing.JMenuItem();
+        inventariosMenu = new javax.swing.JMenu();
+        inventariosMenuItem = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         despachosMenuItem = new javax.swing.JMenuItem();
         HelpMenu = new javax.swing.JMenu();
@@ -144,6 +147,19 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
 
         MenuBar.add(CobrosMenu);
 
+        inventariosMenu.setText("INVENTARIO");
+        inventariosMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+
+        inventariosMenuItem.setText("Inventarios");
+        inventariosMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inventariosMenuItemActionPerformed(evt);
+            }
+        });
+        inventariosMenu.add(inventariosMenuItem);
+
+        MenuBar.add(inventariosMenu);
+
         jMenu1.setText("DESPACHOS");
         jMenu1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
 
@@ -219,6 +235,10 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     private void AboutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutItemActionPerformed
         controller.about();
     }//GEN-LAST:event_AboutItemActionPerformed
+
+    private void inventariosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventariosMenuItemActionPerformed
+        Application.INVENTARIOS_VIEW.setVisible(true);
+    }//GEN-LAST:event_inventariosMenuItemActionPerformed
 
     public ApplicationController getController() {
         return controller;
@@ -298,6 +318,8 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem despachosMenuItem;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenu inventariosMenu;
+    private javax.swing.JMenuItem inventariosMenuItem;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem productosItem;
     private javax.swing.JMenuItem salirItem;

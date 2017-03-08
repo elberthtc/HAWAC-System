@@ -48,7 +48,8 @@ public class ProductoTableModel extends AbstractTableModel{
                 return "Femenino";
             default: return "";
         }
-    }    
+    }
+    
     public Producto getRowAt(int row) {
         return rows.get(row);
     }

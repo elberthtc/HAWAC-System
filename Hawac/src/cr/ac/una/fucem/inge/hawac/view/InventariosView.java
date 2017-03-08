@@ -4,37 +4,37 @@
  * and open the template in the editor.
  */
 package cr.ac.una.fucem.inge.hawac.view;
-import cr.ac.una.fucem.inge.hawac.controller.UsuariosController;
-import cr.ac.una.fucem.inge.hawac.model.UsuariosModel;
+import cr.ac.una.fucem.inge.hawac.controller.InventariosController;
+import cr.ac.una.fucem.inge.hawac.model.InventariosModel;
 import hawac.Application;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-public class UsuariosView extends javax.swing.JInternalFrame implements java.util.Observer {
-    UsuariosController controller;
-    UsuariosModel model;
+public class InventariosView extends javax.swing.JInternalFrame implements java.util.Observer {
+    InventariosController controller;
+    InventariosModel model;
     /**
      * Creates new form UsuariosView
      */
-    public UsuariosView() {
+    public InventariosView() {
         super("",false,true);
         initComponents();
     }
 
-    public void setController(UsuariosController controller) {
+    public void setController(InventariosController controller) {
         this.controller = controller;
     }
 
-    public UsuariosModel getModel() {
+    public InventariosModel getModel() {
         return model;
     }
 
-    public void setModel(UsuariosModel model) {
+    public void setModel(InventariosModel model) {
         this.model = model;
         model.addObserver(this);
     }
 
-    public UsuariosController getController() {
+    public InventariosController getController() {
         return controller;
     }
 
@@ -264,12 +264,12 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
 
     @Override
     public void update(java.util.Observable updatedModel,Object parametros) {
-        if(model.getFiltro().getNombre().length()==0 && model.getFiltro().getIdUsuario() == -1){
+       /* if(model.getFiltro().getNombre().length()==0 && model.getFiltro().getIdUsuario() == -1){
             nomjTextField.setText(model.getFiltro().getNombre());
         } else if(model.getFiltro().getNombre().length()==0){
             nomjTextField.setText(model.getFiltro().getIdUsuario()+"");
         } else
-            nomjTextField.setText(model.getFiltro().getNombre());
+            nomjTextField.setText(model.getFiltro().getNombre());*/
         
         if(model.getErrores().get("nomjTextField")!= null){
             nombreLb.setBorder(Application.BORDER_ERROR);
@@ -321,7 +321,7 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UsuariosView().setVisible(true);
+                new InventariosView().setVisible(true);
             }
         });
     }

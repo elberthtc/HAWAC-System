@@ -106,7 +106,7 @@ public class ClientesController {
         model.clearErrors();
         Usuario e1 = (Usuario) session.getAttribute("Usuario");
         System.out.println(e1.getPassword());
-        if(((Usuario)session.getAttribute("Usuario")).getTipo()!=0){
+        if(e1.getTipo()==-1){
             model.setMensaje(Application.ROL_NOTAUTHORIZED);
             model.commit();
             return;

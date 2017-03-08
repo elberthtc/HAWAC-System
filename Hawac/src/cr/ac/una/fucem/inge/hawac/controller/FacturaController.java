@@ -45,7 +45,7 @@ public class FacturaController {
     public void preAgregarCliente() {
         model.clearErrors();
         Usuario e1 = (Usuario) session.getAttribute(("Usuario"));
-        if (e1.getTipo() != 0) {
+        if (e1.getTipo() == -1) {
             model.setMensaje(Application.ROL_NOTAUTHORIZED);
             model.commit();
             return;

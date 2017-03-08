@@ -5,45 +5,45 @@
  */
 package cr.ac.una.fucem.inge.hawac.model;
 
-import cr.ac.una.fucem.inge.hawac.domain.Usuario;
+import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Observer;
 
-public class UsuariosModel extends java.util.Observable {
-    Usuario filtro;
-    UsuarioTableModel empleados;
+public class InventariosModel extends java.util.Observable {
+    Inventario filtro;
+    InventarioTableModel empleados;
     HashMap<String, String> errores;
     String mensaje;
     
-    public UsuariosModel(){
+    public InventariosModel(){
         
     }
     
     public void inicializar(){
-        filtro= new Usuario();
+        filtro= new Inventario();
         borrarErrores();
-        List<Usuario> filas= new ArrayList<Usuario>();
+        List<Inventario> filas= new ArrayList<Inventario>();
         this.setUsuarios(filas);
     }
     
-    public void setUsuarios(List<Usuario> empleados){
-        int[] cols={UsuarioTableModel.ID,UsuarioTableModel.CLAVE,UsuarioTableModel.NOMBRE,UsuarioTableModel.TIPO};
-        this.empleados= new UsuarioTableModel(cols, empleados);
+    public void setUsuarios(List<Inventario> empleados){
+        int[] cols={InventarioTableModel.PRODUCTO,InventarioTableModel.CANTIDAD,InventarioTableModel.INVENTARIO,InventarioTableModel.ESTADO};
+        this.empleados= new InventarioTableModel(cols, empleados);
         setChanged();
         notifyObservers();
     }
     
-    public Usuario getFiltro(){
+    public Inventario getFiltro(){
         return filtro;
     }
     
-    public void setFiltro(Usuario filt){
+    public void setFiltro(Inventario filt){
         this.filtro=filt;
     }
     
-    public UsuarioTableModel getUsuarios(){
+    public InventarioTableModel getUsuarios(){
         return empleados;
     }
     

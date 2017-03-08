@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package cr.ac.una.fucem.inge.hawac.model;
-
 import cr.ac.una.fucem.inge.hawac.domain.Linea;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;

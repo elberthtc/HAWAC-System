@@ -87,10 +87,10 @@ public class ProductoController {
         }
         else
             if(view.masculinoRB.isSelected()){
-                p1.setGenero(false);
+                p1.setGenero(true);
             } 
             else {
-                p1.setGenero(true);
+                p1.setGenero(false);
             }
         
         InventarioId inventarioId = new InventarioId();

@@ -215,7 +215,10 @@ public class UsuarioView extends javax.swing.JDialog implements java.util.Observ
       public void update(java.util.Observable o, Object arg) {
         Usuario current = model.getCurrent();
         this.idTextField.setEnabled(model.getModo()== Application.MODO_AGREGAR);
-        this.idTextField.setText(current.getIdUsuario()+":P");
+        if(current.getIdUsuario()==-1){
+            this.idTextField.setText("");
+        }else
+            this.idTextField.setText(current.getIdUsuario()+"");
         if(model.getErrores().get("Id")!= null){
             IdLb.setBorder(Application.BORDER_ERROR);
             IdLb.setToolTipText(model.getErrores().get("id"));
@@ -224,7 +227,7 @@ public class UsuarioView extends javax.swing.JDialog implements java.util.Observ
             IdLb.setToolTipText("");
         }
         
-        this.passwordText.setText(current.getPassword()+":B");
+        this.passwordText.setText(current.getPassword()+"");
         if(model.getErrores().get("Password")!= null){
             passwordLB.setBorder(Application.BORDER_ERROR);
             passwordLB.setToolTipText(model.getErrores().get("password"));
@@ -244,6 +247,14 @@ public class UsuarioView extends javax.swing.JDialog implements java.util.Observ
             NombreLb.setBorder(null);
             NombreLb.setToolTipText("");
         }
+        
+        if(current.getTipo()==0){
+            administradorRB.setSelected(true);
+        }
+        else if(current.getTipo()==1){
+            dependienteRB.setSelected(true);
+        }
+        
         administradorRB.setEnabled(editable);
         dependienteRB.setEnabled(editable);
         guardarjButton.setVisible(editable);
