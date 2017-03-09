@@ -221,7 +221,7 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
     }//GEN-LAST:event_buscarButtonActionPerformed
 
     private void agregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarButtonActionPerformed
-        Application.EMPLEADO_VIEW.setLocation(this.agregarButton.getLocationOnScreen());
+        Application.INVENTARIO_VIEW.setLocation(this.agregarButton.getLocationOnScreen());
         controller.preAgregar();
     }//GEN-LAST:event_agregarButtonActionPerformed
 
@@ -268,7 +268,7 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
              nombreLb.setBorder(null);
              nombreLb.setToolTipText("");
         }
-        tablaEmpleados.setModel(model.getUsuarios());
+        tablaEmpleados.setModel(model.getInventarios());
         this.revalidate();
         if (!model.getMensaje().equals("")){
             JOptionPane.showMessageDialog(this, model.getMensaje(), "",JOptionPane.INFORMATION_MESSAGE);

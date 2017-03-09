@@ -11,10 +11,12 @@ import cr.ac.una.fucem.inge.hawac.controller.ClientesFacturaController;
 import cr.ac.una.fucem.inge.hawac.controller.UsuariosController;
 import cr.ac.una.fucem.inge.hawac.controller.FacturaController;
 import cr.ac.una.fucem.inge.hawac.controller.FacturasVentasController;
+import cr.ac.una.fucem.inge.hawac.controller.InventarioController;
 import cr.ac.una.fucem.inge.hawac.controller.InventariosController;
 import cr.ac.una.fucem.inge.hawac.controller.LoginController;
 import cr.ac.una.fucem.inge.hawac.controller.ProductoController;
 import cr.ac.una.fucem.inge.hawac.controller.ProductoFacturaController;
+import cr.ac.una.fucem.inge.hawac.controller.ProductoInventarioController;
 import cr.ac.una.fucem.inge.hawac.controller.ProductosController;
 import cr.ac.una.fucem.inge.hawac.controller.UsuarioController;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
@@ -23,6 +25,7 @@ import cr.ac.una.fucem.inge.hawac.model.ClienteModel;
 import cr.ac.una.fucem.inge.hawac.model.ClientesModel;
 import cr.ac.una.fucem.inge.hawac.model.FacturaModel;
 import cr.ac.una.fucem.inge.hawac.model.FacturasVentasModel;
+import cr.ac.una.fucem.inge.hawac.model.InventarioModel;
 import cr.ac.una.fucem.inge.hawac.model.InventariosModel;
 import cr.ac.una.fucem.inge.hawac.model.LoginModel;
 import cr.ac.una.fucem.inge.hawac.model.ProductoModel;
@@ -40,9 +43,11 @@ import cr.ac.una.fucem.inge.hawac.view.FacturaView;
 import cr.ac.una.fucem.inge.hawac.view.FacturasPagadasView;
 import cr.ac.una.fucem.inge.hawac.view.FacturasVentasView;
 import cr.ac.una.fucem.inge.hawac.view.InventarioMenuView;
+import cr.ac.una.fucem.inge.hawac.view.InventarioView;
 import cr.ac.una.fucem.inge.hawac.view.InventariosView;
 import cr.ac.una.fucem.inge.hawac.view.LoginView;
 import cr.ac.una.fucem.inge.hawac.view.ProductoFacturaView;
+import cr.ac.una.fucem.inge.hawac.view.ProductoInventarioView;
 import cr.ac.una.fucem.inge.hawac.view.ProductoView;
 import cr.ac.una.fucem.inge.hawac.view.ProductosView;
 import java.awt.Color;
@@ -76,6 +81,11 @@ public class Application {
         UsuarioView empleadoView= new UsuarioView(applicationView,true);
         EMPLEADO_VIEW=empleadoView;
         UsuarioController empleadoController= new UsuarioController(empleadoView, empleadoModel, domainModel,session);
+        
+        InventarioModel inventarioModel = new InventarioModel();
+        InventarioView inventarioView = new InventarioView(applicationView,true);
+        INVENTARIO_VIEW=inventarioView;
+        InventarioController inventarioControler = new InventarioController(inventarioView,inventarioModel,domainModel,session);
         
         ClientesModel clientesModel = new ClientesModel();
         ClientesView clientesView = new ClientesView();
@@ -131,6 +141,11 @@ public class Application {
         PRODUCTOFACTURA_VIEW=productoFacturaView;
         applicationView.addInternalFrame(productoFacturaView);
         ProductoFacturaController productoFacturaController=new ProductoFacturaController(productoFacturaView,session,productosModel,domainModel);
+        
+        ProductoInventarioView productoInventarioView = new ProductoInventarioView();
+        PRODUCTOINVENTARIO_VIEW=productoInventarioView;
+        applicationView.addInternalFrame(productoInventarioView);
+        ProductoInventarioController productoInventarioController = new ProductoInventarioController(productoInventarioView,session,productosModel,domainModel);
         
         FacturaModel facturaModel = new FacturaModel();
         FacturaView facturaView = new FacturaView();
@@ -193,6 +208,8 @@ public class Application {
     public static InventariosView INVENTARIOS_VIEW;
     //public static FacturaCompraView FACTURA_COMPRA_VIEW;
     public static ProductoFacturaView PRODUCTOFACTURA_VIEW;
+    public static InventarioView INVENTARIO_VIEW;
+    public static ProductoInventarioView PRODUCTOINVENTARIO_VIEW;
     public static FacturasVentasView FACTURAS_VENTAS_VIEW;
     public static FacturasPagadasView FACTURAS_PAGADAS_VIEW;
     //public static ChequeView Cheque_VIEW;

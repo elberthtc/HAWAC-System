@@ -53,6 +53,7 @@ public class ClientesFacturaController {
         }
         model.setClientes(rows);
     }
+    
     public void seleccionar(int row) {
         model.clearErrors();
         Cliente c1 = model.getClientes().getRowAt(row);

@@ -25,10 +25,10 @@ public class InventariosModel extends java.util.Observable {
         filtro= new Inventario();
         borrarErrores();
         List<Inventario> filas= new ArrayList<Inventario>();
-        this.setUsuarios(filas);
+        this.setInventarios(filas);
     }
     
-    public void setUsuarios(List<Inventario> empleados){
+    public void setInventarios(List<Inventario> empleados){
         int[] cols={InventarioTableModel.PRODUCTO,InventarioTableModel.CANTIDAD,InventarioTableModel.INVENTARIO,InventarioTableModel.ESTADO};
         this.empleados= new InventarioTableModel(cols, empleados);
         setChanged();
@@ -43,7 +43,7 @@ public class InventariosModel extends java.util.Observable {
         this.filtro=filt;
     }
     
-    public InventarioTableModel getUsuarios(){
+    public InventarioTableModel getInventarios(){
         return empleados;
     }
     

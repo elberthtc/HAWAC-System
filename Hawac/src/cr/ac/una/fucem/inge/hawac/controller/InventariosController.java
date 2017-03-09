@@ -5,6 +5,7 @@ import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import cr.ac.una.fucem.inge.hawac.domain.InventarioId;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
+import cr.ac.una.fucem.inge.hawac.model.InventarioModel;
 import cr.ac.una.fucem.inge.hawac.model.InventariosModel;
 import cr.ac.una.fucem.inge.hawac.model.UsuarioModel;
 import cr.ac.una.fucem.inge.hawac.view.InventariosView;
@@ -44,7 +45,7 @@ public class InventariosController {
             modelo.getErrores().put("nomjTextField", "Ningún registro coincide con la busqueda");
             modelo.setMensaje("NINGUN REGISTRO COINCIDE CON LA BUSQUEDA");
         }
-        modelo.setUsuarios(filas);
+        modelo.setInventarios(filas);
     }
     
     public void buscarPorNombre(){
@@ -81,7 +82,7 @@ public class InventariosController {
             modelo.getErrores().put("nomjTextField", "Ningún registro coincide con la busqueda");
             modelo.setMensaje("NINGUN REGISTRO COINCIDE CON LA BUSQUEDA");
         }
-        modelo.setUsuarios(filas);
+        modelo.setInventarios(filas);
     }
     
     public void preAgregar(){
@@ -92,11 +93,11 @@ public class InventariosController {
             modelo.commit();
             return;
         }
-        UsuarioModel empleadoModel=Application.EMPLEADO_VIEW.getModelo();
+        InventarioModel empleadoModel=Application.INVENTARIO_VIEW.getModelo();
         empleadoModel.clearErrors();
         empleadoModel.setModo(Application.MODO_AGREGAR);
-        empleadoModel.setCurrent(new Usuario());
-        Application.EMPLEADO_VIEW.setVisible(true);
+        empleadoModel.setCurrent(new Inventario());
+        Application.INVENTARIO_VIEW.setVisible(true);
     }
     
     public void editar(int fil){
@@ -116,7 +117,7 @@ public class InventariosController {
     
     public void borrar(int fil){
        modelo.borrarErrores();
-       Inventario seleccionado= modelo.getUsuarios().getFila(fil);
+       Inventario seleccionado= modelo.getInventarios().getFila(fil);
        Usuario principal = (Usuario) session.getAttribute("Usuario");
        if(principal.getTipo()!=0){
             modelo.setMensaje(Application.ROL_NOTAUTHORIZED);
@@ -127,7 +128,7 @@ public class InventariosController {
            domainModel.getInventarioBl().delete(seleccionado);
        }catch(Exception ex){}
        List<Inventario> filas = domainModel.getInventarioBl().findAll(Inventario.class.getName());
-       modelo.setUsuarios(filas);
+       modelo.setInventarios(filas);
     }
 
     public void salir(){

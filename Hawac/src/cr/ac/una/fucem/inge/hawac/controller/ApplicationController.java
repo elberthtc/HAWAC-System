@@ -34,10 +34,12 @@ public class ApplicationController {
         Application.PRODUCTOS_VIEW.getModel().init();
         Application.CLIENTES_FACTURA_VIEW.getModel().init();
         Application.EMPLEADOS_VIEW.getModel().inicializar();
+        Application.INVENTARIO_VIEW.getModelo().init();
         Application.FACTURA_VIEW.getModel().init();
         Application.INVENTARIOS_VIEW.getModel().inicializar();
         //Application.FACTURA_COMPRA_VIEW.getModel().init();
         Application.PRODUCTOFACTURA_VIEW.getModel().init();
+        Application.PRODUCTOINVENTARIO_VIEW.getModel().init();
         Application.FACTURAS_VENTAS_VIEW.getModel().init();
         //Application.FACTURAS_PAGADAS_VIEW.getModel().init();
         Application.APPLICATION_VIEW.getModel().init();
@@ -57,6 +59,8 @@ public class ApplicationController {
         //Application.FACTURAS_PAGADAS_VIEW.setVisible(false);
         //Application.FACTURA_COMPRA_VIEW.setVisible(false);
         view.setVisible(false);
+        Application.INVENTARIO_VIEW.setVisible(false);
+        Application.PRODUCTOINVENTARIO_VIEW.setVisible(false);
         Application.LOGIN_VIEW.getController().logout();
     }
 
