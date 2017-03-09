@@ -15,15 +15,6 @@ import hawac.Application;
 import hawac.Session;
 import java.util.List;
 import java.util.Arrays;
-/*import ferreteria.Application;
-import ferreteria.logic.Model;
-import ferreteria.Session;
-import ferreteriaentidades.Cliente;
-import ferreteriaentidades.Empleado;
-import ferreteria.presentacion.model.ClienteModel;
-import ferreteria.presentacion.model.ClientesModel;
-import ferreteria.presentacion.view.ClientesView;*/
-
 
 public class ClientesController {
     Model domainModel;
@@ -123,7 +114,7 @@ public class ClientesController {
         ClienteModel clienteModel = Application.CLIENTE_VIEW.getModel();
         Cliente c1 = model.getClientes().getRowAt(row);
         clienteModel.clearErrors();
-        Usuario principal = (Usuario) session.getAttribute(Application.EMPLOYEE_ATTRIBUTE);
+        Usuario principal = (Usuario) session.getAttribute("Usuario");
         if(true){
             clienteModel.setModo(Application.MODO_EDITAR);
         }else{

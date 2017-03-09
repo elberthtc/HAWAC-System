@@ -42,7 +42,7 @@ public class InventarioTableModel extends AbstractTableModel {
             case PRODUCTO: return empl.getId().getProducto();
             case CANTIDAD: return empl.getCantidad();
             case INVENTARIO: return empl.getId().getLocal();
-            case ESTADO: empl.getEstado();
+            case ESTADO: return empl.getEstado();
             default: return "";
         }
     }

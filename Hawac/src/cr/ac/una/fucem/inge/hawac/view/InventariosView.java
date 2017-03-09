@@ -5,6 +5,7 @@
  */
 package cr.ac.una.fucem.inge.hawac.view;
 import cr.ac.una.fucem.inge.hawac.controller.InventariosController;
+import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.InventariosModel;
 import hawac.Application;
 import javax.swing.JOptionPane;
@@ -59,11 +60,10 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
         eliminarButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         IdRadioButton = new javax.swing.JRadioButton();
-        NombreRadioButton = new javax.swing.JRadioButton();
         allRadioButton = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        setTitle("Planilla De Empleados");
+        setTitle("Inventarios");
 
         nombreLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         nombreLb.setText("Seleccione el argumento a buscar");
@@ -125,16 +125,12 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
 
         busqueda.add(IdRadioButton);
         IdRadioButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        IdRadioButton.setText("Id");
+        IdRadioButton.setText("Id Producto");
         IdRadioButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IdRadioButtonActionPerformed(evt);
             }
         });
-
-        busqueda.add(NombreRadioButton);
-        NombreRadioButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        NombreRadioButton.setText("Nombre");
 
         busqueda.add(allRadioButton);
         allRadioButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
@@ -150,12 +146,11 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
                     .addComponent(nombreLb)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(IdRadioButton)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(NombreRadioButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(nomjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(allRadioButton)
-                            .addComponent(IdRadioButton))
+                                .addComponent(allRadioButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(nomjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -184,25 +179,22 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(NombreRadioButton)
-                            .addComponent(nomjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(nomjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(allRadioButton))
                     .addComponent(buscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(agregarButton)
                     .addComponent(eliminarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
-        if (IdRadioButton.isSelected() == false && NombreRadioButton.isSelected() == false && allRadioButton.isSelected() == false) {
+        if (IdRadioButton.isSelected() == false && allRadioButton.isSelected() == false) {
             nombreLb.setBorder(Application.BORDER_ERROR);
             nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
         } else {
@@ -210,22 +202,20 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
             nombreLb.setToolTipText("");
             if (allRadioButton.isSelected() == true) {
                 controller.buscar();
-            }
-            if (NombreRadioButton.isSelected() == true && nomjTextField.getText().length() == 0) {
-                model.getErrores().put("nombreTextFd", "Digite el nombre a buscar");
-                nombreLb.setBorder(Application.BORDER_ERROR);
-                nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
-            }
-            if (NombreRadioButton.isSelected() == true && nomjTextField.getText().length() != 0) {
-                controller.buscarPorNombre();
-            }
-            if (IdRadioButton.isSelected() == true && nomjTextField.getText().length() == 0) {
-                model.getErrores().put("nombreTextFd", "Digite la identificación a buscar");
-                nombreLb.setBorder(Application.BORDER_ERROR);
-                nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
-            }
-            if (IdRadioButton.isSelected() == true && nomjTextField.getText().length() != 0) {
-                controller.buscarPorId();
+            } else {
+                if (IdRadioButton.isSelected() == true && nomjTextField.getText().length() == 0) {
+                    model.getErrores().put("nombreTextFd", "Digite la identificación a buscar");
+                    nombreLb.setBorder(Application.BORDER_ERROR);
+                    nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
+                } else {
+                    if (IdRadioButton.isSelected() == true && nomjTextField.getText().length() != 0 && Model.isNumeric(nomjTextField.getText())) {
+                        controller.buscarPorId();
+                    } else {
+                        model.getErrores().put("nombreTextFd", "Digite solo caracteres numericos");
+                        nombreLb.setBorder(Application.BORDER_ERROR);
+                        nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
+                    }
+                }
             }
         }
     }//GEN-LAST:event_buscarButtonActionPerformed
@@ -327,7 +317,6 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton IdRadioButton;
-    private javax.swing.JRadioButton NombreRadioButton;
     private javax.swing.JButton agregarButton;
     private javax.swing.JRadioButton allRadioButton;
     private javax.swing.JButton buscarButton;

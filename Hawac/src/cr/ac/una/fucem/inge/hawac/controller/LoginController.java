@@ -12,13 +12,6 @@ import cr.ac.una.fucem.inge.hawac.view.LoginView;
 import hawac.Application;
 import hawac.Session;
 
-/*import ferreteria.Application;
-import ferreteria.Session;
-import ferreteriaentidades.Empleado;
-import ferreteria.logic.Model;
-import ferreteria.presentacion.model.LoginModel;
-import ferreteria.presentacion.view.LoginView;*/
-
 public class LoginController {
     
     Model domainModel;
@@ -76,7 +69,7 @@ public class LoginController {
 
     public void logout(){
         model.clearErrors();
-        session.removeAttribute(Application.EMPLOYEE_ATTRIBUTE);
+        session.removeAttribute("Usuario");
         model.setCurrent(new Usuario());
         view.setVisible(true);
     }

@@ -150,7 +150,7 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         inventariosMenu.setText("INVENTARIO");
         inventariosMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
 
-        inventariosMenuItem.setText("Inventarios");
+        inventariosMenuItem.setText("Tienda");
         inventariosMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 inventariosMenuItemActionPerformed(evt);
@@ -237,6 +237,7 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     }//GEN-LAST:event_AboutItemActionPerformed
 
     private void inventariosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventariosMenuItemActionPerformed
+        Application.INVENTARIO = "Tienda";
         Application.INVENTARIOS_VIEW.setVisible(true);
     }//GEN-LAST:event_inventariosMenuItemActionPerformed
 

@@ -206,13 +206,6 @@ public class Application {
     public static Border BORDER_ERROR = BorderFactory.createLineBorder(Color.red);
     public static Border BORDER_NOBORDER = BorderFactory.createLineBorder(Color.red);
     
-    public static  final String  EMPLOYEE_ATTRIBUTE="Usuario";
-    
-    public static  final String  ROL_MANAGER="Administrador";
-    public static  final String  ROL_SELLER="Vendedor";
-    public static  final String  ROL_CASHIER="Cajero";
-    public static  final String  ROL_DISPATCHER="Despachador";
-    public static  final String  ROL_STOREKEEPER="Bodeguero";
-  
+    public static String INVENTARIO = "";
     public static  final String  ROL_NOTAUTHORIZED="No Autorizado!";
 }

@@ -81,7 +81,7 @@ public class FacturaController {
         int cantidad;
         InventarioId iId = new InventarioId("Tienda", l1.getProducto().getIdProducto());
         Inventario i1 = domainModel.getInventarioBl().findById(iId);
-        Usuario e1 = (Usuario) session.getAttribute(Application.EMPLOYEE_ATTRIBUTE);
+        Usuario e1 = (Usuario) session.getAttribute("Usuario");
         if (e1.getTipo() != 0) {
             model.setMensaje(Application.ROL_NOTAUTHORIZED);
             model.commit();
