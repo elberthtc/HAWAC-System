@@ -83,11 +83,6 @@ public class ProductoFacturaController {
                 }
                 l1.setProducto(p1);
                 l1.setCantidad(ex);
-                l1.setId(new LineaId(p1.getIdProducto(), 0));
-                 //l1.setNumeroLinea(CONTADOR);
-                // l1.set
-                // CONTADOR++;
-
             }
         }
         List<Linea> lineas;
@@ -95,19 +90,24 @@ public class ProductoFacturaController {
             try {
                 switch (model.getModo()) {
                     case Application.MODO_AGREGAR:
-                        Factura f1;
-                        List<Factura> facturas = domainModel.getFacturaBl().findAll(Factura.class.getName());
-                        f1 = new Factura();
-                        f1.setCodigoFactura(facturas.size()+1);
-                        f1.setCliente(null);
-                        f1.setFecha(new Date());
-                        f1.setMonto(-1);
-                        f1.setUsuario(e1);
-                        f1.setApartado(null);
                         
-                        l1.setFactura(f1);
-                        l1.getId().setFactura(f1.getCodigoFactura());
-                        domainModel.getFacturaBl().save(f1);
+                        Factura factura = domainModel.getFacturaBl().findById(Application.CANTIDAD);
+                        //Application.FACTURA_VIEW.getModel().setCurrent(factura);
+                        l1.setId(new LineaId(p1.getIdProducto(), factura.getCodigoFactura()));
+                        l1.setFactura(factura);
+                        //Factura f1;
+                        //List<Factura> facturas = domainModel.getFacturaBl().findAll(Factura.class.getName());
+                        //f1 = new Factura();
+                        //f1.setCodigoFactura(facturas.size()+1);
+                        //f1.setCliente();
+                        //f1.setFecha(new Date());
+                        //f1.setMonto(-1);
+                        //f1.setUsuario(e1);
+                        //f1.setApartado(null);
+                        
+                        //l1.setFactura(f1);
+                        //l1.getId().setFactura(f1.getCodigoFactura());
+                        //domainModel.getFacturaBl().save(f1);
                         domainModel.getLineaBl().save(l1);
                         int cantidad = i1.getCantidad() - l1.getCantidad();
                         i1.setCantidad(cantidad);
@@ -115,14 +115,19 @@ public class ProductoFacturaController {
                         model.setMensaje("PRODUCTO AGREGADO");
                         List<Linea> nuevo = new ArrayList<Linea>();
                         lineas = domainModel.getLineaBl().findAll(Linea.class.getName());
-                        for (int i = 0; i < lineas.size(); i++) {
-                            if (lineas.get(i).getId().getFactura() != f1.getCodigoFactura()) {
+                        //for (int i = 0; i < lineas.size(); i++) {
+                        int i=0,cont=lineas.size();
+                        while(i<lineas.size() && cont>0){
+                            if (lineas.get(i).getId().getFactura() != factura.getCodigoFactura()) {
                                 lineas.remove(lineas.get(i));
-                            }
+                            }else
+                                i++;
+                            cont--;
                         }
+                        //lineas.add(l1);
                         facturaModel.setLineas(lineas);
-                        f1.setCliente(Application.FACTURA_VIEW.getModel().getCliente());
-                        facturaModel.setCurrent(f1);
+                        //f1.setCliente(Application.FACTURA_VIEW.getModel().getCliente());
+                        //facturaModel.setCurrent(f1);
                         view.cantidadTextField.setText("0");
                         Application.PRODUCTOFACTURA_VIEW.setVisible(false);
                         break;
@@ -152,10 +157,37 @@ public class ProductoFacturaController {
         }
     }
   
-     public void buscar2(){
+    public void buscarPorDescripcion(){
+        model.clearErrors();
+        model.getFilter().setDescripcion(view.DescripcionText.getText());
+        List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName()); 
+        int i=0, cont=rows.size();
+        while(i<rows.size() && cont>0){
+            if(rows.get(i).getDescripcion().toLowerCase().indexOf(view.DescripcionText.getText().toLowerCase())!=0){
+                rows.remove(rows.get(i));
+            }else
+                i++;
+            cont--;
+        }
+        if(rows.isEmpty()){
+            model.getErrores().put("DescripcionText","Ningun registro coincide");
+             model.setMensaje("NINGUN REGISTRO COINCIDE");
+        }
+        model.setProductos(rows);
+    }
+    
+     public void buscarPorId(){
         model.clearErrors();
         model.getFilter().setIdProducto(Integer.parseInt(view.DescripcionText.getText()));
         List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName()); 
+        int i=0, cont=rows.size();
+        while(i<rows.size() && cont>0){
+            if(String.valueOf(rows.get(i).getIdProducto()).compareTo(view.DescripcionText.getText())!=0){
+                rows.remove(rows.get(i));
+            }else
+                i++;
+            cont--;
+        }
         if(rows.isEmpty()){
             model.getErrores().put("DescripcionText","Ningun registro coincide");
              model.setMensaje("NINGUN REGISTRO COINCIDE");

@@ -51,7 +51,7 @@ public class InventariosController {
         modelo.setInventarios(filas);
     }
     
-    public void buscarPorNombre(){
+    /*public void buscarPorNombre(){
         modelo.borrarErrores();
        // modelo.getFiltro().setNombre(vista.nomjTextField.getText());
         String nombre = vista.nomjTextField.getText();
@@ -66,20 +66,14 @@ public class InventariosController {
             modelo.setMensaje("NINGUN REGISTRO COINCIDE CON LA BUSQUEDA");
         }
         //modelo.setUsuarios(filas);
-    }
+    }*/
     
     public void buscarPorId(){
         modelo.borrarErrores();
         //modelo.getFiltro().setIdUsuario(Integer.parseInt(vista.nomjTextField.getText()));
         String nombre = vista.nomjTextField.getText();
-        List<Inventario> filas = new ArrayList<Inventario>(); //= domainModel.getInventarioBl().findAll(Inventario.class.getName());
-        /*for(int i = 0; i<filas.size();i++){
-            if(String.valueOf(filas.get(i).getId().getProducto()).indexOf(nombre)==-1){
-                filas.remove(filas.get(i));
-            }
-        }*/
+        List<Inventario> filas = new ArrayList<Inventario>(); 
         filas.add(domainModel.getInventarioBl().findById(new InventarioId(Application.INVENTARIO,Integer.parseInt(nombre))));
-        
         
         if(filas.isEmpty()){
             modelo.getErrores().put("nomjTextField", "Ningún registro coincide con la busqueda");

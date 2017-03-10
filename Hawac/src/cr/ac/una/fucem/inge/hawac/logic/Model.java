@@ -5,6 +5,7 @@
  */
 package cr.ac.una.fucem.inge.hawac.logic;
 import cr.ac.una.fucem.inge.hawac.bl.*;
+import cr.ac.una.fucem.inge.hawac.domain.Factura;
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import hawac.Application;
@@ -41,6 +42,7 @@ public class Model {
         lineaBl = new LineaBL();
         productoBl = new ProductoBL();
         usuarioBl = new UsuarioBL();
+        Application.CANTIDAD = facturaBl.findAll(Factura.class.getName()).size() + 1;
     }
     
     public Usuario getUsuario(int id, String clave) throws Exception{

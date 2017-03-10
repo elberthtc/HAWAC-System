@@ -33,6 +33,47 @@ public class ClientesFacturaController {
         view.setController(this);
         view.setModel(model);
     }
+    
+    public void buscarPorNombre() {
+        model.clearErrors();
+        model.getFilter().setNombre(view.nombreTextFd.getText());
+        List<Cliente> aux = domainModel.getClienteBl().findAll(Cliente.class.getName());
+        //for(int i=0;i<aux.size();i++){
+        int i=0, cont= aux.size();
+        while(i<aux.size() && cont>0){
+            if(aux.get(i).getNombre().toLowerCase().indexOf(view.nombreTextFd.getText().toLowerCase())==-1){
+                aux.remove(aux.get(i));
+            }else
+                i++;
+            cont--;
+        }
+        if (aux.isEmpty()) {
+            model.getErrores().put("nombreTextFd", "Ningun registro coincide");
+            model.setMensaje("NINGUN REGISTRO COINCIDE");
+        }
+        model.setClientes(aux);
+    }
+    
+    public void buscarPorId(){
+        model.clearErrors();
+        //model.getFilter().setCedula(Integer.parseInt(view.nombreTextFd.getText()));
+        List<Cliente> rows = domainModel.getClienteBl().findAll(Cliente.class.getName()); //ACA BUSCA POR ID
+        //for(int i=0;i<rows.size();i++){
+        int i=0, cont= rows.size();
+        while(i<rows.size() && cont>0){
+            if(String.valueOf(rows.get(i).getCedula()).indexOf(view.nombreTextFd.getText())==-1){
+                rows.remove(rows.get(i));
+            }else
+                i++;
+         cont--;
+        }
+        if(rows.isEmpty()){
+            model.getErrores().put("nombreTextFd","Ningun registro coincide");
+             model.setMensaje("NINGUN REGISTRO COINCIDE");
+        }
+        model.setClientes(rows);
+    }
+    
     public void buscar(){
         model.clearErrors();
         model.getFilter().setNombre(view.nombreTextFd.getText());
@@ -43,16 +84,7 @@ public class ClientesFacturaController {
         }
         model.setClientes(rows);
     }
-    public void buscar2(){
-        model.clearErrors();
-        model.getFilter().setCedula(Integer.parseInt(view.nombreTextFd.getText()));
-        List<Cliente> rows = domainModel.getClienteBl().findAll(Cliente.class.getName());
-        if(rows.isEmpty()){
-            model.getErrores().put("nombreTextFd","Ningun registro coincide");
-             model.setMensaje("NINGUN REGISTRO COINCIDE");
-        }
-        model.setClientes(rows);
-    }
+    
     
     public void seleccionar(int row) {
         model.clearErrors();

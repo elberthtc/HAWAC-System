@@ -47,12 +47,12 @@ public class LoginController {
             session.setAttibute("Usuario",real);
             view.setVisible(false);
             Application.APPLICATION_VIEW.getController().enter();
-            System.out.println(((Usuario)session.getAttribute("Usuario")).getPassword());
+            Application.FACTURA_VIEW.getModel().setEmpleado(real);
         } catch (Exception ex) {
             String n = ex.toString();
             System.out.println(n);
             if(ex.toString().compareTo("java.lang.NullPointerException")!=0){
-                Application.APPLICATION_VIEW.getController().enter();
+                
             }
             else {
                 model.setMensaje("Datos incorrectos");

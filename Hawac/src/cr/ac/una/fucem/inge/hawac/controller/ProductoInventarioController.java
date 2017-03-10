@@ -6,25 +6,14 @@
 package cr.ac.una.fucem.inge.hawac.controller;
 
 
-import cr.ac.una.fucem.inge.hawac.domain.Factura;
-import cr.ac.una.fucem.inge.hawac.domain.Inventario;
-import cr.ac.una.fucem.inge.hawac.domain.InventarioId;
-import cr.ac.una.fucem.inge.hawac.domain.Linea;
-import cr.ac.una.fucem.inge.hawac.domain.LineaId;
 import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
-import cr.ac.una.fucem.inge.hawac.model.FacturaModel;
 import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
-import cr.ac.una.fucem.inge.hawac.view.ProductoFacturaView;
 import cr.ac.una.fucem.inge.hawac.view.ProductoInventarioView;
 import hawac.Application;
 import hawac.Session;
 import java.util.List;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Date;
-import javax.swing.table.DefaultTableModel;
 
 public class ProductoInventarioController {
     Model domainModel;
@@ -51,8 +40,28 @@ public class ProductoInventarioController {
              model.setMensaje("NINGUN REGISTRO COINCIDE");
         }
         model.setProductos(rows);
- 
     }
+    
+    public void buscarPorDescripcion(){
+        model.clearErrors();
+        model.getFilter().setDescripcion(view.DescripcionText.getText());
+        List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName()); 
+        int i=0, cont=rows.size();
+        while(i<rows.size() && cont>0){
+            if(rows.get(i).getDescripcion().toLowerCase().indexOf(view.DescripcionText.getText().toLowerCase())!=0){
+                rows.remove(rows.get(i));
+            }else
+                i++;
+            cont--;
+        }
+        if(rows.isEmpty()){
+            model.getErrores().put("DescripcionText","Ningun registro coincide");
+             model.setMensaje("NINGUN REGISTRO COINCIDE");
+        }
+        model.setProductos(rows);
+    }
+    
+    
     
     public void seleccionar(int row) {
         model.clearErrors();
@@ -77,10 +86,18 @@ public class ProductoInventarioController {
         Application.INVENTARIO_VIEW.setVisible(true);
     }
   
-     public void buscar2(){
+     public void buscarPorId(){
         model.clearErrors();
         model.getFilter().setIdProducto(Integer.parseInt(view.DescripcionText.getText()));
         List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName()); 
+        int i=0, cont=rows.size();
+        while(i<rows.size() && cont>0){
+            if(String.valueOf(rows.get(i).getIdProducto()).compareTo(view.DescripcionText.getText())!=0){
+                rows.remove(rows.get(i));
+            }else
+                i++;
+            cont--;
+        }
         if(rows.isEmpty()){
             model.getErrores().put("DescripcionText","Ningun registro coincide");
              model.setMensaje("NINGUN REGISTRO COINCIDE");

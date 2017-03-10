@@ -44,6 +44,8 @@ public class ProductoController {
             //int m = Integer.parseInt(view.CodigoText.getText());
             p1.setIdProducto(Integer.parseInt(view.CodigoText.getText()));
             i1.setProducto(p1);
+        }else{
+            model.getErrores().put("Codigo", "El codigo debe ser Numerico");
         }
         p1.setDescripcion(view.DescripcionText.getText());
         if (view.DescripcionText.getText().length() == 0) {

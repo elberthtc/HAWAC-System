@@ -210,7 +210,7 @@ public class ClientesFacturaView extends javax.swing.JInternalFrame implements j
                     nombreLb.setToolTipText(model.getErrores().get("nombreTextFd"));
                 }
                 if(NombreRadioButton.isSelected()==true && nombreTextFd.getText().length()!=0){
-                    controller.buscar();
+                    controller.buscarPorNombre();
                 }
                 if(IdRadioButton.isSelected()==true && nombreTextFd.getText().length()==0){
                     model.getErrores().put("nombreTextFd","Digite la descripcion a buscar");
@@ -218,7 +218,7 @@ public class ClientesFacturaView extends javax.swing.JInternalFrame implements j
                     nombreLb.setToolTipText(model.getErrores().get("nombreTextFd"));
                 }
                 if(IdRadioButton.isSelected()==true && nombreTextFd.getText().length()!=0){
-                    controller.buscar2();
+                    controller.buscarPorId();
                 }
       }
     }//GEN-LAST:event_searchButtonActionPerformed

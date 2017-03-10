@@ -223,6 +223,8 @@ public class Application {
     public static Border BORDER_ERROR = BorderFactory.createLineBorder(Color.red);
     public static Border BORDER_NOBORDER = BorderFactory.createLineBorder(Color.red);
     
+    
+    public static int CANTIDAD = -1;
     public static String INVENTARIO = "";
     public static  final String  ROL_NOTAUTHORIZED="No Autorizado!";
 }

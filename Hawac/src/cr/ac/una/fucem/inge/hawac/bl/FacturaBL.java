@@ -34,7 +34,7 @@ public class FacturaBL extends BaseBL implements IBaseBL<Factura, Integer>{
 
     @Override
     public Factura findById(Integer o) {
-        return (Factura) this.getDao(o.getClass().getName()).findById(o);
+        return (Factura) this.getDao(Factura.class.getName()).findById(o);
     }
 
     @Override

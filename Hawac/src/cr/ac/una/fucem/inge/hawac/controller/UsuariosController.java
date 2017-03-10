@@ -48,7 +48,7 @@ public class UsuariosController {
         //for(int i = 0; i<filas.size();i++){
         int i=0, cont= filas.size();
         while(i<filas.size() && cont>0){
-            if(filas.get(i).getNombre().indexOf(nombre)==-1){
+            if(filas.get(i).getNombre().toLowerCase().indexOf(nombre.toLowerCase())==-1){
                 filas.remove(filas.get(i));
             }else
                 i++;

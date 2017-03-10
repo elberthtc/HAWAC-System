@@ -49,7 +49,7 @@ public class ClientesController {
         //for(int i=0;i<aux.size();i++){
         int i=0, cont= aux.size();
         while(i<aux.size() && cont>0){
-            if(aux.get(i).getNombre().indexOf(view.nombreTextFd.getText())==-1){
+            if(aux.get(i).getNombre().toLowerCase().indexOf(view.nombreTextFd.getText().toLowerCase())==-1){
                 aux.remove(aux.get(i));
             }else
                 i++;

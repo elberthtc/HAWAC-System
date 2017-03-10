@@ -39,7 +39,7 @@ public class FacturaController {
         this.session = session;
         model.init();
         view.setController(this);
-        view.setModel(m);
+        view.setModel(m);    
     }
 
     public void preAgregarCliente() {
@@ -62,7 +62,7 @@ public class FacturaController {
     public void preAgregarProducto() {
         model.clearErrors();
         Usuario e1 = (Usuario) session.getAttribute("Usuario");
-        if (e1.getTipo() != 0) {
+        if (e1.getTipo() == -1) {
             model.setMensaje(Application.ROL_NOTAUTHORIZED);
             model.commit();
             return;
@@ -73,6 +73,17 @@ public class FacturaController {
         productosModel.setModo(Application.MODO_AGREGAR);
         Application.PRODUCTOFACTURA_VIEW.setVisible(true);
 
+    }
+    
+    public void guardarDatosBasicos(){
+        Factura factura = new Factura();
+        factura.setCodigoFactura(Application.CANTIDAD);
+        factura.setFecha(model.getCurrent().getFecha());
+        factura.setMonto(0);
+        factura.setUsuario(model.getEmpleado());
+        factura.setApartado(null);
+        factura.setCliente(null);
+        domainModel.getFacturaBl().save(factura);
     }
 
     public void eliminar(int row) {
@@ -104,7 +115,7 @@ public class FacturaController {
         FacturasVentasModel facturas = Application.FACTURAS_VENTAS_VIEW.getModel();
         Usuario e1 = (Usuario) session.getAttribute("Usuario");
         Factura f1 = Application.FACTURA_VIEW.getModel().getCurrent();
-        if (e1.getTipo() != 0) {
+        if (e1.getTipo() == -1) {
             model.setMensaje(Application.ROL_NOTAUTHORIZED);
             model.commit();
             return;

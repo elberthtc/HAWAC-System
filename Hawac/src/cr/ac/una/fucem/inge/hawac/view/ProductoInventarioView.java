@@ -223,7 +223,7 @@ public class ProductoInventarioView extends javax.swing.JInternalFrame implement
                    buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
              }
             if(DescripcionRadioButton.isSelected()==true && DescripcionText.getText().length()!=0){
-                controller.buscar();
+                controller.buscarPorDescripcion();
             }
             if(CodigoRadioButton2.isSelected()==true && DescripcionText.getText().length()==0){
                    model.getErrores().put("DescripcionText","Digite la descripcion a buscar");
@@ -231,7 +231,7 @@ public class ProductoInventarioView extends javax.swing.JInternalFrame implement
                    buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
              }
             if(CodigoRadioButton2.isSelected()==true && DescripcionText.getText().length()!=0){
-                 controller.buscar2();
+                 controller.buscarPorId();
              }
         }
     }//GEN-LAST:event_BuscarButtonActionPerformed
