@@ -51,10 +51,14 @@ public class ProductosController {
         model.clearErrors();
         model.getFilter().setDescripcion(view.DescripcionText.getText());
         List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
-        for (int i = 0; i < rows.size(); i++) {
+        int i=0,cont=rows.size();
+        while(i<rows.size() && cont>0){
+        //for (int i = 0; i < rows.size(); i++) {
             if (rows.get(i).getDescripcion().indexOf(view.DescripcionText.getText()) == -1) {
                 rows.remove(rows.get(i));
-            }
+            }else
+                i++;
+            cont--;
         }
         if (rows.isEmpty()) {
             model.getErrores().put("DescripcionText", "Ningun registro coincide");
@@ -67,10 +71,14 @@ public class ProductosController {
         model.clearErrors();
         model.getFilter().setDescripcion(view.DescripcionText.getText());
         List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
-        for (int i = 0; i < rows.size(); i++) {
+        //for (int i = 0; i < rows.size(); i++) {
+        int i=0,cont=rows.size();
+        while(i<rows.size() && cont>0){
             if (String.valueOf(rows.get(i).getIdProducto()).indexOf(view.DescripcionText.getText()) == -1) {
                 rows.remove(rows.get(i));
-            }
+            } else
+                i++;
+            cont--;
         }
         if (rows.isEmpty()) {
             model.getErrores().put("DescripcionText", "Ningun registro coincide");
