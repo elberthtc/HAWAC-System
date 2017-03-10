@@ -5,7 +5,6 @@
  */
 package cr.ac.una.fucem.inge.hawac.controller;
 
-
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
@@ -21,43 +20,45 @@ import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 
 public class ProductosController {
+
     Model domainModel;
     Session session;
     ProductosView view;
     ProductosModel model;
-    
+
     public ProductosController(ProductosView view, Session session, ProductosModel model, Model domainModel) {
         model.init();
-        this.domainModel= domainModel;
-        this.session=session;
+        this.domainModel = domainModel;
+        this.session = session;
         this.view = view;
         this.model = model;
         view.setController(this);
         view.setModel(model);
     }
-    public void buscar(){
+
+    public void buscar() {
         model.clearErrors();
         model.getFilter().setDescripcion(view.DescripcionText.getText());
-        List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName()); 
-        if(rows.isEmpty()){
-            model.getErrores().put("DescripcionText","Ningun registro coincide");
-             model.setMensaje("NINGUN REGISTRO COINCIDE");
+        List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
+        if (rows.isEmpty()) {
+            model.getErrores().put("DescripcionText", "Ningun registro coincide");
+            model.setMensaje("NINGUN REGISTRO COINCIDE");
         }
         model.setProductos(rows);
- 
+
     }
-    
+
     public void buscarPorDescripcion() {
         model.clearErrors();
         model.getFilter().setDescripcion(view.DescripcionText.getText());
         List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
-        int i=0,cont=rows.size();
-        while(i<rows.size() && cont>0){
-        //for (int i = 0; i < rows.size(); i++) {
-            if (rows.get(i).getDescripcion().indexOf(view.DescripcionText.getText()) == -1) {
+        int i = 0, cont = rows.size();
+        while (i < rows.size() && cont > 0) {
+            if (rows.get(i).getDescripcion().toLowerCase().indexOf(view.DescripcionText.getText().toLowerCase()) == -1) {
                 rows.remove(rows.get(i));
-            }else
+            } else {
                 i++;
+            }
             cont--;
         }
         if (rows.isEmpty()) {
@@ -66,18 +67,19 @@ public class ProductosController {
         }
         model.setProductos(rows);
     }
-    
+
     public void buscarPorCodigo() {
         model.clearErrors();
         model.getFilter().setDescripcion(view.DescripcionText.getText());
         List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
         //for (int i = 0; i < rows.size(); i++) {
-        int i=0,cont=rows.size();
-        while(i<rows.size() && cont>0){
+        int i = 0, cont = rows.size();
+        while (i < rows.size() && cont > 0) {
             if (String.valueOf(rows.get(i).getIdProducto()).indexOf(view.DescripcionText.getText()) == -1) {
                 rows.remove(rows.get(i));
-            } else
+            } else {
                 i++;
+            }
             cont--;
         }
         if (rows.isEmpty()) {
@@ -86,9 +88,8 @@ public class ProductosController {
         }
         model.setProductos(rows);
     }
-     
-     
-    public void borrar(int row){
+
+    public void borrar(int row) {
         model.clearErrors();
         Producto p1 = model.getProductos().getRowAt(row);
         List<Inventario> inventarioLista = domainModel.getInventarioBl().findAll(Inventario.class.getName());
@@ -110,11 +111,11 @@ public class ProductosController {
         List<Producto> rowsMod = domainModel.getProductoBl().findAll(Producto.class.getName());
         model.setProductos(rowsMod);
     }
-    
-    public void preAgregar(){
+
+    public void preAgregar() {
         model.clearErrors();
         Usuario e1 = (Usuario) session.getAttribute("Usuario");
-        if(e1.getTipo()!=0){
+        if (e1.getTipo() != 0) {
             model.setMensaje(Application.ROL_NOTAUTHORIZED);
             model.commit();
             return;
@@ -125,35 +126,35 @@ public class ProductosController {
         productoModel.setCurrent(new Producto());
         Application.PRODUCTO_VIEW.setVisible(true);
     }
-   public void editar(int row){
+
+    public void editar(int row) {
         model.clearErrors();
         ProductoModel productoModel = Application.PRODUCTO_VIEW.getModel();
         Producto c1 = model.getProductos().getRowAt(row);
         productoModel.clearErrors();
         Usuario principal = (Usuario) session.getAttribute("Usuario");
-        if(principal.getTipo()==0){
+        if (principal.getTipo() == 0) {
             productoModel.setModo(Application.MODO_EDITAR);
-        }else{
+        } else {
             productoModel.setModo(Application.MODO_CONSULTAR);
         }
         productoModel.setCurrent(c1);
         Application.PRODUCTO_VIEW.setVisible(true);
- }
+    }
 
-  public void salir(){
-        model.clearErrors();   
+    public void salir() {
+        model.clearErrors();
         view.setVisible(false);
         Application.LOGIN_VIEW.getController().logout();
- }
-  
-     private static boolean isNumeric(String cadena){
-	try {
-		Integer.parseInt(cadena);
-		return true;
-	} catch (NumberFormatException exc){
-		return false;
-	}
     }
+
+    private static boolean isNumeric(String cadena) {
+        try {
+            Integer.parseInt(cadena);
+            return true;
+        } catch (NumberFormatException exc) {
+            return false;
+        }
+    }
+
 }
-
-
