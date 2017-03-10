@@ -36,11 +36,9 @@ public class ClienteView extends javax.swing.JDialog implements java.util.Observ
         idLb = new javax.swing.JLabel();
         numTelefonoLb = new javax.swing.JLabel();
         CorreoLb = new javax.swing.JLabel();
-        porcentajeDescLb = new javax.swing.JLabel();
         nombreTextFd = new javax.swing.JTextField();
         numTelefonoTextFd = new javax.swing.JTextField();
         correoTextFd = new javax.swing.JTextField();
-        DescuentoTextFd = new javax.swing.JTextField();
         idTextFd = new javax.swing.JTextField();
         saveButton = new javax.swing.JButton();
         returnButton = new javax.swing.JButton();
@@ -61,9 +59,6 @@ public class ClienteView extends javax.swing.JDialog implements java.util.Observ
         CorreoLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         CorreoLb.setText("Correo");
 
-        porcentajeDescLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        porcentajeDescLb.setText("Descuento");
-
         nombreTextFd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         nombreTextFd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,8 +69,6 @@ public class ClienteView extends javax.swing.JDialog implements java.util.Observ
         numTelefonoTextFd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         correoTextFd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        DescuentoTextFd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         idTextFd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -106,16 +99,10 @@ public class ClienteView extends javax.swing.JDialog implements java.util.Observ
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(porcentajeDescLb)
-                                .addGap(59, 59, 59))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(numTelefonoLb, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CorreoLb, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(numTelefonoLb, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CorreoLb, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(DescuentoTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(correoTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(idTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,20 +144,15 @@ public class ClienteView extends javax.swing.JDialog implements java.util.Observ
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CorreoLb, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(correoTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(54, 54, 54)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(porcentajeDescLb)
-                            .addComponent(DescuentoTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(20, 20, 20)
-                        .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(saveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(returnButton, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel2))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         pack();
@@ -210,7 +192,7 @@ public class ClienteView extends javax.swing.JDialog implements java.util.Observ
     public void update(java.util.Observable updatedModel,Object parametros) {
         Cliente current = model.getCurrent();
         this.idTextFd.setEnabled(model.getModo()==Application.MODO_AGREGAR);
-        if(current.getCedula()==0){
+        if(current.getCedula()==-1){
             idTextFd.setText("");
         } else {
             idTextFd.setText(current.getCedula()+"");
@@ -236,7 +218,7 @@ public class ClienteView extends javax.swing.JDialog implements java.util.Observ
         }
         
         numTelefonoTextFd.setEnabled(editable);
-        numTelefonoTextFd.setText("TELEFONO");
+        numTelefonoTextFd.setText(current.getTelefono());
         if(model.getErrores().get("Numero Telefono")!= null){
             numTelefonoLb.setBorder(Application.BORDER_ERROR);
             numTelefonoLb.setToolTipText(model.getErrores().get("Numero Telefono"));
@@ -246,7 +228,7 @@ public class ClienteView extends javax.swing.JDialog implements java.util.Observ
         }
         
         correoTextFd.setEnabled(editable);
-        correoTextFd.setText("CORREO");
+        correoTextFd.setText(current.getCorreo());
         if(model.getErrores().get("Correo")!= null){
             CorreoLb.setBorder(Application.BORDER_ERROR);
             CorreoLb.setToolTipText(model.getErrores().get("Correo"));
@@ -255,16 +237,6 @@ public class ClienteView extends javax.swing.JDialog implements java.util.Observ
             CorreoLb.setToolTipText("");
         }
         
-        DescuentoTextFd.setEnabled(editable);
-        //String desc = String.valueOf(current.getPorcentajeDescuento());
-        DescuentoTextFd.setText("DESCUENTO");
-        if(model.getErrores().get("Descuento")!= null){
-            porcentajeDescLb.setBorder(Application.BORDER_ERROR);
-            porcentajeDescLb.setToolTipText(model.getErrores().get("Descuento"));
-        }else{
-            porcentajeDescLb.setBorder(null);
-            porcentajeDescLb.setToolTipText("");
-        }
         saveButton.setVisible(editable);
         this.validate();
         if (!model.getMensaje().equals("")){
@@ -318,7 +290,6 @@ public class ClienteView extends javax.swing.JDialog implements java.util.Observ
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel CorreoLb;
-    public javax.swing.JTextField DescuentoTextFd;
     public javax.swing.JTextField correoTextFd;
     public javax.swing.JLabel idLb;
     public javax.swing.JTextField idTextFd;
@@ -328,7 +299,6 @@ public class ClienteView extends javax.swing.JDialog implements java.util.Observ
     public javax.swing.JTextField nombreTextFd;
     public javax.swing.JLabel numTelefonoLb;
     public javax.swing.JTextField numTelefonoTextFd;
-    public javax.swing.JLabel porcentajeDescLb;
     public javax.swing.JButton returnButton;
     public javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables

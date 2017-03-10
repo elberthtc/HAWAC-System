@@ -115,12 +115,20 @@
             </Property>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="inventariosMenuItem">
+            <MenuItem class="javax.swing.JMenuItem" name="tiendaMenuItem">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Tienda"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="inventariosMenuItemActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tiendaMenuItemActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="fabricaMenuItem">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="F&#xe1;brica"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fabricaMenuItemActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

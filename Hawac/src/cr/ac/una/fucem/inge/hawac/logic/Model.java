@@ -5,7 +5,9 @@
  */
 package cr.ac.una.fucem.inge.hawac.logic;
 import cr.ac.una.fucem.inge.hawac.bl.*;
+import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
+import hawac.Application;
 import java.util.Collection;
 import java.util.List;
 
@@ -48,6 +50,19 @@ public class Model {
         }else{
             throw new Exception ("Contraseña Incorrecta");
         }
+    }
+    
+    public List<Inventario> getInventario(){
+        List<Inventario> inventarios = inventarioBl.findAll(Inventario.class.getName());
+        int i=0, cont=inventarios.size();
+        while(inventarios.size()>0 && cont > 0){
+            if(inventarios.get(i).getId().getLocal().compareTo(Application.INVENTARIO)!=0){
+                inventarios.remove(inventarios.get(i));
+            }else
+                i++;
+            cont--;
+        }
+        return inventarios;
     }
 
     public AbonoBL getAbonoBl() {

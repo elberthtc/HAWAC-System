@@ -4,6 +4,7 @@ package cr.ac.una.fucem.inge.hawac.view;
 
 
 import cr.ac.una.fucem.inge.hawac.controller.InventarioController;
+import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import cr.ac.una.fucem.inge.hawac.model.InventarioModel;
 import hawac.Application;
@@ -48,7 +49,7 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
         cantidadLb = new javax.swing.JLabel();
         idTextField = new javax.swing.JTextField();
         productoLb = new javax.swing.JLabel();
-        nombreTextField = new javax.swing.JTextField();
+        cantidadTextField = new javax.swing.JTextField();
         guardarjButton = new javax.swing.JButton();
         canceljButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
@@ -73,10 +74,10 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
         productoLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         productoLb.setText("Producto:");
 
-        nombreTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        nombreTextField.addActionListener(new java.awt.event.ActionListener() {
+        cantidadTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        cantidadTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreTextFieldActionPerformed(evt);
+                cantidadTextFieldActionPerformed(evt);
             }
         });
 
@@ -125,7 +126,7 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(estadoCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cantidadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(guardarjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -154,7 +155,7 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cantidadLb)
-                    .addComponent(nombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cantidadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(estadoLb, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,9 +186,9 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
         this.setVisible(false);
     }//GEN-LAST:event_canceljButtonActionPerformed
 
-    private void nombreTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTextFieldActionPerformed
+    private void cantidadTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidadTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreTextFieldActionPerformed
+    }//GEN-LAST:event_cantidadTextFieldActionPerformed
 
     private void buscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBActionPerformed
         this.setVisible(false);
@@ -195,50 +196,59 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
     }//GEN-LAST:event_buscarBActionPerformed
 
    
-      public void update(java.util.Observable o, Object arg) {
+    public void update(java.util.Observable o, Object arg) {
         Producto current = model.getProductoActual();
-        if(current.getIdProducto()==0){
+        Inventario inv = model.getCurrent();
+        if (current.getIdProducto() == 0) {
             this.idTextField.setText("");
             this.idTextField.setEnabled(false);
-        }else{
-            this.idTextField.setText(current.getIdProducto()+"");
+        } else {
+            this.idTextField.setText(current.getIdProducto() + "");
             this.idTextField.setEnabled(false);
         }
-        if(model.getErrores().get("Id")!= null){
+        if (model.getErrores().get("Id") != null) {
             productoLb.setBorder(Application.BORDER_ERROR);
             productoLb.setToolTipText(model.getErrores().get("id"));
-        }else{
+        } else {
             productoLb.setBorder(null);
             productoLb.setToolTipText("");
         }
+
+        if(inv.getCantidad()==-1){
+            cantidadTextField.setText("");
+        } else
+            cantidadTextField.setText(inv.getCantidad()+"");
         
-       // this.passwordText.setText(current.getPassword()+"");
-        if(model.getErrores().get("Password")!= null){
+        if (model.getErrores().get("cantidad") != null) {
             estadoLb.setBorder(Application.BORDER_ERROR);
-            estadoLb.setToolTipText(model.getErrores().get("password"));
-        }else{
+            estadoLb.setToolTipText(model.getErrores().get("cantidad"));
+        } else {
             estadoLb.setBorder(null);
             estadoLb.setToolTipText("");
         }
-        
-        
+
         Boolean editable = Arrays.asList(Application.MODO_AGREGAR, Application.MODO_EDITAR).contains(model.getModo());
-        nombreTextField.setEnabled(editable);
-       // nombreTextField.setText(current.getNombre());
-        if(model.getErrores().get("Nombre")!= null){
+        //cantidadTextField.setEnabled(editable);
+        // nombreTextField.setText(current.getNombre());
+        /*if (model.getErrores().get("Nombre") != null) {
             cantidadLb.setBorder(Application.BORDER_ERROR);
             cantidadLb.setToolTipText(model.getErrores().get("Nombre"));
-        }else{
+        } else {
             cantidadLb.setBorder(null);
             cantidadLb.setToolTipText("");
         }
+        */
         
+        if(inv.getEstado().compareTo("")!=0){
+            estadoCB.setSelectedItem(inv.getEstado());
+        }
+
         guardarjButton.setVisible(editable);
         this.validate();
-        if (!model.getMensaje().equals("")){
-            JOptionPane.showMessageDialog(this, model.getMensaje(), "",JOptionPane.INFORMATION_MESSAGE);
-        } 
-          
+        if (!model.getMensaje().equals("")) {
+            JOptionPane.showMessageDialog(this, model.getMensaje(), "", JOptionPane.INFORMATION_MESSAGE);
+        }
+
     }
       
     public static void main(String args[]) {
@@ -280,13 +290,13 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
     public javax.swing.JButton buscarB;
     private javax.swing.JButton canceljButton;
     private javax.swing.JLabel cantidadLb;
+    public javax.swing.JTextField cantidadTextField;
     public javax.swing.JComboBox estadoCB;
     private javax.swing.JLabel estadoLb;
     private javax.swing.JButton guardarjButton;
     public javax.swing.JTextField idTextField;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    public javax.swing.JTextField nombreTextField;
     private javax.swing.JLabel productoLb;
     // End of variables declaration//GEN-END:variables
 

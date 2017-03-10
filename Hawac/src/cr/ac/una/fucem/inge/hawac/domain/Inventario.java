@@ -15,6 +15,10 @@ public class Inventario  implements java.io.Serializable {
      private String estado;
 
     public Inventario() {
+        id=new InventarioId();
+        producto = new Producto();
+        cantidad = -1;
+        estado = ""; 
     }
 
     public Inventario(InventarioId id, Producto producto, int cantidad, String estado) {

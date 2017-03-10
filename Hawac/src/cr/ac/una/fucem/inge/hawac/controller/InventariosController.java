@@ -1,4 +1,3 @@
-
 package cr.ac.una.fucem.inge.hawac.controller;
 
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
@@ -37,9 +36,13 @@ public class InventariosController {
         modelo.borrarErrores();
         //modelo.getFiltro().setNombre(vista.nomjTextField.getText());
         List<Inventario> filas= domainModel.getInventarioBl().findAll(Inventario.class.getName());
-        for(int i=0;i<filas.size();i++){
+        int i=0, cont=filas.size();
+        while(filas.size()>0 && cont>0){
             if(filas.get(i).getId().getLocal().compareTo(Application.INVENTARIO)!=0)
                 filas.remove(filas.get(i));
+            else
+                i++;
+            cont--;
         }
         if(filas.isEmpty()){
             modelo.getErrores().put("nomjTextField", "Ningún registro coincide con la busqueda");
@@ -101,18 +104,19 @@ public class InventariosController {
     }
     
     public void editar(int fil){
-        /*modelo.borrarErrores();
-        UsuarioModel empleadoModel=Application.EMPLEADO_VIEW.getModelo();
-        Usuario seleccionado= modelo.getUsuarios().getFila(fil);
-        empleadoModel.clearErrors();
+        modelo.borrarErrores();
+        InventarioModel inventarioModel=Application.INVENTARIO_VIEW.getModelo();
+        Inventario seleccionado= modelo.getInventarios().getFila(fil);
+        inventarioModel.setProductoActual(domainModel.getProductoBl().findById(seleccionado.getId().getProducto()));
+        inventarioModel.clearErrors();
         Usuario principal = (Usuario) session.getAttribute("Usuario");
          if(principal.getTipo() == 0){
-            empleadoModel.setModo(Application.MODO_EDITAR);
+            inventarioModel.setModo(Application.MODO_EDITAR);
         }else{
-            empleadoModel.setModo(Application.MODO_CONSULTAR);
+            inventarioModel.setModo(Application.MODO_CONSULTAR);
         }
-        empleadoModel.setCurrent(seleccionado);
-        Application.EMPLEADO_VIEW.setVisible(true);*/
+        inventarioModel.setCurrent(seleccionado);
+        Application.INVENTARIO_VIEW.setVisible(true);
     }
     
     public void borrar(int fil){

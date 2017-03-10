@@ -238,7 +238,7 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
     private void tablaEmpleadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tablaEmpleadosMouseClicked
          if(evt.getClickCount()==2){
             int fila=this.tablaEmpleados.getSelectedRow();
-            Application.EMPLEADO_VIEW.setLocation(evt.getLocationOnScreen());
+            Application.INVENTARIO_VIEW.setLocation(evt.getLocationOnScreen());
             controller.editar(fila);
         }
 

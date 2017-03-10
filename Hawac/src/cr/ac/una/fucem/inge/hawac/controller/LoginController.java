@@ -50,13 +50,14 @@ public class LoginController {
             System.out.println(((Usuario)session.getAttribute("Usuario")).getPassword());
         } catch (Exception ex) {
             String n = ex.toString();
-            if(ex.toString().compareTo("java.lang.NullPointerException")==0){
+            System.out.println(n);
+            if(ex.toString().compareTo("java.lang.NullPointerException")!=0){
                 Application.APPLICATION_VIEW.getController().enter();
-                //System.out.println(session.getAttribute(Application.EMPLOYEE_ATTRIBUTE).toString());
             }
             else {
                 model.setMensaje("Datos incorrectos");
                 e1.setPassword("");
+                e1.setIdUsuario(-1);
                 model.setCurrent(e1);
             }
         }

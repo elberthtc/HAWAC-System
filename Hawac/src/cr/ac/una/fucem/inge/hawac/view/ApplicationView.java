@@ -46,7 +46,8 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         CobrosMenu = new javax.swing.JMenu();
         cobrosMenuItem = new javax.swing.JMenuItem();
         inventariosMenu = new javax.swing.JMenu();
-        inventariosMenuItem = new javax.swing.JMenuItem();
+        tiendaMenuItem = new javax.swing.JMenuItem();
+        fabricaMenuItem = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         despachosMenuItem = new javax.swing.JMenuItem();
         HelpMenu = new javax.swing.JMenu();
@@ -150,13 +151,21 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         inventariosMenu.setText("INVENTARIO");
         inventariosMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
 
-        inventariosMenuItem.setText("Tienda");
-        inventariosMenuItem.addActionListener(new java.awt.event.ActionListener() {
+        tiendaMenuItem.setText("Tienda");
+        tiendaMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                inventariosMenuItemActionPerformed(evt);
+                tiendaMenuItemActionPerformed(evt);
             }
         });
-        inventariosMenu.add(inventariosMenuItem);
+        inventariosMenu.add(tiendaMenuItem);
+
+        fabricaMenuItem.setText("Fábrica");
+        fabricaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fabricaMenuItemActionPerformed(evt);
+            }
+        });
+        inventariosMenu.add(fabricaMenuItem);
 
         MenuBar.add(inventariosMenu);
 
@@ -236,10 +245,15 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         controller.about();
     }//GEN-LAST:event_AboutItemActionPerformed
 
-    private void inventariosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inventariosMenuItemActionPerformed
+    private void tiendaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiendaMenuItemActionPerformed
         Application.INVENTARIO = "Tienda";
         Application.INVENTARIOS_VIEW.setVisible(true);
-    }//GEN-LAST:event_inventariosMenuItemActionPerformed
+    }//GEN-LAST:event_tiendaMenuItemActionPerformed
+
+    private void fabricaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fabricaMenuItemActionPerformed
+        Application.INVENTARIO = "Fabrica";
+        Application.INVENTARIOS_VIEW.setVisible(true);
+    }//GEN-LAST:event_fabricaMenuItemActionPerformed
 
     public ApplicationController getController() {
         return controller;
@@ -318,12 +332,13 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     private javax.swing.JMenuItem compraItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem despachosMenuItem;
+    private javax.swing.JMenuItem fabricaMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu inventariosMenu;
-    private javax.swing.JMenuItem inventariosMenuItem;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem productosItem;
     private javax.swing.JMenuItem salirItem;
+    private javax.swing.JMenuItem tiendaMenuItem;
     private javax.swing.JMenuItem ventaItem;
     // End of variables declaration//GEN-END:variables
 }

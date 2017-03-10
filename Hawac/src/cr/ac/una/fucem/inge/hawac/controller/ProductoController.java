@@ -49,20 +49,6 @@ public class ProductoController {
         if (view.DescripcionText.getText().length() == 0) {
             model.getErrores().put("Descripcion", "Descripcion requerida");
         }
-
-        if (Model.isNumeric(view.cantidadText.getText())) {
-            int ex = Integer.parseInt(view.cantidadText.getText());
-            if (ex == 0 || ex%1 != 0) {
-                model.getErrores().put("Cantidad", "Digito Invalido");
-            }
-            i1.setCantidad(ex);
-        } else if (view.cantidadText.getText().compareTo("NO PERMITIDO")!=0){
-            model.getErrores().put("Cantidad", "Digite Solo numeros");
-        }
-        
-        if (view.cantidadText.getText().length() == 0) {
-            model.getErrores().put("Cantidad", "Cantidad requerida");
-        }
         
         if (isNumeric2(view.PrecioText.getText())) {
             double prec = Double.parseDouble(view.PrecioText.getText());
@@ -92,25 +78,7 @@ public class ProductoController {
             else {
                 p1.setGenero(false);
             }
-        
-        InventarioId inventarioId = new InventarioId();
-        inventarioId.setProducto(p1.getIdProducto());
-        if( !view.tiendaRB.isSelected() && !view.fabricaRB.isSelected() ){
-            view.inventarioLabel.setBorder(Application.BORDER_ERROR);
-            view.inventarioLabel.setToolTipText(model.getErrores().get("inventarioLabel"));
-        }
-        else
-            if(view.tiendaRB.isSelected()){
-                inventarioId.setLocal(view.tiendaRB.getText());
-                i1.setId(inventarioId);
-            } 
-            else{
-                inventarioId.setLocal(view.fabricaRB.getText());
-            }
-        System.out.println(view.tallaCB.getSelectedItem().toString());
-        p1.setTalla(view.tallaCB.getSelectedItem().toString());
-        i1.setEstado(view.estadoCB.getSelectedItem().toString());
-        
+        p1.setTalla(view.tallaCB.getSelectedItem().toString()); 
         
 
         List<Producto> productos;
@@ -119,7 +87,6 @@ public class ProductoController {
                 switch (model.getModo()) {
                     case Application.MODO_AGREGAR:
                         domainModel.getProductoBl().save(p1);
-                        domainModel.getInventarioBl().save(i1);
                         model.setMensaje("PRODUCTO AGREGADO");
                         model.setCurrent(new Producto());
                         productos = domainModel.getProductoBl().findAll(Producto.class.getName());
@@ -128,7 +95,6 @@ public class ProductoController {
                         break;
                     case Application.MODO_EDITAR:
                         domainModel.getProductoBl().merge(p1);
-                        //domainModel.getInventarioBl().merge(i1);
                         model.setMensaje("PRODUCTO MODIFICADO");
                         model.setCurrent(p1);
                         productos = domainModel.getProductoBl().findAll(Producto.class.getName());

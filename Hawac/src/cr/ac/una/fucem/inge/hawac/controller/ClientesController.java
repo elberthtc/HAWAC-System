@@ -46,10 +46,14 @@ public class ClientesController {
         model.clearErrors();
         model.getFilter().setNombre(view.nombreTextFd.getText());
         List<Cliente> aux = domainModel.getClienteBl().findAll(Cliente.class.getName());
-        for(int i=0;i<aux.size();i++){
+        //for(int i=0;i<aux.size();i++){
+        int i=0, cont= aux.size();
+        while(i<aux.size() && cont>0){
             if(aux.get(i).getNombre().indexOf(view.nombreTextFd.getText())==-1){
                 aux.remove(aux.get(i));
-            }
+            }else
+                i++;
+            cont--;
         }
         if (aux.isEmpty()) {
             model.getErrores().put("nombreTextFd", "Ningun registro coincide");
@@ -62,10 +66,14 @@ public class ClientesController {
         model.clearErrors();
         //model.getFilter().setCedula(Integer.parseInt(view.nombreTextFd.getText()));
         List<Cliente> rows = domainModel.getClienteBl().findAll(Cliente.class.getName()); //ACA BUSCA POR ID
-        for(int i=0;i<rows.size();i++){
+        //for(int i=0;i<rows.size();i++){
+        int i=0, cont= rows.size();
+        while(i<rows.size() && cont>0){
             if(String.valueOf(rows.get(i).getCedula()).indexOf(view.nombreTextFd.getText())==-1){
                 rows.remove(rows.get(i));
-            }
+            }else
+                i++;
+         cont--;
         }
         if(rows.isEmpty()){
             model.getErrores().put("nombreTextFd","Ningun registro coincide");
@@ -86,14 +94,12 @@ public class ClientesController {
         try{
             domainModel.getClienteBl().delete(c1);
         }catch (Exception ex) { }
-        
         List<Cliente> rowsMod = domainModel.getClienteBl().findAll(Cliente.class.getName());
         model.setClientes(rowsMod);
     }
     
     
-    public void preAgregar(){
-        
+    public void preAgregar(){    
         model.clearErrors();
         Usuario e1 = (Usuario) session.getAttribute("Usuario");
         System.out.println(e1.getPassword());

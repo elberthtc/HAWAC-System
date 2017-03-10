@@ -34,7 +34,7 @@ public class ProductoBL extends BaseBL implements IBaseBL<Producto, Integer>{
 
     @Override
     public Producto findById(Integer o) {
-        return (Producto) this.getDao(o.getClass().getName()).findById(o);
+        return (Producto) this.getDao(Producto.class.getName()).findById(o);
     }
 
     @Override
