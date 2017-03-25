@@ -11,11 +11,12 @@ import cr.ac.una.fucem.inge.hawac.model.ApplicationModel;
 import hawac.Application;
 import javax.swing.JInternalFrame;
 
-public class ApplicationView extends javax.swing.JFrame implements java.util.Observer{
+
+public class FabricaView extends javax.swing.JFrame implements java.util.Observer{
     ApplicationController controller;
     ApplicationModel model;
     
-    public ApplicationView(){
+    public FabricaView(){
         initComponents();
         this.setSize(1000,750);
     }
@@ -38,19 +39,20 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         compraItem = new javax.swing.JMenuItem();
         MantenimientoMenu = new javax.swing.JMenu();
         ListaClientesItem = new javax.swing.JMenuItem();
+        ListaEmpleadosItem = new javax.swing.JMenuItem();
         productosItem = new javax.swing.JMenuItem();
-        usuarioItem = new javax.swing.JMenuItem();
         CobrosMenu = new javax.swing.JMenu();
         cobrosMenuItem = new javax.swing.JMenuItem();
         inventariosMenu = new javax.swing.JMenu();
         tiendaMenuItem = new javax.swing.JMenuItem();
+        fabricaMenuItem = new javax.swing.JMenuItem();
         jMenu1 = new javax.swing.JMenu();
         despachosMenuItem = new javax.swing.JMenuItem();
         HelpMenu = new javax.swing.JMenu();
         AboutItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("TIENDA");
+        setTitle("HAWAC SYSTEM");
         getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
 
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
@@ -113,6 +115,14 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         });
         MantenimientoMenu.add(ListaClientesItem);
 
+        ListaEmpleadosItem.setText("Usuarios");
+        ListaEmpleadosItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ListaEmpleadosItemActionPerformed(evt);
+            }
+        });
+        MantenimientoMenu.add(ListaEmpleadosItem);
+
         productosItem.setText("Productos");
         productosItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,14 +130,6 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
             }
         });
         MantenimientoMenu.add(productosItem);
-
-        usuarioItem.setText("Usuarios");
-        usuarioItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usuarioItemActionPerformed(evt);
-            }
-        });
-        MantenimientoMenu.add(usuarioItem);
 
         MenuBar.add(MantenimientoMenu);
 
@@ -154,6 +156,14 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
             }
         });
         inventariosMenu.add(tiendaMenuItem);
+
+        fabricaMenuItem.setText("Fábrica");
+        fabricaMenuItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fabricaMenuItemActionPerformed(evt);
+            }
+        });
+        inventariosMenu.add(fabricaMenuItem);
 
         MenuBar.add(inventariosMenu);
 
@@ -197,6 +207,10 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         controller.exit();
     }//GEN-LAST:event_salirItemActionPerformed
 
+    private void ListaEmpleadosItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaEmpleadosItemActionPerformed
+        controller.empleadosShow();
+    }//GEN-LAST:event_ListaEmpleadosItemActionPerformed
+
     private void ListaClientesItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaClientesItemActionPerformed
          controller.clientesShow();
     }//GEN-LAST:event_ListaClientesItemActionPerformed
@@ -206,7 +220,6 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     }//GEN-LAST:event_compraItemActionPerformed
 
     private void ventaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventaItemActionPerformed
-        //Application.FACTURA_VIEW.update(null);
         controller.facturaShow();
     }//GEN-LAST:event_ventaItemActionPerformed
 
@@ -235,10 +248,10 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         Application.INVENTARIO_TIENDA_VIEW.setVisible(true);
     }//GEN-LAST:event_tiendaMenuItemActionPerformed
 
-    private void usuarioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioItemActionPerformed
-        // TODO add your handling code here:
-        Application.USUARIOS_VIEW.setVisible(true);
-    }//GEN-LAST:event_usuarioItemActionPerformed
+    private void fabricaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fabricaMenuItemActionPerformed
+        Application.INVENTARIO = "Fabrica";
+        //Application.INVENTARIOS_VIEW.setVisible(true);
+    }//GEN-LAST:event_fabricaMenuItemActionPerformed
 
     public ApplicationController getController() {
         return controller;
@@ -263,13 +276,9 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     @Override
     public void update(java.util.Observable updatedModel, Object parametros) {
         if (model.getCurrent() != null) {
-            this.setTitle("TIENDA \nUsuario: " + model.getCurrent().tipo() + "("+model.getCurrent().getNombre()+")");
+            this.setTitle("HAWAC SYSTEM \nUsuario: " + model.getCurrent().tipo() + "("+model.getCurrent().getNombre()+")");
         } else {
-            this.setTitle("TIENDA");
-        }
-        
-        if(model.getCurrent()!=null && model.getCurrent().tipo()!=0){
-            usuarioItem.setVisible(false);
+            this.setTitle("HAWAC SYSTEM");
         }
     }
        /**
@@ -289,21 +298,23 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ApplicationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FabricaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ApplicationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FabricaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ApplicationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FabricaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ApplicationView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FabricaView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ApplicationView().setVisible(true);
+                new FabricaView().setVisible(true);
             }
         });
     }
@@ -314,19 +325,20 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     private javax.swing.JMenu FacturacionMenu;
     private javax.swing.JMenu HelpMenu;
     private javax.swing.JMenuItem ListaClientesItem;
+    private javax.swing.JMenuItem ListaEmpleadosItem;
     private javax.swing.JMenu MantenimientoMenu;
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JMenuItem cobrosMenuItem;
     private javax.swing.JMenuItem compraItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem despachosMenuItem;
+    private javax.swing.JMenuItem fabricaMenuItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu inventariosMenu;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem productosItem;
     private javax.swing.JMenuItem salirItem;
     private javax.swing.JMenuItem tiendaMenuItem;
-    private javax.swing.JMenuItem usuarioItem;
     private javax.swing.JMenuItem ventaItem;
     // End of variables declaration//GEN-END:variables
 }

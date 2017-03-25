@@ -27,7 +27,7 @@ public class UsuarioController {
     
     public void guardar(){
         model.clearErrors();
-        UsuariosModel empleadosModel= Application.EMPLEADOS_VIEW.getModel();
+        UsuariosModel empleadosModel= Application.USUARIOS_VIEW.getModel();
         
         Usuario empleadoNuevo= new Usuario();
         if(view.idTextField.getText().length()==0){

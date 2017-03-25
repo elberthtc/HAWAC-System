@@ -46,18 +46,20 @@ public class LoginController {
             Usuario real = domainModel.getUsuario(e1.getIdUsuario(),e1.getPassword());
             session.setAttibute("Usuario",real);
             view.setVisible(false);
+            Application.USUARIO = real;
             Application.APPLICATION_VIEW.getController().enter();
             Application.FACTURA_VIEW.getModel().setEmpleado(real);
+            Application.APPLICATION_VIEW.update(null);
         } catch (Exception ex) {
             String n = ex.toString();
             System.out.println(n);
-            if(ex.toString().compareTo("java.lang.NullPointerException")!=0){
+            if(ex.toString().compareTo("java.lang.NullPointerException")==0){
                 
             }
             else {
                 model.setMensaje("Datos incorrectos");
                 e1.setPassword("");
-                e1.setIdUsuario(-1);
+                e1.setIdUsuario(0);
                 model.setCurrent(e1);
             }
         }

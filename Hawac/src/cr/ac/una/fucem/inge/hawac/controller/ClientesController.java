@@ -29,6 +29,13 @@ public class ClientesController {
         this.model = model;
         view.setController(this);
         view.setModel(model);
+        
+        /*if(((Usuario)session.getAttribute("Usuario")).getTipo()!=0){
+            view.deleteButton.setVisible(false);
+            view.eliminarLb.setVisible(false);
+            view.agregarButton.setVisible(false);
+            view.agregarLb.setVisible(false);
+        }*/
     }
     
     public void buscar(){

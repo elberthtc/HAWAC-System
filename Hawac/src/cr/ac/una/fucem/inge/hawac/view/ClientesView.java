@@ -298,6 +298,12 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
         clientesTable.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         clientesTable.getColumnModel().getColumn(0).setPreferredWidth(30);
         clientesTable.getColumnModel().getColumn(1).setPreferredWidth(30);
+
+        
+        if (Application.USUARIO != null && Application.USUARIO.getTipo() != 0) {
+            deleteButton.setVisible(false);
+            eliminarLb.setVisible(false);
+        }
        /* clientesTable.getColumnModel().getColumn(2).setPreferredWidth(110);
         clientesTable.getColumnModel().getColumn(3).setPreferredWidth(30);
         clientesTable.getColumnModel().getColumn(4).setPreferredWidth(30);*/
@@ -342,12 +348,12 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
     private javax.swing.ButtonGroup Busqueda;
     private javax.swing.JRadioButton IdRadioButton;
     private javax.swing.JRadioButton NombreRadioButton;
-    private javax.swing.JButton agregarButton;
-    private javax.swing.JLabel agregarLb;
+    public javax.swing.JButton agregarButton;
+    public javax.swing.JLabel agregarLb;
     private javax.swing.JRadioButton allRadioButton;
     private javax.swing.JTable clientesTable;
-    private javax.swing.JButton deleteButton;
-    private javax.swing.JLabel eliminarLb;
+    public javax.swing.JButton deleteButton;
+    public javax.swing.JLabel eliminarLb;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nombreLb;

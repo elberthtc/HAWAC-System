@@ -76,13 +76,16 @@ public class FacturaController {
     }
     
     public void guardarDatosBasicos(){
-        Factura factura = new Factura();
+        Factura factura = model.getCurrent();
         factura.setCodigoFactura(Application.CANTIDAD);
-        factura.setFecha(model.getCurrent().getFecha());
+        //factura.setFecha(model.getCurrent().getFecha());
         factura.setMonto(0);
         factura.setUsuario(model.getEmpleado());
         factura.setApartado(null);
-        factura.setCliente(null);
+        if(factura.getCliente().getCedula()==0){
+            factura.setCliente(null);
+        }else
+            factura.setCliente(model.getCurrent().getCliente());
         domainModel.getFacturaBl().save(factura);
     }
 
@@ -125,23 +128,26 @@ public class FacturaController {
                 model.getErrores().put("GRABAR", "Factura Vacia");
                 model.setMensaje("Debe insertar Productos a la Factura");
             } else {
-                f1.setCodigoFactura(CONTADOR);
-                CONTADOR++;
+                //f1.setCodigoFactura(CONTADOR);
+                //CONTADOR++;
                 List<Factura> facturasVentas;
                 if (model.getErrores().isEmpty()) {
                     try {
                         double total = Double.valueOf(view.TotalTextFd.getText());
                         //f1.setTipoPago((String) view.metodoPagoComboBox.getSelectedItem());
+                        
                         f1.setMonto((float) total);
                         domainModel.getFacturaBl().merge(f1);
                         facturasVentas = domainModel.getFacturaBl().findAll(Factura.class.getName());
                         Application.FACTURAS_VENTAS_VIEW.getModel().setFacturas(facturasVentas);
                         List<Linea> nuevo = new ArrayList<Linea>();
                         model.setCurrent(new Factura());
+                        model.setCliente(new Cliente());
                         model.setFiltro(new Linea());
                         model.setMensaje("FACTURA AGREGADA");
                         model.setLineas(nuevo);
                         view.setVisible(false);
+                        Application.CANTIDAD = Application.CANTIDAD+1;
                     } catch (Exception e) {
                         model.getErrores().put("GRABAR", "Errores");
                         model.setMensaje("Problemas con la Base de Datos");

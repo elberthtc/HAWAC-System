@@ -517,7 +517,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         this.numFacTextFd.setText(Application.CANTIDAD+"");
         nomClienteTextFd.setText(model.getCurrent().getCliente().getNombre());
         idClienteTextFd.setText("");
-        if(model.getCliente().getCedula()==-1)
+        if(model.getCliente().getCedula()==0)
             idClienteTextFd.setText("");
         else
             idClienteTextFd.setText(String.valueOf(model.getCurrent().getCliente().getCedula()));
@@ -541,6 +541,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         String total = String.valueOf(this.total());
         subtotalTextFd.setText(sub);
         ivTextFd.setText(imp);
+        TotalTextFd.setEnabled(false);
         TotalTextFd.setText(total);
         
         ListProductosTable.setModel(model.getLineas());
@@ -550,7 +551,8 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         }
         
     }
-       public static void main(String args[]) {
+    
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

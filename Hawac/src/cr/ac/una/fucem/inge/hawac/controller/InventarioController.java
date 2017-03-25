@@ -33,7 +33,7 @@ public class InventarioController {
     
     public void guardar() {
         model.clearErrors();
-        InventariosModel empleadosModel = Application.INVENTARIOS_VIEW.getModel();
+        InventariosModel empleadosModel = Application.INVENTARIO_TIENDA_VIEW.getModel();
 
         Inventario inventarioNuevo = new Inventario();
         if (view.idTextField.getText().length() == 0) {

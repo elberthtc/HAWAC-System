@@ -11,13 +11,11 @@ import hawac.Application;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
-public class InventariosView extends javax.swing.JInternalFrame implements java.util.Observer {
+public class InventarioFabricaView extends javax.swing.JInternalFrame implements java.util.Observer {
     InventariosController controller;
     InventariosModel model;
-    /**
-     * Creates new form UsuariosView
-     */
-    public InventariosView() {
+
+    public InventarioFabricaView() {
         super("",false,true);
         initComponents();
     }
@@ -228,7 +226,7 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
     private void eliminarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarButtonActionPerformed
          int fila=this.tablaEmpleados.getSelectedRow();
             if(fila!=-1){
-            int resp= JOptionPane.showConfirmDialog(this,"¿Desea eliminar el producto?");
+            int resp= JOptionPane.showConfirmDialog(this,"¿Desea eliminar al empleado?");
             if(resp==JOptionPane.YES_OPTION){
                 controller.borrar(fila);
             }
@@ -311,7 +309,7 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new InventariosView().setVisible(true);
+                new InventarioFabricaView().setVisible(true);
             }
         });
     }

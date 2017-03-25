@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 05-mar-2017 23:46:49 by Hibernate Tools 4.3.1
+// Generated 24-mar-2017 14:24:28 by Hibernate Tools 4.3.1
 
 
 import java.text.SimpleDateFormat;
@@ -22,12 +22,11 @@ public class Factura  implements java.io.Serializable {
      private Set<Linea> lineas = new HashSet<Linea>(0);
 
     public Factura() {
-        codigoFactura=-1;
-        apartado=new Apartado();
-        cliente=new Cliente();
-        usuario=new Usuario();
-        monto=0;
-        fecha=new Date();
+        codigoFactura = 0;
+        cliente = new Cliente();
+        usuario = new Usuario();
+        monto = 0;
+        fecha = new Date();
     }
 
 	
@@ -95,13 +94,13 @@ public class Factura  implements java.io.Serializable {
     public void setLineas(Set<Linea> lineas) {
         this.lineas = lineas;
     }
-
+    
     public String getFechaActual(){
         SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/YYYY");
         return formatoFecha.format(fecha);
     }
     
-     public String getFechaActual2(){
+    public String getFechaActual2(){
         SimpleDateFormat formatoFecha = new SimpleDateFormat("YYYY-MM-dd");
         return formatoFecha.format(fecha);
     }
@@ -110,8 +109,4 @@ public class Factura  implements java.io.Serializable {
         SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
         return formatoHora.format(fecha);
     }
-
-
 }
-
-

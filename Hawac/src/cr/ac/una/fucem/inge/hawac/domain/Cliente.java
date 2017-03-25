@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 05-mar-2017 20:19:45 by Hibernate Tools 4.3.1
+// Generated 24-mar-2017 14:24:28 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -20,11 +20,11 @@ public class Cliente  implements java.io.Serializable {
      private Set<Factura> facturas = new HashSet<Factura>(0);
 
     public Cliente() {
-        cedula=-1;
+        cedula = 0;
         nombre = "";
         totalComprado = 0;
-        telefono="";
-        correo="";
+        telefono = "";
+        correo = "";
     }
 
 	

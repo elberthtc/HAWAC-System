@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 05-mar-2017 23:46:50 by Hibernate Tools 4.3.1 -->
+<!-- Generated 24-mar-2017 14:24:32 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.fucem.inge.hawac.domain.Factura" table="factura" catalog="tienda" optimistic-lock="version">
         <id name="codigoFactura" type="int">
@@ -23,7 +23,7 @@
         <property name="fecha" type="date">
             <column name="fecha" length="10" not-null="true" />
         </property>
-        <set name="lineas" table="linea" inverse="true" lazy="false" fetch="select">
+        <set name="lineas" table="linea" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="factura" not-null="true" />
             </key>

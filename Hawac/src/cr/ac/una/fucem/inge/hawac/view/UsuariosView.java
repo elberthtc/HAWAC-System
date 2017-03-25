@@ -264,7 +264,7 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
 
     @Override
     public void update(java.util.Observable updatedModel,Object parametros) {
-        if(model.getFiltro().getNombre().length()==0 && model.getFiltro().getIdUsuario() == -1){
+        if(model.getFiltro().getNombre().length()==0 && model.getFiltro().getIdUsuario() == 0){
             nomjTextField.setText(model.getFiltro().getNombre());
         } else if(model.getFiltro().getNombre().length()==0){
             nomjTextField.setText(model.getFiltro().getIdUsuario()+"");

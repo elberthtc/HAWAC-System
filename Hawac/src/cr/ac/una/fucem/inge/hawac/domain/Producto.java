@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 05-mar-2017 22:36:53 by Hibernate Tools 4.3.1
+// Generated 24-mar-2017 14:24:28 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -22,11 +22,6 @@ public class Producto  implements java.io.Serializable {
      private Set<Apartadoproducto> apartadoproductos = new HashSet<Apartadoproducto>(0);
 
     public Producto() {
-        idProducto=0;
-        precio=0;
-        talla="";
-        color="";
-        genero=false;
     }
 
 	
@@ -113,6 +108,10 @@ public class Producto  implements java.io.Serializable {
     public void setApartadoproductos(Set<Apartadoproducto> apartadoproductos) {
         this.apartadoproductos = apartadoproductos;
     }
+
+
+
+
 }
 
 

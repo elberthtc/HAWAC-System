@@ -19,6 +19,7 @@ import cr.ac.una.fucem.inge.hawac.controller.ProductoFacturaController;
 import cr.ac.una.fucem.inge.hawac.controller.ProductoInventarioController;
 import cr.ac.una.fucem.inge.hawac.controller.ProductosController;
 import cr.ac.una.fucem.inge.hawac.controller.UsuarioController;
+import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.ApplicationModel;
 import cr.ac.una.fucem.inge.hawac.model.ClienteModel;
@@ -37,11 +38,13 @@ import cr.ac.una.fucem.inge.hawac.view.ApplicationView;
 import cr.ac.una.fucem.inge.hawac.view.ClienteView;
 import cr.ac.una.fucem.inge.hawac.view.ClientesFacturaView;
 import cr.ac.una.fucem.inge.hawac.view.ClientesView;
+import cr.ac.una.fucem.inge.hawac.view.FabricaView;
 import cr.ac.una.fucem.inge.hawac.view.UsuarioView;
 import cr.ac.una.fucem.inge.hawac.view.UsuariosView;
 import cr.ac.una.fucem.inge.hawac.view.FacturaView;
 import cr.ac.una.fucem.inge.hawac.view.FacturasPagadasView;
 import cr.ac.una.fucem.inge.hawac.view.FacturasVentasView;
+import cr.ac.una.fucem.inge.hawac.view.InventarioFabricaView;
 import cr.ac.una.fucem.inge.hawac.view.InventarioMenuView;
 import cr.ac.una.fucem.inge.hawac.view.InventarioView;
 import cr.ac.una.fucem.inge.hawac.view.InventariosView;
@@ -72,7 +75,7 @@ public class Application {
         
         UsuariosModel empleadosModel = new UsuariosModel();
         UsuariosView empleadosView=new UsuariosView();
-        EMPLEADOS_VIEW=empleadosView;
+        USUARIOS_VIEW=empleadosView;
         applicationView.addInternalFrame(empleadosView);
         UsuariosController empleadosController= new UsuariosController(empleadosView,empleadosModel,domainModel,session);
  
@@ -112,9 +115,15 @@ public class Application {
         
         InventariosModel inventariosModel = new InventariosModel();
         InventariosView inventariosView = new InventariosView();
-        INVENTARIOS_VIEW = inventariosView;
+        INVENTARIO_TIENDA_VIEW = inventariosView;
         applicationView.addInternalFrame(inventariosView);
         InventariosController inventariosController = new InventariosController(inventariosView,inventariosModel,domainModel,session);
+        
+        //InventariosModel inventariosModel = new InventariosModel();
+        InventariosView inventariosView2 = new InventariosView();
+        INVENTARIO_FABRICA_VIEW = inventariosView2;
+        applicationView.addInternalFrame(inventariosView2);
+        InventariosController inventariosController1 = new InventariosController(inventariosView2,inventariosModel,domainModel,session);
         
         FacturasVentasModel facturasVentasModel = new FacturasVentasModel();
         FacturasVentasView facturasVentasView = new FacturasVentasView();
@@ -193,6 +202,8 @@ public class Application {
         
     }
  
+    public static Usuario USUARIO;
+    
     public static About ABOUT;
     public static InventarioMenuView INVENTARIO_MENU;
     public static ApplicationView APPLICATION_VIEW;     
@@ -202,10 +213,11 @@ public class Application {
     public static ClienteView CLIENTE_VIEW;
     public static ProductosView PRODUCTOS_VIEW;
     public static ProductoView PRODUCTO_VIEW;
-    public static UsuariosView EMPLEADOS_VIEW;
+    public static UsuariosView USUARIOS_VIEW;
     public static UsuarioView EMPLEADO_VIEW;
     public static FacturaView FACTURA_VIEW;
-    public static InventariosView INVENTARIOS_VIEW;
+    public static InventariosView INVENTARIO_TIENDA_VIEW;
+    public static InventariosView INVENTARIO_FABRICA_VIEW;
     //public static FacturaCompraView FACTURA_COMPRA_VIEW;
     public static ProductoFacturaView PRODUCTOFACTURA_VIEW;
     public static InventarioView INVENTARIO_VIEW;

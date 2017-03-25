@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 05-mar-2017 20:19:45 by Hibernate Tools 4.3.1
+// Generated 24-mar-2017 14:24:28 by Hibernate Tools 4.3.1
 
 
 import java.util.HashSet;
@@ -19,9 +19,9 @@ public class Usuario  implements java.io.Serializable {
      private Set<Bitacora> bitacoras = new HashSet<Bitacora>(0);
 
     public Usuario() {
-        idUsuario = -1;
-        password = "";
+        idUsuario = 0;
         tipo = -1;
+        password = "";
         nombre = "";
     }
 
@@ -84,14 +84,11 @@ public class Usuario  implements java.io.Serializable {
         this.bitacoras = bitacoras;
     }
     
-    public String tipo(){
-        switch(tipo){
-            case 0:return "Administrador";
-            case 1:return "Dependiente";
-            default :return "Sin Definir Rol";
-        }
+    public int tipo(){
+        return this.tipo;
     }
-    
+
+
 }
 
 

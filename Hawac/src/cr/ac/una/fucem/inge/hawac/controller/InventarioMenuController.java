@@ -22,7 +22,7 @@ public class InventarioMenuController {
     }
     
     public void mostrarInventarioTienda(){
-        Application.INVENTARIOS_VIEW.setVisible(true);
+        Application.INVENTARIO_TIENDA_VIEW.setVisible(true);
     }
     
 
