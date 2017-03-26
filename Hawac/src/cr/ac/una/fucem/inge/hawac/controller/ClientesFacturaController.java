@@ -105,7 +105,7 @@ public class ClientesFacturaController {
             //f1.setCodigoFactura(CONTADOR);
             //Application.FACTURA_VIEW.getModel().setCurrent(f1);
             //Application.FACTURA_VIEW.getModel().setCliente(c1);
-            Application.FACTURA_VIEW.getModel().getCurrent().setCliente(c1);
+            Application.FACTURA_VIEW.getModel().getCurrent().setCliente(c1.getCedula());
             Application.FACTURA_VIEW.getModel().setCliente(c1);
             //Application.FACTURA_VIEW.update();
             CONTADOR++;

@@ -15,18 +15,22 @@ public class Factura  implements java.io.Serializable {
 
      private int codigoFactura;
      private Apartado apartado;
-     private Cliente cliente;
-     private Usuario usuario;
+     private int cliente;
+     private int usuario;
      private float monto;
      private Date fecha;
      private Set<Linea> lineas = new HashSet<Linea>(0);
+     private Cliente c;
+     private Usuario u;
 
     public Factura() {
         codigoFactura = 0;
-        cliente = new Cliente();
-        usuario = new Usuario();
+        cliente = 0;
+        usuario = 0;
         monto = 0;
         fecha = new Date();
+        c = new Cliente();
+        u = new Usuario();
     }
 
 	
@@ -35,7 +39,7 @@ public class Factura  implements java.io.Serializable {
         this.monto = monto;
         this.fecha = fecha;
     }
-    public Factura(int codigoFactura, Apartado apartado, Cliente cliente, Usuario usuario, float monto, Date fecha, Set<Linea> lineas) {
+    public Factura(int codigoFactura, Apartado apartado, int cliente, int usuario, float monto, Date fecha, Set<Linea> lineas) {
        this.codigoFactura = codigoFactura;
        this.apartado = apartado;
        this.cliente = cliente;
@@ -59,18 +63,18 @@ public class Factura  implements java.io.Serializable {
     public void setApartado(Apartado apartado) {
         this.apartado = apartado;
     }
-    public Cliente getCliente() {
+    public int getCliente() {
         return this.cliente;
     }
     
-    public void setCliente(Cliente cliente) {
+    public void setCliente(int cliente) {
         this.cliente = cliente;
     }
-    public Usuario getUsuario() {
+    public int getUsuario() {
         return this.usuario;
     }
     
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(int usuario) {
         this.usuario = usuario;
     }
     public float getMonto() {
@@ -80,6 +84,7 @@ public class Factura  implements java.io.Serializable {
     public void setMonto(float monto) {
         this.monto = monto;
     }
+    
     public Date getFecha() {
         return this.fecha;
     }
@@ -104,7 +109,23 @@ public class Factura  implements java.io.Serializable {
         SimpleDateFormat formatoFecha = new SimpleDateFormat("YYYY-MM-dd");
         return formatoFecha.format(fecha);
     }
-     
+
+    public Cliente getC() {
+        return c;
+    }
+
+    public void setC(Cliente c) {
+        this.c = c;
+    }
+
+    public Usuario getU() {
+        return u;
+    }
+
+    public void setU(Usuario u) {
+        this.u = u;
+    }
+    
     public String getHoraActual(){
         SimpleDateFormat formatoHora = new SimpleDateFormat("HH:mm:ss");
         return formatoHora.format(fecha);

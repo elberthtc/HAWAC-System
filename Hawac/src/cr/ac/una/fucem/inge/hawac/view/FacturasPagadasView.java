@@ -4,16 +4,16 @@
  * and open the template in the editor.
  */
 package cr.ac.una.fucem.inge.hawac.view;
+import cr.ac.una.fucem.inge.hawac.controller.FacturasPagadasController;
+import cr.ac.una.fucem.inge.hawac.model.FacturasPagadasModel;
+import hawac.Application;
 import javax.swing.JOptionPane;
-/*import ferreteria.Application;
-import ferreteria.presentacion.controller.FacturasPagadasController;
-import ferreteria.presentacion.model.FacturasPagadasModel; */
 import javax.swing.JTable;
 
 public class FacturasPagadasView extends javax.swing.JInternalFrame implements java.util.Observer {
 
-    //FacturasPagadasController controller;
-    //FacturasPagadasModel model;
+    FacturasPagadasController controller;
+    FacturasPagadasModel model;
     
     public FacturasPagadasView() {
          super("",false,true);
@@ -67,7 +67,7 @@ public class FacturasPagadasView extends javax.swing.JInternalFrame implements j
             }
         });
 
-        buscarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/ferreteria/presentacion/view/icons/search2.png"))); // NOI18N
+        buscarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
         buscarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarButtonActionPerformed(evt);
@@ -137,17 +137,17 @@ public class FacturasPagadasView extends javax.swing.JInternalFrame implements j
     }//GEN-LAST:event_nombreTextFdActionPerformed
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
-       //controller.buscar();
+       controller.buscar();
     }//GEN-LAST:event_buscarButtonActionPerformed
 
     private void seleccionarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarButtonActionPerformed
         int row = this.tablaFacturas.getSelectedRow();
         if(row != -1){
-         //    controller.seleeccionar(row);
+            controller.seleeccionar(row);
         }
     }//GEN-LAST:event_seleccionarButtonActionPerformed
 
-    /*public FacturasPagadasController getController() {
+    public FacturasPagadasController getController() {
         return controller;
     }
 
@@ -155,19 +155,18 @@ public class FacturasPagadasView extends javax.swing.JInternalFrame implements j
         return model;
     }
 
-    public void setController(ferreteria.presentacion.controller.FacturasPagadasController controller) {
+    public void setController(FacturasPagadasController controller) {
         this.controller = controller;
     }
 
-    public void setModel(ferreteria.presentacion.model.FacturasPagadasModel model) {
+    public void setModel(FacturasPagadasModel model) {
         this.model = model;
         model.addObserver(this);
     }
-   */
     
    @Override
     public void update(java.util.Observable updatedModel,Object parametros) {
-    /*    if(model.getErrores().get("nombreTextFd")!= null){
+        if(model.getErrores().get("nombreTextFd")!= null){
             nombreLb.setBorder(Application.BORDER_ERROR);
             nombreLb.setToolTipText(model.getErrores().get("nombreTextFd"));
         }else{
@@ -184,8 +183,7 @@ public class FacturasPagadasView extends javax.swing.JInternalFrame implements j
         tablaFacturas.getColumnModel().getColumn(1).setPreferredWidth(40);
         tablaFacturas.getColumnModel().getColumn(2).setPreferredWidth(40);
         tablaFacturas.getColumnModel().getColumn(3).setPreferredWidth(50);
-        tablaFacturas.getColumnModel().getColumn(4).setPreferredWidth(30);
-      */ 
+        tablaFacturas.getColumnModel().getColumn(4).setPreferredWidth(30); 
     } 
     
     

@@ -80,10 +80,10 @@ public class FacturaController {
         factura.setCodigoFactura(Application.CANTIDAD);
         //factura.setFecha(model.getCurrent().getFecha());
         factura.setMonto(0);
-        factura.setUsuario(model.getEmpleado());
+        factura.setUsuario(model.getEmpleado().getIdUsuario());
         factura.setApartado(null);
-        if(factura.getCliente().getCedula()==0){
-            factura.setCliente(null);
+        if(factura.getCliente()==0){
+            factura.setCliente(0);
         }else
             factura.setCliente(model.getCurrent().getCliente());
         domainModel.getFacturaBl().save(factura);
@@ -115,7 +115,7 @@ public class FacturaController {
 
     public void guardar() {
         model.clearErrors();
-        FacturasVentasModel facturas = Application.FACTURAS_VENTAS_VIEW.getModel();
+        //FacturasVentasModel facturas = Application.FACTURAS_VENTAS_VIEW.getModel();
         Usuario e1 = (Usuario) session.getAttribute("Usuario");
         Factura f1 = Application.FACTURA_VIEW.getModel().getCurrent();
         if (e1.getTipo() == -1) {
@@ -139,7 +139,7 @@ public class FacturaController {
                         f1.setMonto((float) total);
                         domainModel.getFacturaBl().merge(f1);
                         facturasVentas = domainModel.getFacturaBl().findAll(Factura.class.getName());
-                        Application.FACTURAS_VENTAS_VIEW.getModel().setFacturas(facturasVentas);
+                        //Application.FACTURAS_VENTAS_VIEW.getModel().setFacturas(facturasVentas);
                         List<Linea> nuevo = new ArrayList<Linea>();
                         model.setCurrent(new Factura());
                         model.setCliente(new Cliente());
@@ -148,6 +148,7 @@ public class FacturaController {
                         model.setLineas(nuevo);
                         view.setVisible(false);
                         Application.CANTIDAD = Application.CANTIDAD+1;
+                        Application.FACTURA_VIEW.numFacTextFd.setText(Application.CANTIDAD+"");
                     } catch (Exception e) {
                         model.getErrores().put("GRABAR", "Errores");
                         model.setMensaje("Problemas con la Base de Datos");

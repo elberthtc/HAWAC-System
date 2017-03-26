@@ -515,13 +515,17 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
     public void update(java.util.Observable updatedModel,Object parametros) {
         
         this.numFacTextFd.setText(Application.CANTIDAD+"");
-        nomClienteTextFd.setText(model.getCurrent().getCliente().getNombre());
+        if(model.getCurrent().getCliente()!=0){
+            nomClienteTextFd.setText(model.getCliente().getNombre());
+        }else
+            nomClienteTextFd.setText("");
+        
         idClienteTextFd.setText("");
         if(model.getCliente().getCedula()==0)
             idClienteTextFd.setText("");
         else
-            idClienteTextFd.setText(String.valueOf(model.getCurrent().getCliente().getCedula()));
-        telefonoClienteTextFd.setText(model.getCurrent().getCliente().getTelefono());
+            idClienteTextFd.setText(String.valueOf(model.getCliente().getCedula()));
+        telefonoClienteTextFd.setText(model.getCliente().getTelefono());
         FechaTextFd.setText(model.getCurrent().getFechaActual());
         horaTextFd.setText(model.getCurrent().getHoraActual());
         

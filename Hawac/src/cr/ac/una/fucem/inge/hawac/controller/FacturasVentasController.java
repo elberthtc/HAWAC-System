@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Arrays;
 
 public class FacturasVentasController {
-    Model domainModel;
+  /*  Model domainModel;
     Session session;
     FacturasVentasModel model;
     FacturasVentasView view;
@@ -41,6 +41,9 @@ public class FacturasVentasController {
         }
         model.getFiltro().getCliente().setNombre(view.nombreTextFd.getText());
         List<Factura> rows = domainModel.getFacturaBl().findAll(Factura.class.getName());
+        for(int i = 0; i< rows.size(); i++){
+            rows.get(i).setCliente(domainModel.getClienteBl().findById(rows.get(i).getCliente().getCedula()));
+        }
         if(rows.isEmpty()){
             model.getErrores().put("nombreTextFd","Ningun registro coincide");
             model.setMensaje("NINGUN REGISTRO COINCIDE");
@@ -74,7 +77,7 @@ public class FacturasVentasController {
               Application.Cheque_VIEW.setVisible(true);
         }
         */
-    }
+    //}
     
 //     public void RegistraPago(){
 //        model.clearErrors();
@@ -100,10 +103,14 @@ public class FacturasVentasController {
 //      
 //    }
     
-     public void salir(){
+   /*
+
+    public void salir(){
         model.clearErrors();  
         view.setVisible(false);
         Application.LOGIN_VIEW.getController().logout();
     }
+
+*/
     
 }

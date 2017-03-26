@@ -34,7 +34,7 @@ public class ClienteBL extends BaseBL implements IBaseBL<Cliente, Integer>{
 
     @Override
     public Cliente findById(Integer o) {
-        return (Cliente) this.getDao(o.getClass().getName()).findById(o);
+        return (Cliente) this.getDao(Cliente.class.getName()).findById(o);
     }
 
     @Override

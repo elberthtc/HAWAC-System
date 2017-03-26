@@ -41,9 +41,9 @@ public class FacturaTableModel extends AbstractTableModel{
         Factura f1 = rows.get(rowIndex);
         switch (cols[columnIndex]){
             case NUMERO: return f1.getCodigoFactura();
-            case CLIENTE: return f1.getCliente().getNombre();
-            case VENDEDOR: return f1.getUsuario().getNombre();
-            case FORMA_DE_PAGO: return "NORMAL"/*f1.getTipoPago()*/;
+            case CLIENTE: return f1.getC().getNombre();
+            case VENDEDOR: return f1.getU().getNombre();
+            case FECHA: return f1.getFecha();
             case TOTAL: return f1.getMonto();
             default: return "";
         }
@@ -52,7 +52,7 @@ public class FacturaTableModel extends AbstractTableModel{
     public static final int NUMERO=0;
     public static final int CLIENTE=1;
     public static final int VENDEDOR=2;
-    public static final int FORMA_DE_PAGO=3;
+    public static final int FECHA=3;
     public static final int TOTAL=4;
     
     String[] colNames = new String[5];
@@ -60,7 +60,7 @@ public class FacturaTableModel extends AbstractTableModel{
         colNames[NUMERO]= "NUMERO";
         colNames[CLIENTE]= "CLIENTE";
         colNames[VENDEDOR]= "VENDEDOR";
-        colNames[FORMA_DE_PAGO]="FORMA DE PAGO";
+        colNames[FECHA]="FECHA";
         colNames[TOTAL]="TOTAL";
     }
     

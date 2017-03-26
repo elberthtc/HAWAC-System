@@ -142,7 +142,7 @@ public class FacturasVentasView extends javax.swing.JInternalFrame implements ja
     private void seleccionarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarButtonActionPerformed
         int row = this.tablaFacturas.getSelectedRow();
         if (row != -1) {
-            controller.seleeccionar(row);
+            //controller.seleeccionar(row);
         }
     }//GEN-LAST:event_seleccionarButtonActionPerformed
 

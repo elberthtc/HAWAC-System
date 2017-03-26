@@ -35,15 +35,15 @@ public class ApplicationController {
         Application.CLIENTES_FACTURA_VIEW.getModel().init();
         Application.USUARIOS_VIEW.getModel().inicializar();
         Application.INVENTARIO_VIEW.getModelo().init();
-        Application.FACTURA_VIEW.getModel().init();
         Application.INVENTARIO_TIENDA_VIEW.getModel().inicializar();
         Application.INVENTARIO_FABRICA_VIEW.getModel().inicializar();
         //Application.FACTURA_COMPRA_VIEW.getModel().init();
         Application.PRODUCTOFACTURA_VIEW.getModel().init();
         Application.PRODUCTOINVENTARIO_VIEW.getModel().init();
-        Application.FACTURAS_VENTAS_VIEW.getModel().init();
-        //Application.FACTURAS_PAGADAS_VIEW.getModel().init();
+        //Application.FACTURAS_VENTAS_VIEW.getModel().init();
+        Application.FACTURAS_PAGADAS_VIEW.getModel().init();
         Application.APPLICATION_VIEW.getModel().init();
+        Application.FACTURA_VIEW.getModel().init();
         Application.APPLICATION_VIEW.getModel().setCurrent((Usuario) session.getAttribute("Usuario"));
         view.setVisible(true);
 
@@ -57,7 +57,7 @@ public class ApplicationController {
         Application.PRODUCTOFACTURA_VIEW.setVisible(false);
         Application.FACTURA_VIEW.setVisible(false);
         Application.FACTURAS_VENTAS_VIEW.setVisible(false);
-        //Application.FACTURAS_PAGADAS_VIEW.setVisible(false);
+        Application.FACTURAS_PAGADAS_VIEW.setVisible(false);
         //Application.FACTURA_COMPRA_VIEW.setVisible(false);
         view.setVisible(false);
         Application.INVENTARIO_VIEW.setVisible(false);
@@ -86,7 +86,7 @@ public class ApplicationController {
     }
 
     public void despachosShow() {
-        //Application.FACTURAS_PAGADAS_VIEW.setVisible(true);
+        Application.FACTURAS_PAGADAS_VIEW.setVisible(true);
     }
 
     public void facturaCompraShow() {

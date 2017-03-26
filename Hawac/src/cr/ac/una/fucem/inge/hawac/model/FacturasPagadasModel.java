@@ -28,7 +28,7 @@ public class FacturasPagadasModel extends java.util.Observable {
     }
 
     public void setFacturas(List<Factura> facturas) {
-        int[] cols={FacturaTableModel.NUMERO,FacturaTableModel.CLIENTE,FacturaTableModel.VENDEDOR,FacturaTableModel.FORMA_DE_PAGO,FacturaTableModel.TOTAL};
+        int[] cols={FacturaTableModel.NUMERO,FacturaTableModel.CLIENTE,FacturaTableModel.VENDEDOR,FacturaTableModel.FECHA,FacturaTableModel.TOTAL};
         this.facturas = new FacturaTableModel(cols,facturas);
         setChanged();
         notifyObservers();

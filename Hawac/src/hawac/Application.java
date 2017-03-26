@@ -10,6 +10,7 @@ import cr.ac.una.fucem.inge.hawac.controller.ClientesController;
 import cr.ac.una.fucem.inge.hawac.controller.ClientesFacturaController;
 import cr.ac.una.fucem.inge.hawac.controller.UsuariosController;
 import cr.ac.una.fucem.inge.hawac.controller.FacturaController;
+import cr.ac.una.fucem.inge.hawac.controller.FacturasPagadasController;
 import cr.ac.una.fucem.inge.hawac.controller.FacturasVentasController;
 import cr.ac.una.fucem.inge.hawac.controller.InventarioController;
 import cr.ac.una.fucem.inge.hawac.controller.InventariosController;
@@ -25,6 +26,7 @@ import cr.ac.una.fucem.inge.hawac.model.ApplicationModel;
 import cr.ac.una.fucem.inge.hawac.model.ClienteModel;
 import cr.ac.una.fucem.inge.hawac.model.ClientesModel;
 import cr.ac.una.fucem.inge.hawac.model.FacturaModel;
+import cr.ac.una.fucem.inge.hawac.model.FacturasPagadasModel;
 import cr.ac.una.fucem.inge.hawac.model.FacturasVentasModel;
 import cr.ac.una.fucem.inge.hawac.model.InventarioModel;
 import cr.ac.una.fucem.inge.hawac.model.InventariosModel;
@@ -125,13 +127,14 @@ public class Application {
         applicationView.addInternalFrame(inventariosView2);
         InventariosController inventariosController1 = new InventariosController(inventariosView2,inventariosModel,domainModel,session);
         
-        FacturasVentasModel facturasVentasModel = new FacturasVentasModel();
+        /*FacturasVentasModel facturasVentasModel = new FacturasVentasModel();
         FacturasVentasView facturasVentasView = new FacturasVentasView();
         FACTURAS_VENTAS_VIEW = facturasVentasView;
         applicationView.addInternalFrame(facturasVentasView);
         FacturasVentasController factVentasController = new FacturasVentasController(facturasVentasView,facturasVentasModel,domainModel,session);
         
-        /*
+        */
+       
         
         FacturasPagadasModel facturasPagadasModel = new FacturasPagadasModel();
         FacturasPagadasView facturasPagadasView = new FacturasPagadasView();
@@ -139,7 +142,7 @@ public class Application {
         applicationView.addInternalFrame(facturasPagadasView);
         FacturasPagadasController factPagadasController = new FacturasPagadasController(facturasPagadasView,facturasPagadasModel,domainModel,session);
         
-        */
+       
         
         ProductoModel productoModel = new ProductoModel();
         ProductoView productoView = new ProductoView(applicationView,true);
@@ -187,7 +190,7 @@ public class Application {
         TarjetaCreditoController  tarjetacreditoController = new TarjetaCreditoController(tarjetacreditoView,tarjetacreditoModel,domainModel,session);
         
         */
-                
+        
         LoginModel loginModel = new LoginModel();
         LoginView loginView= new LoginView();
         LOGIN_VIEW=loginView;
