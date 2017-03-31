@@ -36,17 +36,16 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         FacturacionMenu = new javax.swing.JMenu();
         ventaItem = new javax.swing.JMenuItem();
         compraItem = new javax.swing.JMenuItem();
+        facturasItem = new javax.swing.JMenuItem();
         apartadoItem = new javax.swing.JMenuItem();
         MantenimientoMenu = new javax.swing.JMenu();
         ListaClientesItem = new javax.swing.JMenuItem();
         productosItem = new javax.swing.JMenuItem();
         usuarioItem = new javax.swing.JMenuItem();
-        CobrosMenu = new javax.swing.JMenu();
+        cobrosMenu = new javax.swing.JMenu();
         cobrosMenuItem = new javax.swing.JMenuItem();
         inventariosMenu = new javax.swing.JMenu();
         tiendaMenuItem = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        despachosMenuItem = new javax.swing.JMenuItem();
         HelpMenu = new javax.swing.JMenu();
         AboutItem = new javax.swing.JMenuItem();
 
@@ -82,7 +81,7 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
 
         MenuBar.add(fileMenu);
 
-        FacturacionMenu.setText("FACTURACION");
+        FacturacionMenu.setText("CAJA");
         FacturacionMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
 
         ventaItem.setText("Venta");
@@ -100,6 +99,14 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
             }
         });
         FacturacionMenu.add(compraItem);
+
+        facturasItem.setText("Facturas Pagadas");
+        facturasItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                facturasItemActionPerformed(evt);
+            }
+        });
+        FacturacionMenu.add(facturasItem);
 
         apartadoItem.setText("Apartados");
         apartadoItem.addActionListener(new java.awt.event.ActionListener() {
@@ -140,8 +147,8 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
 
         MenuBar.add(MantenimientoMenu);
 
-        CobrosMenu.setText("COBROS");
-        CobrosMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        cobrosMenu.setText("COBROS");
+        cobrosMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
 
         cobrosMenuItem.setText("CAJA");
         cobrosMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -149,9 +156,9 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
                 cobrosMenuItemActionPerformed(evt);
             }
         });
-        CobrosMenu.add(cobrosMenuItem);
+        cobrosMenu.add(cobrosMenuItem);
 
-        MenuBar.add(CobrosMenu);
+        MenuBar.add(cobrosMenu);
 
         inventariosMenu.setText("INVENTARIO");
         inventariosMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -165,19 +172,6 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         inventariosMenu.add(tiendaMenuItem);
 
         MenuBar.add(inventariosMenu);
-
-        jMenu1.setText("DESPACHOS");
-        jMenu1.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-
-        despachosMenuItem.setText("Despachos");
-        despachosMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                despachosMenuItemActionPerformed(evt);
-            }
-        });
-        jMenu1.add(despachosMenuItem);
-
-        MenuBar.add(jMenu1);
 
         HelpMenu.setText("AYUDA");
         HelpMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -231,9 +225,9 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         // TODO add your handling code here:
     }//GEN-LAST:event_HelpMenuActionPerformed
 
-    private void despachosMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_despachosMenuItemActionPerformed
+    private void facturasItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_facturasItemActionPerformed
         controller.despachosShow();
-    }//GEN-LAST:event_despachosMenuItemActionPerformed
+    }//GEN-LAST:event_facturasItemActionPerformed
 
     private void AboutItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AboutItemActionPerformed
         controller.about();
@@ -281,8 +275,12 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
             this.setTitle("TIENDA");
         }
         
+        this.compraItem.setVisible(false);
+        cobrosMenu.setVisible(false);
+        
         if(model.getCurrent()!=null && model.getCurrent().tipo()!=0){
             usuarioItem.setVisible(false);
+            productosItem.setVisible(false);
         }
     }
        /**
@@ -323,20 +321,19 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem AboutItem;
-    private javax.swing.JMenu CobrosMenu;
     private javax.swing.JMenu FacturacionMenu;
     private javax.swing.JMenu HelpMenu;
     private javax.swing.JMenuItem ListaClientesItem;
     private javax.swing.JMenu MantenimientoMenu;
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JMenuItem apartadoItem;
+    private javax.swing.JMenu cobrosMenu;
     private javax.swing.JMenuItem cobrosMenuItem;
     private javax.swing.JMenuItem compraItem;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenuItem despachosMenuItem;
+    private javax.swing.JMenuItem facturasItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu inventariosMenu;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem productosItem;
     private javax.swing.JMenuItem salirItem;
     private javax.swing.JMenuItem tiendaMenuItem;

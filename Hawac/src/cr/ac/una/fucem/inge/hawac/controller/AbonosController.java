@@ -7,28 +7,26 @@ package cr.ac.una.fucem.inge.hawac.controller;
 
 import cr.ac.una.fucem.inge.hawac.domain.Abono;
 import cr.ac.una.fucem.inge.hawac.domain.Apartado;
-import cr.ac.una.fucem.inge.hawac.domain.Inventario;
-import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
+import cr.ac.una.fucem.inge.hawac.model.AbonoModel;
+import cr.ac.una.fucem.inge.hawac.model.AbonosModel;
 import cr.ac.una.fucem.inge.hawac.model.ApartadoModel;
 import cr.ac.una.fucem.inge.hawac.model.ApartadosModel;
+import cr.ac.una.fucem.inge.hawac.view.AbonosView;
 import cr.ac.una.fucem.inge.hawac.view.ApartadosView;
 import hawac.Application;
 import hawac.Session;
 import java.util.List;
-import java.util.Arrays;
-import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
 
-public class ApartadosController {
+public class AbonosController {
 
     Model domainModel;
     Session session;
-    ApartadosView view;
-    ApartadosModel model;
+    AbonosView view;
+    AbonosModel model;
 
-    public ApartadosController(ApartadosView view, Session session, ApartadosModel model, Model domainModel) {
+    public AbonosController(AbonosView view, Session session, AbonosModel model, Model domainModel) {
         model.init();
         this.domainModel = domainModel;
         this.session = session;
@@ -40,7 +38,7 @@ public class ApartadosController {
 
     public void buscar() {
      
-        
+        /*
         
         model.clearErrors();
         model.getFilter().getC().setNombre(view.DescripcionText.getText());
@@ -56,22 +54,19 @@ public class ApartadosController {
         }
         model.setApartados(rows);
         
+        */
     }
 
-    public void buscarPorCliente() {
+    public void buscarPorDescripcion() {
+        
+        /*
+        
         model.clearErrors();
-        model.getFilter().getC().setNombre(view.DescripcionText.getText());
-        List<Apartado> rows = domainModel.getApartadoBl().findAll(Apartado.class.getName());
+        model.getFilter().setDescripcion(view.DescripcionText.getText());
+        List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
         int i = 0, cont = rows.size();
-        
-        for(int j = 0; j<rows.size();j++){
-            rows.get(j).setC(domainModel.getClienteBl().findById(rows.get(j).getCliente()));
-            rows.get(j).setP(domainModel.getProductoBl().findById(rows.get(j).getProducto()));
-            rows.get(j).setU(domainModel.getUsuarioBl().findById(rows.get(j).getUsuario()));
-        }
-        
         while (i < rows.size() && cont > 0) {
-            if (rows.get(i).getC().getNombre().toLowerCase().indexOf(view.DescripcionText.getText().toLowerCase()) == -1) {
+            if (rows.get(i).getDescripcion().toLowerCase().indexOf(view.DescripcionText.getText().toLowerCase()) == -1) {
                 rows.remove(rows.get(i));
             } else {
                 i++;
@@ -82,23 +77,23 @@ public class ApartadosController {
             model.getErrores().put("DescripcionText", "Ningun registro coincide");
             model.setMensaje("NINGUN REGISTRO COINCIDE");
         }
-        model.setApartados(rows);
+        model.setProductos(rows);
+        
+        */
         
     }
 
     public void buscarPorCodigo() {
+        
+        /*
+        
         model.clearErrors();
-        //model.getFilter().setDescripcion(view.DescripcionText.getText());
-        List<Apartado> rows = domainModel.getApartadoBl().findAll(Apartado.class.getName());
+        model.getFilter().setDescripcion(view.DescripcionText.getText());
+        List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
         //for (int i = 0; i < rows.size(); i++) {
         int i = 0, cont = rows.size();
-        for(int j = 0; j<rows.size();j++){
-            rows.get(j).setC(domainModel.getClienteBl().findById(rows.get(j).getCliente()));
-            rows.get(j).setP(domainModel.getProductoBl().findById(rows.get(j).getProducto()));
-            rows.get(j).setU(domainModel.getUsuarioBl().findById(rows.get(j).getUsuario()));
-        }
         while (i < rows.size() && cont > 0) {
-            if (String.valueOf(rows.get(i).getIdApartado()).indexOf(view.DescripcionText.getText()) == -1) {
+            if (String.valueOf(rows.get(i).getIdProducto()).indexOf(view.DescripcionText.getText()) == -1) {
                 rows.remove(rows.get(i));
             } else {
                 i++;
@@ -109,11 +104,15 @@ public class ApartadosController {
             model.getErrores().put("DescripcionText", "Ningun registro coincide");
             model.setMensaje("NINGUN REGISTRO COINCIDE");
         }
-        model.setApartados(rows);
+        model.setProductos(rows);
+        
+        */
         
     }
 
     public void borrar(int row) {
+     
+        /*
         model.clearErrors();
         Apartado p1 = model.getApartados().getRowAt(row);
         Usuario e1 = (Usuario) session.getAttribute("Usuario");
@@ -128,42 +127,8 @@ public class ApartadosController {
         }
         List<Apartado> rowsMod = domainModel.getApartadoBl().findAll(Apartado.class.getName());
         model.setApartados(rowsMod);
-    }
-
-    public void abrirAbonos(int row) {
-        model.clearErrors();
-        Apartado p1 = model.getApartados().getRowAt(row);
-        Usuario e1 = (Usuario) session.getAttribute("Usuario");
-        if (e1.getTipo() == -1) {
-            model.setMensaje(Application.ROL_NOTAUTHORIZED);
-            model.commit();
-            return;
-        }
-        List<Abono> rows = domainModel.getAbonoBl().findAll(Abono.class.getName());
-        int i = 0, cont = rows.size();
-        while (i < rows.size() && cont > 0) {
-            if (rows.get(i).getApartado() != p1.getIdApartado()) {
-                rows.remove(rows.get(i));
-            } else {
-                i++;
-            }
-            cont--;
-        }
-
-        for (int j = 0; j < rows.size(); j++) {
-            rows.get(j).setA(domainModel.getApartadoBl().findById(rows.get(j).getApartado()));
-            rows.get(j).setU(domainModel.getUsuarioBl().findById(rows.get(j).getUsuario()));
-        }
-
-        //view.setVisible(true);
-        Application.ABONOS_VIEW.setVisible(true);
-        Application.ABONOS_VIEW.getModel().getFilter().setA(p1);
-        Application.ABONOS_VIEW.getModel().getFilter().setApartado(p1.getIdApartado());
-        if (rows.isEmpty()) {
-            Application.ABONOS_VIEW.getModel().getErrores().put("DescripcionText", "Ningun registro coincide");
-            Application.ABONOS_VIEW.getModel().setMensaje("AUN NO EXISTEN ABONOS");
-        }
-        Application.ABONOS_VIEW.getModel().setAbonos(rows);
+        */
+        
     }
     
     public void preAgregar() {
@@ -174,11 +139,11 @@ public class ApartadosController {
             model.commit();
             return;
         }
-        ApartadoModel apartadoModel = Application.APARTADO_VIEW.getModel();
-        apartadoModel.clearErrors();
-        apartadoModel.setModo(Application.MODO_AGREGAR);
-        apartadoModel.setCurrent(new Apartado());
-        Application.APARTADO_VIEW.setVisible(true);
+        AbonoModel abonoModel = Application.ABONO_VIEW.getModel();
+        abonoModel.clearErrors();
+        abonoModel.setModo(Application.MODO_AGREGAR);
+        abonoModel.setCurrent(Application.ABONOS_VIEW.getModel().getFilter());
+        Application.ABONO_VIEW.setVisible(true);
     }
     
     /*

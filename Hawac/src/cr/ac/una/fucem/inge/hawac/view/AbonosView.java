@@ -5,33 +5,31 @@
  */
 package cr.ac.una.fucem.inge.hawac.view;
 
-import cr.ac.una.fucem.inge.hawac.controller.ApartadosController;
-import cr.ac.una.fucem.inge.hawac.model.ApartadosModel;
+import cr.ac.una.fucem.inge.hawac.controller.AbonosController;
+import cr.ac.una.fucem.inge.hawac.model.AbonosModel;
 import hawac.Application;
 import javax.swing.JOptionPane;
-import javax.swing.ButtonGroup;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class ApartadosView extends javax.swing.JInternalFrame implements java.util.Observer {
+public class AbonosView extends javax.swing.JInternalFrame implements java.util.Observer {
 
-    ApartadosController controller;
-    ApartadosModel model;
+    AbonosController controller;
+    AbonosModel model;
     DefaultTableModel productos;
 
-    public ApartadosController getController() {
+    public AbonosController getController() {
         return controller;
     }
 
-    public ApartadosModel getModel() {
+    public AbonosModel getModel() {
         return model;
     }
 
-    public void setController(ApartadosController controller) {
+    public void setController(AbonosController controller) {
         this.controller = controller;
     }
 
-    public void setModel(ApartadosModel model) {
+    public void setModel(AbonosModel model) {
         this.model = model;
         model.addObserver(this);
     }
@@ -45,7 +43,7 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
         model.addObserver(this);
     }
 
-    public ApartadosView() {
+    public AbonosView() {
         super("", false, true);
         initComponents();
     }
@@ -73,14 +71,13 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
         eliminarLabel = new javax.swing.JLabel();
         ProductosScrollPane = new javax.swing.JScrollPane();
         CatalogoTable = new javax.swing.JTable();
-        clienteRB = new javax.swing.JRadioButton();
+        DescripcionRadioButton = new javax.swing.JRadioButton();
         CodigoRadioButton2 = new javax.swing.JRadioButton();
         buscarLb = new javax.swing.JLabel();
         verTodoRdButton = new javax.swing.JRadioButton();
-        mostrar_abonoB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        setTitle("APARTADOS");
+        setTitle("ABONOS");
 
         DescripcionText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -144,9 +141,9 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
         });
         ProductosScrollPane.setViewportView(CatalogoTable);
 
-        Busqueda.add(clienteRB);
-        clienteRB.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        clienteRB.setText("Nombre Cliente");
+        Busqueda.add(DescripcionRadioButton);
+        DescripcionRadioButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
+        DescripcionRadioButton.setText("Descripcion");
 
         Busqueda.add(CodigoRadioButton2);
         CodigoRadioButton2.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
@@ -169,13 +166,6 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
             }
         });
 
-        mostrar_abonoB.setText("Mostrar Abonos");
-        mostrar_abonoB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mostrar_abonoBActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -187,7 +177,7 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(clienteRB)
+                                .addComponent(DescripcionRadioButton)
                                 .addGap(27, 27, 27)
                                 .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(buscarLb))
@@ -196,21 +186,16 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
                             .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BuscarLabel))
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(AgregarLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(eliminarLabel))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(31, 31, 31)
-                                .addComponent(eliminarB, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AgregarLabel)
+                            .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(eliminarB, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(eliminarLabel)))
                     .addComponent(CodigoRadioButton2)
-                    .addComponent(verTodoRdButton)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(mostrar_abonoB)
-                        .addGap(23, 23, 23)))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(verTodoRdButton))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,7 +215,7 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(clienteRB)
+                                .addComponent(DescripcionRadioButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(CodigoRadioButton2))
                             .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -239,9 +224,7 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
                 .addComponent(verTodoRdButton)
                 .addGap(18, 18, 18)
                 .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(mostrar_abonoB, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(9, 9, 9))
+                .addGap(82, 82, 82))
         );
 
         pack();
@@ -262,12 +245,12 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
     }//GEN-LAST:event_eliminarBActionPerformed
 
     private void agregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarButtonActionPerformed
-        Application.PRODUCTO_VIEW.setLocation(this.agregarButton.getLocationOnScreen());
+        Application.ABONO_VIEW.setLocation(this.agregarButton.getLocationOnScreen());
         controller.preAgregar();
     }//GEN-LAST:event_agregarButtonActionPerformed
 
     private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
-        if (CodigoRadioButton2.isSelected() == false && clienteRB.isSelected() == false && verTodoRdButton.isSelected() == false) {
+        if (CodigoRadioButton2.isSelected() == false && DescripcionRadioButton.isSelected() == false && verTodoRdButton.isSelected() == false) {
             buscarLb.setBorder(Application.BORDER_ERROR);
             buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
         } else {
@@ -276,13 +259,13 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
             if (verTodoRdButton.isSelected() == true) {
                 controller.buscar();
             }
-            if (clienteRB.isSelected() == true && DescripcionText.getText().length() == 0) {
+            if (DescripcionRadioButton.isSelected() == true && DescripcionText.getText().length() == 0) {
                 model.getErrores().put("DescripcionText", "Digite la descripcion a buscar");
                 buscarLb.setBorder(Application.BORDER_ERROR);
                 buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
             }
-            if (clienteRB.isSelected() == true && DescripcionText.getText().length() != 0) {
-                controller.buscarPorCliente();
+            if (DescripcionRadioButton.isSelected() == true && DescripcionText.getText().length() != 0) {
+                controller.buscarPorDescripcion();
             }
             if (CodigoRadioButton2.isSelected() == true && DescripcionText.getText().length() == 0) {
                 model.getErrores().put("DescripcionText", "Digite la descripcion a buscar");
@@ -311,19 +294,10 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
         // TODO add your handling code here:
     }//GEN-LAST:event_verTodoRdButtonActionPerformed
 
-    private void mostrar_abonoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mostrar_abonoBActionPerformed
-        int row = this.CatalogoTable.getSelectedRow();
-        if(row == -1){
-            JOptionPane.showMessageDialog(this, "No se selecciono ningun Apartado", "", JOptionPane.INFORMATION_MESSAGE);
-        }else
-            controller.abrirAbonos(row);
-        
-    }//GEN-LAST:event_mostrar_abonoBActionPerformed
-
     @Override
     public void update(java.util.Observable updatedModel, Object parametros) {
-        if(model.getFilter().getC().getNombre().length()!=0)
-            DescripcionText.setText(model.getFilter().getC().getNombre());
+        if(model.getFilter().getA().getIdApartado()!=0)
+            DescripcionText.setText(model.getFilter().getA().getIdApartado()+"");
         else
             DescripcionText.setText("");
         if (model.getErrores().get("DescripcionText") != null) {
@@ -333,11 +307,11 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
             buscarLb.setBorder(null);
             buscarLb.setToolTipText("");
         }
-
+        
         eliminarLabel.setVisible(false);
         eliminarB.setVisible(false);
-        
-        CatalogoTable.setModel(model.getApartados());
+
+        CatalogoTable.setModel(model.getAbonos());
         this.revalidate();
         if (!model.getMensaje().equals("")) {
             JOptionPane.showMessageDialog(this, model.getMensaje(), "", JOptionPane.INFORMATION_MESSAGE);
@@ -389,14 +363,13 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
     private javax.swing.ButtonGroup Busqueda;
     public javax.swing.JTable CatalogoTable;
     public javax.swing.JRadioButton CodigoRadioButton2;
+    public javax.swing.JRadioButton DescripcionRadioButton;
     public javax.swing.JTextField DescripcionText;
     private javax.swing.JScrollPane ProductosScrollPane;
     private javax.swing.JButton agregarButton;
     private javax.swing.JLabel buscarLb;
-    public javax.swing.JRadioButton clienteRB;
     private javax.swing.JButton eliminarB;
     private javax.swing.JLabel eliminarLabel;
-    private javax.swing.JButton mostrar_abonoB;
     public javax.swing.JRadioButton verTodoRdButton;
     // End of variables declaration//GEN-END:variables
 

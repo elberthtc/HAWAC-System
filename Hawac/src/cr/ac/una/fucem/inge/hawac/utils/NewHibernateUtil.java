@@ -39,7 +39,7 @@ public class NewHibernateUtil {
     }
 
     public void manejaException(HibernateException he) throws HibernateException {
-        transac.rollback();//devuelve toda la picha si pasa un error
+        transac.rollback();
         throw new HibernateException("Se genero un error con la base de datos"+he.getMessage());
 
     }

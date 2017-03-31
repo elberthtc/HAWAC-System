@@ -37,38 +37,30 @@ public class LoginController {
         else {
             e1.setIdUsuario(Integer.parseInt(view.idTextField.getText()));
         }
-        e1.setPassword(new String(view.claveTextField.getPassword())); 
-        if(view.claveTextField.getPassword().length==0){
-            model.getErrores().put("Clave","Clave Requerida");
+        e1.setPassword(new String(view.claveTextField.getPassword()));
+        if (view.claveTextField.getPassword().length == 0) {
+            model.getErrores().put("Clave", "Clave Requerida");
         }
-        if(model.getErrores().isEmpty()){
-        try {
-            Usuario real = domainModel.getUsuario(e1.getIdUsuario(),e1.getPassword());
-            session.setAttibute("Usuario",real);
-            view.setVisible(false);
-            Application.USUARIO = real;
-            Application.APPLICATION_VIEW.getController().enter();
-            Application.FACTURA_VIEW.getModel().setEmpleado(real);
-            Application.APPLICATION_VIEW.update(null);
-        } catch (Exception ex) {
-            String n = ex.toString();
-            System.out.println(n);
-            if(ex.toString().compareTo("java.lang.NullPointerException")==0){
-                
-            }
-            else {
+        if (model.getErrores().isEmpty()) {
+            Usuario real = domainModel.getUsuario(e1.getIdUsuario(), e1.getPassword());
+            if (real != null) {
+                session.setAttibute("Usuario", real);
+                view.setVisible(false);
+                Application.USUARIO = real;
+                Application.APPLICATION_VIEW.getController().enter();
+                Application.FACTURA_VIEW.getModel().setEmpleado(real);
+                Application.APPLICATION_VIEW.update(null);
+            } else {
                 model.setMensaje("Datos incorrectos");
                 e1.setPassword("");
                 e1.setIdUsuario(0);
                 model.setCurrent(e1);
             }
-        }
-        }
-        else{
+        } else {
             model.setMensaje("CAMPOS REQUERIDOS SIN LLENAR");
             model.setCurrent(e1);
         }
-    }   
+    }
 
     public void logout(){
         model.clearErrors();

@@ -78,6 +78,7 @@ public class ApartadoView extends javax.swing.JDialog implements java.util.Obser
         buscar_productoB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("APARTADO");
         setPreferredSize(new java.awt.Dimension(387, 400));
 
         clienteLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N

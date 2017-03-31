@@ -44,6 +44,7 @@ public class ApplicationController {
         //Application.FACTURAS_VENTAS_VIEW.getModel().init();
         Application.FACTURAS_PAGADAS_VIEW.getModel().init();
         Application.APARTADOS_VIEW.getModel().init();
+        Application.ABONOS_VIEW.getModel().init();
         Application.APPLICATION_VIEW.getModel().init();
         Application.FACTURA_VIEW.getModel().init();
         Application.APPLICATION_VIEW.getModel().setCurrent((Usuario) session.getAttribute("Usuario"));
@@ -55,13 +56,14 @@ public class ApplicationController {
         Application.CLIENTES_VIEW.setVisible(false);
         Application.PRODUCTOS_VIEW.setVisible(false);
         Application.APARTADOS_VIEW.setVisible(false);
+        Application.ABONOS_VIEW.setVisible(false);
         Application.USUARIOS_VIEW.setVisible(false);
         Application.CLIENTES_FACTURA_VIEW.setVisible(false);
         Application.CLIENTES_APARTADO_VIEW.setVisible(false);
         Application.PRODUCTOFACTURA_VIEW.setVisible(false);
         Application.PRODUCTO_APARTADO_VIEW.setVisible(false);
         Application.FACTURA_VIEW.setVisible(false);
-        Application.FACTURAS_VENTAS_VIEW.setVisible(false);
+        //Application.FACTURAS_VENTAS_VIEW.setVisible(false);
         Application.FACTURAS_PAGADAS_VIEW.setVisible(false);
         //Application.FACTURA_COMPRA_VIEW.setVisible(false);
         view.setVisible(false);

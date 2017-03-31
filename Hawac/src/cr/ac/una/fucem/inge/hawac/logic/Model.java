@@ -43,13 +43,16 @@ public class Model {
         Application.CANTIDAD = facturaBl.findAll(Factura.class.getName()).size() + 1;
     }
     
-    public Usuario getUsuario(int id, String clave) throws Exception{
+    public Usuario getUsuario(int id, String clave) {
         Usuario u1 = usuarioBl.findById(id);
-        if(u1.getPassword().equals(clave)){
-            return u1;
-        }else{
-            throw new Exception ("Contraseña Incorrecta");
+        if (u1 != null) {
+            if (u1.getPassword().equals(clave)) {
+                return u1;
+            } else {
+                return null;
+            }
         }
+        return null;
     }
     
     public List<Inventario> getInventario(){

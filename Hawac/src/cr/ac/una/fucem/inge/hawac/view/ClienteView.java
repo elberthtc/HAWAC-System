@@ -46,6 +46,7 @@ public class ClienteView extends javax.swing.JDialog implements java.util.Observ
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("CLIENTE");
 
         nombreLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         nombreLb.setText("Nombre");

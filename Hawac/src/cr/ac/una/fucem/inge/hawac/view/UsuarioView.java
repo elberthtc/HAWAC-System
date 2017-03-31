@@ -60,7 +60,7 @@ public class UsuarioView extends javax.swing.JDialog implements java.util.Observ
         passwordText = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Empleado");
+        setTitle("USUARIO");
 
         NombreLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         NombreLb.setText("Nombre :");
@@ -215,7 +215,7 @@ public class UsuarioView extends javax.swing.JDialog implements java.util.Observ
       public void update(java.util.Observable o, Object arg) {
         Usuario current = model.getCurrent();
         this.idTextField.setEnabled(model.getModo()== Application.MODO_AGREGAR);
-        if(current.getIdUsuario()==-1){
+        if(current.getIdUsuario()==0){
             this.idTextField.setText("");
         }else
             this.idTextField.setText(current.getIdUsuario()+"");

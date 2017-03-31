@@ -35,7 +35,7 @@ public class ApartadoBL extends BaseBL implements IBaseBL<Apartado, Integer>{
 
     @Override
     public Apartado findById(Integer o) {
-        return (Apartado) this.getDao(o.getClass().getName()).findById(o);
+        return (Apartado) this.getDao(Apartado.class.getName()).findById(o);
     }
 
     @Override

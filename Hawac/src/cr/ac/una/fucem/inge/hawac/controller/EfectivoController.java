@@ -12,14 +12,6 @@ import cr.ac.una.fucem.inge.hawac.view.EfectivoView;
 import hawac.Application;
 import hawac.Session;
 import java.util.List;
-/*import ferreteria.Application;
-import ferreteria.Session;
-import ferreteriaentidades.Efectivo;
-import ferreteria.logic.Model;
-import ferreteria.presentacion.model.EfectivoModel;
-import ferreteria.presentacion.model.FacturasVentasModel;
-import ferreteria.presentacion.view.EfectivoView;
-import ferreteriaentidades.Factura;*/
 import java.util.ArrayList;
 
 public class EfectivoController {

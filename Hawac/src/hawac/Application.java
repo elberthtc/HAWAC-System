@@ -79,6 +79,12 @@ public class Application {
         applicationView.addInternalFrame(apartadosView);
         ApartadosController apartadoscontroller = new ApartadosController(apartadosView,session,apartadosModel,domainModel);
         
+        AbonosModel abonosModel = new AbonosModel();
+        AbonosView abonosView = new AbonosView();
+        ABONOS_VIEW = abonosView;
+        applicationView.addInternalFrame(abonosView);
+        AbonosController abonoscontroller = new AbonosController(abonosView, session, abonosModel, domainModel);
+        
         InventariosModel inventariosModel = new InventariosModel();
         InventariosView inventariosView = new InventariosView();
         INVENTARIO_TIENDA_VIEW = inventariosView;
@@ -118,6 +124,11 @@ public class Application {
         APARTADO_VIEW = apartadoView;
         ApartadoController apartadoController = new ApartadoController(apartadoView,apartadoModel,domainModel,session); 
         
+        AbonoModel abonoModel = new AbonoModel();
+        AbonoView abonoView = new AbonoView(applicationView,true);
+        ABONO_VIEW = abonoView;
+        AbonoController abonoController = new AbonoController(abonoView,abonoModel,domainModel,session); 
+        
         ProductoFacturaView productoFacturaView=new ProductoFacturaView();
         PRODUCTOFACTURA_VIEW=productoFacturaView;
         applicationView.addInternalFrame(productoFacturaView);
@@ -152,11 +163,15 @@ public class Application {
         ChequeView chequeView = new ChequeView(applicationView,true);
         Cheque_VIEW = chequeView;
         ChequeController  chequeController = new ChequeController(chequeView,chequeModel,domainModel,session);
+
+        */
         
         EfectivoModel efectivoModel = new EfectivoModel();
         EfectivoView efectivoView = new EfectivoView(applicationView,true);
         Efectivo_VIEW = efectivoView;
         EfectivoController  efectivoController = new EfectivoController(efectivoView,efectivoModel,domainModel,session);
+        
+        /*
         
         TarjetaCreditoModel tarjetacreditoModel = new TarjetaCreditoModel();
         TarjetaCreditoView tarjetacreditoView = new TarjetaCreditoView(applicationView,true);
@@ -191,9 +206,11 @@ public class Application {
     public static ClienteView CLIENTE_VIEW;
     public static ProductosView PRODUCTOS_VIEW;
     public static ApartadosView APARTADOS_VIEW;
+    public static AbonosView ABONOS_VIEW;
     public static ProductoView PRODUCTO_VIEW;
     public static ProductoApartadoView PRODUCTO_APARTADO_VIEW;
     public static ApartadoView APARTADO_VIEW;
+    public static AbonoView ABONO_VIEW;
     public static UsuariosView USUARIOS_VIEW;
     public static UsuarioView EMPLEADO_VIEW;
     public static FacturaView FACTURA_VIEW;
@@ -206,7 +223,7 @@ public class Application {
     public static FacturasVentasView FACTURAS_VENTAS_VIEW;
     public static FacturasPagadasView FACTURAS_PAGADAS_VIEW;
     //public static ChequeView Cheque_VIEW;
-    //public static EfectivoView Efectivo_VIEW;
+    public static EfectivoView Efectivo_VIEW;
     //public static TarjetaCreditoView TarjetaCredito_VIEW;
        
     public static final int MODO_AGREGAR=0;

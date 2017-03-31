@@ -88,7 +88,7 @@ public class EfectivoView extends javax.swing.JDialog implements java.util.Obser
             }
         });
 
-        PagarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/src/ferreteria/presentacion/view/icons/pagar.png"))); // NOI18N
+        PagarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/pagar.png"))); // NOI18N
         PagarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 PagarButtonActionPerformed(evt);

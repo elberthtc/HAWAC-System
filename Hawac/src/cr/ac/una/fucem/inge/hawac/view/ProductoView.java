@@ -70,6 +70,7 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
         tallaCB = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("PRODUCTO");
 
         DescripcionLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         DescripcionLabel.setText("Descripción");

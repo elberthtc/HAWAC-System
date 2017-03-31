@@ -1,16 +1,19 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 30-mar-2017 21:01:53 by Hibernate Tools 4.3.1 -->
+<!-- Generated 30-mar-2017 23:05:32 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.fucem.inge.hawac.domain.Abono" table="abono" catalog="tienda" optimistic-lock="version">
         <id name="idAbonos" type="java.lang.Integer">
             <column name="idAbonos" />
             <generator class="identity" />
         </id>
-        <many-to-one name="apartado" class="cr.ac.una.fucem.inge.hawac.domain.Apartado" fetch="select">
+        <property name="apartado" type="int">
             <column name="apartado" />
-        </many-to-one>
+        </property>
+        <property name="usuario" type="int">
+            <column name="usuario" />
+        </property>
         <property name="fechaRealizado" type="date">
             <column name="fechaRealizado" length="10" not-null="true" />
         </property>

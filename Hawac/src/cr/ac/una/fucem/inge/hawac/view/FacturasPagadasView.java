@@ -39,7 +39,7 @@ public class FacturasPagadasView extends javax.swing.JInternalFrame implements j
         seleccionarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
-        setTitle("Despachos");
+        setTitle("FACTURAS PAGADAS");
 
         tablaFacturas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -55,7 +55,7 @@ public class FacturasPagadasView extends javax.swing.JInternalFrame implements j
         jScrollPane1.setViewportView(tablaFacturas);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
-        jLabel1.setText("DESPACHOS");
+        jLabel1.setText("FACTURAS");
 
         nombreLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         nombreLb.setText("Nombre del Cliente");

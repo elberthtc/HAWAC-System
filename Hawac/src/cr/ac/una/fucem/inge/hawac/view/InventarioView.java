@@ -59,7 +59,7 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
         estadoCB = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Empleado");
+        setTitle("AGREGAR AL INVENTARIO");
 
         cantidadLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         cantidadLb.setText("Cantidad:");

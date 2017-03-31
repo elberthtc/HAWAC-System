@@ -1,7 +1,8 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 30-mar-2017 21:01:47 by Hibernate Tools 4.3.1
+// Generated 30-mar-2017 23:05:31 by Hibernate Tools 4.3.1
 
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -11,12 +12,22 @@ public class Abono  implements java.io.Serializable {
 
 
      private Integer idAbonos;
-     private Apartado apartado;
+     private int apartado;
+     private int usuario;
      private Date fechaRealizado;
      private float monto;
      private double saldo;
+     private Usuario u;
+     private Apartado a;
 
     public Abono() {
+        apartado = 0;
+        usuario = 0;
+        fechaRealizado = new Date();
+        monto = 0;
+        saldo = 0;
+        u = new Usuario();
+        a = new Apartado();
     }
 
 	
@@ -25,13 +36,30 @@ public class Abono  implements java.io.Serializable {
         this.monto = monto;
         this.saldo = saldo;
     }
-    public Abono(Apartado apartado, Date fechaRealizado, float monto, double saldo) {
+    public Abono(int apartado, int usuario, Date fechaRealizado, float monto, double saldo) {
        this.apartado = apartado;
+       this.usuario = usuario;
        this.fechaRealizado = fechaRealizado;
        this.monto = monto;
        this.saldo = saldo;
     }
-   
+
+    public Usuario getU() {
+        return u;
+    }
+
+    public void setU(Usuario u) {
+        this.u = u;
+    }
+
+    public Apartado getA() {
+        return a;
+    }
+
+    public void setA(Apartado a) {
+        this.a = a;
+    }
+    
     public Integer getIdAbonos() {
         return this.idAbonos;
     }
@@ -39,13 +67,23 @@ public class Abono  implements java.io.Serializable {
     public void setIdAbonos(Integer idAbonos) {
         this.idAbonos = idAbonos;
     }
-    public Apartado getApartado() {
+    
+    public int getApartado() {
         return this.apartado;
     }
     
-    public void setApartado(Apartado apartado) {
+    public void setApartado(int apartado) {
         this.apartado = apartado;
     }
+    
+    public int getUsuario() {
+        return this.usuario;
+    }
+    
+    public void setUsuario(int usuario) {
+        this.usuario = usuario;
+    }
+    
     public Date getFechaRealizado() {
         return this.fechaRealizado;
     }
@@ -53,6 +91,7 @@ public class Abono  implements java.io.Serializable {
     public void setFechaRealizado(Date fechaRealizado) {
         this.fechaRealizado = fechaRealizado;
     }
+    
     public float getMonto() {
         return this.monto;
     }
@@ -60,6 +99,7 @@ public class Abono  implements java.io.Serializable {
     public void setMonto(float monto) {
         this.monto = monto;
     }
+    
     public double getSaldo() {
         return this.saldo;
     }
@@ -67,10 +107,11 @@ public class Abono  implements java.io.Serializable {
     public void setSaldo(double saldo) {
         this.saldo = saldo;
     }
-
-
-
-
+    
+    public String getFechaRealizado2() {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/YYYY");
+        return formatoFecha.format(fechaRealizado);
+    }
 }
 
 
