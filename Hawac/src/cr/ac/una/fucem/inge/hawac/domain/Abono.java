@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 24-mar-2017 14:24:28 by Hibernate Tools 4.3.1
+// Generated 30-mar-2017 21:01:47 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -14,14 +14,22 @@ public class Abono  implements java.io.Serializable {
      private Apartado apartado;
      private Date fechaRealizado;
      private float monto;
+     private double saldo;
 
     public Abono() {
     }
 
-    public Abono(Apartado apartado, Date fechaRealizado, float monto) {
+	
+    public Abono(Date fechaRealizado, float monto, double saldo) {
+        this.fechaRealizado = fechaRealizado;
+        this.monto = monto;
+        this.saldo = saldo;
+    }
+    public Abono(Apartado apartado, Date fechaRealizado, float monto, double saldo) {
        this.apartado = apartado;
        this.fechaRealizado = fechaRealizado;
        this.monto = monto;
+       this.saldo = saldo;
     }
    
     public Integer getIdAbonos() {
@@ -51,6 +59,13 @@ public class Abono  implements java.io.Serializable {
     
     public void setMonto(float monto) {
         this.monto = monto;
+    }
+    public double getSaldo() {
+        return this.saldo;
+    }
+    
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 
 

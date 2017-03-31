@@ -24,6 +24,7 @@ public class ApartadoDAO extends NewHibernateUtil implements IBaseDAO<Apartado, 
             getTransac().commit();
         } catch (HibernateException he) {
             manejaException(he);
+            System.out.println(he.toString());
             throw he;
         } finally {
             getSession().close();

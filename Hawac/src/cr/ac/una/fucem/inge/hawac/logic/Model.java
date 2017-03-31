@@ -15,7 +15,6 @@ import java.util.List;
 public class Model {
     private AbonoBL abonoBl;
     private ApartadoBL apartadoBl;
-    private ApartadoproductoBL apartado_productoBl;
     private BitacoraBL bitacoraBl;
     private ClienteBL clienteBl;
     private FacturaBL facturaBl;
@@ -34,7 +33,6 @@ public class Model {
     private Model(){
         abonoBl = new AbonoBL();
         apartadoBl = new ApartadoBL();
-        apartado_productoBl = new ApartadoproductoBL();
         bitacoraBl = new BitacoraBL();
         clienteBl = new ClienteBL();
         facturaBl = new FacturaBL();
@@ -73,10 +71,6 @@ public class Model {
 
     public ApartadoBL getApartadoBl() {
         return apartadoBl;
-    }
-
-    public ApartadoproductoBL getApartado_productoBl() {
-        return apartado_productoBl;
     }
 
     public BitacoraBL getBitacoraBl() {
@@ -119,8 +113,14 @@ public class Model {
             return false;
         }
     }
+    
+    public static boolean isNumeric2(String cadena) {
+        try {
+            Double.parseDouble(cadena);
+            return true;
+        } catch (NumberFormatException exc) {
+            return false;
+        }
+    }
 
 }
-   
-
-

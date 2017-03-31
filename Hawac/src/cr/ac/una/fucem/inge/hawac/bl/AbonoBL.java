@@ -12,6 +12,7 @@ import java.util.List;
  *
  * @author Josue
  */
+
 public class AbonoBL extends BaseBL implements IBaseBL<Abono, Integer>{
     public AbonoBL() {
         super();

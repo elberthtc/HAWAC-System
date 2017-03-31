@@ -16,6 +16,5 @@
     <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Apartado.hbm.xml"/>
     <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Producto.hbm.xml"/>
     <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Linea.hbm.xml"/>
-    <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Apartadoproducto.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

@@ -4,57 +4,11 @@
  * and open the template in the editor.
  */
 package hawac;
-import cr.ac.una.fucem.inge.hawac.controller.ApplicationController;
-import cr.ac.una.fucem.inge.hawac.controller.ClienteController;
-import cr.ac.una.fucem.inge.hawac.controller.ClientesController;
-import cr.ac.una.fucem.inge.hawac.controller.ClientesFacturaController;
-import cr.ac.una.fucem.inge.hawac.controller.UsuariosController;
-import cr.ac.una.fucem.inge.hawac.controller.FacturaController;
-import cr.ac.una.fucem.inge.hawac.controller.FacturasPagadasController;
-import cr.ac.una.fucem.inge.hawac.controller.FacturasVentasController;
-import cr.ac.una.fucem.inge.hawac.controller.InventarioController;
-import cr.ac.una.fucem.inge.hawac.controller.InventariosController;
-import cr.ac.una.fucem.inge.hawac.controller.LoginController;
-import cr.ac.una.fucem.inge.hawac.controller.ProductoController;
-import cr.ac.una.fucem.inge.hawac.controller.ProductoFacturaController;
-import cr.ac.una.fucem.inge.hawac.controller.ProductoInventarioController;
-import cr.ac.una.fucem.inge.hawac.controller.ProductosController;
-import cr.ac.una.fucem.inge.hawac.controller.UsuarioController;
+import cr.ac.una.fucem.inge.hawac.controller.*;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
-import cr.ac.una.fucem.inge.hawac.model.ApplicationModel;
-import cr.ac.una.fucem.inge.hawac.model.ClienteModel;
-import cr.ac.una.fucem.inge.hawac.model.ClientesModel;
-import cr.ac.una.fucem.inge.hawac.model.FacturaModel;
-import cr.ac.una.fucem.inge.hawac.model.FacturasPagadasModel;
-import cr.ac.una.fucem.inge.hawac.model.FacturasVentasModel;
-import cr.ac.una.fucem.inge.hawac.model.InventarioModel;
-import cr.ac.una.fucem.inge.hawac.model.InventariosModel;
-import cr.ac.una.fucem.inge.hawac.model.LoginModel;
-import cr.ac.una.fucem.inge.hawac.model.ProductoModel;
-import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
-import cr.ac.una.fucem.inge.hawac.model.UsuarioModel;
-import cr.ac.una.fucem.inge.hawac.model.UsuariosModel;
-import cr.ac.una.fucem.inge.hawac.view.About;
-import cr.ac.una.fucem.inge.hawac.view.ApplicationView;
-import cr.ac.una.fucem.inge.hawac.view.ClienteView;
-import cr.ac.una.fucem.inge.hawac.view.ClientesFacturaView;
-import cr.ac.una.fucem.inge.hawac.view.ClientesView;
-import cr.ac.una.fucem.inge.hawac.view.FabricaView;
-import cr.ac.una.fucem.inge.hawac.view.UsuarioView;
-import cr.ac.una.fucem.inge.hawac.view.UsuariosView;
-import cr.ac.una.fucem.inge.hawac.view.FacturaView;
-import cr.ac.una.fucem.inge.hawac.view.FacturasPagadasView;
-import cr.ac.una.fucem.inge.hawac.view.FacturasVentasView;
-import cr.ac.una.fucem.inge.hawac.view.InventarioFabricaView;
-import cr.ac.una.fucem.inge.hawac.view.InventarioMenuView;
-import cr.ac.una.fucem.inge.hawac.view.InventarioView;
-import cr.ac.una.fucem.inge.hawac.view.InventariosView;
-import cr.ac.una.fucem.inge.hawac.view.LoginView;
-import cr.ac.una.fucem.inge.hawac.view.ProductoFacturaView;
-import cr.ac.una.fucem.inge.hawac.view.ProductoInventarioView;
-import cr.ac.una.fucem.inge.hawac.view.ProductoView;
-import cr.ac.una.fucem.inge.hawac.view.ProductosView;
+import cr.ac.una.fucem.inge.hawac.model.*;
+import cr.ac.una.fucem.inge.hawac.view.*;
 import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.border.Border;
@@ -62,7 +16,6 @@ import javax.swing.border.Border;
 
 
 public class Application {
-
     /**
      * @param args the command line arguments
      */
@@ -108,12 +61,23 @@ public class Application {
         applicationView.addInternalFrame(clieFacView);
         ClientesFacturaController clieFacturaController = new ClientesFacturaController(clieFacView,session,clientesModel,domainModel);
         
+        ClientesApartadoView clieApaView = new ClientesApartadoView();
+        CLIENTES_APARTADO_VIEW = clieApaView;
+        applicationView.addInternalFrame(clieApaView);
+        ClientesApartadoController clieAparController = new ClientesApartadoController(clieApaView,session,clientesModel,domainModel);
+        
         ProductosModel productosModel = new ProductosModel();
         ProductosView productosView = new ProductosView();
         PRODUCTOS_VIEW = productosView;
         applicationView.addInternalFrame(productosView);
         ProductosController productoscontroller = new ProductosController(productosView,session,productosModel,domainModel);
         
+        
+        ApartadosModel apartadosModel = new ApartadosModel();
+        ApartadosView apartadosView = new ApartadosView();
+        APARTADOS_VIEW = apartadosView;
+        applicationView.addInternalFrame(apartadosView);
+        ApartadosController apartadoscontroller = new ApartadosController(apartadosView,session,apartadosModel,domainModel);
         
         InventariosModel inventariosModel = new InventariosModel();
         InventariosView inventariosView = new InventariosView();
@@ -149,10 +113,20 @@ public class Application {
         PRODUCTO_VIEW = productoView;
         ProductoController productoController = new ProductoController(productoView,productoModel,domainModel,session); 
        
+        ApartadoModel apartadoModel = new ApartadoModel();
+        ApartadoView apartadoView = new ApartadoView(applicationView,true);
+        APARTADO_VIEW = apartadoView;
+        ApartadoController apartadoController = new ApartadoController(apartadoView,apartadoModel,domainModel,session); 
+        
         ProductoFacturaView productoFacturaView=new ProductoFacturaView();
         PRODUCTOFACTURA_VIEW=productoFacturaView;
         applicationView.addInternalFrame(productoFacturaView);
         ProductoFacturaController productoFacturaController=new ProductoFacturaController(productoFacturaView,session,productosModel,domainModel);
+        
+        ProductoApartadoView productoApartadoView=new ProductoApartadoView();
+        PRODUCTO_APARTADO_VIEW=productoApartadoView;
+        applicationView.addInternalFrame(productoApartadoView);
+        ProductoApartadoController productoApartadoController=new ProductoApartadoController(productoApartadoView,session,productosModel,domainModel);
         
         ProductoInventarioView productoInventarioView = new ProductoInventarioView();
         PRODUCTOINVENTARIO_VIEW=productoInventarioView;
@@ -213,9 +187,13 @@ public class Application {
     public static LoginView LOGIN_VIEW; 
     public static ClientesView CLIENTES_VIEW;
     public static ClientesFacturaView CLIENTES_FACTURA_VIEW;
+    public static ClientesApartadoView CLIENTES_APARTADO_VIEW;
     public static ClienteView CLIENTE_VIEW;
     public static ProductosView PRODUCTOS_VIEW;
+    public static ApartadosView APARTADOS_VIEW;
     public static ProductoView PRODUCTO_VIEW;
+    public static ProductoApartadoView PRODUCTO_APARTADO_VIEW;
+    public static ApartadoView APARTADO_VIEW;
     public static UsuariosView USUARIOS_VIEW;
     public static UsuarioView EMPLEADO_VIEW;
     public static FacturaView FACTURA_VIEW;

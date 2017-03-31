@@ -35,11 +35,5 @@
             </key>
             <one-to-many class="cr.ac.una.fucem.inge.hawac.domain.Inventario" />
         </set>
-        <set name="apartadoproductos" table="apartadoproducto" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="producto" not-null="true" />
-            </key>
-            <one-to-many class="cr.ac.una.fucem.inge.hawac.domain.Apartadoproducto" />
-        </set>
     </class>
 </hibernate-mapping>

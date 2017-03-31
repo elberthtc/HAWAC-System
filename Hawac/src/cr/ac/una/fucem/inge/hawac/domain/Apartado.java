@@ -1,7 +1,9 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 24-mar-2017 14:24:28 by Hibernate Tools 4.3.1
+// Generated 29-mar-2017 23:57:21 by Hibernate Tools 4.3.1
 
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -13,28 +15,48 @@ public class Apartado  implements java.io.Serializable {
 
 
      private Integer idApartado;
-     private Cliente cliente;
+     private int cliente;
+     private int producto;
+     private int usuario;
      private Date fechaRealizado;
      private Date fechaLimite;
+     private double saldo;
+     private Cliente c;
+     private Producto p;
+     private Usuario u;
+     
+     
      private Set<Abono> abonos = new HashSet<Abono>(0);
-     private Set<Apartadoproducto> apartadoproductos = new HashSet<Apartadoproducto>(0);
      private Set<Factura> facturas = new HashSet<Factura>(0);
 
     public Apartado() {
+        idApartado = -1;
+        cliente = 0;
+        producto = 0;
+        usuario = 0;
+        fechaRealizado = new Date();
+        sumarMeses();
+        saldo = -1;
+        c = new Cliente();
+        p = new Producto();
+        u = new Usuario();
     }
 
 	
-    public Apartado(Cliente cliente, Date fechaRealizado, Date fechaLimite) {
+    public Apartado(int cliente, Date fechaRealizado, Date fechaLimite, double saldo) {
         this.cliente = cliente;
         this.fechaRealizado = fechaRealizado;
         this.fechaLimite = fechaLimite;
+        this.saldo = saldo;
     }
-    public Apartado(Cliente cliente, Date fechaRealizado, Date fechaLimite, Set<Abono> abonos, Set<Apartadoproducto> apartadoproductos, Set<Factura> facturas) {
+    public Apartado(int cliente, int producto, int usuario, Date fechaRealizado, Date fechaLimite, double saldo, Set<Abono> abonos, Set<Factura> facturas) {
        this.cliente = cliente;
+       this.producto = producto;
+       this.usuario = usuario;
        this.fechaRealizado = fechaRealizado;
        this.fechaLimite = fechaLimite;
+       this.saldo = saldo;
        this.abonos = abonos;
-       this.apartadoproductos = apartadoproductos;
        this.facturas = facturas;
     }
    
@@ -45,26 +67,79 @@ public class Apartado  implements java.io.Serializable {
     public void setIdApartado(Integer idApartado) {
         this.idApartado = idApartado;
     }
-    public Cliente getCliente() {
+    public int getCliente() {
         return this.cliente;
     }
     
-    public void setCliente(Cliente cliente) {
+    public void setCliente(int cliente) {
         this.cliente = cliente;
     }
-    public Date getFechaRealizado() {
-        return this.fechaRealizado;
+    public int getProducto() {
+        return this.producto;
     }
     
+    public void setProducto(int producto) {
+        this.producto = producto;
+    }
+    public int getUsuario() {
+        return this.usuario;
+    }
+    
+    public void setUsuario(int usuario) {
+        this.usuario = usuario;
+    }
+
+    public Date getFechaRealizado() {
+        return fechaRealizado;
+    }
+
+    public Date getFechaLimite() {
+        return fechaLimite;
+    }
+
+    public Cliente getC() {
+        return c;
+    }
+
+    public void setC(Cliente c) {
+        this.c = c;
+    }
+
+    public Producto getP() {
+        return p;
+    }
+
+    public void setP(Producto p) {
+        this.p = p;
+    }
+
+    public Usuario getU() {
+        return u;
+    }
+
+    public void setU(Usuario u) {
+        this.u = u;
+    }
+    
+    public String getFechaRealizado2() {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/YYYY");
+        return formatoFecha.format(fechaRealizado);
+    }
+
     public void setFechaRealizado(Date fechaRealizado) {
         this.fechaRealizado = fechaRealizado;
     }
-    public Date getFechaLimite() {
-        return this.fechaLimite;
-    }
-    
+
     public void setFechaLimite(Date fechaLimite) {
         this.fechaLimite = fechaLimite;
+    }
+    
+    public double getSaldo() {
+        return this.saldo;
+    }
+    
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
     public Set<Abono> getAbonos() {
         return this.abonos;
@@ -73,13 +148,6 @@ public class Apartado  implements java.io.Serializable {
     public void setAbonos(Set<Abono> abonos) {
         this.abonos = abonos;
     }
-    public Set<Apartadoproducto> getApartadoproductos() {
-        return this.apartadoproductos;
-    }
-    
-    public void setApartadoproductos(Set<Apartadoproducto> apartadoproductos) {
-        this.apartadoproductos = apartadoproductos;
-    }
     public Set<Factura> getFacturas() {
         return this.facturas;
     }
@@ -87,10 +155,19 @@ public class Apartado  implements java.io.Serializable {
     public void setFacturas(Set<Factura> facturas) {
         this.facturas = facturas;
     }
-
-
-
-
+    
+    public String getFechaLimite2(){
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("dd/MM/YYYY");
+        return formatoFecha.format(fechaLimite);
+    }
+    
+    public void sumarMeses(){
+        Calendar cal = Calendar.getInstance(); 
+        cal.setTime(fechaRealizado); 
+        cal.add(Calendar.MONTH, 1);
+        fechaLimite = cal.getTime();
+        fechaRealizado = new Date();
+    }
 }
 
 

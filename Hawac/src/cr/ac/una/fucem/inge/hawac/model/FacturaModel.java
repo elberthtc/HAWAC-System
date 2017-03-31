@@ -111,6 +111,7 @@ public class FacturaModel extends java.util.Observable {
         setErrores(new HashMap<String,String>());
         setMensaje(""); 
     }
+    
     public void commit(){
         setChanged();
         notifyObservers();       

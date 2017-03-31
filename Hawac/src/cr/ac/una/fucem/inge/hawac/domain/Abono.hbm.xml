@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24-mar-2017 14:24:32 by Hibernate Tools 4.3.1 -->
+<!-- Generated 30-mar-2017 21:01:53 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.fucem.inge.hawac.domain.Abono" table="abono" catalog="tienda" optimistic-lock="version">
         <id name="idAbonos" type="java.lang.Integer">
@@ -9,13 +9,16 @@
             <generator class="identity" />
         </id>
         <many-to-one name="apartado" class="cr.ac.una.fucem.inge.hawac.domain.Apartado" fetch="select">
-            <column name="apartado" not-null="true" />
+            <column name="apartado" />
         </many-to-one>
         <property name="fechaRealizado" type="date">
             <column name="fechaRealizado" length="10" not-null="true" />
         </property>
         <property name="monto" type="float">
             <column name="monto" precision="12" scale="0" not-null="true" />
+        </property>
+        <property name="saldo" type="double">
+            <column name="saldo" precision="22" scale="0" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>

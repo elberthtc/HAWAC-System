@@ -5,10 +5,6 @@
  */
 package cr.ac.una.fucem.inge.hawac.view;
 
-/**
- *
- * @author zagad
- */
 public class About extends javax.swing.JDialog {
 
     /**

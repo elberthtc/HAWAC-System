@@ -19,7 +19,6 @@ public class Producto  implements java.io.Serializable {
      private boolean genero;
      private Set<Linea> lineas = new HashSet<Linea>(0);
      private Set<Inventario> inventarios = new HashSet<Inventario>(0);
-     private Set<Apartadoproducto> apartadoproductos = new HashSet<Apartadoproducto>(0);
 
     public Producto() {
     }
@@ -33,7 +32,7 @@ public class Producto  implements java.io.Serializable {
         this.color = color;
         this.genero = genero;
     }
-    public Producto(int idProducto, float precio, String descripcion, String talla, String color, boolean genero, Set<Linea> lineas, Set<Inventario> inventarios, Set<Apartadoproducto> apartadoproductos) {
+    public Producto(int idProducto, float precio, String descripcion, String talla, String color, boolean genero, Set<Linea> lineas, Set<Inventario> inventarios) {
        this.idProducto = idProducto;
        this.precio = precio;
        this.descripcion = descripcion;
@@ -42,7 +41,6 @@ public class Producto  implements java.io.Serializable {
        this.genero = genero;
        this.lineas = lineas;
        this.inventarios = inventarios;
-       this.apartadoproductos = apartadoproductos;
     }
    
     public int getIdProducto() {
@@ -101,15 +99,6 @@ public class Producto  implements java.io.Serializable {
     public void setInventarios(Set<Inventario> inventarios) {
         this.inventarios = inventarios;
     }
-    public Set<Apartadoproducto> getApartadoproductos() {
-        return this.apartadoproductos;
-    }
-    
-    public void setApartadoproductos(Set<Apartadoproducto> apartadoproductos) {
-        this.apartadoproductos = apartadoproductos;
-    }
-
-
 
 
 }

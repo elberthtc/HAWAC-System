@@ -76,7 +76,6 @@ public class FacturasPagadasController {
         }catch(Exception e){
             model.setMensaje("Problemas con la Base de Datos");
         }  
-        
     }
     
 

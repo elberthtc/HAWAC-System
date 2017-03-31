@@ -1,33 +1,36 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24-mar-2017 14:24:32 by Hibernate Tools 4.3.1 -->
+<!-- Generated 29-mar-2017 23:57:22 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="cr.ac.una.fucem.inge.hawac.domain.Apartado" table="apartado" catalog="tienda" optimistic-lock="version">
         <id name="idApartado" type="java.lang.Integer">
             <column name="idApartado" />
             <generator class="identity" />
         </id>
-        <many-to-one name="cliente" class="cr.ac.una.fucem.inge.hawac.domain.Cliente" fetch="select">
+        <property name="cliente" type="int">
             <column name="cliente" not-null="true" />
-        </many-to-one>
+        </property>
+        <property name="producto" type="int">
+            <column name="producto" />
+        </property>
+        <property name="usuario" type="int">
+            <column name="vendedor" />
+        </property>
         <property name="fechaRealizado" type="date">
             <column name="fechaRealizado" length="10" not-null="true" />
         </property>
         <property name="fechaLimite" type="date">
             <column name="fechaLimite" length="10" not-null="true" />
         </property>
+        <property name="saldo" type="double">
+            <column name="saldo" precision="22" scale="0" not-null="true" />
+        </property>
         <set name="abonos" table="abono" inverse="true" lazy="true" fetch="select">
             <key>
                 <column name="apartado" not-null="true" />
             </key>
             <one-to-many class="cr.ac.una.fucem.inge.hawac.domain.Abono" />
-        </set>
-        <set name="apartadoproductos" table="apartadoproducto" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="apartado" not-null="true" />
-            </key>
-            <one-to-many class="cr.ac.una.fucem.inge.hawac.domain.Apartadoproducto" />
         </set>
         <set name="facturas" table="factura" inverse="true" lazy="true" fetch="select">
             <key>
