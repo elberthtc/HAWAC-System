@@ -20,11 +20,8 @@ import cr.ac.una.fucem.inge.hawac.view.ProductoFacturaView;
 import hawac.Application;
 import hawac.Session;
 import java.util.List;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedList;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 
 public class ProductoFacturaController {
     Model domainModel;
@@ -82,66 +79,45 @@ public class ProductoFacturaController {
             if (!isNumeric(view.cantidadTextField.getText())) {
                 model.getErrores().put("Cantidad", "Digite Solo numeros");
             } else {
-                int ex = Integer.parseInt(view.cantidadTextField.getText());
-                if (ex > i1.getCantidad()) {
-                    model.getErrores().put("Cantidad", "Existencias Insuficientes");
+                int n = Integer.parseInt(view.cantidadTextField.getText());
+                if (n < 0) {
+                    JOptionPane.showConfirmDialog(view, "Cantidad no puede ser un valor negativo");
+                    model.getErrores().put("Cantidad", "No puede ingresar numeros negativos");
+                } else {
+                    int ex = Integer.parseInt(view.cantidadTextField.getText());
+                    if (ex > i1.getCantidad()) {
+                        model.getErrores().put("Cantidad", "Existencias Insuficientes");
+                    }
+                    if (ex == 0) {
+                        model.getErrores().put("Cantidad", "Digito Invalido");
+                    }
+                    l1.setProducto(p1);
+                    l1.setCantidad(ex);
                 }
-                if (ex == 0) {
-                    model.getErrores().put("Cantidad", "Digito Invalido");
-                }
-                l1.setProducto(p1);
-                l1.setCantidad(ex);
             }
         }
-        List<Linea> lineas = new ArrayList<Linea>();
+        List<Linea> lineas = facturaModel.getLineas2();
         if (model.getErrores().isEmpty()) {
-            //try {
             switch (model.getModo()) {
                 case Application.MODO_AGREGAR:
-
-                    Factura factura = Application.FACTURA_VIEW.getModel().getCurrent();
-                    //Application.FACTURA_VIEW.getModel().setCurrent(factura);
+                    Factura factura = facturaModel.getCurrent();
                     l1.setId(new LineaId(p1.getIdProducto(), factura.getCodigoFactura()));
                     l1.setFactura(factura);
-                        //Factura f1;
-                    //List<Factura> facturas = domainModel.getFacturaBl().findAll(Factura.class.getName());
-                    //f1 = new Factura();
-                    //f1.setCodigoFactura(facturas.size()+1);
-                    //f1.setCliente();
-                    //f1.setFecha(new Date());
-                    //f1.setMonto(-1);
-                    //f1.setUsuario(e1);
-                    //f1.setApartado(null);
-
-                        //l1.setFactura(f1);
-                    //l1.getId().setFactura(f1.getCodigoFactura());
-                    //domainModel.getFacturaBl().save(f1);
-                    domainModel.getLineaBl().save(l1);
-                    int cantidad = i1.getCantidad() - l1.getCantidad();
-                    i1.setCantidad(cantidad);
-                    domainModel.getInventarioBl().merge(i1);
-                    model.setMensaje("PRODUCTO AGREGADO");
-                    lineas = domainModel.getLineaBl().findAll(Linea.class.getName());
-                    //for (int i = 0; i < lineas.size(); i++) {
-                    int i = 0,
-                     cont = lineas.size();
-                    while (i < lineas.size() && cont > 0) {
-                        if (lineas.get(i).getId().getFactura() != factura.getCodigoFactura()) {
-                            lineas.remove(lineas.get(i));
-                        } else {
-                            lineas.get(i).setProducto(domainModel.getProductoBl().findById(lineas.get(i).getId().getProducto()));
-                            i++;
+                    boolean existe = false;
+                    for(int i = 0; i<lineas.size();i++){
+                        if (lineas.get(i).getProducto().getIdProducto()==l1.getProducto().getIdProducto()){
+                            lineas.get(i).setCantidad(lineas.get(i).getCantidad()+l1.getCantidad());
+                            existe = true;
                         }
-                        cont--;
                     }
-                    //lineas.add(l1);
-                    Application.FACTURA_VIEW.getModel().setLineas(lineas);
-                        //f1.setCliente(Application.FACTURA_VIEW.getModel().getCliente());
-                    //facturaModel.setCurrent(f1);
+                    if(!existe)
+                        lineas.add(l1);
+                    model.setMensaje("PRODUCTO AGREGADO");
+                    facturaModel.setLineas(lineas);
+                    facturaModel.setLineas2(lineas);
                     view.cantidadTextField.setText("0");
                     Application.PRODUCTOFACTURA_VIEW.setVisible(false);
                     break;
-
                 case Application.MODO_EDITAR:
 //                    FacturaCompra f2 = domainModel.getFacturaMayor2();
 //                    l1.setNumFactura(f2);

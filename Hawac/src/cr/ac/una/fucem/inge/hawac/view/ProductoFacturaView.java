@@ -63,23 +63,22 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
     private void initComponents() {
 
         Busqueda = new javax.swing.ButtonGroup();
-        DescripcionText = new javax.swing.JTextField();
         BuscarButton = new javax.swing.JButton();
+        DescripcionText = new javax.swing.JTextField();
         BuscarLabel = new javax.swing.JLabel();
         ProductosScrollPane = new javax.swing.JScrollPane();
         CatalogoTable = new javax.swing.JTable();
         DescripcionRadioButton = new javax.swing.JRadioButton();
         CodigoRadioButton2 = new javax.swing.JRadioButton();
         buscarLb = new javax.swing.JLabel();
-        verTodoRdButton = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        seleccionarB = new javax.swing.JButton();
         cantidadTextField = new javax.swing.JTextField();
         cantidadLb = new javax.swing.JLabel();
+        verTodoB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("Catalogo de Productos");
-
-        DescripcionText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BuscarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
         BuscarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -87,9 +86,14 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
                 BuscarButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(BuscarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 36, 36));
+
+        DescripcionText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(DescripcionText, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 38, 157, -1));
 
         BuscarLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         BuscarLabel.setText("Buscar");
+        getContentPane().add(BuscarLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
 
         ProductosScrollPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -116,9 +120,12 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
         ));
         ProductosScrollPane.setViewportView(CatalogoTable);
 
+        getContentPane().add(ProductosScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, 106));
+
         Busqueda.add(DescripcionRadioButton);
         DescripcionRadioButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         DescripcionRadioButton.setText("Descripcion");
+        getContentPane().add(DescripcionRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 58, -1, -1));
 
         Busqueda.add(CodigoRadioButton2);
         CodigoRadioButton2.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
@@ -128,90 +135,34 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
                 CodigoRadioButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(CodigoRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 58, -1, -1));
 
         buscarLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         buscarLb.setText("Seleccione el argumento a buscar");
+        getContentPane().add(buscarLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
-        Busqueda.add(verTodoRdButton);
-        verTodoRdButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        verTodoRdButton.setText("Ver Todo");
-        verTodoRdButton.addActionListener(new java.awt.event.ActionListener() {
+        seleccionarB.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
+        seleccionarB.setText("Seleccionar");
+        seleccionarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verTodoRdButtonActionPerformed(evt);
+                seleccionarBActionPerformed(evt);
             }
         });
-
-        jButton1.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        jButton1.setText("Seleccionar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        getContentPane().add(seleccionarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, -1, -1));
+        getContentPane().add(cantidadTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 36, 70, -1));
 
         cantidadLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         cantidadLb.setText("Cantidad");
+        getContentPane().add(cantidadLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 37, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cantidadLb)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cantidadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addComponent(jButton1))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(DescripcionRadioButton)
-                                    .addGap(27, 27, 27)
-                                    .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(buscarLb))
-                            .addGap(18, 18, 18)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(BuscarLabel)))
-                        .addComponent(CodigoRadioButton2)
-                        .addComponent(verTodoRdButton)
-                        .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscarLb)
-                    .addComponent(BuscarLabel))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(DescripcionRadioButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(CodigoRadioButton2)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(verTodoRdButton)
-                .addGap(18, 18, 18)
-                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(cantidadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cantidadLb))
-                .addGap(16, 16, 16))
-        );
+        verTodoB.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
+        verTodoB.setText("Ver Todos");
+        verTodoB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                verTodoBActionPerformed(evt);
+            }
+        });
+        getContentPane().add(verTodoB, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -222,15 +173,12 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
     }//GEN-LAST:event_CodigoRadioButton2ActionPerformed
 
     private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
-        if(CodigoRadioButton2.isSelected()==false && DescripcionRadioButton.isSelected()==false && verTodoRdButton.isSelected()== false ){
+        if(CodigoRadioButton2.isSelected()==false && DescripcionRadioButton.isSelected()==false){
               buscarLb.setBorder(Application.BORDER_ERROR);
               buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
         }else{
              buscarLb.setBorder(null);
              buscarLb.setToolTipText("");
-             if(verTodoRdButton.isSelected()==true){
-                 controller.buscar();
-             }
              if(DescripcionRadioButton.isSelected()==true && DescripcionText.getText().length()==0){
                    model.getErrores().put("DescripcionText","Digite la descripcion a buscar");
                    buscarLb.setBorder(Application.BORDER_ERROR);
@@ -254,16 +202,17 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
     
     }//GEN-LAST:event_ProductosScrollPaneMouseClicked
 
-    private void verTodoRdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTodoRdButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_verTodoRdButtonActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void seleccionarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarBActionPerformed
         int row = this.CatalogoTable.getSelectedRow();
         if(row != -1){
             controller.seleccionar(row);
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+        }else
+            JOptionPane.showConfirmDialog(this, "No ha seleccionado ningun producto");
+    }//GEN-LAST:event_seleccionarBActionPerformed
+
+    private void verTodoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTodoBActionPerformed
+        controller.buscar();
+    }//GEN-LAST:event_verTodoBActionPerformed
 
     @Override
     public void update(java.util.Observable updatedModel,Object parametros) {
@@ -341,8 +290,8 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
     private javax.swing.JLabel buscarLb;
     public javax.swing.JLabel cantidadLb;
     public javax.swing.JTextField cantidadTextField;
-    private javax.swing.JButton jButton1;
-    public javax.swing.JRadioButton verTodoRdButton;
+    private javax.swing.JButton seleccionarB;
+    private javax.swing.JButton verTodoB;
     // End of variables declaration//GEN-END:variables
 
 }

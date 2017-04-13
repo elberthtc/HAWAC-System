@@ -9,8 +9,6 @@ import cr.ac.una.fucem.inge.hawac.controller.FacturaController;
 import cr.ac.una.fucem.inge.hawac.model.FacturaModel;
 import hawac.Application;
 import javax.swing.JOptionPane;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 
 public class FacturaView extends javax.swing.JInternalFrame implements java.util.Observer{
 
@@ -45,7 +43,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         descuentoLb = new javax.swing.JLabel();
         descuentoTextFd = new javax.swing.JTextField();
         formadePagoLb = new javax.swing.JLabel();
-        metodoPagoComboBox = new javax.swing.JComboBox<String>();
+        metodoPagoComboBox = new javax.swing.JComboBox<>();
         vendedorLb = new javax.swing.JLabel();
         vendedorTextFd = new javax.swing.JTextField();
         listaProductosLb = new javax.swing.JLabel();
@@ -66,7 +64,6 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         jLabel7 = new javax.swing.JLabel();
         grabarButton = new javax.swing.JButton();
         GrabarLb = new javax.swing.JLabel();
-        addClienteButton = new javax.swing.JButton();
         horaLb = new javax.swing.JLabel();
         horaTextFd = new javax.swing.JTextField();
 
@@ -103,6 +100,11 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
 
         nomClienteTextFd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         nomClienteTextFd.setEnabled(false);
+        nomClienteTextFd.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nomClienteTextFdMouseClicked(evt);
+            }
+        });
 
         TelefonoLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         TelefonoLb.setText("Telefono");
@@ -135,7 +137,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         formadePagoLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         formadePagoLb.setText("Forma De Pago");
 
-        metodoPagoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Efectivo", "TarjetaCredito", "Cheque" }));
+        metodoPagoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "TarjetaCredito", "Cheque" }));
         metodoPagoComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 metodoPagoComboBoxActionPerformed(evt);
@@ -150,7 +152,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
 
         listaProductosLb.setBackground(new java.awt.Color(0, 0, 0));
         listaProductosLb.setForeground(new java.awt.Color(255, 255, 255));
-        listaProductosLb.setText("                                                                                                 LISTA DE PRODUCTOS");
+        listaProductosLb.setText("                                                                                                     PRODUCTOS");
         listaProductosLb.setOpaque(true);
 
         ListProductosTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -187,7 +189,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         TotalTextFd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Black", 0, 24)); // NOI18N
-        jLabel4.setText("FERRETERIA");
+        jLabel4.setText("FUCEM");
 
         AgregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/agregar.png"))); // NOI18N
         AgregarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -228,13 +230,6 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
 
         GrabarLb.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         GrabarLb.setText("GRABAR");
-
-        addClienteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/addUser.png"))); // NOI18N
-        addClienteButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addClienteButtonActionPerformed(evt);
-            }
-        });
 
         horaLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         horaLb.setText("Hora");
@@ -279,25 +274,22 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(idClienteTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addGroup(layout.createSequentialGroup()
-                                                    .addComponent(numFacTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                    .addComponent(addClienteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(numFacTextFd, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addComponent(nomClienteTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 135, Short.MAX_VALUE)
                                         .addComponent(formadePagoLb)
                                         .addGap(18, 18, 18)
                                         .addComponent(metodoPagoComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(vendedorTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 389, Short.MAX_VALUE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(160, 160, 160)
-                                        .addComponent(descuentoLb)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(descuentoTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(vendedorTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(160, 160, 160)
+                                                .addComponent(descuentoLb)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(descuentoTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(0, 0, Short.MAX_VALUE))))))
                     .addComponent(listaProductosLb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -355,11 +347,9 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
                                     .addComponent(jLabel1)
                                     .addComponent(jLabel4))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(addClienteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(numFacturaLb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(numFacTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(numFacturaLb)
+                                    .addComponent(numFacTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -369,7 +359,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(horaLb)
                                     .addComponent(horaTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(14, 14, 14)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(ClienteLb)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -419,7 +409,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(grabarButton, javax.swing.GroupLayout.DEFAULT_SIZE, 57, Short.MAX_VALUE)
+                        .addComponent(grabarButton, javax.swing.GroupLayout.DEFAULT_SIZE, 61, Short.MAX_VALUE)
                         .addGap(24, 24, 24))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(30, 30, 30)
@@ -447,7 +437,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
     }//GEN-LAST:event_ivTextFdActionPerformed
 
     private void AgregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarButtonActionPerformed
-        controller.guardarDatosBasicos();
+        //controller.guardarDatosBasicos();
         controller.preAgregarProducto();
     }//GEN-LAST:event_AgregarButtonActionPerformed
 
@@ -458,10 +448,6 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
     private void FechaTextFdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FechaTextFdActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FechaTextFdActionPerformed
-
-    private void addClienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addClienteButtonActionPerformed
-        controller.preAgregarCliente();
-    }//GEN-LAST:event_addClienteButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         controller.salir();
@@ -480,6 +466,10 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
        }
       }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void nomClienteTextFdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomClienteTextFdMouseClicked
+        controller.preAgregarCliente();
+    }//GEN-LAST:event_nomClienteTextFdMouseClicked
 
     public FacturaController getController() {
         return controller;
@@ -606,7 +596,6 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
     private javax.swing.JLabel SubTotalLb;
     private javax.swing.JLabel TelefonoLb;
     public javax.swing.JTextField TotalTextFd;
-    private javax.swing.JButton addClienteButton;
     private javax.swing.JLabel cedulaLb;
     private javax.swing.JLabel descuentoLb;
     public javax.swing.JTextField descuentoTextFd;

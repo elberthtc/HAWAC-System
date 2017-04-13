@@ -49,7 +49,7 @@ public class LoginController {
                 Application.USUARIO = real;
                 Application.APPLICATION_VIEW.getController().enter();
                 Application.FACTURA_VIEW.getModel().setEmpleado(real);
-                Application.APPLICATION_VIEW.update(null);
+                Application.APPLICATION_VIEW.update(Application.APPLICATION_VIEW.getModel(),0);
             } else {
                 model.setMensaje("Datos incorrectos");
                 e1.setPassword("");

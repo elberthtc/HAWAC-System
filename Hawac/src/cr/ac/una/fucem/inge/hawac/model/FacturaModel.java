@@ -20,6 +20,7 @@ public class FacturaModel extends java.util.Observable {
     Usuario empleado;
     Linea filtro;
     LineaTableModel lineas;
+    List<Linea> lineas2;
     HashMap<String,String> errores;
     String mensaje;
     
@@ -32,10 +33,21 @@ public class FacturaModel extends java.util.Observable {
         empleado = new Usuario();
         filtro = new Linea();
         clearErrors();
+        lineas2 = new ArrayList<Linea>();
         List<Linea> rows = new ArrayList<Linea>();
         this.setLineas(rows);
     }
 
+    public List<Linea> getLineas2() {
+        return lineas2;
+    }
+
+    public void setLineas2(List<Linea> lineas2) {
+        this.lineas2 = lineas2;
+    }
+
+    
+    
     public Factura getCurrent() {
         return current;
     }

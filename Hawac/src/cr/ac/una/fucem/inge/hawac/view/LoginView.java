@@ -8,6 +8,7 @@ import cr.ac.una.fucem.inge.hawac.controller.LoginController;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.model.LoginModel;
 import hawac.Application;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 
@@ -41,6 +42,11 @@ public class LoginView extends javax.swing.JFrame implements java.util.Observer 
         setTitle("ACCESO AL SISTEMA");
         setIconImage((new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/user.png"))).getImage());
         setResizable(false);
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         idLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
         idLabel.setText("Id:");
@@ -52,6 +58,11 @@ public class LoginView extends javax.swing.JFrame implements java.util.Observer 
         idTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 idTextFieldActionPerformed(evt);
+            }
+        });
+        idTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                idTextFieldKeyReleased(evt);
             }
         });
 
@@ -71,6 +82,11 @@ public class LoginView extends javax.swing.JFrame implements java.util.Observer 
 
         claveTextField.setToolTipText("");
         claveTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        claveTextField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                claveTextFieldKeyReleased(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         jLabel1.setText("LOGIN");
@@ -143,6 +159,27 @@ public class LoginView extends javax.swing.JFrame implements java.util.Observer 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
         this.controller.exit();
     }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            controller.login();
+        }
+        else{
+            JOptionPane.showMessageDialog(this,evt.getKeyCode() + "   " + KeyEvent.VK_ENTER);
+        }
+    }//GEN-LAST:event_formKeyPressed
+
+    private void idTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_idTextFieldKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            controller.login();
+        }
+    }//GEN-LAST:event_idTextFieldKeyReleased
+
+    private void claveTextFieldKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_claveTextFieldKeyReleased
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            controller.login();
+        }
+    }//GEN-LAST:event_claveTextFieldKeyReleased
 
     public LoginController getController() {
         return controller;
