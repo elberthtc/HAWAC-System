@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 24-mar-2017 14:24:32 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="cr.ac.una.fucem.inge.hawac.domain.Inventario" table="inventario" catalog="tienda" optimistic-lock="version">
+    <class name="cr.ac.una.fucem.inge.hawac.domain.Inventario" table="inventario" catalog="hawac" optimistic-lock="version">
         <composite-id name="id" class="cr.ac.una.fucem.inge.hawac.domain.InventarioId">
             <key-property name="local" type="string">
                 <column name="local" length="20" />

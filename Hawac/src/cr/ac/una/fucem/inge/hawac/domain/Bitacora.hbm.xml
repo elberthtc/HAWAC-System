@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 24-mar-2017 14:24:32 by Hibernate Tools 4.3.1 -->
+<!-- Generated 14-abr-2017 22:38:54 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="cr.ac.una.fucem.inge.hawac.domain.Bitacora" table="bitacora" catalog="tienda" optimistic-lock="version">
-        <id name="entrada" type="int">
+    <class name="cr.ac.una.fucem.inge.hawac.domain.Bitacora" table="bitacora" catalog="hawac" optimistic-lock="version">
+        <id name="entrada" type="java.lang.Integer">
             <column name="entrada" />
-            <generator class="assigned" />
+            <generator class="identity" />
         </id>
-        <many-to-one name="usuario" class="cr.ac.una.fucem.inge.hawac.domain.Usuario" fetch="select">
-            <column name="usuario" not-null="true" />
-        </many-to-one>
+        <property name="usuario" type="int">
+            <column name="usuario" not-null="true"/>
+        </property>
         <property name="descripcion" type="string">
             <column name="descripcion" length="300" not-null="true" />
         </property>

@@ -5,12 +5,14 @@
  */
 package cr.ac.una.fucem.inge.hawac.controller;
 
+import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.LoginModel;
 import cr.ac.una.fucem.inge.hawac.view.LoginView;
 import hawac.Application;
 import hawac.Session;
+import java.util.Date;
 
 public class LoginController {
     
@@ -48,6 +50,8 @@ public class LoginController {
                 view.setVisible(false);
                 Application.USUARIO = real;
                 Application.APPLICATION_VIEW.getController().enter();
+                Bitacora b = new Bitacora(real.getIdUsuario(),real.getNombre()+" se ha logueado.",new Date());
+                domainModel.getBitacoraBl().save(b);
                 Application.FACTURA_VIEW.getModel().setEmpleado(real);
                 Application.APPLICATION_VIEW.update(Application.APPLICATION_VIEW.getModel(),0);
             } else {

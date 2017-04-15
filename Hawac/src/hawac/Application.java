@@ -73,6 +73,12 @@ public class Application {
         ProductosController productoscontroller = new ProductosController(productosView,session,productosModel,domainModel);
         
         
+        BitacorasModel bitacorasModel = new BitacorasModel();
+        BitacorasView bitacorasView = new BitacorasView();
+        BITACORAS_VIEW = bitacorasView;
+        applicationView.addInternalFrame(bitacorasView);
+        BitacorasController bitacorascontroller = new BitacorasController(bitacorasView,session,bitacorasModel,domainModel);
+        
         ApartadosModel apartadosModel = new ApartadosModel();
         ApartadosView apartadosView = new ApartadosView();
         APARTADOS_VIEW = apartadosView;
@@ -205,6 +211,7 @@ public class Application {
     public static ClientesApartadoView CLIENTES_APARTADO_VIEW;
     public static ClienteView CLIENTE_VIEW;
     public static ProductosView PRODUCTOS_VIEW;
+    public static BitacorasView BITACORAS_VIEW;
     public static ApartadosView APARTADOS_VIEW;
     public static AbonosView ABONOS_VIEW;
     public static ProductoView PRODUCTO_VIEW;

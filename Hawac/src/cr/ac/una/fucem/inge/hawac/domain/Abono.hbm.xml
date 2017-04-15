@@ -3,7 +3,7 @@
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 30-mar-2017 23:05:32 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="cr.ac.una.fucem.inge.hawac.domain.Abono" table="abono" catalog="tienda" optimistic-lock="version">
+    <class name="cr.ac.una.fucem.inge.hawac.domain.Abono" table="abono" catalog="hawac" optimistic-lock="version">
         <id name="idAbonos" type="java.lang.Integer">
             <column name="idAbonos" />
             <generator class="identity" />

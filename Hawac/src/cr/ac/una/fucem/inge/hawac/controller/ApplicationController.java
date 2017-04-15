@@ -5,12 +5,14 @@
  */
 package cr.ac.una.fucem.inge.hawac.controller;
 
+import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.ApplicationModel;
 import cr.ac.una.fucem.inge.hawac.view.ApplicationView;
 import hawac.Application;
 import hawac.Session;
+import java.util.Date;
 
 public class ApplicationController {
 
@@ -31,6 +33,7 @@ public class ApplicationController {
     public void enter() {
         Application.CLIENTES_VIEW.getModel().init();
         Application.PRODUCTOS_VIEW.getModel().init();
+        Application.BITACORAS_VIEW.getModel().init();
         Application.CLIENTES_FACTURA_VIEW.getModel().init();
         Application.CLIENTES_APARTADO_VIEW.getModel().init();
         Application.USUARIOS_VIEW.getModel().inicializar();
@@ -55,6 +58,7 @@ public class ApplicationController {
     public void exit() {
         Application.CLIENTES_VIEW.setVisible(false);
         Application.PRODUCTOS_VIEW.setVisible(false);
+        Application.BITACORAS_VIEW.setVisible(false);
         Application.APARTADOS_VIEW.setVisible(false);
         Application.ABONOS_VIEW.setVisible(false);
         Application.USUARIOS_VIEW.setVisible(false);
@@ -70,6 +74,8 @@ public class ApplicationController {
         Application.INVENTARIO_VIEW.setVisible(false);
         Application.PRODUCTOINVENTARIO_VIEW.setVisible(false);
         Application.LOGIN_VIEW.getController().logout();
+        Bitacora b = new Bitacora(Application.USUARIO.getIdUsuario(),Application.USUARIO.getNombre()+" ha Cerrado Cesión.",new Date());
+        domainModel.getBitacoraBl().save(b);
     }
 
     public void clientesShow() {
@@ -82,6 +88,10 @@ public class ApplicationController {
 
     public void apartadosShow() {
         Application.APARTADOS_VIEW.setVisible(true);
+    }
+    
+    public void bitacorasShow(){
+        Application.BITACORAS_VIEW.setVisible(true);
     }
     
     public void empleadosShow() {

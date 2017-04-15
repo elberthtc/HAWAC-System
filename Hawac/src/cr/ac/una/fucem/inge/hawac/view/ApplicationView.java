@@ -6,7 +6,6 @@
 package cr.ac.una.fucem.inge.hawac.view;
 
 import cr.ac.una.fucem.inge.hawac.controller.ApplicationController;
-import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.model.ApplicationModel;
 import hawac.Application;
 import javax.swing.JInternalFrame;
@@ -46,6 +45,8 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         cobrosMenuItem = new javax.swing.JMenuItem();
         inventariosMenu = new javax.swing.JMenu();
         tiendaMenuItem = new javax.swing.JMenuItem();
+        bitacoraMenu = new javax.swing.JMenu();
+        entradaItem = new javax.swing.JMenuItem();
         HelpMenu = new javax.swing.JMenu();
         AboutItem = new javax.swing.JMenuItem();
 
@@ -173,6 +174,24 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
 
         MenuBar.add(inventariosMenu);
 
+        bitacoraMenu.setText("BITACORA");
+        bitacoraMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        bitacoraMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bitacoraMenuActionPerformed(evt);
+            }
+        });
+
+        entradaItem.setText("Entradas");
+        entradaItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                entradaItemActionPerformed(evt);
+            }
+        });
+        bitacoraMenu.add(entradaItem);
+
+        MenuBar.add(bitacoraMenu);
+
         HelpMenu.setText("AYUDA");
         HelpMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         HelpMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -247,6 +266,14 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         controller.apartadosShow();
     }//GEN-LAST:event_apartadoItemActionPerformed
 
+    private void entradaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradaItemActionPerformed
+        controller.bitacorasShow();
+    }//GEN-LAST:event_entradaItemActionPerformed
+
+    private void bitacoraMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bitacoraMenuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bitacoraMenuActionPerformed
+
     public ApplicationController getController() {
         return controller;
     }
@@ -281,6 +308,7 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         if(model.getCurrent()!=null && model.getCurrent().tipo()!=0){
             usuarioItem.setVisible(false);
             productosItem.setVisible(false);
+            bitacoraMenu.setVisible(false);
         }
     }
        /**
@@ -327,10 +355,12 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     private javax.swing.JMenu MantenimientoMenu;
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JMenuItem apartadoItem;
+    private javax.swing.JMenu bitacoraMenu;
     private javax.swing.JMenu cobrosMenu;
     private javax.swing.JMenuItem cobrosMenuItem;
     private javax.swing.JMenuItem compraItem;
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JMenuItem entradaItem;
     private javax.swing.JMenuItem facturasItem;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu inventariosMenu;

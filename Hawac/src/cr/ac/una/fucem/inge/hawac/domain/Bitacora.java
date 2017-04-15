@@ -1,5 +1,5 @@
 package cr.ac.una.fucem.inge.hawac.domain;
-// Generated 24-mar-2017 14:24:28 by Hibernate Tools 4.3.1
+// Generated 14-abr-2017 22:38:53 by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -10,33 +10,43 @@ import java.util.Date;
 public class Bitacora  implements java.io.Serializable {
 
 
-     private int entrada;
-     private Usuario usuario;
+     private Integer entrada;
+     private int usuario;
      private String descripcion;
      private Date fecha;
+     private Usuario u;
 
     public Bitacora() {
     }
 
-    public Bitacora(int entrada, Usuario usuario, String descripcion, Date fecha) {
-       this.entrada = entrada;
+    public Bitacora(int usuario, String descripcion, Date fecha) {
        this.usuario = usuario;
        this.descripcion = descripcion;
        this.fecha = fecha;
     }
    
-    public int getEntrada() {
+    public Integer getEntrada() {
         return this.entrada;
     }
+
+    public Usuario getU() {
+        return u;
+    }
+
+    public void setU(Usuario u) {
+        this.u = u;
+    }
     
-    public void setEntrada(int entrada) {
+    
+    
+    public void setEntrada(Integer entrada) {
         this.entrada = entrada;
     }
-    public Usuario getUsuario() {
+    public int getint() {
         return this.usuario;
     }
     
-    public void setUsuario(Usuario usuario) {
+    public void setint(int usuario) {
         this.usuario = usuario;
     }
     public String getDescripcion() {
@@ -54,7 +64,15 @@ public class Bitacora  implements java.io.Serializable {
         this.fecha = fecha;
     }
 
+    public int getUsuario() {
+        return usuario;
+    }
 
+    public void setUsuario(int usuario) {
+        this.usuario = usuario;
+    }
+
+    
 
 
 }

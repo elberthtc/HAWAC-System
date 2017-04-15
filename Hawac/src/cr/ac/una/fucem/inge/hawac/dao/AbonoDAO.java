@@ -81,7 +81,6 @@ public class AbonoDAO extends NewHibernateUtil implements IBaseDAO<Abono, Intege
         } finally {
             getSession().close();
         }
-
         return listaAbonos;
     }
     

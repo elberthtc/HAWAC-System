@@ -9,7 +9,6 @@ import cr.ac.una.fucem.inge.hawac.domain.Factura;
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import hawac.Application;
-import java.util.Collection;
 import java.util.List;
 
 public class Model {
