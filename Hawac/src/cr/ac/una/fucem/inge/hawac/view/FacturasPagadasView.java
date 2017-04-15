@@ -5,6 +5,7 @@
  */
 package cr.ac.una.fucem.inge.hawac.view;
 import cr.ac.una.fucem.inge.hawac.controller.FacturasPagadasController;
+import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.FacturasPagadasModel;
 import hawac.Application;
 import javax.swing.JOptionPane;
@@ -29,14 +30,19 @@ public class FacturasPagadasView extends javax.swing.JInternalFrame implements j
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        busquedaBG = new javax.swing.ButtonGroup();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablaFacturas = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         nombreLb = new javax.swing.JLabel();
-        nombreTextFd = new javax.swing.JTextField();
+        nombreTF = new javax.swing.JTextField();
         buscarButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
-        seleccionarButton = new javax.swing.JButton();
+        numeroRB = new javax.swing.JRadioButton();
+        clienteRB = new javax.swing.JRadioButton();
+        vendedorRB = new javax.swing.JRadioButton();
+        buscarB = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("FACTURAS PAGADAS");
@@ -58,16 +64,16 @@ public class FacturasPagadasView extends javax.swing.JInternalFrame implements j
         jLabel1.setText("FACTURAS");
 
         nombreLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        nombreLb.setText("Nombre del Cliente");
+        nombreLb.setText("Busqueda por:");
 
-        nombreTextFd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        nombreTextFd.addActionListener(new java.awt.event.ActionListener() {
+        nombreTF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        nombreTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreTextFdActionPerformed(evt);
+                nombreTFActionPerformed(evt);
             }
         });
 
-        buscarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
+        buscarButton.setText("Ver Todo");
         buscarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarButtonActionPerformed(evt);
@@ -80,72 +86,124 @@ public class FacturasPagadasView extends javax.swing.JInternalFrame implements j
         jLabel2.setText("                                                                     FACTURAS PAGADAS");
         jLabel2.setOpaque(true);
 
-        seleccionarButton.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        seleccionarButton.setText("Seleccionar");
-        seleccionarButton.addActionListener(new java.awt.event.ActionListener() {
+        busquedaBG.add(numeroRB);
+        numeroRB.setText("Numero");
+
+        busquedaBG.add(clienteRB);
+        clienteRB.setText("Cliente");
+
+        busquedaBG.add(vendedorRB);
+        vendedorRB.setText("Vendedor");
+
+        buscarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
+        buscarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                seleccionarButtonActionPerformed(evt);
+                buscarBActionPerformed(evt);
             }
         });
+
+        jLabel3.setText("Buscar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(240, 240, 240))
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(seleccionarButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(buscarB, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(numeroRB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(clienteRB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(vendedorRB))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 547, Short.MAX_VALUE)
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createSequentialGroup()
                             .addComponent(nombreLb)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(nombreTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(18, 18, 18)
-                            .addComponent(buscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(nombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(buscarButton)))
+                    .addComponent(jLabel3))
                 .addContainerGap(29, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(240, 240, 240))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jLabel1)
-                .addGap(16, 16, 16)
+                .addGap(14, 14, 14)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombreLb)
-                    .addComponent(nombreTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                    .addComponent(nombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(numeroRB)
+                    .addComponent(clienteRB)
+                    .addComponent(vendedorRB))
+                .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(seleccionarButton)
-                .addGap(20, 20, 20))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(buscarB)
+                .addContainerGap(17, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreTextFdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTextFdActionPerformed
+    private void nombreTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreTextFdActionPerformed
+    }//GEN-LAST:event_nombreTFActionPerformed
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
        controller.buscar();
     }//GEN-LAST:event_buscarButtonActionPerformed
 
-    private void seleccionarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seleccionarButtonActionPerformed
-        int row = this.tablaFacturas.getSelectedRow();
-        if(row != -1){
-            controller.seleeccionar(row);
+    private void buscarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarBActionPerformed
+        if(clienteRB.isSelected()==false && numeroRB.isSelected()==false && vendedorRB.isSelected()==false){
+            nombreLb.setBorder(Application.BORDER_ERROR);
+            JOptionPane.showMessageDialog(this, "No ha seleccionado ningun criterio de Busqueda");
+        }else{
+            if(clienteRB.isSelected() && nombreTF.getText().length()!=0){
+                controller.buscarPorCliente();
+                return;
+            }
+            if(numeroRB.isSelected() && nombreTF.getText().length()!=0 && Model.isNumeric(nombreTF.getText())){
+                controller.buscarPorNumero();
+                return;
+            }
+            if(vendedorRB.isSelected()&& nombreTF.getText().length()!=0){
+                controller.buscarPorVendedor();
+                return;
+            }
+            if(clienteRB.isSelected() && nombreTF.getText().length()==0){
+                nombreLb.setBorder(Application.BORDER_ERROR);
+                JOptionPane.showMessageDialog(this, "No ha ingresado ningun texto");
+            }
+            if(numeroRB.isSelected() && nombreTF.getText().length()==0){
+                nombreLb.setBorder(Application.BORDER_ERROR);
+                JOptionPane.showMessageDialog(this, "No ha ingresado ningun texto");
+            }else if(numeroRB.isSelected() && !Model.isNumeric(nombreTF.getText())){
+                nombreLb.setBorder(Application.BORDER_ERROR);
+                JOptionPane.showMessageDialog(this, "Por favor ingrese solo valores numericos");
+            }
+            if(vendedorRB.isSelected()&& nombreTF.getText().length()==0){
+                nombreLb.setBorder(Application.BORDER_ERROR);
+                JOptionPane.showMessageDialog(this, "No ha ingresado ningun texto");
+            }
         }
-    }//GEN-LAST:event_seleccionarButtonActionPerformed
+    }//GEN-LAST:event_buscarBActionPerformed
 
     public FacturasPagadasController getController() {
         return controller;
@@ -186,8 +244,6 @@ public class FacturasPagadasView extends javax.swing.JInternalFrame implements j
         tablaFacturas.getColumnModel().getColumn(4).setPreferredWidth(30); 
     } 
     
-    
-    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -221,15 +277,19 @@ public class FacturasPagadasView extends javax.swing.JInternalFrame implements j
         });
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscarB;
     public javax.swing.JButton buscarButton;
+    private javax.swing.ButtonGroup busquedaBG;
+    private javax.swing.JRadioButton clienteRB;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel nombreLb;
-    public javax.swing.JTextField nombreTextFd;
-    private javax.swing.JButton seleccionarButton;
+    public javax.swing.JTextField nombreTF;
+    private javax.swing.JRadioButton numeroRB;
     public javax.swing.JTable tablaFacturas;
+    private javax.swing.JRadioButton vendedorRB;
     // End of variables declaration//GEN-END:variables
 }

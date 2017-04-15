@@ -35,7 +35,7 @@ public class AbonoBL extends BaseBL implements IBaseBL<Abono, Integer>{
 
     @Override
     public Abono findById(Integer o) {
-        return (Abono) this.getDao(o.getClass().getName()).findById(o);
+        return (Abono) this.getDao(Abono.class.getName()).findById(o);
     }
 
     @Override

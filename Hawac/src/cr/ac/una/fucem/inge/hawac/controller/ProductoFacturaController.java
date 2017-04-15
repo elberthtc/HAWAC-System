@@ -85,7 +85,9 @@ public class ProductoFacturaController {
                     model.getErrores().put("Cantidad", "No puede ingresar numeros negativos");
                 } else {
                     int ex = Integer.parseInt(view.cantidadTextField.getText());
-                    if (ex > i1.getCantidad()) {
+                    if(i1 == null){
+                        model.getErrores().put("Inventario","No han agregado el producto al Inventario");
+                    }else if (ex > i1.getCantidad()){
                         model.getErrores().put("Cantidad", "Existencias Insuficientes");
                     }
                     if (ex == 0) {

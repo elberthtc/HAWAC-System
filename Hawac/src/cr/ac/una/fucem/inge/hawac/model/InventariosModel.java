@@ -29,7 +29,7 @@ public class InventariosModel extends java.util.Observable {
     }
     
     public void setInventarios(List<Inventario> empleados){
-        int[] cols={InventarioTableModel.PRODUCTO,InventarioTableModel.CANTIDAD,InventarioTableModel.INVENTARIO,InventarioTableModel.ESTADO};
+        int[] cols={InventarioTableModel.PRODUCTO,InventarioTableModel.NOMBRE,InventarioTableModel.CANTIDAD,InventarioTableModel.INVENTARIO,InventarioTableModel.ESTADO};
         this.empleados= new InventarioTableModel(cols, empleados);
         setChanged();
         notifyObservers();

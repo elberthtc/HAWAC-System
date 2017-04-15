@@ -17,6 +17,7 @@ import cr.ac.una.fucem.inge.hawac.view.AbonosView;
 import cr.ac.una.fucem.inge.hawac.view.ApartadosView;
 import hawac.Application;
 import hawac.Session;
+import java.util.ArrayList;
 import java.util.List;
 
 public class AbonosController {
@@ -84,30 +85,18 @@ public class AbonosController {
     }
 
     public void buscarPorCodigo() {
-        
-        /*
-        
         model.clearErrors();
-        model.getFilter().setDescripcion(view.DescripcionText.getText());
-        List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
-        //for (int i = 0; i < rows.size(); i++) {
-        int i = 0, cont = rows.size();
-        while (i < rows.size() && cont > 0) {
-            if (String.valueOf(rows.get(i).getIdProducto()).indexOf(view.DescripcionText.getText()) == -1) {
-                rows.remove(rows.get(i));
-            } else {
-                i++;
-            }
-            cont--;
+        List<Abono> rows = new ArrayList<Abono>();
+        Abono a = domainModel.getAbonoBl().findById(Integer.parseInt(view.descripcionT.getText()));
+        a.setA(domainModel.getApartadoBl().findById(a.getApartado()));
+        if(a.getA().getIdApartado()==Application.ABONOS_VIEW.getModel().getFilter().getA().getIdApartado()){
+            rows.add(a);
         }
         if (rows.isEmpty()) {
             model.getErrores().put("DescripcionText", "Ningun registro coincide");
             model.setMensaje("NINGUN REGISTRO COINCIDE");
         }
-        model.setProductos(rows);
-        
-        */
-        
+        model.setAbonos(rows);        
     }
 
     public void borrar(int row) {

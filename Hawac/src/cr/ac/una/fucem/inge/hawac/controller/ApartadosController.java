@@ -88,9 +88,7 @@ public class ApartadosController {
 
     public void buscarPorCodigo() {
         model.clearErrors();
-        //model.getFilter().setDescripcion(view.DescripcionText.getText());
         List<Apartado> rows = domainModel.getApartadoBl().findAll(Apartado.class.getName());
-        //for (int i = 0; i < rows.size(); i++) {
         int i = 0, cont = rows.size();
         for(int j = 0; j<rows.size();j++){
             rows.get(j).setC(domainModel.getClienteBl().findById(rows.get(j).getCliente()));
@@ -149,20 +147,17 @@ public class ApartadosController {
             }
             cont--;
         }
-
         for (int j = 0; j < rows.size(); j++) {
             rows.get(j).setA(domainModel.getApartadoBl().findById(rows.get(j).getApartado()));
             rows.get(j).setU(domainModel.getUsuarioBl().findById(rows.get(j).getUsuario()));
         }
-
-        //view.setVisible(true);
         Application.ABONOS_VIEW.setVisible(true);
         Application.ABONOS_VIEW.getModel().getFilter().setA(p1);
         Application.ABONOS_VIEW.getModel().getFilter().setApartado(p1.getIdApartado());
-        if (rows.isEmpty()) {
+        /*if (rows.isEmpty()) {
             Application.ABONOS_VIEW.getModel().getErrores().put("DescripcionText", "Ningun registro coincide");
             Application.ABONOS_VIEW.getModel().setMensaje("AUN NO EXISTEN ABONOS");
-        }
+        }*/
         Application.ABONOS_VIEW.getModel().setAbonos(rows);
     }
     

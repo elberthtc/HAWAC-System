@@ -43,22 +43,25 @@ public class InventarioTableModel extends AbstractTableModel {
             case CANTIDAD: return empl.getCantidad();
             case INVENTARIO: return empl.getId().getLocal();
             case ESTADO: return empl.getEstado();
+            case NOMBRE: return empl.getProducto().getDescripcion();
             default: return "";
         }
     }
   
     
     public static final int PRODUCTO=0;
-    public static final int CANTIDAD=1;
-    public static final int INVENTARIO=2;
-    public static final int ESTADO=3;
+    public static final int CANTIDAD=2;
+    public static final int INVENTARIO=3;
+    public static final int ESTADO=4;
+    public static final int NOMBRE=1;
 
     
-    String [] colNombs= new String[4];
+    String [] colNombs= new String[5];
     private void inicializarNombCols(){
         colNombs[PRODUCTO]="PRODUCTO";
         colNombs[CANTIDAD]="CANTIDAD";
         colNombs[INVENTARIO]="INVENTARIO";
         colNombs[ESTADO]="ESTADO";
+        colNombs[NOMBRE]="NOMBRE";
     }
 }

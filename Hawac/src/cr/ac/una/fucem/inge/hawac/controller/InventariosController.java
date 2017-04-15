@@ -36,6 +36,9 @@ public class InventariosController {
         modelo.borrarErrores();
         //modelo.getFiltro().setNombre(vista.nomjTextField.getText());
         List<Inventario> filas= domainModel.getInventarioBl().findAll(Inventario.class.getName());
+        for(int j = 0; j<filas.size(); j++){
+            filas.get(j).setProducto(domainModel.getProductoBl().findById(filas.get(j).getId().getProducto()));
+        }
         int i=0, cont=filas.size();
         while(filas.size()>0 && cont>0){
             if(filas.get(i).getId().getLocal().compareTo(Application.INVENTARIO)!=0)
@@ -51,31 +54,37 @@ public class InventariosController {
         modelo.setInventarios(filas);
     }
     
-    /*public void buscarPorNombre(){
+    public void buscarPorDescripcion(){
         modelo.borrarErrores();
-       // modelo.getFiltro().setNombre(vista.nomjTextField.getText());
-        String nombre = vista.nomjTextField.getText();
-        List<Usuario> filas= domainModel.getUsuarioBl().findAll(Usuario.class.getName());
-        for(int i = 0; i<filas.size();i++){
-            if(filas.get(i).getNombre().indexOf(nombre)==-1){
+        String nombre = vista.nombreTF.getText();
+        List<Inventario> filas= domainModel.getInventarioBl().findAll(Inventario.class.getName());
+        for(int j = 0; j<filas.size(); j++){
+            filas.get(j).setProducto(domainModel.getProductoBl().findById(filas.get(j).getId().getProducto()));
+        }
+        int i=0, cont=filas.size();
+        while(filas.size()>0 && cont>0){
+            if(filas.get(i).getProducto().getDescripcion().toLowerCase().indexOf(nombre.toLowerCase())!=0)
                 filas.remove(filas.get(i));
-            }
-        }    
+            else
+                i++;
+            cont--;
+        }   
         if(filas.isEmpty()){
             modelo.getErrores().put("nomjTextField", "Ningún registro coincide con la busqueda");
             modelo.setMensaje("NINGUN REGISTRO COINCIDE CON LA BUSQUEDA");
-        }
-        //modelo.setUsuarios(filas);
-    }*/
+        }else
+            modelo.setInventarios(filas);
+    }
     
     public void buscarPorId(){
         modelo.borrarErrores();
-        //modelo.getFiltro().setIdUsuario(Integer.parseInt(vista.nomjTextField.getText()));
-        String nombre = vista.nomjTextField.getText();
+        String nombre = vista.nombreTF.getText();
         List<Inventario> filas = new ArrayList<Inventario>();
         Inventario f=domainModel.getInventarioBl().findById(new InventarioId(Application.INVENTARIO,Integer.parseInt(nombre)));
-        if(f!=null)
+        if(f!=null){
+            f.setProducto(domainModel.getProductoBl().findById(f.getId().getProducto()));
             filas.add(f);
+        }
         if(filas.isEmpty()){
             modelo.getErrores().put("nomjTextField", "Ningún registro coincide con la busqueda");
             modelo.setMensaje("NINGUN REGISTRO COINCIDE CON LA BUSQUEDA");
@@ -135,5 +144,4 @@ public class InventariosController {
         vista.setVisible(false);
         Application.LOGIN_VIEW.getController().logout();
     }
-    
 }

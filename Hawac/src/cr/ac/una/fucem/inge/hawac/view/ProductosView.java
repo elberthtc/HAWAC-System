@@ -76,7 +76,7 @@ public class ProductosView extends javax.swing.JInternalFrame implements java.ut
         DescripcionRadioButton = new javax.swing.JRadioButton();
         CodigoRadioButton2 = new javax.swing.JRadioButton();
         buscarLb = new javax.swing.JLabel();
-        verTodoRdButton = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("Catalogo de Productos");
@@ -159,12 +159,10 @@ public class ProductosView extends javax.swing.JInternalFrame implements java.ut
         buscarLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         buscarLb.setText("Seleccione el argumento a buscar");
 
-        Busqueda.add(verTodoRdButton);
-        verTodoRdButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        verTodoRdButton.setText("Ver Todo");
-        verTodoRdButton.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Ver Todo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verTodoRdButtonActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -176,13 +174,7 @@ public class ProductosView extends javax.swing.JInternalFrame implements java.ut
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(DescripcionRadioButton)
-                                .addGap(27, 27, 27)
-                                .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(buscarLb))
-                        .addGap(18, 18, 18)
+                        .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(BuscarLabel))
@@ -196,8 +188,15 @@ public class ProductosView extends javax.swing.JInternalFrame implements java.ut
                                 .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(31, 31, 31)
                                 .addComponent(BorrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(CodigoRadioButton2)
-                    .addComponent(verTodoRdButton)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1))
+                    .addComponent(buscarLb)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(CodigoRadioButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DescripcionRadioButton))
                     .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
@@ -205,30 +204,28 @@ public class ProductosView extends javax.swing.JInternalFrame implements java.ut
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(buscarLb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscarLb)
+                    .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CodigoRadioButton2)
+                    .addComponent(DescripcionRadioButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BuscarLabel)
                     .addComponent(AgregarLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(EliminarLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(DescripcionRadioButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(CodigoRadioButton2))
-                            .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BorrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(verTodoRdButton)
-                .addGap(18, 18, 18)
-                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                    .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BorrarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
@@ -254,15 +251,12 @@ public class ProductosView extends javax.swing.JInternalFrame implements java.ut
     }//GEN-LAST:event_agregarButtonActionPerformed
 
     private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
-        if (CodigoRadioButton2.isSelected() == false && DescripcionRadioButton.isSelected() == false && verTodoRdButton.isSelected() == false) {
+        if (CodigoRadioButton2.isSelected() == false && DescripcionRadioButton.isSelected() == false) {
             buscarLb.setBorder(Application.BORDER_ERROR);
             buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
         } else {
             buscarLb.setBorder(null);
             buscarLb.setToolTipText("");
-            if (verTodoRdButton.isSelected() == true) {
-                controller.buscar();
-            }
             if (DescripcionRadioButton.isSelected() == true && DescripcionText.getText().length() == 0) {
                 model.getErrores().put("DescripcionText", "Digite la descripcion a buscar");
                 buscarLb.setBorder(Application.BORDER_ERROR);
@@ -294,9 +288,10 @@ public class ProductosView extends javax.swing.JInternalFrame implements java.ut
         }
     }//GEN-LAST:event_CatalogoTableMouseClicked
 
-    private void verTodoRdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTodoRdButtonActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_verTodoRdButtonActionPerformed
+        controller.buscar();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     @Override
     public void update(java.util.Observable updatedModel, Object parametros) {
@@ -368,7 +363,7 @@ public class ProductosView extends javax.swing.JInternalFrame implements java.ut
     private javax.swing.JScrollPane ProductosScrollPane;
     private javax.swing.JButton agregarButton;
     private javax.swing.JLabel buscarLb;
-    public javax.swing.JRadioButton verTodoRdButton;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -42,16 +42,96 @@ public class FacturasPagadasController {
             return;
         }
         //model.getFiltro().getCliente().setNombre(view.nombreTextFd.getText());
-        List<Factura> rows = domainModel.getFacturaBl().findAll(Factura.class.getName());
-        for(int i = 0; i< rows.size(); i++){
-            rows.get(i).setC(domainModel.getClienteBl().findById(rows.get(i).getCliente()));
-            rows.get(i).setU(domainModel.getUsuarioBl().findById(rows.get(i).getUsuario()));
-        }
+        List<Factura> rows = encontrarTodas();
         if(rows.isEmpty()){
             model.getErrores().put("nombreTextFd","Ningun registro coincide");
             model.setMensaje("NINGUN REGISTRO COINCIDE");
         }
         model.setFacturas(rows);
+    }
+ 
+    public void buscarPorNumero() {
+        model.clearErrors();
+        Usuario e1 = (Usuario) session.getAttribute("Usuario");
+        if (e1.tipo() == -1) {
+            model.setMensaje(Application.ROL_NOTAUTHORIZED);
+            model.commit();
+            return;
+        }
+        List<Factura> rows = encontrarTodas();
+        int i = 0, cont = rows.size();
+        while (i < rows.size() && cont > 0) {
+            if (String.valueOf(rows.get(i).getCodigoFactura()).toLowerCase().indexOf(view.nombreTF.getText().toLowerCase()) == -1) {
+                rows.remove(rows.get(i));
+            } else {
+                i++;
+            }
+            cont--;
+        }
+        if (rows.isEmpty()) {
+            model.getErrores().put("nombreTextFd", "Ningun registro coincide");
+            model.setMensaje("NINGUN REGISTRO COINCIDE");
+        }
+        model.setFacturas(rows);
+    }
+
+    public void buscarPorCliente() {
+        model.clearErrors();
+        Usuario e1 = (Usuario) session.getAttribute("Usuario");
+        if (e1.tipo() == -1) {
+            model.setMensaje(Application.ROL_NOTAUTHORIZED);
+            model.commit();
+            return;
+        }
+        List<Factura> rows = encontrarTodas();
+        int i = 0, cont = rows.size();
+        while (i < rows.size() && cont > 0) {
+            if (rows.get(i).getC().getNombre().toLowerCase().indexOf(view.nombreTF.getText().toLowerCase()) == -1) {
+                rows.remove(rows.get(i));
+            } else {
+                i++;
+            }
+            cont--;
+        }
+        if (rows.isEmpty()) {
+            model.getErrores().put("nombreTextFd", "Ningun registro coincide");
+            model.setMensaje("NINGUN REGISTRO COINCIDE");
+        }
+        model.setFacturas(rows);
+    }
+    
+    public void buscarPorVendedor() {
+        model.clearErrors();
+        Usuario e1 = (Usuario) session.getAttribute("Usuario");
+        if (e1.tipo() == -1) {
+            model.setMensaje(Application.ROL_NOTAUTHORIZED);
+            model.commit();
+            return;
+        }
+        List<Factura> rows = encontrarTodas();
+        int i = 0, cont = rows.size();
+        while (i < rows.size() && cont > 0) {
+            if (rows.get(i).getU().getNombre().toLowerCase().indexOf(view.nombreTF.getText().toLowerCase()) == -1) {
+                rows.remove(rows.get(i));
+            } else {
+                i++;
+            }
+            cont--;
+        }
+        if (rows.isEmpty()) {
+            model.getErrores().put("nombreTextFd", "Ningun registro coincide");
+            model.setMensaje("NINGUN REGISTRO COINCIDE");
+        }
+        model.setFacturas(rows);
+    }
+    
+    public List<Factura> encontrarTodas(){
+        List<Factura> rows = domainModel.getFacturaBl().findAll(Factura.class.getName());
+        for(int i = 0; i< rows.size(); i++){
+            rows.get(i).setC(domainModel.getClienteBl().findById(rows.get(i).getCliente()));
+            rows.get(i).setU(domainModel.getUsuarioBl().findById(rows.get(i).getUsuario()));
+        }
+        return rows;
     }
     
     public void seleeccionar(int row){

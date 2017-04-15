@@ -50,7 +50,7 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
 
         busqueda = new javax.swing.ButtonGroup();
         nombreLb = new javax.swing.JLabel();
-        nomjTextField = new javax.swing.JTextField();
+        nombreTF = new javax.swing.JTextField();
         buscarButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         agregarB = new javax.swing.JButton();
@@ -60,7 +60,8 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
         eliminarB = new javax.swing.JButton();
         eliminarL = new javax.swing.JLabel();
         IdRadioButton = new javax.swing.JRadioButton();
-        allRadioButton = new javax.swing.JRadioButton();
+        descripcionRB = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("INVENTARIO");
@@ -68,10 +69,10 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
         nombreLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         nombreLb.setText("Seleccione el argumento a buscar");
 
-        nomjTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        nomjTextField.addActionListener(new java.awt.event.ActionListener() {
+        nombreTF.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        nombreTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomjTextFieldActionPerformed(evt);
+                nombreTFActionPerformed(evt);
             }
         });
 
@@ -132,9 +133,21 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
             }
         });
 
-        busqueda.add(allRadioButton);
-        allRadioButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        allRadioButton.setText("Ver Todo");
+        busqueda.add(descripcionRB);
+        descripcionRB.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
+        descripcionRB.setText("Descripción");
+        descripcionRB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                descripcionRBActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Ver Todo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -143,15 +156,7 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nombreLb)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(IdRadioButton)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(allRadioButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(nomjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
@@ -163,8 +168,17 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(eliminarL)
                             .addComponent(eliminarB, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(nombreLb)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(IdRadioButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(descripcionRB))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(nombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 49, Short.MAX_VALUE))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,49 +187,57 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
                 .addComponent(nombreLb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(5, 5, 5)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IdRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(descripcionRB, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(agregarL)
                     .addComponent(eliminarL))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(nomjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(allRadioButton))
-                    .addComponent(buscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(agregarB)
-                    .addComponent(eliminarB, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(agregarB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(eliminarB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buscarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
-        if (IdRadioButton.isSelected() == false && allRadioButton.isSelected() == false) {
+        if (IdRadioButton.isSelected() == false && descripcionRB.isSelected() == false) {
             nombreLb.setBorder(Application.BORDER_ERROR);
             nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
         } else {
             nombreLb.setBorder(null);
             nombreLb.setToolTipText("");
-            if (allRadioButton.isSelected() == true) {
-                controller.buscar();
+            if (IdRadioButton.isSelected() == true && nombreTF.getText().length() == 0) {
+                model.getErrores().put("nombreTextFd", "Digite la identificación a buscar");
+                nombreLb.setBorder(Application.BORDER_ERROR);
+                nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
+            }
+            if (IdRadioButton.isSelected() == true && nombreTF.getText().length() != 0 && Model.isNumeric(nombreTF.getText())) {
+                controller.buscarPorId();
+                return;
             } else {
-                if (IdRadioButton.isSelected() == true && nomjTextField.getText().length() == 0) {
-                    model.getErrores().put("nombreTextFd", "Digite la identificación a buscar");
-                    nombreLb.setBorder(Application.BORDER_ERROR);
-                    nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
-                } else {
-                    if (IdRadioButton.isSelected() == true && nomjTextField.getText().length() != 0 && Model.isNumeric(nomjTextField.getText())) {
-                        controller.buscarPorId();
-                    } else {
-                        model.getErrores().put("nombreTextFd", "Digite solo caracteres numericos");
-                        nombreLb.setBorder(Application.BORDER_ERROR);
-                        nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
-                    }
-                }
+                model.getErrores().put("nombreTextFd", "Digite solo caracteres numericos");
+                nombreLb.setBorder(Application.BORDER_ERROR);
+                nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
+            }
+            if(descripcionRB.isSelected() && nombreTF.getText().length() != 0){
+                controller.buscarPorDescripcion();
+                return;
+            }
+            if(descripcionRB.isSelected() && nombreTF.getText().length() == 0){
+                nombreLb.setBorder(Application.BORDER_ERROR);
+                model.getErrores().put("nombreTextFd", "Digite la descripcion a buscar");
             }
         }
     }//GEN-LAST:event_buscarButtonActionPerformed
@@ -244,13 +266,22 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
 
     }//GEN-LAST:event_tablaEmpleadosMouseClicked
 
-    private void nomjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomjTextFieldActionPerformed
+    private void nombreTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTFActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nomjTextFieldActionPerformed
+    }//GEN-LAST:event_nombreTFActionPerformed
 
     private void IdRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdRadioButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_IdRadioButtonActionPerformed
+
+    private void descripcionRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcionRBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_descripcionRBActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        controller.buscar();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     @Override
     public void update(java.util.Observable updatedModel,Object parametros) {
@@ -327,15 +358,16 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
     private javax.swing.JRadioButton IdRadioButton;
     private javax.swing.JButton agregarB;
     private javax.swing.JLabel agregarL;
-    private javax.swing.JRadioButton allRadioButton;
     private javax.swing.JButton buscarButton;
     private javax.swing.ButtonGroup busqueda;
+    private javax.swing.JRadioButton descripcionRB;
     private javax.swing.JButton eliminarB;
     private javax.swing.JLabel eliminarL;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nombreLb;
-    public javax.swing.JTextField nomjTextField;
+    public javax.swing.JTextField nombreTF;
     private javax.swing.JTable tablaEmpleados;
     // End of variables declaration//GEN-END:variables
 }

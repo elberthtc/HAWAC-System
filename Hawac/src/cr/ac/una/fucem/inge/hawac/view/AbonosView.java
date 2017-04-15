@@ -6,6 +6,7 @@
 package cr.ac.una.fucem.inge.hawac.view;
 
 import cr.ac.una.fucem.inge.hawac.controller.AbonosController;
+import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.AbonosModel;
 import hawac.Application;
 import javax.swing.JOptionPane;
@@ -62,7 +63,7 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
     private void initComponents() {
 
         Busqueda = new javax.swing.ButtonGroup();
-        DescripcionText = new javax.swing.JTextField();
+        descripcionT = new javax.swing.JTextField();
         agregarButton = new javax.swing.JButton();
         eliminarB = new javax.swing.JButton();
         BuscarButton = new javax.swing.JButton();
@@ -72,14 +73,14 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
         ProductosScrollPane = new javax.swing.JScrollPane();
         CatalogoTable = new javax.swing.JTable();
         DescripcionRadioButton = new javax.swing.JRadioButton();
-        CodigoRadioButton2 = new javax.swing.JRadioButton();
+        codigoRB = new javax.swing.JRadioButton();
         buscarLb = new javax.swing.JLabel();
-        verTodoRdButton = new javax.swing.JRadioButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("ABONOS");
 
-        DescripcionText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        descripcionT.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         agregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/agregar.png"))); // NOI18N
         agregarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -145,24 +146,22 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
         DescripcionRadioButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         DescripcionRadioButton.setText("Descripcion");
 
-        Busqueda.add(CodigoRadioButton2);
-        CodigoRadioButton2.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        CodigoRadioButton2.setText("Codigo");
-        CodigoRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        Busqueda.add(codigoRB);
+        codigoRB.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
+        codigoRB.setText("Codigo");
+        codigoRB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CodigoRadioButton2ActionPerformed(evt);
+                codigoRBActionPerformed(evt);
             }
         });
 
         buscarLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         buscarLb.setText("Seleccione el argumento a buscar");
 
-        Busqueda.add(verTodoRdButton);
-        verTodoRdButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        verTodoRdButton.setText("Ver Todo");
-        verTodoRdButton.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Ver Todo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verTodoRdButtonActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -174,65 +173,65 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscarLb)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(descripcionT, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(codigoRB)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(DescripcionRadioButton))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(DescripcionRadioButton)
-                                .addGap(27, 27, 27)
-                                .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(buscarLb))
-                        .addGap(18, 18, 18)
+                                .addComponent(BuscarLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(AgregarLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BuscarLabel))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AgregarLabel)
-                            .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(12, 12, 12)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(eliminarB, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(eliminarLabel)))
-                    .addComponent(CodigoRadioButton2)
-                    .addComponent(verTodoRdButton))
-                .addContainerGap(27, Short.MAX_VALUE))
+                            .addComponent(eliminarLabel)
+                            .addComponent(eliminarB, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(buscarLb)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(buscarLb)
+                    .addComponent(descripcionT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(codigoRB)
+                    .addComponent(DescripcionRadioButton))
+                .addGap(18, 18, 18)
+                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BuscarLabel)
                     .addComponent(AgregarLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(eliminarLabel))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(DescripcionRadioButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(CodigoRadioButton2))
-                            .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(eliminarB, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(verTodoRdButton)
-                .addGap(18, 18, 18)
-                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(82, 82, 82))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eliminarB, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CodigoRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodigoRadioButton2ActionPerformed
+    private void codigoRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoRBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CodigoRadioButton2ActionPerformed
+    }//GEN-LAST:event_codigoRBActionPerformed
 
     private void eliminarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBActionPerformed
         int row = this.CatalogoTable.getSelectedRow();
@@ -250,30 +249,34 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
     }//GEN-LAST:event_agregarButtonActionPerformed
 
     private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
-        if (CodigoRadioButton2.isSelected() == false && DescripcionRadioButton.isSelected() == false && verTodoRdButton.isSelected() == false) {
+        if (codigoRB.isSelected() == false && DescripcionRadioButton.isSelected() == false) {
             buscarLb.setBorder(Application.BORDER_ERROR);
-            buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
+            buscarLb.setToolTipText(model.getErrores().get("descripcionT"));
         } else {
             buscarLb.setBorder(null);
             buscarLb.setToolTipText("");
-            if (verTodoRdButton.isSelected() == true) {
-                controller.buscar();
-            }
-            if (DescripcionRadioButton.isSelected() == true && DescripcionText.getText().length() == 0) {
+            if (DescripcionRadioButton.isSelected() == true && descripcionT.getText().length() == 0) {
                 model.getErrores().put("DescripcionText", "Digite la descripcion a buscar");
                 buscarLb.setBorder(Application.BORDER_ERROR);
-                buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
+                buscarLb.setToolTipText(model.getErrores().get("descripcionT"));
             }
-            if (DescripcionRadioButton.isSelected() == true && DescripcionText.getText().length() != 0) {
+            if (DescripcionRadioButton.isSelected() == true && descripcionT.getText().length() != 0) {
                 controller.buscarPorDescripcion();
+                return;
             }
-            if (CodigoRadioButton2.isSelected() == true && DescripcionText.getText().length() == 0) {
+            if (codigoRB.isSelected() == true && descripcionT.getText().length() == 0) {
                 model.getErrores().put("DescripcionText", "Digite la descripcion a buscar");
                 buscarLb.setBorder(Application.BORDER_ERROR);
-                buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
+                buscarLb.setToolTipText(model.getErrores().get("descripcionT"));
             }
-            if (CodigoRadioButton2.isSelected() == true && DescripcionText.getText().length() != 0) {
+            if (codigoRB.isSelected() == true && descripcionT.getText().length() != 0 && Model.isNumeric(descripcionT.getText())) {
                 controller.buscarPorCodigo();
+                return;
+            }
+            if (codigoRB.isSelected() == true && descripcionT.getText().length() != 0 && !Model.isNumeric(descripcionT.getText())) {
+               model.getErrores().put("DescripcionText", "Digite la descripcion a buscar");
+                buscarLb.setBorder(Application.BORDER_ERROR);
+                buscarLb.setToolTipText(model.getErrores().get("descripcionT"));
             }
         }
     }//GEN-LAST:event_BuscarButtonActionPerformed
@@ -290,16 +293,16 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
         }
     }//GEN-LAST:event_CatalogoTableMouseClicked
 
-    private void verTodoRdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTodoRdButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_verTodoRdButtonActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        controller.buscar();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     @Override
     public void update(java.util.Observable updatedModel, Object parametros) {
         if(model.getFilter().getA().getIdApartado()!=0)
-            DescripcionText.setText(model.getFilter().getA().getIdApartado()+"");
+            descripcionT.setText(model.getFilter().getA().getIdApartado()+"");
         else
-            DescripcionText.setText("");
+            descripcionT.setText("");
         if (model.getErrores().get("DescripcionText") != null) {
             buscarLb.setBorder(Application.BORDER_ERROR);
             buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
@@ -362,15 +365,15 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
     private javax.swing.JLabel BuscarLabel;
     private javax.swing.ButtonGroup Busqueda;
     public javax.swing.JTable CatalogoTable;
-    public javax.swing.JRadioButton CodigoRadioButton2;
     public javax.swing.JRadioButton DescripcionRadioButton;
-    public javax.swing.JTextField DescripcionText;
     private javax.swing.JScrollPane ProductosScrollPane;
     private javax.swing.JButton agregarButton;
     private javax.swing.JLabel buscarLb;
+    public javax.swing.JRadioButton codigoRB;
+    public javax.swing.JTextField descripcionT;
     private javax.swing.JButton eliminarB;
     private javax.swing.JLabel eliminarLabel;
-    public javax.swing.JRadioButton verTodoRdButton;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
-
+    public int apartado;
 }

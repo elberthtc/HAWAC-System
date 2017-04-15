@@ -49,7 +49,9 @@ public class LineaTableModel extends AbstractTableModel{
     }
     
     public double calculaPrecio(Linea l1){ 
-        return l1.getCantidad()*(double)l1.getProducto().getPrecio();
+        if(rows.size()>0)
+            return l1.getCantidad()*(double)l1.getProducto().getPrecio();
+        return 0;
     }
     
     public static final int CANTIDAD=0;

@@ -90,8 +90,8 @@ public class FacturaController {
         model.clearErrors();
         Linea l1 = model.getLineas().getRowAt(row);
         int cantidad;
-        InventarioId iId = new InventarioId("Tienda", l1.getProducto().getIdProducto());
-        Inventario i1 = domainModel.getInventarioBl().findById(iId);
+        //InventarioId iId = new InventarioId("Tienda", l1.getProducto().getIdProducto());
+        //Inventario i1 = domainModel.getInventarioBl().findById(iId);
         Usuario e1 = (Usuario) session.getAttribute("Usuario");
         if (e1.getTipo() != 0) {
             model.setMensaje(Application.ROL_NOTAUTHORIZED);
@@ -99,14 +99,15 @@ public class FacturaController {
             return;
         }
         try {
-            cantidad = i1.getCantidad() + l1.getCantidad();
-            i1.setCantidad(cantidad);
-            domainModel.getInventarioBl().merge(i1);
+            //cantidad = i1.getCantidad() + l1.getCantidad();
+            //i1.setCantidad(cantidad);
+            //domainModel.getInventarioBl().merge(i1);
             domainModel.getLineaBl().delete(l1);
         } catch (Exception ex) {
         }
-        List<Linea> lineas = domainModel.getLineaBl().findAll(Linea.class.getName());
-        model.setLineas(lineas);
+        //List<Linea> lineas = domainModel.getLineaBl().findAll(Linea.class.getName());
+        model.getLineas2().remove(l1);
+        model.setLineas(model.getLineas2());
     }
 
     public void guardar() {
@@ -120,7 +121,9 @@ public class FacturaController {
             model.commit();
             return;
         }
-        if (view.ListProductosTable.getRowCount() != 0 && view.ListProductosTable.getSelectedRow() != -1) {
+        int a = view.ListProductosTable.getRowCount();
+        int b = view.ListProductosTable.getSelectedRow();
+        if (view.ListProductosTable.getRowCount() != 0) {
             if (model.getLineas().getRowCount() == 0) {
                 model.getErrores().put("GRABAR", "Factura Vacia");
                 model.setMensaje("Debe insertar Productos a la Factura");

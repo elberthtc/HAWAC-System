@@ -8,8 +8,6 @@ import cr.ac.una.fucem.inge.hawac.controller.ProductoFacturaController;
 import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
 import hawac.Application;
 import javax.swing.JOptionPane;
-import javax.swing.ButtonGroup;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -78,7 +76,6 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("Catalogo de Productos");
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BuscarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
         BuscarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -86,14 +83,11 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
                 BuscarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(BuscarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 210, 36, 36));
 
         DescripcionText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        getContentPane().add(DescripcionText, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 38, 157, -1));
 
         BuscarLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         BuscarLabel.setText("Buscar");
-        getContentPane().add(BuscarLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, -1, -1));
 
         ProductosScrollPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -120,12 +114,9 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
         ));
         ProductosScrollPane.setViewportView(CatalogoTable);
 
-        getContentPane().add(ProductosScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, -1, 106));
-
         Busqueda.add(DescripcionRadioButton);
         DescripcionRadioButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         DescripcionRadioButton.setText("Descripcion");
-        getContentPane().add(DescripcionRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 58, -1, -1));
 
         Busqueda.add(CodigoRadioButton2);
         CodigoRadioButton2.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
@@ -135,11 +126,9 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
                 CodigoRadioButton2ActionPerformed(evt);
             }
         });
-        getContentPane().add(CodigoRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 58, -1, -1));
 
         buscarLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         buscarLb.setText("Seleccione el argumento a buscar");
-        getContentPane().add(buscarLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         seleccionarB.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         seleccionarB.setText("Seleccionar");
@@ -148,12 +137,9 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
                 seleccionarBActionPerformed(evt);
             }
         });
-        getContentPane().add(seleccionarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 220, -1, -1));
-        getContentPane().add(cantidadTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(244, 36, 70, -1));
 
         cantidadLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         cantidadLb.setText("Cantidad");
-        getContentPane().add(cantidadLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 37, -1, -1));
 
         verTodoB.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         verTodoB.setText("Ver Todos");
@@ -162,7 +148,70 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
                 verTodoBActionPerformed(evt);
             }
         });
-        getContentPane().add(verTodoB, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 220, -1, -1));
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(buscarLb))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(cantidadLb)
+                .addGap(4, 4, 4)
+                .addComponent(cantidadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(verTodoB))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(CodigoRadioButton2)
+                .addGap(0, 0, 0)
+                .addComponent(DescripcionRadioButton))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(BuscarLabel)
+                .addGap(4, 4, 4)
+                .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(seleccionarB))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(buscarLb)
+                .addGap(6, 6, 6)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(cantidadLb))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cantidadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(verTodoB)))
+                .addGap(2, 2, 2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CodigoRadioButton2)
+                    .addComponent(DescripcionRadioButton))
+                .addGap(7, 7, 7)
+                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(10, 10, 10)
+                        .addComponent(BuscarLabel))
+                    .addComponent(seleccionarB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(12, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -224,7 +273,7 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
              buscarLb.setBorder(null);
              buscarLb.setToolTipText("");
         }
-        cantidadTextField.setText("0");
+        cantidadTextField.setText("");
          if(model.getErrores().get("cantidadTextField")!=null){
             cantidadLb.setBorder(Application.BORDER_ERROR);
             cantidadLb.setToolTipText(model.getErrores().get("cantidadTextField"));
