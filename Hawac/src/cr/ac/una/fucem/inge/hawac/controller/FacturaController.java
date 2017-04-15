@@ -132,6 +132,8 @@ public class FacturaController {
                         guardarDatosBasicos();
                         double total = Double.valueOf(view.TotalTextFd.getText());
                         f1.setMonto((float) total);
+                        f1.getC().setTotalComprado(f1.getC().getTotalComprado()+ (float) total);
+                        domainModel.getClienteBl().merge(f1.getC());
                         domainModel.getFacturaBl().save(f1);
                         view.setVisible(false);
                         Application.CANTIDAD = Application.CANTIDAD+1;

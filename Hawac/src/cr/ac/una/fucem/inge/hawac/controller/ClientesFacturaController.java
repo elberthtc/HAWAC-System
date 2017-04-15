@@ -9,6 +9,7 @@ import cr.ac.una.fucem.inge.hawac.domain.Cliente;
 import cr.ac.una.fucem.inge.hawac.domain.Factura;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
+import cr.ac.una.fucem.inge.hawac.model.ClienteModel;
 import cr.ac.una.fucem.inge.hawac.model.ClientesModel;
 import cr.ac.una.fucem.inge.hawac.view.ClientesFacturaView;
 import hawac.Application;
@@ -72,6 +73,22 @@ public class ClientesFacturaController {
              model.setMensaje("NINGUN REGISTRO COINCIDE");
         }
         model.setClientes(rows);
+    }
+    
+    public void preAgregar() {
+        model.clearErrors();
+        Usuario e1 = (Usuario) session.getAttribute("Usuario");
+        System.out.println(e1.getPassword());
+        if (e1.getTipo() == -1) {
+            model.setMensaje(Application.ROL_NOTAUTHORIZED);
+            model.commit();
+            return;
+        }
+        ClienteModel clienteModel = Application.CLIENTE_VIEW.getModel();
+        clienteModel.clearErrors();
+        clienteModel.setModo(Application.MODO_AGREGAR);
+        clienteModel.setCurrent(new Cliente());
+        Application.CLIENTE_VIEW.setVisible(true);
     }
     
     public void buscar(){

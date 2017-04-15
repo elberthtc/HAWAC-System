@@ -40,7 +40,7 @@ public class ClienteTableModel extends AbstractTableModel{
             case NOMBRE: return c1.getNombre();
             case TELEFONO: return c1.getTelefono();
             case CORREO: return c1.getCorreo();
-            //case DESCUENTO: return c1.getPorcentajeDescuento();
+            case TOTAL_COMPRADO: return c1.getTotalComprado();
             default: return "";
         }
     }    
@@ -52,7 +52,7 @@ public class ClienteTableModel extends AbstractTableModel{
     public static final int NOMBRE=1;
     public static final int TELEFONO=2;
     public static final int CORREO=3;
-    //public static final int DESCUENTO=4;
+    public static final int TOTAL_COMPRADO=4;
 
    
     
@@ -62,7 +62,7 @@ public class ClienteTableModel extends AbstractTableModel{
         colNames[NOMBRE]= "NOMBRE";
         colNames[TELEFONO]="TELEFONO";
         colNames[CORREO]="CORREO";
-        //colNames[DESCUENTO]="DESCUENTO";
+        colNames[TOTAL_COMPRADO]="TOTAL COMPRADO";
     }
             
 }
