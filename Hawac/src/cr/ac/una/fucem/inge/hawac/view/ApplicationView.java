@@ -228,7 +228,6 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     }//GEN-LAST:event_compraItemActionPerformed
 
     private void ventaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ventaItemActionPerformed
-        //Application.FACTURA_VIEW.update(null);
         controller.facturaShow();
     }//GEN-LAST:event_ventaItemActionPerformed
 
@@ -258,7 +257,6 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     }//GEN-LAST:event_tiendaMenuItemActionPerformed
 
     private void usuarioItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioItemActionPerformed
-        // TODO add your handling code here:
         Application.USUARIOS_VIEW.setVisible(true);
     }//GEN-LAST:event_usuarioItemActionPerformed
 
@@ -271,7 +269,7 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     }//GEN-LAST:event_entradaItemActionPerformed
 
     private void bitacoraMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bitacoraMenuActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_bitacoraMenuActionPerformed
 
     public ApplicationController getController() {

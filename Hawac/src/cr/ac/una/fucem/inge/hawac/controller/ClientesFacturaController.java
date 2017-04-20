@@ -124,6 +124,7 @@ public class ClientesFacturaController {
             //Application.FACTURA_VIEW.getModel().setCliente(c1);
             Application.FACTURA_VIEW.getModel().getCurrent().setCliente(c1.getCedula());
             Application.FACTURA_VIEW.getModel().setCliente(c1);
+            Application.FACTURA_VIEW.getModel().getCurrent().setC(c1);
             //Application.FACTURA_VIEW.update();
             CONTADOR++;
 

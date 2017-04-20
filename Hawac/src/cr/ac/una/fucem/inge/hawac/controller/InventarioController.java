@@ -62,6 +62,9 @@ public class InventarioController {
                         model.setCurrent(new Inventario());
                         model.setProductoActual(new Producto());
                         empleados = domainModel.getInventario();
+                        for(int i = 0; i<empleados.size();i++){
+                            empleados.get(i).setProducto(domainModel.getProductoBl().findById(empleados.get(i).getId().getProducto()));
+                        }
                         empleadosModel.setInventarios(empleados);
                         view.setVisible(false);
                         break;
