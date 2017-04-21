@@ -15,9 +15,7 @@ import cr.ac.una.fucem.inge.hawac.view.ProductosView;
 import hawac.Application;
 import hawac.Session;
 import java.util.List;
-import java.util.Arrays;
-import java.util.ArrayList;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 
 public class ProductosController {
 
@@ -42,7 +40,8 @@ public class ProductosController {
         List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
         if (rows.isEmpty()) {
             model.getErrores().put("DescripcionText", "Ningun registro coincide");
-            model.setMensaje("NINGUN REGISTRO COINCIDE");
+            model.setMensaje("Ningun registro coincide con el criterio de busqueda");
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setProductos(rows);
 
@@ -63,11 +62,18 @@ public class ProductosController {
         }
         if (rows.isEmpty()) {
             model.getErrores().put("DescripcionText", "Ningun registro coincide");
-            model.setMensaje("NINGUN REGISTRO COINCIDE");
+            model.setMensaje("Ningun registro coincide con el criterio de busqueda");            
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setProductos(rows);
     }
 
+    public void mensajeError(){
+        if(model.getErrores().size()>0){
+            JOptionPane.showMessageDialog(view, model.getMensaje(), "", JOptionPane.INFORMATION_MESSAGE);
+        }
+    }
+    
     public void buscarPorCodigo() {
         model.clearErrors();
         model.getFilter().setDescripcion(view.DescripcionText.getText());
@@ -84,7 +90,8 @@ public class ProductosController {
         }
         if (rows.isEmpty()) {
             model.getErrores().put("DescripcionText", "Ningun registro coincide");
-            model.setMensaje("NINGUN REGISTRO COINCIDE");
+            model.setMensaje("Ningun registro coincide con el criterio de busqueda");          
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setProductos(rows);
     }

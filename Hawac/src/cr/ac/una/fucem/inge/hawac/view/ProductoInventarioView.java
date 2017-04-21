@@ -72,6 +72,8 @@ public class ProductoInventarioView extends javax.swing.JInternalFrame implement
         buscarLb = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        agregarButton = new javax.swing.JButton();
+        AgregarLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("Catalogo de Productos");
@@ -144,6 +146,16 @@ public class ProductoInventarioView extends javax.swing.JInternalFrame implement
             }
         });
 
+        agregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/agregar.png"))); // NOI18N
+        agregarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarButtonActionPerformed(evt);
+            }
+        });
+
+        AgregarLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
+        AgregarLabel.setText("Agregar ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -166,11 +178,15 @@ public class ProductoInventarioView extends javax.swing.JInternalFrame implement
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BuscarLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(AgregarLabel)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton1))
-                            .addComponent(BuscarLabel))))
+                                .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1)))))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -188,13 +204,19 @@ public class ProductoInventarioView extends javax.swing.JInternalFrame implement
                     .addComponent(DescripcionRadioButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(BuscarLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(16, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BuscarLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(AgregarLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
@@ -247,6 +269,11 @@ public class ProductoInventarioView extends javax.swing.JInternalFrame implement
         controller.buscar();
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void agregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarButtonActionPerformed
+        Application.PRODUCTO_VIEW.setLocation(this.agregarButton.getLocationOnScreen());
+        controller.preAgregar();
+    }//GEN-LAST:event_agregarButtonActionPerformed
+
     @Override
     public void update(java.util.Observable updatedModel,Object parametros) {
         DescripcionText.setText(model.getFilter().getDescripcion());
@@ -259,9 +286,6 @@ public class ProductoInventarioView extends javax.swing.JInternalFrame implement
         }
         CatalogoTable.setModel(model.getProductos());
         this.revalidate();
-        if (!model.getMensaje().equals("")){
-            JOptionPane.showMessageDialog(this, model.getMensaje(), "",JOptionPane.INFORMATION_MESSAGE);
-        }
         
     }
     /**
@@ -304,6 +328,7 @@ public class ProductoInventarioView extends javax.swing.JInternalFrame implement
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel AgregarLabel;
     private javax.swing.JButton BuscarButton;
     private javax.swing.JLabel BuscarLabel;
     private javax.swing.ButtonGroup Busqueda;
@@ -312,6 +337,7 @@ public class ProductoInventarioView extends javax.swing.JInternalFrame implement
     public javax.swing.JRadioButton DescripcionRadioButton;
     public javax.swing.JTextField DescripcionText;
     private javax.swing.JScrollPane ProductosScrollPane;
+    private javax.swing.JButton agregarButton;
     private javax.swing.JLabel buscarLb;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;

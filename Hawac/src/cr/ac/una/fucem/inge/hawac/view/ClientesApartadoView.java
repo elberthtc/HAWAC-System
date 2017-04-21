@@ -284,9 +284,12 @@ public class ClientesApartadoView extends javax.swing.JInternalFrame implements 
         }
         clientesTable.setModel(model.getClientes());
         this.revalidate();
+        
+        /*
         if (!model.getMensaje().equals("")){
             JOptionPane.showMessageDialog(this, model.getMensaje(), "",JOptionPane.INFORMATION_MESSAGE);
         }  
+        */
    
         clientesTable.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
         clientesTable.getColumnModel().getColumn(0).setPreferredWidth(30);

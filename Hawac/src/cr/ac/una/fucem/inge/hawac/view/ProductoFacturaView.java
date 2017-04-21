@@ -284,9 +284,6 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
 
         CatalogoTable.setModel(model.getProductos());
         this.revalidate();
-        if (!model.getMensaje().equals("")){
-            JOptionPane.showMessageDialog(this, model.getMensaje(), "",JOptionPane.INFORMATION_MESSAGE);
-        }    
     }
     /**
      * @param args the command line arguments

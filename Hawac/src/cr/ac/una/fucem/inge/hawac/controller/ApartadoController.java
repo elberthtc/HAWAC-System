@@ -6,6 +6,7 @@
 package cr.ac.una.fucem.inge.hawac.controller;
 
 import cr.ac.una.fucem.inge.hawac.domain.Apartado;
+import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.domain.Cliente;
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import cr.ac.una.fucem.inge.hawac.domain.InventarioId;
@@ -19,6 +20,7 @@ import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
 import cr.ac.una.fucem.inge.hawac.view.ApartadoView;
 import hawac.Application;
 import hawac.Session;
+import java.util.Date;
 import java.util.List;
 
 public class ApartadoController {
@@ -112,6 +114,8 @@ public class ApartadoController {
             try {
                 switch (model.getModo()) {
                     case Application.MODO_AGREGAR:
+                        Bitacora b = new Bitacora(Application.USUARIO.getIdUsuario(),Application.USUARIO.getNombre()+" ha agregado un apartado del producto: "+p1.getP().getDescripcion()+", al Cliente: "+p1.getC().getNombre(),new Date());
+                        domainModel.getBitacoraBl().save(b);
                         domainModel.getApartadoBl().save(p1);
                         domainModel.getInventarioBl().merge(i1);
                         model.setMensaje("APARTADO AGREGADO");

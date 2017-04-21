@@ -8,8 +8,6 @@ import cr.ac.una.fucem.inge.hawac.controller.ProductoApartadoController;
 import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
 import hawac.Application;
 import javax.swing.JOptionPane;
-import javax.swing.ButtonGroup;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -260,10 +258,7 @@ public class ProductoApartadoView extends javax.swing.JInternalFrame implements 
              buscarLb.setToolTipText("");
         }
         CatalogoTable.setModel(model.getProductos());
-        this.revalidate();
-        if (!model.getMensaje().equals("")){
-            JOptionPane.showMessageDialog(this, model.getMensaje(), "",JOptionPane.INFORMATION_MESSAGE);
-        }    
+        this.revalidate();   
     }
     /**
      * @param args the command line arguments

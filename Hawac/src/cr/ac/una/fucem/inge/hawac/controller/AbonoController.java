@@ -7,12 +7,14 @@ package cr.ac.una.fucem.inge.hawac.controller;
 
 import cr.ac.una.fucem.inge.hawac.domain.Abono;
 import cr.ac.una.fucem.inge.hawac.domain.Apartado;
+import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.AbonoModel;
 import cr.ac.una.fucem.inge.hawac.model.AbonosModel;
 import cr.ac.una.fucem.inge.hawac.view.AbonoView;
 import hawac.Application;
 import hawac.Session;
+import java.util.Date;
 import java.util.List;
 
 public class AbonoController {
@@ -66,6 +68,8 @@ public class AbonoController {
             try {
                 switch (model.getModo()) {
                     case Application.MODO_AGREGAR:
+                        Bitacora b = new Bitacora(Application.USUARIO.getIdUsuario(),Application.USUARIO.getNombre()+" ha agregado un abono de: " + p1.getMonto() + " al Apartado Numero: "+a1.getIdApartado(),new Date());
+                        domainModel.getBitacoraBl().save(b);
                         domainModel.getAbonoBl().save(p1);
                         domainModel.getApartadoBl().merge(a1);
                         model.setMensaje("ABONO AGREGADO");

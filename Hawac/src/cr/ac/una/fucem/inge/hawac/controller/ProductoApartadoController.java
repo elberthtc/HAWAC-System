@@ -6,25 +6,18 @@
 package cr.ac.una.fucem.inge.hawac.controller;
 
 
-import cr.ac.una.fucem.inge.hawac.domain.Factura;
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import cr.ac.una.fucem.inge.hawac.domain.InventarioId;
-import cr.ac.una.fucem.inge.hawac.domain.Linea;
-import cr.ac.una.fucem.inge.hawac.domain.LineaId;
 import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
-import cr.ac.una.fucem.inge.hawac.model.FacturaModel;
 import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
 import cr.ac.una.fucem.inge.hawac.view.ProductoApartadoView;
 import hawac.Application;
 import hawac.Session;
 import java.util.List;
-import java.util.Arrays;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.LinkedList;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 
 public class ProductoApartadoController {
     Model domainModel;
@@ -56,7 +49,8 @@ public class ProductoApartadoController {
         
         if(rows.isEmpty()){
             model.getErrores().put("DescripcionText","Ningun registro coincide");
-             model.setMensaje("NINGUN REGISTRO COINCIDE");
+            model.setMensaje("Ningun registro coincide con el criterio de busqueda");            
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setProductos(rows);
  
@@ -121,7 +115,8 @@ public class ProductoApartadoController {
         }
         if(rows.isEmpty()){
             model.getErrores().put("DescripcionText","Ningun registro coincide");
-             model.setMensaje("NINGUN REGISTRO COINCIDE");
+            model.setMensaje("Ningun registro coincide con el criterio de busqueda");            
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setProductos(rows);
     }
@@ -146,7 +141,8 @@ public class ProductoApartadoController {
         }
         if(rows.isEmpty()){
             model.getErrores().put("DescripcionText","Ningun registro coincide");
-             model.setMensaje("NINGUN REGISTRO COINCIDE");
+            model.setMensaje("Ningun registro coincide con el criterio de busqueda");            
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setProductos(rows);
  

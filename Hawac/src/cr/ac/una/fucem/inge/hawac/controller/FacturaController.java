@@ -5,6 +5,7 @@
  */
 package cr.ac.una.fucem.inge.hawac.controller;
 
+import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.domain.Cliente;
 import cr.ac.una.fucem.inge.hawac.domain.Factura;
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
@@ -21,6 +22,7 @@ import cr.ac.una.fucem.inge.hawac.view.FacturaView;
 import hawac.Application;
 import hawac.Session;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class FacturaController {
@@ -129,34 +131,36 @@ public class FacturaController {
                 model.setMensaje("Debe insertar Productos a la Factura");
             } else {
                 if (model.getErrores().isEmpty()) {
-                        guardarDatosBasicos();
-                        double total = Double.valueOf(view.TotalTextFd.getText());
-                        f1.setMonto((float) total);
-                        f1.getC().setTotalComprado(f1.getC().getTotalComprado()+ (float) total);
-                        domainModel.getClienteBl().merge(f1.getC());
-                        domainModel.getFacturaBl().save(f1);
-                        view.setVisible(false);
-                        Application.CANTIDAD = Application.CANTIDAD+1;
-                        Application.FACTURA_VIEW.numFacTextFd.setText(Application.CANTIDAD+"");
-                        List<Linea> lineas = facturaModel.getLineas2();
-                        for(int i = 0; i<lineas.size(); i++){
-                            InventarioId inventarioId = new InventarioId("Tienda",lineas.get(i).getProducto().getIdProducto());
-                            Inventario inventario = domainModel.getInventarioBl().findById(inventarioId);
-                            if(inventario!=null){
-                                Linea l = lineas.get(i);
-                                l.setId(new LineaId(l.getProducto().getIdProducto(),l.getFactura().getCodigoFactura()));
-                                inventario.setCantidad(inventario.getCantidad()-lineas.get(i).getCantidad());
-                                domainModel.getInventarioBl().merge(inventario);
-                                domainModel.getLineaBl().save(l);
-                            }
+                    guardarDatosBasicos();
+                    double total = Double.valueOf(view.TotalTextFd.getText());
+                    f1.setMonto((float) total);
+                    f1.getC().setTotalComprado(f1.getC().getTotalComprado() + (float) total);
+                    domainModel.getClienteBl().merge(f1.getC());
+                    domainModel.getFacturaBl().save(f1);
+                    view.setVisible(false);
+                    Application.CANTIDAD = Application.CANTIDAD + 1;
+                    Application.FACTURA_VIEW.numFacTextFd.setText(Application.CANTIDAD + "");
+                    List<Linea> lineas = facturaModel.getLineas2();
+                    for (int i = 0; i < lineas.size(); i++) {
+                        InventarioId inventarioId = new InventarioId("Tienda", lineas.get(i).getProducto().getIdProducto());
+                        Inventario inventario = domainModel.getInventarioBl().findById(inventarioId);
+                        if (inventario != null) {
+                            Linea l = lineas.get(i);
+                            l.setId(new LineaId(l.getProducto().getIdProducto(), l.getFactura().getCodigoFactura()));
+                            inventario.setCantidad(inventario.getCantidad() - lineas.get(i).getCantidad());
+                            domainModel.getInventarioBl().merge(inventario);
+                            domainModel.getLineaBl().save(l);
                         }
-                        List<Linea> nuevo = new ArrayList<Linea>();
-                        model.setCurrent(new Factura());
-                        model.setCliente(new Cliente());
-                        model.setFiltro(new Linea());
-                        model.setMensaje("FACTURA AGREGADA");
-                        model.setLineas(nuevo);
-                        model.setLineas2(nuevo);
+                    }
+                    Bitacora b1 = new Bitacora(Application.USUARIO.getIdUsuario(), Application.USUARIO.getNombre() + " ha vendido al Cliente: " + f1.getC().getNombre()+" por el monto de: "+ f1.getMonto(), new Date());
+                    domainModel.getBitacoraBl().save(b1);
+                    List<Linea> nuevo = new ArrayList<Linea>();
+                    model.setCurrent(new Factura());
+                    model.setCliente(new Cliente());
+                    model.setFiltro(new Linea());
+                    model.setMensaje("FACTURA AGREGADA");
+                    model.setLineas(nuevo);
+                    model.setLineas2(nuevo);
                 } else {
                     model.setMensaje("Errores");
                     model.setCurrent(f1);

@@ -1,5 +1,6 @@
 
 package cr.ac.una.fucem.inge.hawac.controller;
+import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import cr.ac.una.fucem.inge.hawac.domain.InventarioId;
 import cr.ac.una.fucem.inge.hawac.domain.Producto;
@@ -9,6 +10,7 @@ import cr.ac.una.fucem.inge.hawac.model.InventariosModel;
 import cr.ac.una.fucem.inge.hawac.view.InventarioView;
 import hawac.Application;
 import hawac.Session;
+import java.util.Date;
 import java.util.List;
 
 public class InventarioController {
@@ -57,7 +59,17 @@ public class InventarioController {
             try {
                 switch (model.getModo()) {
                     case Application.MODO_AGREGAR:
-                        domainModel.getInventarioBl().save(inventarioNuevo);
+                        Inventario inv = domainModel.getInventarioBl().findById(inventarioNuevo.getId());
+                        if(inv==null){
+                            Bitacora b = new Bitacora(Application.USUARIO.getIdUsuario(), Application.USUARIO.getNombre() + " ha agregado al Inventario " + inventarioNuevo.getProducto().getDescripcion() + " cantidad: " + inventarioNuevo.getCantidad(), new Date());
+                            domainModel.getBitacoraBl().save(b);
+                            domainModel.getInventarioBl().save(inventarioNuevo);
+                        }else{
+                            Bitacora b = new Bitacora(Application.USUARIO.getIdUsuario(), Application.USUARIO.getNombre() + " ha Modificado el Inventario " + inventarioNuevo.getProducto().getDescripcion() + " cantidad: " + inventarioNuevo.getCantidad(), new Date());
+                            domainModel.getBitacoraBl().save(b);
+                            inv.setCantidad(inv.getCantidad()+ Integer.parseInt(view.cantidadTextField.getText()));
+                            domainModel.getInventarioBl().merge(inv);
+                        }
                         model.setMensaje("PRODUCTO AGREGADO");
                         model.setCurrent(new Inventario());
                         model.setProductoActual(new Producto());
@@ -69,6 +81,8 @@ public class InventarioController {
                         view.setVisible(false);
                         break;
                     case Application.MODO_EDITAR:
+                        Bitacora b = new Bitacora(Application.USUARIO.getIdUsuario(), Application.USUARIO.getNombre() + " ha Modificado el Inventario " + inventarioNuevo.getProducto().getDescripcion() + " cantidad: " + inventarioNuevo.getCantidad(), new Date());
+                        domainModel.getBitacoraBl().save(b);
                         domainModel.getInventarioBl().merge(inventarioNuevo);
                         model.setMensaje("INVENTARIO MODIFICADO");
                         model.setCurrent(inventarioNuevo);

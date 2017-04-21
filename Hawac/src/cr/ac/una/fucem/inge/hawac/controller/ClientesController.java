@@ -5,6 +5,7 @@
  */
 package cr.ac.una.fucem.inge.hawac.controller;
 
+import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.domain.Cliente;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
@@ -15,6 +16,8 @@ import hawac.Application;
 import hawac.Session;
 import java.util.List;
 import java.util.Arrays;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 public class ClientesController {
     Model domainModel;
@@ -42,9 +45,11 @@ public class ClientesController {
         model.clearErrors();
         model.getFilter().setNombre(view.nombreTextFd.getText());
         List<Cliente> rows = domainModel.getClienteBl().findAll(Cliente.class.getName()); // ACA BUSCA POR NOMBRE
+        rows.remove(rows.get(0));
         if(rows.isEmpty()){
             model.getErrores().put("nombreTextFd","Ningun registro coincide");
-             model.setMensaje("NINGUN REGISTRO COINCIDE");
+            model.setMensaje("Ningun registro coincide con el criterio de busqueda");
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setClientes(rows);
     }
@@ -64,7 +69,8 @@ public class ClientesController {
         }
         if (aux.isEmpty()) {
             model.getErrores().put("nombreTextFd", "Ningun registro coincide");
-            model.setMensaje("NINGUN REGISTRO COINCIDE");
+            model.setMensaje("Ningun registro coincide con el criterio de busqueda");
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setClientes(aux);
     }
@@ -84,7 +90,8 @@ public class ClientesController {
         }
         if(rows.isEmpty()){
             model.getErrores().put("nombreTextFd","Ningun registro coincide");
-             model.setMensaje("NINGUN REGISTRO COINCIDE");
+             model.setMensaje("Ningun registro coincide con el criterio de busqueda");
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setClientes(rows);
     }
@@ -100,6 +107,8 @@ public class ClientesController {
         }
         try{
             domainModel.getClienteBl().delete(c1);
+            Bitacora b = new Bitacora(Application.USUARIO.getIdUsuario(),Application.USUARIO.getNombre()+" ha Eliminado al Cliente: "+c1.getNombre(),new Date());
+            domainModel.getBitacoraBl().save(b);
         }catch (Exception ex) { }
         List<Cliente> rowsMod = domainModel.getClienteBl().findAll(Cliente.class.getName());
         model.setClientes(rowsMod);

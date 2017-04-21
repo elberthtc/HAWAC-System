@@ -53,7 +53,8 @@ public class ProductoFacturaController {
         
         if(rows.isEmpty()){
             model.getErrores().put("DescripcionText","Ningun registro coincide");
-             model.setMensaje("NINGUN REGISTRO COINCIDE");
+            model.setMensaje("Ningun registro coincide con el criterio de busqueda");   
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setProductos(rows);
  
@@ -165,7 +166,8 @@ public class ProductoFacturaController {
         }
         if(rows.isEmpty()){
             model.getErrores().put("DescripcionText","Ningun registro coincide");
-             model.setMensaje("NINGUN REGISTRO COINCIDE");
+             model.setMensaje("Ningun registro coincide con el criterio de busqueda");            
+             JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setProductos(rows);
     }
@@ -190,7 +192,8 @@ public class ProductoFacturaController {
         }
         if(rows.isEmpty()){
             model.getErrores().put("DescripcionText","Ningun registro coincide");
-             model.setMensaje("NINGUN REGISTRO COINCIDE");
+            model.setMensaje("Ningun registro coincide con el criterio de busqueda");            
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setProductos(rows);
  

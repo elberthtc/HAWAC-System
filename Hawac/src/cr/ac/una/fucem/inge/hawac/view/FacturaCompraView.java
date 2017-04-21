@@ -8,10 +8,6 @@ package cr.ac.una.fucem.inge.hawac.view;
 
 
 import javax.swing.JOptionPane;
-/*import ferreteria.Application;
-import ferreteria.presentacion.controller.FacturaCompraController;
-import ferreteria.presentacion.model.FacturaCompraModel;
-import ferreteria.presentacion.model.LineaTableModel;*/
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -44,7 +40,7 @@ public class FacturaCompraView extends javax.swing.JInternalFrame implements jav
         TelefonoLb = new javax.swing.JLabel();
         telefonoClienteTextFd = new javax.swing.JTextField();
         formadePagoLb = new javax.swing.JLabel();
-        metodoPagoComboBox = new javax.swing.JComboBox<String>();
+        metodoPagoComboBox = new javax.swing.JComboBox<>();
         vendedorLb = new javax.swing.JLabel();
         vendedorTextFd = new javax.swing.JTextField();
         listaProductosLb = new javax.swing.JLabel();
@@ -106,7 +102,7 @@ public class FacturaCompraView extends javax.swing.JInternalFrame implements jav
         formadePagoLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         formadePagoLb.setText("Forma De Pago");
 
-        metodoPagoComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Efectivo", "TarjetaCredito", "Cheque" }));
+        metodoPagoComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Efectivo", "TarjetaCredito", "Cheque" }));
         metodoPagoComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 metodoPagoComboBoxActionPerformed(evt);

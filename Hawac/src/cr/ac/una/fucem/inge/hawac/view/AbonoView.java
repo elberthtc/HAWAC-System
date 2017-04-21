@@ -5,15 +5,9 @@
  */
 package cr.ac.una.fucem.inge.hawac.view;
 import cr.ac.una.fucem.inge.hawac.controller.AbonoController;
-import cr.ac.una.fucem.inge.hawac.controller.ApartadoController;
-import cr.ac.una.fucem.inge.hawac.controller.ProductoController;
 import cr.ac.una.fucem.inge.hawac.domain.Abono;
-import cr.ac.una.fucem.inge.hawac.domain.Apartado;
-import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.AbonoModel;
-import cr.ac.una.fucem.inge.hawac.model.ApartadoModel;
-import cr.ac.una.fucem.inge.hawac.model.ProductoModel;
 import hawac.Application;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
@@ -44,7 +38,7 @@ public class AbonoView extends javax.swing.JDialog implements java.util.Observer
     
     public AbonoView(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        pack();
+        //pack();
         initComponents();
     }
 

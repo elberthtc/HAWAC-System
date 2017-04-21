@@ -6,7 +6,6 @@
 package cr.ac.una.fucem.inge.hawac.controller;
 
 import cr.ac.una.fucem.inge.hawac.domain.Cliente;
-import cr.ac.una.fucem.inge.hawac.domain.Factura;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.ClienteModel;
@@ -15,7 +14,7 @@ import cr.ac.una.fucem.inge.hawac.view.ClientesApartadoView;
 import hawac.Application;
 import hawac.Session;
 import java.util.List;
-import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 public class ClientesApartadoController {
     Model domainModel;
@@ -50,7 +49,8 @@ public class ClientesApartadoController {
         }
         if (aux.isEmpty()) {
             model.getErrores().put("nombreTextFd", "Ningun registro coincide");
-            model.setMensaje("NINGUN REGISTRO COINCIDE");
+            model.setMensaje("Ningun registro coincide con el criterio de busqueda");
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setClientes(aux);
     }
@@ -70,7 +70,8 @@ public class ClientesApartadoController {
         }
         if(rows.isEmpty()){
             model.getErrores().put("nombreTextFd","Ningun registro coincide");
-             model.setMensaje("NINGUN REGISTRO COINCIDE");
+            model.setMensaje("Ningun registro coincide con el criterio de busqueda");
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setClientes(rows);
     }
@@ -81,7 +82,8 @@ public class ClientesApartadoController {
         List<Cliente> rows = domainModel.getClienteBl().findAll(Cliente.class.getName());
         if(rows.isEmpty()){
             model.getErrores().put("nombreTextFd","Ningun registro coincide");
-             model.setMensaje("NINGUN REGISTRO COINCIDE");
+            model.setMensaje("Ningun registro coincide con el criterio de busqueda");
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setClientes(rows);
     }

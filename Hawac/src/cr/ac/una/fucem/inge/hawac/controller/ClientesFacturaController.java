@@ -16,6 +16,7 @@ import hawac.Application;
 import hawac.Session;
 import java.util.List;
 import java.util.Arrays;
+import javax.swing.JOptionPane;
 
 public class ClientesFacturaController {
     Model domainModel;
@@ -50,7 +51,8 @@ public class ClientesFacturaController {
         }
         if (aux.isEmpty()) {
             model.getErrores().put("nombreTextFd", "Ningun registro coincide");
-            model.setMensaje("NINGUN REGISTRO COINCIDE");
+            model.setMensaje("Ningun registro coincide con el criterio de busqueda");
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setClientes(aux);
     }
@@ -70,7 +72,8 @@ public class ClientesFacturaController {
         }
         if(rows.isEmpty()){
             model.getErrores().put("nombreTextFd","Ningun registro coincide");
-             model.setMensaje("NINGUN REGISTRO COINCIDE");
+            model.setMensaje("Ningun registro coincide con el criterio de busqueda");
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setClientes(rows);
     }
@@ -97,7 +100,8 @@ public class ClientesFacturaController {
         List<Cliente> rows = domainModel.getClienteBl().findAll(Cliente.class.getName());
         if(rows.isEmpty()){
             model.getErrores().put("nombreTextFd","Ningun registro coincide");
-             model.setMensaje("NINGUN REGISTRO COINCIDE");
+            model.setMensaje("Ningun registro coincide con el criterio de busqueda");
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         }
         model.setClientes(rows);
     }

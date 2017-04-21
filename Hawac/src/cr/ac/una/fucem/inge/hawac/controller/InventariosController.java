@@ -1,5 +1,6 @@
 package cr.ac.una.fucem.inge.hawac.controller;
 
+import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import cr.ac.una.fucem.inge.hawac.domain.InventarioId;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
@@ -12,6 +13,7 @@ import hawac.Application;
 import hawac.Session;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 
@@ -134,6 +136,8 @@ public class InventariosController {
         }
        try{
            domainModel.getInventarioBl().delete(seleccionado);
+           Bitacora b = new Bitacora(Application.USUARIO.getIdUsuario(),"Ha eliminado " + seleccionado.getProducto().getDescripcion() + " del Inventario", new Date());
+           domainModel.getBitacoraBl().save(b);
        }catch(Exception ex){}
        List<Inventario> filas = domainModel.getInventario();
        modelo.setInventarios(filas);

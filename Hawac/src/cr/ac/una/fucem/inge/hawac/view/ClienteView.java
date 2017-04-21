@@ -193,7 +193,7 @@ public class ClienteView extends javax.swing.JDialog implements java.util.Observ
     public void update(java.util.Observable updatedModel,Object parametros) {
         Cliente current = model.getCurrent();
         this.idTextFd.setEnabled(model.getModo()==Application.MODO_AGREGAR);
-        if(current.getCedula()==0){
+        if(current.getCedula()==-1){
             idTextFd.setText("");
         } else {
             idTextFd.setText(current.getCedula()+"");

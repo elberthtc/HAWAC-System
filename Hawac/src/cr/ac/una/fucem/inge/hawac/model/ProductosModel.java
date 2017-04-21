@@ -83,9 +83,9 @@ public class ProductosModel extends java.util.Observable{
         setErrores(new HashMap<String,String>());
         setMensaje(""); 
     }
+    
     public void commit(){
         setChanged();
         notifyObservers();       
     }
-    
 }

@@ -63,7 +63,7 @@ public class UsuariosController {
     
     public void buscarPorId(){
         modelo.borrarErrores();
-        modelo.getFiltro().setIdUsuario(Integer.parseInt(vista.nomjTextField.getText()));
+        //modelo.getFiltro().setIdUsuario(Integer.parseInt(vista.nomjTextField.getText()));
         String nombre = vista.nomjTextField.getText();
         List<Usuario> filas= domainModel.getUsuarioBl().findAll(Usuario.class.getName());
         //for(int i = 0; i<filas.size();i++){

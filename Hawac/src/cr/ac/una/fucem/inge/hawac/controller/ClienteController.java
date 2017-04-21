@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package cr.ac.una.fucem.inge.hawac.controller;
+import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.domain.Cliente;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.ClienteModel;
@@ -11,6 +12,7 @@ import cr.ac.una.fucem.inge.hawac.model.ClientesModel;
 import cr.ac.una.fucem.inge.hawac.view.ClienteView;
 import hawac.Application;
 import hawac.Session;
+import java.util.Date;
 import java.util.List;
 /*import ferreteria.Application;
 import ferreteria.Session;
@@ -58,6 +60,8 @@ public class ClienteController {
             try {
                 switch (model.getModo()) {
                     case Application.MODO_AGREGAR:
+                        Bitacora b = new Bitacora(Application.USUARIO.getIdUsuario(),Application.USUARIO.getNombre()+" ha agregado al Cliente: "+c1.getNombre(),new Date());
+                        domainModel.getBitacoraBl().save(b);
                         domainModel.getClienteBl().save(c1);
                         model.setMensaje("CLIENTE AGREGADO");
                         model.setCurrent(new Cliente());
@@ -66,6 +70,8 @@ public class ClienteController {
                         view.setVisible(false);
                         break;
                     case Application.MODO_EDITAR:
+                        Bitacora b1 = new Bitacora(Application.USUARIO.getIdUsuario(),Application.USUARIO.getNombre()+" ha modificado al Cliente: "+c1.getNombre(),new Date());
+                        domainModel.getBitacoraBl().save(b1);
                         domainModel.getClienteBl().merge(c1);
                         model.setMensaje("CLIENTE MODIFICADO");
                         model.setCurrent(c1);
