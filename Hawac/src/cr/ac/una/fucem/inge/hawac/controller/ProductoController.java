@@ -88,6 +88,7 @@ public class ProductoController {
             try {
                 switch (model.getModo()) {
                     case Application.MODO_AGREGAR:
+                        
                         domainModel.getProductoBl().save(p1);
                         model.setMensaje("PRODUCTO AGREGADO");
                         model.setCurrent(new Producto());

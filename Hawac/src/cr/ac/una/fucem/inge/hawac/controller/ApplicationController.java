@@ -50,7 +50,7 @@ public class ApplicationController {
         Application.ABONOS_VIEW.getModel().init();
         Application.APPLICATION_VIEW.getModel().init();
         Application.FACTURA_VIEW.getModel().init();
-        Application.APPLICATION_VIEW.getModel().setCurrent((Usuario) session.getAttribute("Usuario"));
+        Application.APPLICATION_VIEW.getModel().setCurrent(Application.USUARIO);
         view.setVisible(true);
 
     }

@@ -78,7 +78,6 @@ public class ProductosController {
         model.clearErrors();
         model.getFilter().setDescripcion(view.DescripcionText.getText());
         List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
-        //for (int i = 0; i < rows.size(); i++) {
         int i = 0, cont = rows.size();
         while (i < rows.size() && cont > 0) {
             if (String.valueOf(rows.get(i).getIdProducto()).indexOf(view.DescripcionText.getText()) == -1) {

@@ -307,6 +307,10 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
             usuarioItem.setVisible(false);
             productosItem.setVisible(false);
             bitacoraMenu.setVisible(false);
+        }else if(model.getCurrent()!=null && model.getCurrent().tipo()==0){
+            usuarioItem.setVisible(true);
+            productosItem.setVisible(true);
+            bitacoraMenu.setVisible(true);
         }
     }
        /**
