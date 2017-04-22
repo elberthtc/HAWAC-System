@@ -227,7 +227,11 @@ public class AbonoView extends javax.swing.JDialog implements java.util.Observer
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarButtonActionPerformed
-       controller.guardar();
+        if(Model.isNumeric(saldoText.getText()) || Model.isNumeric2(saldoText.getText())){
+            //Double monto = Double.parseDouble(saldoText.getText());
+            controller.guardar();
+        }else
+            JOptionPane.showMessageDialog(this, "Verifique el monto, no puede ser mayor al salgo, ni un numero");
     }//GEN-LAST:event_AgregarButtonActionPerformed
 
     private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed

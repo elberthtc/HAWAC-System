@@ -82,7 +82,7 @@ public class FacturaController {
         factura.setMonto(0);
         factura.setUsuario(model.getEmpleado().getIdUsuario());
         factura.setApartado(null);
-        if(factura.getCliente()==0){
+        if(factura.getCliente()==0 || factura.getCliente()==-1){
             factura.setCliente(0);
         }else
             factura.setCliente(model.getCurrent().getCliente());

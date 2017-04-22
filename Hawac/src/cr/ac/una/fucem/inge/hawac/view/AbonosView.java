@@ -311,6 +311,14 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
             buscarLb.setToolTipText("");
         }
         
+        if(model.getFilter().getA().getSaldo()==0){
+            agregarButton.setVisible(false);
+            AgregarLabel.setVisible(false);
+        }else{
+            agregarButton.setVisible(true);
+            AgregarLabel.setVisible(true);
+        }
+        
         eliminarLabel.setVisible(false);
         eliminarB.setVisible(false);
 

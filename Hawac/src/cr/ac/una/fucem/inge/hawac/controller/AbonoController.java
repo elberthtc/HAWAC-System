@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cr.ac.una.fucem.inge.hawac.controller;
 
 import cr.ac.una.fucem.inge.hawac.domain.Abono;
@@ -17,6 +12,7 @@ import hawac.Application;
 import hawac.Session;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class AbonoController {
 
@@ -43,25 +39,39 @@ public class AbonoController {
         
         if (view.dependienteText.getText().length() == 0) {
             model.getErrores().put("Vendedor", "Vendededor requerido");
+            model.setMensaje("Debe seleccionarse un Vendedor");
+            JOptionPane.showMessageDialog(view,model.getMensaje());
         } else {
             p1.setUsuario(Application.ABONO_VIEW.getModel().getCurrent().getUsuario());
         }
 
         if (view.apartadoText.getText().length() == 0) {
             model.getErrores().put("Apartado", "Apartado Requerido");
+            model.setMensaje("Debe seleccionarse un Apartado");
+            JOptionPane.showMessageDialog(view,model.getMensaje());
         } else {
             p1.setA(Application.ABONO_VIEW.getModel().getCurrent().getA());
         }
 
         if (view.montoText.getText().length() == 0 || !isNumeric2(view.montoText.getText()) || !isNumeric(view.montoText.getText())) {
             model.getErrores().put("Prima", "Prima requerida");
+            model.setMensaje("El monto es requerido");
+            JOptionPane.showMessageDialog(view,model.getMensaje());
             view.montoLabel.setBorder(Application.BORDER_ERROR);
             view.montoLabel.setToolTipText(model.getErrores().get("primaLabel"));
         } else {
             double a = a1.getSaldo() - Double.parseDouble(view.montoText.getText());
-            p1.setSaldo(a1.getSaldo() - Double.parseDouble(view.montoText.getText()));
-            a1.setSaldo(p1.getSaldo());
-            p1.setMonto((float) Double.parseDouble(view.montoText.getText()));
+            if (a < 0) {
+                model.getErrores().put("Prima", "Prima requerida");
+                model.setMensaje("El Monto no puede se Mayor al Saldo");
+                JOptionPane.showMessageDialog(view,model.getMensaje());
+                view.montoLabel.setBorder(Application.BORDER_ERROR);
+                view.montoLabel.setToolTipText(model.getErrores().get("primaLabel"));
+            } else {
+                p1.setSaldo(a1.getSaldo() - Double.parseDouble(view.montoText.getText()));
+                a1.setSaldo(p1.getSaldo());
+                p1.setMonto((float) Double.parseDouble(view.montoText.getText()));
+            }
         }
 
         List<Abono> abonos;
@@ -69,7 +79,14 @@ public class AbonoController {
             try {
                 switch (model.getModo()) {
                     case Application.MODO_AGREGAR:
-                        //Factura f  = new Factura();
+                        Factura f  = new Factura();
+                        f.setCodigoFactura(Application.CANTIDAD);
+                        Application.CANTIDAD = Application.CANTIDAD + 1;
+                        f.setCliente(a1.getCliente());
+                        f.setFecha(p1.getFechaRealizado());
+                        f.setMonto(p1.getMonto());
+                        f.setUsuario(Application.USUARIO.getIdUsuario());
+                        domainModel.getFacturaBl().save(f);
                         Bitacora b = new Bitacora(Application.USUARIO.getIdUsuario(),Application.USUARIO.getNombre()+" ha agregado un abono de: " + p1.getMonto() + " al Apartado Numero: "+a1.getIdApartado(),new Date());
                         domainModel.getBitacoraBl().save(b);
                         domainModel.getAbonoBl().save(p1);
