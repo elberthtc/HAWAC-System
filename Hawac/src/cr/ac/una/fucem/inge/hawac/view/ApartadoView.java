@@ -5,12 +5,9 @@
  */
 package cr.ac.una.fucem.inge.hawac.view;
 import cr.ac.una.fucem.inge.hawac.controller.ApartadoController;
-import cr.ac.una.fucem.inge.hawac.controller.ProductoController;
 import cr.ac.una.fucem.inge.hawac.domain.Apartado;
-import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.ApartadoModel;
-import cr.ac.una.fucem.inge.hawac.model.ProductoModel;
 import hawac.Application;
 import java.util.Arrays;
 import javax.swing.JOptionPane;
@@ -280,7 +277,11 @@ public class ApartadoView extends javax.swing.JDialog implements java.util.Obser
     }// </editor-fold>//GEN-END:initComponents
 
     private void AgregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarButtonActionPerformed
-       controller.guardar();
+       if(Model.isNumeric(saldoText.getText()) || Model.isNumeric2(saldoText.getText())){
+           controller.guardar();
+       }else{
+           JOptionPane.showMessageDialog(this, "Verifique la prima, no puede ser negativa, ni valores alfabeticos o ser mayor al precio del producto.");
+       }
     }//GEN-LAST:event_AgregarButtonActionPerformed
 
     private void ExitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitButtonActionPerformed

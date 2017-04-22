@@ -22,6 +22,7 @@ import hawac.Application;
 import hawac.Session;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class ApartadoController {
 
@@ -105,7 +106,14 @@ public class ApartadoController {
             view.primaLabel.setToolTipText(model.getErrores().get("primaLabel"));
         } else{
             double a = p1.getP().getPrecio() - Double.parseDouble(view.primaText.getText());
-            p1.setSaldo(p1.getP().getPrecio() - Double.parseDouble(view.primaText.getText()));
+            if(a<=0){
+                model.getErrores().put("Prima", "Prima requerida");
+                view.primaLabel.setBorder(Application.BORDER_ERROR);
+                view.primaLabel.setToolTipText(model.getErrores().get("primaLabel"));
+                JOptionPane.showMessageDialog(view, "La prima debe ser Menor o igual al saldo");
+            }else{
+                p1.setSaldo(p1.getP().getPrecio() - Double.parseDouble(view.primaText.getText()));
+            }
         }
         
 

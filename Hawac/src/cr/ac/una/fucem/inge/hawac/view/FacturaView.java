@@ -464,7 +464,16 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
     }//GEN-LAST:event_AgregarButtonActionPerformed
 
     private void grabarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_grabarButtonActionPerformed
-        controller.guardar();
+        if (cambioT.getText().length() != 0) {
+            double a = Double.parseDouble(cambioT.getText());
+            if (a>=0) {
+                controller.guardar();
+            }
+            else{
+                JOptionPane.showMessageDialog(this,"Se necesita cancelar la Factura");
+            }
+        }else
+            JOptionPane.showMessageDialog(this,"Se necesita cancelar la Factura");
     }//GEN-LAST:event_grabarButtonActionPerformed
 
     private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
@@ -494,8 +503,10 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         if(Model.isNumeric(pago) || Model.isNumeric2(pago)){
             double monto = Double.parseDouble(pago);
             double total = monto-total();
-           // if(total>=0)
+            if(monto>=0)
                 cambioT.setText(total + "");
+            else
+                JOptionPane.showMessageDialog(this, "Solo puede agregar valores negativos");
         }else{
             if(evt.getKeyCode() != KeyEvent.VK_BACK_SPACE){
                 if(pago.length()!=0)
