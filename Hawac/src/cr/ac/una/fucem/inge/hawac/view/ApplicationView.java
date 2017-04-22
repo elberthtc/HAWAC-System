@@ -37,6 +37,7 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         compraItem = new javax.swing.JMenuItem();
         facturasItem = new javax.swing.JMenuItem();
         apartadoItem = new javax.swing.JMenuItem();
+        cierreItem = new javax.swing.JMenuItem();
         MantenimientoMenu = new javax.swing.JMenu();
         ListaClientesItem = new javax.swing.JMenuItem();
         productosItem = new javax.swing.JMenuItem();
@@ -116,6 +117,14 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
             }
         });
         FacturacionMenu.add(apartadoItem);
+
+        cierreItem.setText("Cierre de Caja");
+        cierreItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cierreItemActionPerformed(evt);
+            }
+        });
+        FacturacionMenu.add(cierreItem);
 
         MenuBar.add(FacturacionMenu);
 
@@ -272,6 +281,10 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
        
     }//GEN-LAST:event_bitacoraMenuActionPerformed
 
+    private void cierreItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cierreItemActionPerformed
+        controller.cierreShow();
+    }//GEN-LAST:event_cierreItemActionPerformed
+
     public ApplicationController getController() {
         return controller;
     }
@@ -358,6 +371,7 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     private javax.swing.JMenuBar MenuBar;
     private javax.swing.JMenuItem apartadoItem;
     private javax.swing.JMenu bitacoraMenu;
+    private javax.swing.JMenuItem cierreItem;
     private javax.swing.JMenu cobrosMenu;
     private javax.swing.JMenuItem cobrosMenuItem;
     private javax.swing.JMenuItem compraItem;

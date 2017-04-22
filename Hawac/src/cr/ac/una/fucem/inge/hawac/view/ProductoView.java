@@ -139,7 +139,7 @@ public class ProductoView extends javax.swing.JDialog implements java.util.Obser
         tallaLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         tallaLabel.setText("Talla");
 
-        tallaCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "XXS", "XS", "S", "M", "L", "XL", "XXL" }));
+        tallaCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "4", "6", "8", "10", "12", "14", "16XXS", "XS", "S", "M", "L", "XL", "XXL" }));
         tallaCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tallaCBActionPerformed(evt);

@@ -1,5 +1,6 @@
-
 package cr.ac.una.fucem.inge.hawac.controller;
+
+import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.UsuarioModel;
@@ -7,6 +8,7 @@ import cr.ac.una.fucem.inge.hawac.model.UsuariosModel;
 import cr.ac.una.fucem.inge.hawac.view.UsuarioView;
 import hawac.Application;
 import hawac.Session;
+import java.util.Date;
 import java.util.List;
 
 public class UsuarioController {
@@ -28,7 +30,6 @@ public class UsuarioController {
     public void guardar(){
         model.clearErrors();
         UsuariosModel empleadosModel= Application.USUARIOS_VIEW.getModel();
-        
         Usuario empleadoNuevo= new Usuario();
         if(view.idTextField.getText().length()==0){
             model.getErrores().put("id", "Id requerido");
@@ -37,17 +38,14 @@ public class UsuarioController {
         } else{
             empleadoNuevo.setIdUsuario(Integer.parseInt(view.idTextField.getText()));
         }
-        
         empleadoNuevo.setPassword(view.passwordText.getText());
         if(empleadoNuevo.getPassword().length()==0){
             model.getErrores().put("password", "Contraseña Requerida");
         }
-        
         empleadoNuevo.setNombre(view.nombreTextField.getText());
         if(view.idTextField.getText().length()==0){
             model.getErrores().put("nombre", "Nombre requerido");
         }
-        
         if(view.administradorRB.isSelected()){
             empleadoNuevo.setTipo(0);
         } else {
@@ -58,6 +56,8 @@ public class UsuarioController {
             try{
                 switch(model.getModo()){
                     case Application.MODO_AGREGAR:
+                        Bitacora b = new Bitacora(Application.USUARIO.getIdUsuario(), "Ha agregado a " + empleadoNuevo.getNombre(), new Date());
+                        domainModel.getBitacoraBl().save(b);
                         domainModel.getUsuarioBl().save(empleadoNuevo);
                         model.setMensaje("EMPLEADO AGREGADO");
                         model.setCurrent(new Usuario());  
@@ -66,6 +66,8 @@ public class UsuarioController {
                         view.setVisible(false);
                         break;
                     case Application.MODO_EDITAR:
+                        Bitacora b1 = new Bitacora(Application.USUARIO.getIdUsuario(), "Ha modificado a " + empleadoNuevo, new Date());
+                        domainModel.getBitacoraBl().save(b1);
                         domainModel.getUsuarioBl().merge(empleadoNuevo);
                         model.setMensaje("EMPLEADO MODIFICADO");
                         model.setCurrent(empleadoNuevo);
@@ -79,12 +81,10 @@ public class UsuarioController {
                 model.setMensaje("EMPLEADO YA EXISTE");
                 model.setCurrent(empleadoNuevo);
             }
-        }
-        
+        }   
         else{
             model.setMensaje("HAY ERRORES");
             model.setCurrent(empleadoNuevo);
         }
-        
     }
 }

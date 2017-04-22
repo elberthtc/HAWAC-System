@@ -38,7 +38,7 @@ public class ClientesApartadoController {
         model.clearErrors();
         model.getFilter().setNombre(view.nombreTextFd.getText());
         List<Cliente> aux = domainModel.getClienteBl().findAll(Cliente.class.getName());
-        //for(int i=0;i<aux.size();i++){
+        Cliente c = aux.get(0);
         int i=0, cont= aux.size();
         while(i<aux.size() && cont>0){
             if(aux.get(i).getNombre().toLowerCase().indexOf(view.nombreTextFd.getText().toLowerCase())==-1){
@@ -46,6 +46,7 @@ public class ClientesApartadoController {
             }else
                 i++;
             cont--;
+            aux.remove(c);
         }
         if (aux.isEmpty()) {
             model.getErrores().put("nombreTextFd", "Ningun registro coincide");
@@ -57,9 +58,9 @@ public class ClientesApartadoController {
     
     public void buscarPorId(){
         model.clearErrors();
-        //model.getFilter().setCedula(Integer.parseInt(view.nombreTextFd.getText()));
+        model.getFilter().setNombre(view.nombreTextFd.getText());
         List<Cliente> rows = domainModel.getClienteBl().findAll(Cliente.class.getName()); //ACA BUSCA POR ID
-        //for(int i=0;i<rows.size();i++){
+        Cliente c = rows.get(0);
         int i=0, cont= rows.size();
         while(i<rows.size() && cont>0){
             if(String.valueOf(rows.get(i).getCedula()).indexOf(view.nombreTextFd.getText())==-1){
@@ -68,6 +69,7 @@ public class ClientesApartadoController {
                 i++;
          cont--;
         }
+        rows.remove(c);
         if(rows.isEmpty()){
             model.getErrores().put("nombreTextFd","Ningun registro coincide");
             model.setMensaje("Ningun registro coincide con el criterio de busqueda");
@@ -80,6 +82,8 @@ public class ClientesApartadoController {
         model.clearErrors();
         model.getFilter().setNombre(view.nombreTextFd.getText());
         List<Cliente> rows = domainModel.getClienteBl().findAll(Cliente.class.getName());
+        Cliente c = rows.get(0);
+        rows.remove(c);
         if(rows.isEmpty()){
             model.getErrores().put("nombreTextFd","Ningun registro coincide");
             model.setMensaje("Ningun registro coincide con el criterio de busqueda");

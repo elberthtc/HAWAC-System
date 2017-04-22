@@ -256,7 +256,7 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
         if(row != -1){
             controller.seleccionar(row);
         }else
-            JOptionPane.showConfirmDialog(this, "No ha seleccionado ningun producto");
+            JOptionPane.showMessageDialog(this, "No ha seleccionado ningun producto");
     }//GEN-LAST:event_seleccionarBActionPerformed
 
     private void verTodoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTodoBActionPerformed

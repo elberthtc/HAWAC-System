@@ -8,6 +8,7 @@ package cr.ac.una.fucem.inge.hawac.view;
 import cr.ac.una.fucem.inge.hawac.controller.BitacorasController;
 import cr.ac.una.fucem.inge.hawac.model.BitacorasModel;
 import hawac.Application;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -67,10 +68,12 @@ public class BitacorasView extends javax.swing.JInternalFrame implements java.ut
         BuscarLabel = new javax.swing.JLabel();
         ProductosScrollPane = new javax.swing.JScrollPane();
         CatalogoTable = new javax.swing.JTable();
-        DescripcionRadioButton = new javax.swing.JRadioButton();
-        CodigoRadioButton2 = new javax.swing.JRadioButton();
+        usuarioRB = new javax.swing.JRadioButton();
         buscarLb = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        descripcionRB = new javax.swing.JRadioButton();
+        fechaC = new com.toedter.calendar.JDateChooser();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("BITACORAS");
@@ -117,18 +120,9 @@ public class BitacorasView extends javax.swing.JInternalFrame implements java.ut
         });
         ProductosScrollPane.setViewportView(CatalogoTable);
 
-        Busqueda.add(DescripcionRadioButton);
-        DescripcionRadioButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        DescripcionRadioButton.setText("Descripcion");
-
-        Busqueda.add(CodigoRadioButton2);
-        CodigoRadioButton2.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        CodigoRadioButton2.setText("Codigo");
-        CodigoRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CodigoRadioButton2ActionPerformed(evt);
-            }
-        });
+        Busqueda.add(usuarioRB);
+        usuarioRB.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
+        usuarioRB.setText("Usuario");
 
         buscarLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         buscarLb.setText("Seleccione el argumento a buscar");
@@ -137,6 +131,17 @@ public class BitacorasView extends javax.swing.JInternalFrame implements java.ut
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
+            }
+        });
+
+        Busqueda.add(descripcionRB);
+        descripcionRB.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        descripcionRB.setText("Descripcion");
+
+        jButton2.setText("Buscar Por Fecha");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
             }
         });
 
@@ -151,70 +156,78 @@ public class BitacorasView extends javax.swing.JInternalFrame implements java.ut
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(usuarioRB)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(descripcionRB))
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jButton1))
                             .addComponent(buscarLb)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(CodigoRadioButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(DescripcionRadioButton))
-                            .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BuscarLabel))
+                                .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(BuscarLabel)
+                                .addGap(18, 18, 18)
+                                .addComponent(fechaC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(buscarLb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addGap(3, 3, 3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CodigoRadioButton2)
-                    .addComponent(DescripcionRadioButton))
-                .addGap(12, 12, 12)
-                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                    .addComponent(usuarioRB)
+                    .addComponent(descripcionRB))
+                .addGap(13, 13, 13)
+                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BuscarLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(BuscarLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(fechaC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void CodigoRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodigoRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CodigoRadioButton2ActionPerformed
-
     private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
-        if (CodigoRadioButton2.isSelected() == false && DescripcionRadioButton.isSelected() == false) {
+        if (false && usuarioRB.isSelected() == false && descripcionRB.isSelected() == false) {
             buscarLb.setBorder(Application.BORDER_ERROR);
             buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
         } else {
             buscarLb.setBorder(null);
             buscarLb.setToolTipText("");
-            if (DescripcionRadioButton.isSelected() == true && DescripcionText.getText().length() == 0) {
+            if (descripcionRB.isSelected() == true && DescripcionText.getText().length() == 0) {
                 model.getErrores().put("DescripcionText", "Digite la descripcion a buscar");
                 buscarLb.setBorder(Application.BORDER_ERROR);
                 buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
             }
-            if (DescripcionRadioButton.isSelected() == true && DescripcionText.getText().length() != 0) {
+            if (descripcionRB.isSelected() == true && DescripcionText.getText().length() != 0) {
                 controller.buscarPorDescripcion();
             }
-            if (CodigoRadioButton2.isSelected() == true && DescripcionText.getText().length() == 0) {
+            if (usuarioRB.isSelected() == true && DescripcionText.getText().length() == 0) {
                 model.getErrores().put("DescripcionText", "Digite la descripcion a buscar");
                 buscarLb.setBorder(Application.BORDER_ERROR);
                 buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
             }
-            if (CodigoRadioButton2.isSelected() == true && DescripcionText.getText().length() != 0) {
-                controller.buscarPorCodigo();
+            if (usuarioRB.isSelected() == true && DescripcionText.getText().length() != 0) {
+                controller.buscarPorUsuario();
             }
         }
     }//GEN-LAST:event_BuscarButtonActionPerformed
@@ -231,6 +244,16 @@ public class BitacorasView extends javax.swing.JInternalFrame implements java.ut
         // TODO add your handling code here:
         controller.buscar();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        Date a = fechaC.getDate();
+        if(a!=null){
+            controller.buscarPorFecha(a);
+        }
+        else
+            fechaC.setBorder(Application.BORDER_ERROR);
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     @Override
     public void update(java.util.Observable updatedModel, Object parametros) {
@@ -293,12 +316,14 @@ public class BitacorasView extends javax.swing.JInternalFrame implements java.ut
     private javax.swing.JLabel BuscarLabel;
     private javax.swing.ButtonGroup Busqueda;
     public javax.swing.JTable CatalogoTable;
-    public javax.swing.JRadioButton CodigoRadioButton2;
-    public javax.swing.JRadioButton DescripcionRadioButton;
     public javax.swing.JTextField DescripcionText;
     private javax.swing.JScrollPane ProductosScrollPane;
     private javax.swing.JLabel buscarLb;
+    private javax.swing.JRadioButton descripcionRB;
+    private com.toedter.calendar.JDateChooser fechaC;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    public javax.swing.JRadioButton usuarioRB;
     // End of variables declaration//GEN-END:variables
 
 }

@@ -285,13 +285,6 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
 
     @Override
     public void update(java.util.Observable updatedModel,Object parametros) {
-       /* if(model.getFiltro().getNombre().length()==0 && model.getFiltro().getIdUsuario() == -1){
-            nomjTextField.setText(model.getFiltro().getNombre());
-        } else if(model.getFiltro().getNombre().length()==0){
-            nomjTextField.setText(model.getFiltro().getIdUsuario()+"");
-        } else
-            nomjTextField.setText(model.getFiltro().getNombre());*/
-        
         if(model.getErrores().get("nomjTextField")!= null){
             nombreLb.setBorder(Application.BORDER_ERROR);
             nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
@@ -300,10 +293,7 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
              nombreLb.setToolTipText("");
         }
         tablaEmpleados.setModel(model.getInventarios());
-        this.revalidate();
-        if (!model.getMensaje().equals("")){
-            JOptionPane.showMessageDialog(this, model.getMensaje(), "",JOptionPane.INFORMATION_MESSAGE);
-        } 
+        this.revalidate(); 
         
         if(Application.USUARIO!=null && Application.USUARIO.tipo()!=0){
             agregarL.setVisible(false);

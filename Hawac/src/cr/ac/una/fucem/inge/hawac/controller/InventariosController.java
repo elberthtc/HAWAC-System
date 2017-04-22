@@ -13,6 +13,7 @@ import hawac.Session;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JOptionPane;
 
 public class InventariosController {
 
@@ -51,6 +52,7 @@ public class InventariosController {
         if (filas.isEmpty()) {
             modelo.getErrores().put("nomjTextField", "Ningún registro coincide con la busqueda");
             modelo.setMensaje("NINGUN REGISTRO COINCIDE CON LA BUSQUEDA");
+            JOptionPane.showMessageDialog(vista, modelo.getMensaje());
         }
         modelo.setInventarios(filas);
     }
@@ -74,6 +76,7 @@ public class InventariosController {
         if (filas.isEmpty()) {
             modelo.getErrores().put("nomjTextField", "Ningún registro coincide con la busqueda");
             modelo.setMensaje("NINGUN REGISTRO COINCIDE CON LA BUSQUEDA");
+            JOptionPane.showMessageDialog(vista, modelo.getMensaje());
         } else {
             modelo.setInventarios(filas);
         }
@@ -91,6 +94,7 @@ public class InventariosController {
         if (filas.isEmpty()) {
             modelo.getErrores().put("nomjTextField", "Ningún registro coincide con la busqueda");
             modelo.setMensaje("NINGUN REGISTRO COINCIDE CON LA BUSQUEDA");
+            JOptionPane.showMessageDialog(vista, modelo.getMensaje());
         }
         modelo.setInventarios(filas);
     }

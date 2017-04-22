@@ -5,8 +5,8 @@
  */
 package cr.ac.una.fucem.inge.hawac.controller;
 
+import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
-import cr.ac.una.fucem.inge.hawac.domain.InventarioId;
 import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.ProductoModel;
@@ -14,6 +14,7 @@ import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
 import cr.ac.una.fucem.inge.hawac.view.ProductoView;
 import hawac.Application;
 import hawac.Session;
+import java.util.Date;
 import java.util.List;
 
 public class ProductoController {
@@ -68,7 +69,6 @@ public class ProductoController {
         if (view.ColorText.getText().length() == 0) {
             model.getErrores().put("Color", "Color requerido");
         }
-        
         if( !view.masculinoRB.isSelected() && !view.femeninoRB.isSelected() ){
             view.GeneroLabel.setBorder(Application.BORDER_ERROR);
             view.GeneroLabel.setToolTipText(model.getErrores().get("GeneroLabel"));
@@ -80,7 +80,7 @@ public class ProductoController {
             else {
                 p1.setGenero(false);
             }
-        p1.setTalla(view.tallaCB.getSelectedItem().toString()); 
+        p1.setTalla(view.tallaCB.getSelectedItem().toString());
         
 
         List<Producto> productos;
@@ -88,7 +88,8 @@ public class ProductoController {
             try {
                 switch (model.getModo()) {
                     case Application.MODO_AGREGAR:
-                        
+                        Bitacora b = new Bitacora(Application.USUARIO.getIdUsuario(), "Ha agregado: " + p1.getDescripcion(), new Date());
+                        domainModel.getBitacoraBl().save(b);
                         domainModel.getProductoBl().save(p1);
                         model.setMensaje("PRODUCTO AGREGADO");
                         model.setCurrent(new Producto());
@@ -97,6 +98,8 @@ public class ProductoController {
                         view.setVisible(false);
                         break;
                     case Application.MODO_EDITAR:
+                        Bitacora b1 = new Bitacora(Application.USUARIO.getIdUsuario(), "Ha modificado: " + p1.getDescripcion(), new Date());
+                        domainModel.getBitacoraBl().save(b1);
                         domainModel.getProductoBl().merge(p1);
                         model.setMensaje("PRODUCTO MODIFICADO");
                         model.setCurrent(p1);

@@ -5,6 +5,7 @@
  */
 package cr.ac.una.fucem.inge.hawac.controller;
 
+import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
@@ -14,6 +15,7 @@ import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
 import cr.ac.una.fucem.inge.hawac.view.ProductosView;
 import hawac.Application;
 import hawac.Session;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -106,12 +108,18 @@ public class ProductosController {
             return;
         }
         try {
-            for (int i = 0; i < inventarioLista.size(); i++) {
-                if (inventarioLista.get(i).getId().getProducto() == p1.getIdProducto()) {
-                    domainModel.getInventarioBl().delete(inventarioLista.get(i));
+            if (!domainModel.productoVendido(p1)) {
+                for (int i = 0; i < inventarioLista.size(); i++) {
+                    if (inventarioLista.get(i).getId().getProducto() == p1.getIdProducto()) {
+                        domainModel.getInventarioBl().delete(inventarioLista.get(i));
+                    }
                 }
+                Bitacora b = new Bitacora(Application.USUARIO.getIdUsuario(), "Ha eliminado: " + p1.getDescripcion(), new Date());
+                domainModel.getBitacoraBl().save(b);
+                domainModel.getProductoBl().delete(p1);
+            }else{
+                JOptionPane.showMessageDialog(view,"Este Producto se esta utilizando en otros registros, no se puede eliminar");
             }
-            domainModel.getProductoBl().delete(p1);
         } catch (Exception ex) {
         }
         List<Producto> rowsMod = domainModel.getProductoBl().findAll(Producto.class.getName());

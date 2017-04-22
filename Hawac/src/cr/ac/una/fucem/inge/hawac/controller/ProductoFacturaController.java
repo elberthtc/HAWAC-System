@@ -75,24 +75,35 @@ public class ProductoFacturaController {
         Linea l1 = new Linea();
         if (view.cantidadTextField.getText().length() == 0) {
             model.getErrores().put("Cantidad", "Cantidad requerida");
-            model.setMensaje("Cantidad requerida");
+            model.setMensaje("Se requiere que ingrese una Cantidad");
+            JOptionPane.showMessageDialog(view, model.getMensaje());
         } else {
             if (!isNumeric(view.cantidadTextField.getText())) {
                 model.getErrores().put("Cantidad", "Digite Solo numeros");
+                model.setMensaje("Asegurese de ingresar solo valores numericos enteros");
+                JOptionPane.showMessageDialog(view, model.getMensaje());
             } else {
                 int n = Integer.parseInt(view.cantidadTextField.getText());
                 if (n < 0) {
-                    JOptionPane.showConfirmDialog(view, "Cantidad no puede ser un valor negativo");
+                    //JOptionPane.showConfirmDialog(view, "Cantidad no puede ser un valor negativo");
                     model.getErrores().put("Cantidad", "No puede ingresar numeros negativos");
+                    model.setMensaje("La Cantidad no puede ser un valor negativo");
+                    JOptionPane.showMessageDialog(view, model.getMensaje());
                 } else {
                     int ex = Integer.parseInt(view.cantidadTextField.getText());
                     if(i1 == null){
                         model.getErrores().put("Inventario","No han agregado el producto al Inventario");
+                        model.setMensaje("No Existe ese producto en el Inventario de la Tienda");
+                        JOptionPane.showMessageDialog(view, model.getMensaje());
                     }else if (ex > i1.getCantidad()){
                         model.getErrores().put("Cantidad", "Existencias Insuficientes");
+                        model.setMensaje("En este momento solo existen "+ i1.getCantidad()+" de el producto seleccionado");
+                        JOptionPane.showMessageDialog(view, model.getMensaje());
                     }
                     if (ex == 0) {
                         model.getErrores().put("Cantidad", "Digito Invalido");
+                        model.setMensaje("La cantidad debe ser mayor a 0");
+                        JOptionPane.showMessageDialog(view, model.getMensaje());
                     }
                     l1.setProducto(p1);
                     l1.setCantidad(ex);

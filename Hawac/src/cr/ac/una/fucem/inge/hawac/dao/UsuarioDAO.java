@@ -7,7 +7,9 @@ package cr.ac.una.fucem.inge.hawac.dao;
 
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.utils.NewHibernateUtil;
+import hawac.Application;
 import java.util.List;
+import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 
 /**
@@ -52,6 +54,7 @@ public class UsuarioDAO extends NewHibernateUtil implements IBaseDAO<Usuario, In
             getSession().delete(o);
             getTransac().commit();
         } catch (HibernateException he) {
+            JOptionPane.showMessageDialog(Application.USUARIOS_VIEW, "Este Usuario no se puede eliminar ya que esta asociado en otros registros");
             manejaException(he);
             throw he;
         } finally {

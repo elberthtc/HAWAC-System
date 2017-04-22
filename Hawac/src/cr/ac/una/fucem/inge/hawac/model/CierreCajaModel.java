@@ -8,25 +8,37 @@ package cr.ac.una.fucem.inge.hawac.model;
 import cr.ac.una.fucem.inge.hawac.domain.Factura;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Observer;
 
-public class FacturasVentasModel extends java.util.Observable {
+public class CierreCajaModel extends java.util.Observable {
     Factura filtro;
     FacturaTableModel facturas;
     HashMap<String, String> errores;
     String mensaje;
+    List<Factura> facturasLista;
     
-    public FacturasVentasModel(){
+    public CierreCajaModel(){
         
     }
-    
     public void init(){
         filtro = new Factura();
         clearErrors();
+        facturasLista = new LinkedList<Factura>();
         List<Factura> filas = new ArrayList<Factura>();
         this.setFacturas(filas);
     }
+
+    public List<Factura> getFacturasLista() {
+        return facturasLista;
+    }
+
+    public void setFacturasLista(List<Factura> facturasLista) {
+        this.facturasLista = facturasLista;
+    }
+    
+    
 
     public void setFacturas(List<Factura> facturas) {
         int[] cols={FacturaTableModel.NUMERO,FacturaTableModel.CLIENTE,FacturaTableModel.VENDEDOR,FacturaTableModel.FECHA,FacturaTableModel.TOTAL};

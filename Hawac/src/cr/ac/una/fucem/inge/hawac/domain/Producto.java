@@ -21,6 +21,12 @@ public class Producto  implements java.io.Serializable {
      private Set<Inventario> inventarios = new HashSet<Inventario>(0);
 
     public Producto() {
+        idProducto=-1;
+        precio=0;
+        descripcion = "";
+        talla = "";
+        color = "";
+        genero = true;
     }
 
 	

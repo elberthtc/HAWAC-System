@@ -7,6 +7,8 @@ package cr.ac.una.fucem.inge.hawac.logic;
 import cr.ac.una.fucem.inge.hawac.bl.*;
 import cr.ac.una.fucem.inge.hawac.domain.Factura;
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
+import cr.ac.una.fucem.inge.hawac.domain.Linea;
+import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import hawac.Application;
 import java.util.List;
@@ -65,6 +67,15 @@ public class Model {
             cont--;
         }
         return inventarios;
+    }
+    
+    public boolean productoVendido(Producto p){
+        List<Linea> l = lineaBl.findAll(Linea.class.getName());
+        for(int i = 0; i<l.size(); i++){
+            if(p.getIdProducto()==l.get(i).getId().getProducto())
+                return true;
+        }
+        return false;
     }
 
     public AbonoBL getAbonoBl() {

@@ -48,7 +48,7 @@ public class ClienteController {
         if (view.nombreTextFd.getText().length() == 0) {
             model.getErrores().put("Nombre", "Nombre requerido");
         }
-        if (view.idTextFd.getText().length() == 0 || view.idTextFd.getText().length() > 7 || !cr.ac.una.fucem.inge.hawac.logic.Model.isNumeric(view.idTextFd.getText())) {
+        if (view.idTextFd.getText().length() == 0 || view.idTextFd.getText().length() != 9 || !cr.ac.una.fucem.inge.hawac.logic.Model.isNumeric(view.idTextFd.getText())) {
             model.getErrores().put("Id", "Id Incorrecto");
         } else {
             c1.setCedula(Integer.parseInt(view.idTextFd.getText()));
@@ -66,16 +66,20 @@ public class ClienteController {
                         model.setMensaje("CLIENTE AGREGADO");
                         model.setCurrent(new Cliente());
                         clientes = domainModel.getClienteBl().findAll(Cliente.class.getName());
+                        clientes.remove(clientes.get(0));
                         clientesModel.setClientes(clientes);
                         view.setVisible(false);
                         break;
                     case Application.MODO_EDITAR:
+                        Cliente a = domainModel.getClienteBl().findById(c1.getCedula());
+                        c1.setTotalComprado(a.getTotalComprado());
                         Bitacora b1 = new Bitacora(Application.USUARIO.getIdUsuario(),Application.USUARIO.getNombre()+" ha modificado al Cliente: "+c1.getNombre(),new Date());
                         domainModel.getBitacoraBl().save(b1);
                         domainModel.getClienteBl().merge(c1);
                         model.setMensaje("CLIENTE MODIFICADO");
                         model.setCurrent(c1);
                         clientes = domainModel.getClienteBl().findAll(Cliente.class.getName());
+                        clientes.remove(clientes.get(0));
                         clientesModel.setClientes(clientes);
                         view.setVisible(false);
                         break;

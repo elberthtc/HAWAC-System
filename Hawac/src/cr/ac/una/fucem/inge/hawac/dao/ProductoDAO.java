@@ -7,7 +7,9 @@ package cr.ac.una.fucem.inge.hawac.dao;
 
 import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import cr.ac.una.fucem.inge.hawac.utils.NewHibernateUtil;
+import hawac.Application;
 import java.util.List;
+import javax.swing.JOptionPane;
 import org.hibernate.HibernateException;
 
 /**
@@ -52,6 +54,7 @@ public class ProductoDAO extends NewHibernateUtil implements IBaseDAO<Producto, 
             getSession().delete(o);
             getTransac().commit();
         } catch (HibernateException he) {
+            JOptionPane.showMessageDialog(Application.APPLICATION_VIEW, "Este producto no se puede eliminar ya que esta siendo utilizado en otros registros");
             manejaException(he);
             throw he;
         } finally {

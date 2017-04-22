@@ -1,7 +1,4 @@
-
 package cr.ac.una.fucem.inge.hawac.view;
-
-
 
 import cr.ac.una.fucem.inge.hawac.controller.InventarioController;
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
@@ -199,7 +196,7 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
     public void update(java.util.Observable o, Object arg) {
         Producto current = model.getProductoActual();
         Inventario inv = model.getCurrent();
-        if (current.getIdProducto() == 0) {
+        if (current.getIdProducto() == -1) {
             this.idTextField.setText("");
             this.idTextField.setEnabled(false);
         } else {

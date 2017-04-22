@@ -15,6 +15,8 @@ import cr.ac.una.fucem.inge.hawac.view.BitacorasView;
 import cr.ac.una.fucem.inge.hawac.view.BitacorasView;
 import hawac.Application;
 import hawac.Session;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 public class BitacorasController {
@@ -37,21 +39,26 @@ public class BitacorasController {
     public void buscar() {
         model.clearErrors();
         model.getFilter().setDescripcion(view.DescripcionText.getText());
-        List<Bitacora> rows = domainModel.getBitacoraBl().findAll(Bitacora.class.getName());
-        for(int i = 0;i<rows.size();i++){
-            rows.get(i).setU(domainModel.getUsuarioBl().findById(rows.get(i).getUsuario()));
-        }
+        List<Bitacora> rows = encontrarTodas();
         if (rows.isEmpty()) {
             model.getErrores().put("DescripcionText", "Ningun registro coincide");
             model.setMensaje("NINGUN REGISTRO COINCIDE");
         }
         model.setBitacoras(rows);
     }
+    
+    public List<Bitacora> encontrarTodas(){
+        List<Bitacora> rows = domainModel.getBitacoraBl().findAll(Bitacora.class.getName());
+        for(int i = 0;i<rows.size();i++){
+            rows.get(i).setU(domainModel.getUsuarioBl().findById(rows.get(i).getUsuario()));
+        }
+        return rows;
+    }
 
     public void buscarPorDescripcion() {
         model.clearErrors();
         model.getFilter().setDescripcion(view.DescripcionText.getText());
-        List<Bitacora> rows = domainModel.getBitacoraBl().findAll(Bitacora.class.getName());
+        List<Bitacora> rows = encontrarTodas();
         int i = 0, cont = rows.size();
         while (i < rows.size() && cont > 0) {
             if (rows.get(i).getDescripcion().toLowerCase().indexOf(view.DescripcionText.getText().toLowerCase()) == -1) {
@@ -68,14 +75,30 @@ public class BitacorasController {
         model.setBitacoras(rows);
     }
 
-    public void buscarPorCodigo() {
-      /*  model.clearErrors();
+    public void buscarPorUsuario() {
+        model.clearErrors();
         model.getFilter().setDescripcion(view.DescripcionText.getText());
-        List<Bitacora> rows = domainModel.getBitacoraBl().findAll(Bitacora.class.getName());
-        //for (int i = 0; i < rows.size(); i++) {
+        List<Bitacora> rows = encontrarTodas();
+        List<Bitacora> aux = new LinkedList<Bitacora>();
+        for(int i = 0; i< rows.size();i++){       
+            if (rows.get(i).getU().getNombre().toLowerCase().indexOf(view.DescripcionText.getText().toLowerCase()) != -1 || String.valueOf(rows.get(i).getUsuario()).toLowerCase().indexOf(view.DescripcionText.getText().toLowerCase()) != -1) {
+                aux.add(rows.get(i));
+            }
+        }
+        if (aux.isEmpty()) {
+            model.getErrores().put("DescripcionText", "Ningun registro coincide");
+            model.setMensaje("NINGUN REGISTRO COINCIDE");
+        }
+        model.setBitacoras(aux);
+    }
+    
+    public void buscarPorFecha(Date a){
+        model.clearErrors();
+        model.getFilter().setDescripcion(view.DescripcionText.getText());
+        List<Bitacora> rows = encontrarTodas();
         int i = 0, cont = rows.size();
         while (i < rows.size() && cont > 0) {
-            if (String.valueOf(rows.get(i).getIdBitacora()).indexOf(view.DescripcionText.getText()) == -1) {
+            if (!mismoDia(a,rows.get(i).getFecha())) {
                 rows.remove(rows.get(i));
             } else {
                 i++;
@@ -87,7 +110,10 @@ public class BitacorasController {
             model.setMensaje("NINGUN REGISTRO COINCIDE");
         }
         model.setBitacoras(rows);
-*/
+    }
+    
+    public boolean mismoDia(Date a,Date b){
+        return a.getDate() == b.getDate() && a.getMonth() == b.getMonth() && a.getYear() == b.getYear();
     }
     
     public void salir() {

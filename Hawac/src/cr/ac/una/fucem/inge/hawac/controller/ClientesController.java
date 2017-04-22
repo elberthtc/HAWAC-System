@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cr.ac.una.fucem.inge.hawac.controller;
 
 import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
@@ -15,7 +10,6 @@ import cr.ac.una.fucem.inge.hawac.view.ClientesView;
 import hawac.Application;
 import hawac.Session;
 import java.util.List;
-import java.util.Arrays;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -32,13 +26,6 @@ public class ClientesController {
         this.model = model;
         view.setController(this);
         view.setModel(model);
-        
-        /*if(((Usuario)session.getAttribute("Usuario")).getTipo()!=0){
-            view.deleteButton.setVisible(false);
-            view.eliminarLb.setVisible(false);
-            view.agregarButton.setVisible(false);
-            view.agregarLb.setVisible(false);
-        }*/
     }
     
     public void buscar(){
@@ -58,7 +45,7 @@ public class ClientesController {
         model.clearErrors();
         model.getFilter().setNombre(view.nombreTextFd.getText());
         List<Cliente> aux = domainModel.getClienteBl().findAll(Cliente.class.getName());
-        //for(int i=0;i<aux.size();i++){
+        aux.remove(aux.get(0));
         int i=0, cont= aux.size();
         while(i<aux.size() && cont>0){
             if(aux.get(i).getNombre().toLowerCase().indexOf(view.nombreTextFd.getText().toLowerCase())==-1){
@@ -77,9 +64,8 @@ public class ClientesController {
 
     public void buscarPorId(){
         model.clearErrors();
-        //model.getFilter().setCedula(Integer.parseInt(view.nombreTextFd.getText()));
+        model.getFilter().setNombre((view.nombreTextFd.getText()));
         List<Cliente> rows = domainModel.getClienteBl().findAll(Cliente.class.getName()); //ACA BUSCA POR ID
-        //for(int i=0;i<rows.size();i++){
         int i=0, cont= rows.size();
         while(i<rows.size() && cont>0){
             if(String.valueOf(rows.get(i).getCedula()).indexOf(view.nombreTextFd.getText())==-1){
@@ -111,6 +97,7 @@ public class ClientesController {
             domainModel.getBitacoraBl().save(b);
         }catch (Exception ex) { }
         List<Cliente> rowsMod = domainModel.getClienteBl().findAll(Cliente.class.getName());
+        rowsMod.remove(rowsMod.get(0));
         model.setClientes(rowsMod);
     }
     

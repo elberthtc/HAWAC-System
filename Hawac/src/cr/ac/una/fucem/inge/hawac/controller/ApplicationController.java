@@ -46,6 +46,7 @@ public class ApplicationController {
         Application.PRODUCTOINVENTARIO_VIEW.getModel().init();
         //Application.FACTURAS_VENTAS_VIEW.getModel().init();
         Application.FACTURAS_PAGADAS_VIEW.getModel().init();
+        Application.CIERRE_CAJA_VIEW.getModel().init();
         Application.APARTADOS_VIEW.getModel().init();
         Application.ABONOS_VIEW.getModel().init();
         Application.APPLICATION_VIEW.getModel().init();
@@ -67,9 +68,8 @@ public class ApplicationController {
         Application.PRODUCTOFACTURA_VIEW.setVisible(false);
         Application.PRODUCTO_APARTADO_VIEW.setVisible(false);
         Application.FACTURA_VIEW.setVisible(false);
-        //Application.FACTURAS_VENTAS_VIEW.setVisible(false);
         Application.FACTURAS_PAGADAS_VIEW.setVisible(false);
-        //Application.FACTURA_COMPRA_VIEW.setVisible(false);
+        Application.CIERRE_CAJA_VIEW.setVisible(false);
         view.setVisible(false);
         Application.INVENTARIO_VIEW.setVisible(false);
         Application.PRODUCTOINVENTARIO_VIEW.setVisible(false);
@@ -86,6 +86,10 @@ public class ApplicationController {
         Application.PRODUCTOS_VIEW.setVisible(true);
     }
 
+    public void cierreShow(){
+        Application.CIERRE_CAJA_VIEW.setVisible(true);
+    }
+    
     public void apartadosShow() {
         Application.APARTADOS_VIEW.setVisible(true);
     }
