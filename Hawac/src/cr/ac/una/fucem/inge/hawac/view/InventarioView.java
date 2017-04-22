@@ -198,10 +198,10 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
         Inventario inv = model.getCurrent();
         if (current.getIdProducto() == -1) {
             this.idTextField.setText("");
-            this.idTextField.setEnabled(false);
+            this.idTextField.setEditable(false);
         } else {
             this.idTextField.setText(current.getIdProducto() + "");
-            this.idTextField.setEnabled(false);
+            this.idTextField.setEditable(false);
         }
         if (model.getErrores().get("Id") != null) {
             productoLb.setBorder(Application.BORDER_ERROR);

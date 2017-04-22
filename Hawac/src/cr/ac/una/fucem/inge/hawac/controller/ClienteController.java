@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cr.ac.una.fucem.inge.hawac.controller;
+
 import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.domain.Cliente;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
@@ -14,13 +10,6 @@ import hawac.Application;
 import hawac.Session;
 import java.util.Date;
 import java.util.List;
-/*import ferreteria.Application;
-import ferreteria.Session;
-import ferreteriaentidades.Cliente;
-import ferreteria.logic.Model;
-import ferreteria.presentacion.model.ClienteModel;
-import ferreteria.presentacion.model.ClientesModel;
-import ferreteria.presentacion.view.ClienteView;*/
 
 
 public class ClienteController {
@@ -48,7 +37,7 @@ public class ClienteController {
         if (view.nombreTextFd.getText().length() == 0) {
             model.getErrores().put("Nombre", "Nombre requerido");
         }
-        if (view.idTextFd.getText().length() == 0 || view.idTextFd.getText().length() != 9 || !cr.ac.una.fucem.inge.hawac.logic.Model.isNumeric(view.idTextFd.getText())) {
+        if (view.idTextFd.getText().length() == 0 || !cr.ac.una.fucem.inge.hawac.logic.Model.isNumeric(view.idTextFd.getText())) {
             model.getErrores().put("Id", "Id Incorrecto");
         } else {
             c1.setCedula(Integer.parseInt(view.idTextFd.getText()));
