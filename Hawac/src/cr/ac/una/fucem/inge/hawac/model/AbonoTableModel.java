@@ -58,10 +58,6 @@ public class AbonoTableModel extends AbstractTableModel{
     public static final int MONTO=4;
     public static final int SALDO=5;
     
-    
-
-   
-    
     String[] colNames = new String[6];
     private void initColNames(){
         colNames[CODIGO]= "CODIGO";

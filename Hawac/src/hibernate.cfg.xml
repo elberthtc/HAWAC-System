@@ -45,7 +45,7 @@ Contributor(s):
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/hawac?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
-    <property name="hibernate.connection.password">rootroot</property>
+    <property name="hibernate.connection.password">root</property>
     <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Apartado.hbm.xml"/>
     <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Linea.hbm.xml"/>
     <mapping resource="cr/ac/una/fucem/inge/hawac/domain/Producto.hbm.xml"/>

@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
 import ferreteria.presentacion.controller.ClientesController;
 import ferreteria.presentacion.model.ClientesModel;*/
 import javax.swing.JTable;
-import javax.swing.SwingUtilities;
 
 public class ClientesView extends javax.swing.JInternalFrame implements java.util.Observer {
     

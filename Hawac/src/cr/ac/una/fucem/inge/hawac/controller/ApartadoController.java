@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cr.ac.una.fucem.inge.hawac.controller;
 
 import cr.ac.una.fucem.inge.hawac.domain.Apartado;
 import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.domain.Cliente;
+import cr.ac.una.fucem.inge.hawac.domain.Factura;
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import cr.ac.una.fucem.inge.hawac.domain.InventarioId;
 import cr.ac.una.fucem.inge.hawac.domain.Producto;
@@ -122,6 +118,16 @@ public class ApartadoController {
             try {
                 switch (model.getModo()) {
                     case Application.MODO_AGREGAR:
+                        Factura f = new Factura();
+                        f.setCliente(p1.getCliente());
+                        f.setCodigoFactura(Application.CANTIDAD);
+                        Application.CANTIDAD = Application.CANTIDAD + 1;
+                        Application.FACTURA_VIEW.getModel().getCurrent().setCodigoFactura(Application.CANTIDAD);
+                        Application.FACTURA_VIEW.update( Application.FACTURA_VIEW.getModel(), 1);
+                        f.setFecha(p1.getFechaRealizado());
+                        f.setMonto((float) (p1.getP().getPrecio()-p1.getSaldo()));
+                        f.setUsuario(p1.getUsuario());
+                        domainModel.getFacturaBl().save(f);
                         Bitacora b = new Bitacora(Application.USUARIO.getIdUsuario(),Application.USUARIO.getNombre()+" ha agregado un apartado del producto: "+p1.getP().getDescripcion()+", al Cliente: "+p1.getC().getNombre(),new Date());
                         domainModel.getBitacoraBl().save(b);
                         domainModel.getApartadoBl().save(p1);

@@ -33,18 +33,22 @@ public class UsuarioController {
         Usuario empleadoNuevo= new Usuario();
         if(view.idTextField.getText().length()==0){
             model.getErrores().put("id", "Id requerido");
+            view.IdLb.setBorder(Application.BORDER_ERROR);
         } else if(!Model.isNumeric(view.idTextField.getText())){
             model.getErrores().put("id", "Id debe ser numerico");
+            view.IdLb.setBorder(Application.BORDER_ERROR);
         } else{
             empleadoNuevo.setIdUsuario(Integer.parseInt(view.idTextField.getText()));
         }
         empleadoNuevo.setPassword(view.passwordText.getText());
         if(empleadoNuevo.getPassword().length()==0){
             model.getErrores().put("password", "Contraseña Requerida");
+            view.passwordLB.setBorder(Application.BORDER_ERROR);
         }
         empleadoNuevo.setNombre(view.nombreTextField.getText());
-        if(view.idTextField.getText().length()==0){
+        if(view.nombreTextField.getText().length()==0){
             model.getErrores().put("nombre", "Nombre requerido");
+            view.nombreLb.setBorder(Application.BORDER_ERROR);
         }
         if(view.administradorRB.isSelected()){
             empleadoNuevo.setTipo(0);

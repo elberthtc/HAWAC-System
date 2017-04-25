@@ -45,7 +45,7 @@ public class UsuarioView extends javax.swing.JDialog implements java.util.Observ
     private void initComponents() {
 
         tipoUsuario = new javax.swing.ButtonGroup();
-        NombreLb = new javax.swing.JLabel();
+        nombreLb = new javax.swing.JLabel();
         idTextField = new javax.swing.JTextField();
         IdLb = new javax.swing.JLabel();
         nombreTextField = new javax.swing.JTextField();
@@ -62,8 +62,8 @@ public class UsuarioView extends javax.swing.JDialog implements java.util.Observ
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("USUARIO");
 
-        NombreLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        NombreLb.setText("Nombre :");
+        nombreLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        nombreLb.setText("Nombre :");
 
         idTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         idTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -131,7 +131,7 @@ public class UsuarioView extends javax.swing.JDialog implements java.util.Observ
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(IdLb)
-                            .addComponent(NombreLb)
+                            .addComponent(nombreLb)
                             .addComponent(RolLb))
                         .addGap(24, 24, 24)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,7 +165,7 @@ public class UsuarioView extends javax.swing.JDialog implements java.util.Observ
                     .addComponent(idTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NombreLb)
+                    .addComponent(nombreLb)
                     .addComponent(nombreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -241,11 +241,11 @@ public class UsuarioView extends javax.swing.JDialog implements java.util.Observ
         nombreTextField.setEnabled(editable);
         nombreTextField.setText(current.getNombre());
         if(model.getErrores().get("Nombre")!= null){
-            NombreLb.setBorder(Application.BORDER_ERROR);
-            NombreLb.setToolTipText(model.getErrores().get("Nombre"));
+            nombreLb.setBorder(Application.BORDER_ERROR);
+            nombreLb.setToolTipText(model.getErrores().get("Nombre"));
         }else{
-            NombreLb.setBorder(null);
-            NombreLb.setToolTipText("");
+            nombreLb.setBorder(null);
+            nombreLb.setToolTipText("");
         }
         
         if(current.getTipo()==0){
@@ -298,8 +298,7 @@ public class UsuarioView extends javax.swing.JDialog implements java.util.Observ
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel IdLb;
-    private javax.swing.JLabel NombreLb;
+    public javax.swing.JLabel IdLb;
     private javax.swing.JLabel RolLb;
     public javax.swing.JRadioButton administradorRB;
     private javax.swing.JButton canceljButton;
@@ -308,8 +307,9 @@ public class UsuarioView extends javax.swing.JDialog implements java.util.Observ
     public javax.swing.JTextField idTextField;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    public javax.swing.JLabel nombreLb;
     public javax.swing.JTextField nombreTextField;
-    private javax.swing.JLabel passwordLB;
+    public javax.swing.JLabel passwordLB;
     public javax.swing.JTextField passwordText;
     private javax.swing.ButtonGroup tipoUsuario;
     // End of variables declaration//GEN-END:variables

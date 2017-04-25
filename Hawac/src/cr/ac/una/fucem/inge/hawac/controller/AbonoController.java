@@ -87,6 +87,8 @@ public class AbonoController {
                         f.setMonto(p1.getMonto());
                         f.setUsuario(Application.USUARIO.getIdUsuario());
                         domainModel.getFacturaBl().save(f);
+                        Application.FACTURA_VIEW.getModel().getCurrent().setCodigoFactura(Application.CANTIDAD);
+                        Application.FACTURA_VIEW.update( Application.FACTURA_VIEW.getModel(), 1);
                         Bitacora b = new Bitacora(Application.USUARIO.getIdUsuario(),Application.USUARIO.getNombre()+" ha agregado un abono de: " + p1.getMonto() + " al Apartado Numero: "+a1.getIdApartado(),new Date());
                         domainModel.getBitacoraBl().save(b);
                         domainModel.getAbonoBl().save(p1);
