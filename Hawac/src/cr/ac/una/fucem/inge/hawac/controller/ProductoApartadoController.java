@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cr.ac.una.fucem.inge.hawac.controller;
-
 
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import cr.ac.una.fucem.inge.hawac.domain.InventarioId;
@@ -36,17 +30,24 @@ public class ProductoApartadoController {
         view.setController(this);
         view.setModel(model);
     }
+    
     public void buscar(){
         model.clearErrors();
         model.getFilter().setDescripcion(view.DescripcionText.getText());
         List<Producto> rows = new LinkedList<Producto>();//domainModel.getProductoBl().findAll(Producto.class.getName()); 
         List<Inventario> inv = domainModel.getInventarioBl().findAll(Inventario.class.getName());
         for(int i = 0; i< inv.size(); i++){
-            if(inv.get(i).getId().getLocal().compareTo("Tienda")==0){
+            if(inv.get(i).getId().getLocal().compareTo("Tienda")==0 && inv.get(i).getCantidad()>0){
                 rows.add(domainModel.getProductoBl().findById(inv.get(i).getId().getProducto()));
             }
+        }    
+        for(int j=0;j<rows.size();j++){
+            Inventario inventario = domainModel.getInventarioBl().findById(new InventarioId("Tienda",rows.get(j).getIdProducto()));
+            if(inventario!=null){
+                int cantidad = inventario.getCantidad();
+                rows.get(j).setCantidad(cantidad);
+            }
         }
-        
         if(rows.isEmpty()){
             model.getErrores().put("DescripcionText","Ningun registro coincide");
             model.setMensaje("Ningun registro coincide con el criterio de busqueda");            
@@ -101,8 +102,15 @@ public class ProductoApartadoController {
         List<Producto> rows = new LinkedList<Producto>();//domainModel.getProductoBl().findAll(Producto.class.getName()); 
         List<Inventario> inv = domainModel.getInventarioBl().findAll(Inventario.class.getName());
         for(int i = 0; i< inv.size(); i++){
-            if(inv.get(i).getId().getLocal().compareTo("Tienda")==0){
+            if(inv.get(i).getId().getLocal().compareTo("Tienda")==0 && inv.get(i).getCantidad()>0){
                 rows.add(domainModel.getProductoBl().findById(inv.get(i).getId().getProducto()));
+            }
+        }
+        for(int j=0;j<rows.size();j++){
+            Inventario inventario = domainModel.getInventarioBl().findById(new InventarioId("Tienda",rows.get(j).getIdProducto()));
+            if(inventario!=null){
+                int cantidad = inventario.getCantidad();
+                rows.get(j).setCantidad(cantidad);
             }
         }
         int j=0, cont=rows.size();
@@ -127,10 +135,17 @@ public class ProductoApartadoController {
         List<Producto> rows = new LinkedList<Producto>();//domainModel.getProductoBl().findAll(Producto.class.getName()); 
         List<Inventario> inv = domainModel.getInventarioBl().findAll(Inventario.class.getName());
         for(int i = 0; i< inv.size(); i++){
-            if(inv.get(i).getId().getLocal().compareTo("Tienda")==0){
+            if(inv.get(i).getId().getLocal().compareTo("Tienda")==0 && inv.get(i).getCantidad()>0){
                 rows.add(domainModel.getProductoBl().findById(inv.get(i).getId().getProducto()));
             }
-        } 
+        }
+        for(int j=0;j<rows.size();j++){
+            Inventario inventario = domainModel.getInventarioBl().findById(new InventarioId("Tienda",rows.get(j).getIdProducto()));
+            if(inventario!=null){
+                int cantidad = inventario.getCantidad();
+                rows.get(j).setCantidad(cantidad);
+            }
+        }
         int j=0, cont=rows.size();
         while(j<rows.size() && cont>0){
             if(String.valueOf(rows.get(j).getIdProducto()).compareTo(view.DescripcionText.getText())!=0){

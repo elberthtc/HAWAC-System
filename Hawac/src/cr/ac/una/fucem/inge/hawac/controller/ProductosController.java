@@ -7,6 +7,7 @@ package cr.ac.una.fucem.inge.hawac.controller;
 
 import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
+import cr.ac.una.fucem.inge.hawac.domain.InventarioId;
 import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
@@ -40,6 +41,13 @@ public class ProductosController {
         model.clearErrors();
         model.getFilter().setDescripcion(view.DescripcionText.getText());
         List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
+        for(int i = 0; i< rows.size(); i++){
+            Inventario inv = domainModel.getInventarioBl().findById(new InventarioId("Tienda",rows.get(i).getIdProducto()));
+            if(inv!=null){
+                int cantidad = inv.getCantidad();
+                rows.get(i).setCantidad(cantidad);
+            }
+        }
         if (rows.isEmpty()) {
             model.getErrores().put("DescripcionText", "Ningun registro coincide");
             model.setMensaje("Ningun registro coincide con el criterio de busqueda");
@@ -53,6 +61,13 @@ public class ProductosController {
         model.clearErrors();
         model.getFilter().setDescripcion(view.DescripcionText.getText());
         List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
+        for(int i = 0; i< rows.size(); i++){
+            Inventario inv = domainModel.getInventarioBl().findById(new InventarioId("Tienda",rows.get(i).getIdProducto()));
+            if(inv!=null){
+                int cantidad = inv.getCantidad();
+                rows.get(i).setCantidad(cantidad);
+            }
+        }
         int i = 0, cont = rows.size();
         while (i < rows.size() && cont > 0) {
             if (rows.get(i).getDescripcion().toLowerCase().indexOf(view.DescripcionText.getText().toLowerCase()) == -1) {
@@ -80,6 +95,13 @@ public class ProductosController {
         model.clearErrors();
         model.getFilter().setDescripcion(view.DescripcionText.getText());
         List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
+        for(int i = 0; i< rows.size(); i++){
+            Inventario inv = domainModel.getInventarioBl().findById(new InventarioId("Tienda",rows.get(i).getIdProducto()));
+            if(inv!=null){
+                int cantidad = inv.getCantidad();
+                rows.get(i).setCantidad(cantidad);
+            }
+        }
         int i = 0, cont = rows.size();
         while (i < rows.size() && cont > 0) {
             if (String.valueOf(rows.get(i).getIdProducto()).indexOf(view.DescripcionText.getText()) == -1) {

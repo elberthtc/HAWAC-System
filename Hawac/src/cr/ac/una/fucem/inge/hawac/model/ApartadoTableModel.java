@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cr.ac.una.fucem.inge.hawac.model;
-
 
 import cr.ac.una.fucem.inge.hawac.domain.Apartado;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-
 
 public class ApartadoTableModel extends AbstractTableModel{
     
@@ -37,7 +30,7 @@ public class ApartadoTableModel extends AbstractTableModel{
     public Object getValueAt(int row, int col) {
         Apartado c1 = rows.get(row);
         switch (cols[col]){
-            case CODIGO: return c1.getIdApartado();
+            case CODIGO:return c1.getIdApartado();
             case CLIENTE: return c1.getC().getNombre();
             case VENDEDOR: return c1.getU().getNombre();
             case REALIZADO: return c1.getFechaRealizado();
@@ -46,6 +39,7 @@ public class ApartadoTableModel extends AbstractTableModel{
             case SALDO: return c1.getSaldo();
             default: return "";
         }
+        
     }
     
     public Apartado getRowAt(int row) {

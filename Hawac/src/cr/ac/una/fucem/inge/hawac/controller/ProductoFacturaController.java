@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cr.ac.una.fucem.inge.hawac.controller;
-
 
 import cr.ac.una.fucem.inge.hawac.domain.Factura;
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
@@ -46,11 +40,17 @@ public class ProductoFacturaController {
         List<Producto> rows = new LinkedList<Producto>();//domainModel.getProductoBl().findAll(Producto.class.getName()); 
         List<Inventario> inv = domainModel.getInventarioBl().findAll(Inventario.class.getName());
         for(int i = 0; i< inv.size(); i++){
-            if(inv.get(i).getId().getLocal().compareTo("Tienda")==0){
+            if(inv.get(i).getId().getLocal().compareTo("Tienda")==0 && inv.get(i).getCantidad()>0){
                 rows.add(domainModel.getProductoBl().findById(inv.get(i).getId().getProducto()));
             }
         }
-        
+        for(int j=0;j<rows.size();j++){
+            Inventario inventario = domainModel.getInventarioBl().findById(new InventarioId("Tienda",rows.get(j).getIdProducto()));
+            if(inventario!=null){
+                int cantidad = inventario.getCantidad();
+                rows.get(j).setCantidad(cantidad);
+            }
+        }
         if(rows.isEmpty()){
             model.getErrores().put("DescripcionText","Ningun registro coincide");
             model.setMensaje("Ningun registro coincide con el criterio de busqueda");   
@@ -133,25 +133,8 @@ public class ProductoFacturaController {
                     Application.PRODUCTOFACTURA_VIEW.setVisible(false);
                     break;
                 case Application.MODO_EDITAR:
-//                    FacturaCompra f2 = domainModel.getFacturaMayor2();
-//                    l1.setNumFactura(f2);
-//                    domainModel.addLineaCompra(l1);
-//                    int cantidad2 = l1.getCodProducto().getExistencias()+l1.getCantidad();
-//                    l1.getCodProducto().setExistencias(cantidad2);
-//                    domainModel.updateProducto2(l1.getCodProducto());
-//                    model.setMensaje("PRODUCTO AGREGADO");
-//                    List<Linea> lineaCompra = new ArrayList<Linea>();
-//                    lineaCompra = domainModel.searchLineas2(l1);
-//                    facturaModel.setLineas(lineaCompra);
-//                    f2.setEmpleado(e1);
-//                    Application.PRODUCTOFACTURA_VIEW.setVisible(false);
-
                     break;
             }
-            //} catch (Exception e) {
-            //  System.out.println(e.toString());
-            // model.setMensaje("Problemas con la Base de Datos");
-            //}
         } else {
             model.setMensaje("Errores");
         }
@@ -163,8 +146,15 @@ public class ProductoFacturaController {
         List<Producto> rows = new LinkedList<Producto>();//domainModel.getProductoBl().findAll(Producto.class.getName()); 
         List<Inventario> inv = domainModel.getInventarioBl().findAll(Inventario.class.getName());
         for(int i = 0; i< inv.size(); i++){
-            if(inv.get(i).getId().getLocal().compareTo("Tienda")==0){
+            if(inv.get(i).getId().getLocal().compareTo("Tienda")==0 && inv.get(i).getCantidad()>0){
                 rows.add(domainModel.getProductoBl().findById(inv.get(i).getId().getProducto()));
+            }
+        }
+        for(int j=0;j<rows.size();j++){
+            Inventario inventario = domainModel.getInventarioBl().findById(new InventarioId("Tienda",rows.get(j).getIdProducto()));
+            if(inventario!=null){
+                int cantidad = inventario.getCantidad();
+                rows.get(j).setCantidad(cantidad);
             }
         }
         int j=0, cont=rows.size();
@@ -189,10 +179,17 @@ public class ProductoFacturaController {
         List<Producto> rows = new LinkedList<Producto>();//domainModel.getProductoBl().findAll(Producto.class.getName()); 
         List<Inventario> inv = domainModel.getInventarioBl().findAll(Inventario.class.getName());
         for(int i = 0; i< inv.size(); i++){
-            if(inv.get(i).getId().getLocal().compareTo("Tienda")==0){
+            if(inv.get(i).getId().getLocal().compareTo("Tienda")==0 && inv.get(i).getCantidad()>0){
                 rows.add(domainModel.getProductoBl().findById(inv.get(i).getId().getProducto()));
             }
-        } 
+        }
+        for(int j=0;j<rows.size();j++){
+            Inventario inventario = domainModel.getInventarioBl().findById(new InventarioId("Tienda",rows.get(j).getIdProducto()));
+            if(inventario!=null){
+                int cantidad = inventario.getCantidad();
+                rows.get(j).setCantidad(cantidad);
+            }
+        }
         int j=0, cont=rows.size();
         while(j<rows.size() && cont>0){
             if(String.valueOf(rows.get(j).getIdProducto()).compareTo(view.DescripcionText.getText())!=0){

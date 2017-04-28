@@ -17,6 +17,7 @@ public class Producto  implements java.io.Serializable {
      private String talla;
      private String color;
      private boolean genero;
+     private int cantidad;
      private Set<Linea> lineas = new HashSet<Linea>(0);
      private Set<Inventario> inventarios = new HashSet<Inventario>(0);
 
@@ -27,6 +28,7 @@ public class Producto  implements java.io.Serializable {
         talla = "";
         color = "";
         genero = true;
+        cantidad = -1 ;
     }
 
 	
@@ -91,6 +93,15 @@ public class Producto  implements java.io.Serializable {
     public void setGenero(boolean genero) {
         this.genero = genero;
     }
+
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int i) {
+        this.cantidad = i;
+    }
+    
     public Set<Linea> getLineas() {
         return this.lineas;
     }

@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cr.ac.una.fucem.inge.hawac.view;
 
 import cr.ac.una.fucem.inge.hawac.controller.AbonosController;
-import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.AbonosModel;
 import hawac.Application;
 import javax.swing.JOptionPane;
@@ -62,18 +56,11 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Busqueda = new javax.swing.ButtonGroup();
         descripcionT = new javax.swing.JTextField();
         agregarButton = new javax.swing.JButton();
-        eliminarB = new javax.swing.JButton();
-        BuscarButton = new javax.swing.JButton();
-        BuscarLabel = new javax.swing.JLabel();
         AgregarLabel = new javax.swing.JLabel();
-        eliminarLabel = new javax.swing.JLabel();
         ProductosScrollPane = new javax.swing.JScrollPane();
         CatalogoTable = new javax.swing.JTable();
-        DescripcionRadioButton = new javax.swing.JRadioButton();
-        codigoRB = new javax.swing.JRadioButton();
         buscarLb = new javax.swing.JLabel();
         verTodoB = new javax.swing.JButton();
 
@@ -89,28 +76,8 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
             }
         });
 
-        eliminarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/cancel (2).png"))); // NOI18N
-        eliminarB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                eliminarBActionPerformed(evt);
-            }
-        });
-
-        BuscarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
-        BuscarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BuscarButtonActionPerformed(evt);
-            }
-        });
-
-        BuscarLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        BuscarLabel.setText("Buscar");
-
         AgregarLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         AgregarLabel.setText("Agregar ");
-
-        eliminarLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        eliminarLabel.setText("Eliminar");
 
         ProductosScrollPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -142,19 +109,6 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
         });
         ProductosScrollPane.setViewportView(CatalogoTable);
 
-        Busqueda.add(DescripcionRadioButton);
-        DescripcionRadioButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        DescripcionRadioButton.setText("Descripcion");
-
-        Busqueda.add(codigoRB);
-        codigoRB.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        codigoRB.setText("Codigo");
-        codigoRB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                codigoRBActionPerformed(evt);
-            }
-        });
-
         buscarLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         buscarLb.setText("Seleccione el argumento a buscar");
 
@@ -173,29 +127,14 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buscarLb)
+                    .addComponent(AgregarLabel)
+                    .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(descripcionT, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(verTodoB))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(codigoRB)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(DescripcionRadioButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BuscarLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(AgregarLabel))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(eliminarLabel)
-                            .addComponent(eliminarB, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(descripcionT)
+                            .addComponent(buscarLb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(29, 29, 29)
+                        .addComponent(verTodoB)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -207,101 +146,47 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(descripcionT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(verTodoB))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(codigoRB)
-                    .addComponent(DescripcionRadioButton))
                 .addGap(18, 18, 18)
-                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BuscarLabel)
-                    .addComponent(AgregarLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(eliminarLabel))
+                .addComponent(AgregarLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(eliminarB, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void codigoRBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_codigoRBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_codigoRBActionPerformed
-
-    private void eliminarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarBActionPerformed
-        int row = this.CatalogoTable.getSelectedRow();
-        if (row != -1) {
-            int ax = JOptionPane.showConfirmDialog(null, "Estas seguro que desea eliminarlo?");
-            if (ax == JOptionPane.YES_OPTION) {
-                controller.borrar(row);
-            }
-        }
-    }//GEN-LAST:event_eliminarBActionPerformed
-
     private void agregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarButtonActionPerformed
         Application.ABONO_VIEW.setLocation(this.verTodoB.getLocationOnScreen());
         controller.preAgregar();
     }//GEN-LAST:event_agregarButtonActionPerformed
-
-    private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
-        if (codigoRB.isSelected() == false && DescripcionRadioButton.isSelected() == false) {
-            buscarLb.setBorder(Application.BORDER_ERROR);
-            buscarLb.setToolTipText(model.getErrores().get("descripcionT"));
-        } else {
-            buscarLb.setBorder(null);
-            buscarLb.setToolTipText("");
-            if (DescripcionRadioButton.isSelected() == true && descripcionT.getText().length() == 0) {
-                model.getErrores().put("DescripcionText", "Digite la descripcion a buscar");
-                buscarLb.setBorder(Application.BORDER_ERROR);
-                buscarLb.setToolTipText(model.getErrores().get("descripcionT"));
-            }
-            if (DescripcionRadioButton.isSelected() == true && descripcionT.getText().length() != 0) {
-                controller.buscarPorDescripcion();
-                return;
-            }
-            if (codigoRB.isSelected() == true && descripcionT.getText().length() == 0) {
-                model.getErrores().put("DescripcionText", "Digite la descripcion a buscar");
-                buscarLb.setBorder(Application.BORDER_ERROR);
-                buscarLb.setToolTipText(model.getErrores().get("descripcionT"));
-            }
-            if (codigoRB.isSelected() == true && descripcionT.getText().length() != 0 && Model.isNumeric(descripcionT.getText())) {
-                controller.buscarPorCodigo();
-                return;
-            }
-            if (codigoRB.isSelected() == true && descripcionT.getText().length() != 0 && !Model.isNumeric(descripcionT.getText())) {
-               model.getErrores().put("DescripcionText", "Digite la descripcion a buscar");
-                buscarLb.setBorder(Application.BORDER_ERROR);
-                buscarLb.setToolTipText(model.getErrores().get("descripcionT"));
-            }
-        }
-    }//GEN-LAST:event_BuscarButtonActionPerformed
 
     private void ProductosScrollPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductosScrollPaneMouseClicked
 
     }//GEN-LAST:event_ProductosScrollPaneMouseClicked
 
     private void CatalogoTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CatalogoTableMouseClicked
-        if (evt.getClickCount() == 2) {
-            int row = this.CatalogoTable.getSelectedRow();
-            Application.PRODUCTO_VIEW.setLocation(this.agregarButton.getLocationOnScreen());
-            //controller.editar(row);
-        }
+//        if (evt.getClickCount() == 2) {
+//            int row = this.CatalogoTable.getSelectedRow();
+//            Application.PRODUCTO_VIEW.setLocation(this.agregarButton.getLocationOnScreen());
+//            //controller.editar(row);
+//        }
     }//GEN-LAST:event_CatalogoTableMouseClicked
 
     private void verTodoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTodoBActionPerformed
-        controller.buscar();
+        int apartado=model.getFilter().getA().getIdApartado();
+        controller.buscar(apartado);
     }//GEN-LAST:event_verTodoBActionPerformed
 
     @Override
     public void update(java.util.Observable updatedModel, Object parametros) {
-        if(model.getFilter().getA().getIdApartado()!=0)
-            descripcionT.setText(model.getFilter().getA().getIdApartado()+"");
-        else
+        if(model.getFilter().getA().getIdApartado()!=0){
+            descripcionT.setText("Apartado número: "+model.getFilter().getA().getIdApartado()+"");
+            descripcionT.setEditable(false);
+        
+        }else
             descripcionT.setText("");
         if (model.getErrores().get("DescripcionText") != null) {
             buscarLb.setBorder(Application.BORDER_ERROR);
@@ -318,9 +203,6 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
             agregarButton.setVisible(true);
             AgregarLabel.setVisible(true);
         }
-        
-        eliminarLabel.setVisible(false);
-        eliminarB.setVisible(false);
 
         CatalogoTable.setModel(model.getAbonos());
         this.revalidate();
@@ -369,19 +251,11 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AgregarLabel;
-    private javax.swing.JButton BuscarButton;
-    private javax.swing.JLabel BuscarLabel;
-    private javax.swing.ButtonGroup Busqueda;
     public javax.swing.JTable CatalogoTable;
-    public javax.swing.JRadioButton DescripcionRadioButton;
     private javax.swing.JScrollPane ProductosScrollPane;
     private javax.swing.JButton agregarButton;
     private javax.swing.JLabel buscarLb;
-    public javax.swing.JRadioButton codigoRB;
-    public javax.swing.JTextField descripcionT;
-    private javax.swing.JButton eliminarB;
-    private javax.swing.JLabel eliminarLabel;
+    private javax.swing.JTextField descripcionT;
     private javax.swing.JButton verTodoB;
     // End of variables declaration//GEN-END:variables
-    public int apartado;
 }

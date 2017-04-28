@@ -38,6 +38,8 @@ public class AbonoController {
         Abono p1 = model.getCurrent();
         Apartado a1 = p1.getA();
         
+        /*
+        
         if (view.dependienteText.getText().length() == 0) {
             model.getErrores().put("Vendedor", "Vendededor requerido");
             model.setMensaje("Debe seleccionarse un Vendedor");
@@ -54,18 +56,20 @@ public class AbonoController {
             p1.setA(Application.ABONO_VIEW.getModel().getCurrent().getA());
         }
 
+        */
+        
         if (view.montoText.getText().length() == 0 || !isNumeric2(view.montoText.getText()) || !isNumeric(view.montoText.getText())) {
-            model.getErrores().put("Prima", "Prima requerida");
+            model.getErrores().put("Monto", "Monto requerido");
             model.setMensaje("El monto es requerido");
-            JOptionPane.showMessageDialog(view,model.getMensaje());
+            //JOptionPane.showMessageDialog(view,model.getMensaje());
             view.montoLabel.setBorder(Application.BORDER_ERROR);
             view.montoLabel.setToolTipText(model.getErrores().get("primaLabel"));
         } else {
             double a = a1.getSaldo() - Double.parseDouble(view.montoText.getText());
             if (a < 0) {
-                model.getErrores().put("Prima", "Prima requerida");
+                model.getErrores().put("Monto", "Monto requerida");
                 model.setMensaje("El Monto no puede se Mayor al Saldo");
-                JOptionPane.showMessageDialog(view,model.getMensaje());
+                //JOptionPane.showMessageDialog(view,model.getMensaje());
                 view.montoLabel.setBorder(Application.BORDER_ERROR);
                 view.montoLabel.setToolTipText(model.getErrores().get("primaLabel"));
             } else {

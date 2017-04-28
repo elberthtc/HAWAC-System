@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cr.ac.una.fucem.inge.hawac.model;
 
 import cr.ac.una.fucem.inge.hawac.domain.Producto;
@@ -35,18 +30,26 @@ public class ProductoTableModel extends AbstractTableModel{
 
     public Object getValueAt(int row, int col) {
         Producto c1 = rows.get(row);
-        switch (cols[col]){
+        switch (cols[col]) {
             case CODIGO: return c1.getIdProducto();
             case DESCRIPCION: return c1.getDescripcion();
             case TALLA: return c1.getTalla();
             case PRECIO: return c1.getPrecio();
             case COLOR: return c1.getColor();
-            case GENERO: if(c1.isGenero()){
-                return "Masculino";
-            }
-            else
-                return "Femenino";
-            default: return "";
+            case GENERO:
+                if (c1.isGenero()) {
+                    return "Masculino";
+                } else {
+                    return "Femenino";
+                }
+            case CANTIDAD:
+                if(c1.getCantidad()==-1){
+                    return 0;
+                }else{
+                    return c1.getCantidad();
+                }
+            default:
+                return "";
         }
     }
     
@@ -60,12 +63,9 @@ public class ProductoTableModel extends AbstractTableModel{
     public static final int PRECIO=3;
     public static final int COLOR=4;
     public static final int GENERO=5;
+    public static final int CANTIDAD=6;
     
-    
-
-   
-    
-    String[] colNames = new String[6];
+    String[] colNames = new String[7];
     private void initColNames(){
         colNames[CODIGO]= "CODIGO";
         colNames[DESCRIPCION]= "DESCRIPCION";
@@ -73,6 +73,6 @@ public class ProductoTableModel extends AbstractTableModel{
         colNames[PRECIO]="PRECIO";
         colNames[COLOR]="COLOR";
         colNames[GENERO]="GENERO";
+        colNames[CANTIDAD]="CANTIDAD";
     }
-            
 }
