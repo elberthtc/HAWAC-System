@@ -75,7 +75,7 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
         DescripcionRadioButton = new javax.swing.JRadioButton();
         codigoRB = new javax.swing.JRadioButton();
         buscarLb = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        verTodoB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("ABONOS");
@@ -158,10 +158,10 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
         buscarLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         buscarLb.setText("Seleccione el argumento a buscar");
 
-        jButton1.setText("Ver Todo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        verTodoB.setText("Ver Todo");
+        verTodoB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                verTodoBActionPerformed(evt);
             }
         });
 
@@ -177,7 +177,7 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(descripcionT, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1))
+                        .addComponent(verTodoB))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(codigoRB)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -206,14 +206,14 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(descripcionT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(verTodoB))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(codigoRB)
                     .addComponent(DescripcionRadioButton))
                 .addGap(18, 18, 18)
-                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BuscarLabel)
                     .addComponent(AgregarLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -223,7 +223,7 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
                     .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(eliminarB, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                .addGap(30, 30, 30))
         );
 
         pack();
@@ -244,7 +244,7 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
     }//GEN-LAST:event_eliminarBActionPerformed
 
     private void agregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarButtonActionPerformed
-        Application.ABONO_VIEW.setLocation(this.agregarButton.getLocationOnScreen());
+        Application.ABONO_VIEW.setLocation(this.verTodoB.getLocationOnScreen());
         controller.preAgregar();
     }//GEN-LAST:event_agregarButtonActionPerformed
 
@@ -293,9 +293,9 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
         }
     }//GEN-LAST:event_CatalogoTableMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void verTodoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTodoBActionPerformed
         controller.buscar();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_verTodoBActionPerformed
 
     @Override
     public void update(java.util.Observable updatedModel, Object parametros) {
@@ -381,7 +381,7 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
     public javax.swing.JTextField descripcionT;
     private javax.swing.JButton eliminarB;
     private javax.swing.JLabel eliminarLabel;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton verTodoB;
     // End of variables declaration//GEN-END:variables
     public int apartado;
 }

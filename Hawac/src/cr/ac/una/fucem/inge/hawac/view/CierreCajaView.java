@@ -64,7 +64,7 @@ public class CierreCajaView extends javax.swing.JInternalFrame implements java.u
         ));
         jScrollPane1.setViewportView(tablaFacturas);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 67, 547, 119));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 67, 547, 360));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel1.setText("CIERRE DE CAJA");
@@ -76,7 +76,7 @@ public class CierreCajaView extends javax.swing.JInternalFrame implements java.u
                 hoyBActionPerformed(evt);
             }
         });
-        getContentPane().add(hoyB, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, -1, -1));
+        getContentPane().add(hoyB, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 450, -1, -1));
 
         jLabel2.setBackground(new java.awt.Color(0, 0, 0));
         jLabel2.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -87,10 +87,10 @@ public class CierreCajaView extends javax.swing.JInternalFrame implements java.u
 
         totalL.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         totalL.setText("TOTAL:");
-        getContentPane().add(totalL, new org.netbeans.lib.awtextra.AbsoluteConstraints(387, 262, -1, -1));
+        getContentPane().add(totalL, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 490, -1, -1));
 
         montoL.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        getContentPane().add(montoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(466, 263, 66, 21));
+        getContentPane().add(montoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 490, 66, 21));
 
         habilitarCB.setText("Buscar entre Fechas");
         habilitarCB.addActionListener(new java.awt.event.ActionListener() {
@@ -98,15 +98,15 @@ public class CierreCajaView extends javax.swing.JInternalFrame implements java.u
                 habilitarCBActionPerformed(evt);
             }
         });
-        getContentPane().add(habilitarCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
-        getContentPane().add(fecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
-        getContentPane().add(fecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
+        getContentPane().add(habilitarCB, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 480, -1, -1));
+        getContentPane().add(fecha1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, -1, -1));
+        getContentPane().add(fecha2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, -1, -1));
 
         deL.setText("De:");
-        getContentPane().add(deL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
+        getContentPane().add(deL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, -1, -1));
 
         aL.setText("A:");
-        getContentPane().add(aL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, -1, -1));
+        getContentPane().add(aL, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, -1, -1));
 
         buscarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
         buscarB.addActionListener(new java.awt.event.ActionListener() {
@@ -114,10 +114,10 @@ public class CierreCajaView extends javax.swing.JInternalFrame implements java.u
                 buscarBActionPerformed(evt);
             }
         });
-        getContentPane().add(buscarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 42, -1));
+        getContentPane().add(buscarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 520, 42, -1));
 
         buscarL.setText("Buscar");
-        getContentPane().add(buscarL, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, -1, -1));
+        getContentPane().add(buscarL, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

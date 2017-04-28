@@ -3,6 +3,7 @@ package cr.ac.una.fucem.inge.hawac.controller;
 import cr.ac.una.fucem.inge.hawac.domain.Abono;
 import cr.ac.una.fucem.inge.hawac.domain.Apartado;
 import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
+import cr.ac.una.fucem.inge.hawac.domain.Cliente;
 import cr.ac.una.fucem.inge.hawac.domain.Factura;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.AbonoModel;
@@ -82,6 +83,9 @@ public class AbonoController {
                         Factura f  = new Factura();
                         f.setCodigoFactura(Application.CANTIDAD);
                         Application.CANTIDAD = Application.CANTIDAD + 1;
+                        Cliente c = domainModel.getClienteBl().findById(a1.getCliente());
+                        c.setTotalComprado(c.getTotalComprado()+p1.getMonto());
+                        domainModel.getClienteBl().merge(c);
                         f.setCliente(a1.getCliente());
                         f.setFecha(p1.getFechaRealizado());
                         f.setMonto(p1.getMonto());

@@ -16,7 +16,8 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     
     public ApplicationView(){
         initComponents();
-        this.setSize(1000,750);
+        this.setExtendedState(MAXIMIZED_BOTH);
+        //this.setSize(1000,750);
     }
 
     /**
@@ -53,6 +54,7 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TIENDA");
+        setMinimumSize(new java.awt.Dimension(800, 850));
         getContentPane().setLayout(new javax.swing.OverlayLayout(getContentPane()));
 
         javax.swing.GroupLayout desktopPaneLayout = new javax.swing.GroupLayout(desktopPane);
@@ -308,7 +310,7 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     @Override
     public void update(java.util.Observable updatedModel, Object parametros) {
         if (model.getCurrent() != null) {
-            this.setTitle("TIENDA \nUsuario: " + model.getCurrent().tipo() + "("+model.getCurrent().getNombre()+")");
+            this.setTitle("TIENDA Usuario: " +model.getCurrent().getNombre()+" "+((model.getCurrent().tipo()==0)?"Administrador":"Dependiente"));
         } else {
             this.setTitle("TIENDA");
         }

@@ -60,7 +60,7 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
         jLabel3 = new javax.swing.JLabel();
         IdRadioButton = new javax.swing.JRadioButton();
         NombreRadioButton = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        verTodoB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("Planilla De Empleados");
@@ -136,11 +136,11 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
         NombreRadioButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         NombreRadioButton.setText("Nombre");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jButton1.setText("Ver Todo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        verTodoB.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        verTodoB.setText("Ver Todo");
+        verTodoB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                verTodoBActionPerformed(evt);
             }
         });
 
@@ -149,22 +149,9 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(nombreLb)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(nomjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(IdRadioButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(NombreRadioButton))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(buscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1))
@@ -175,7 +162,17 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(eliminarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(eliminarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(nombreLb)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(nomjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(verTodoB))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(IdRadioButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(NombreRadioButton)))
                 .addGap(0, 10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -186,14 +183,14 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nomjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(verTodoB))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(NombreRadioButton)
                     .addComponent(IdRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
@@ -203,7 +200,7 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
                     .addComponent(agregarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(eliminarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buscarButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -236,7 +233,7 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
     }//GEN-LAST:event_buscarButtonActionPerformed
 
     private void agregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarButtonActionPerformed
-        Application.EMPLEADO_VIEW.setLocation(this.agregarButton.getLocationOnScreen());
+        Application.EMPLEADO_VIEW.setLocation(this.verTodoB.getLocationOnScreen());
         controller.preAgregar();
     }//GEN-LAST:event_agregarButtonActionPerformed
 
@@ -267,10 +264,10 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
         // TODO add your handling code here:
     }//GEN-LAST:event_IdRadioButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void verTodoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTodoBActionPerformed
         // TODO add your handling code here:
         controller.buscar();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_verTodoBActionPerformed
 
     @Override
     public void update(java.util.Observable updatedModel,Object parametros) {
@@ -342,7 +339,6 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
     private javax.swing.JButton buscarButton;
     private javax.swing.ButtonGroup busqueda;
     private javax.swing.JButton eliminarButton;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -350,5 +346,6 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
     private javax.swing.JLabel nombreLb;
     public javax.swing.JTextField nomjTextField;
     private javax.swing.JTable tablaEmpleados;
+    private javax.swing.JButton verTodoB;
     // End of variables declaration//GEN-END:variables
 }

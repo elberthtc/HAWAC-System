@@ -15,7 +15,7 @@
             <column name="totalComprado" precision="12" scale="0" not-null="true" />
         </property>
         <property name="telefono" type="string">
-            <column name="telefono" length="10" not-null="true" />
+            <column name="telefono" length="11" not-null="true" />
         </property>
         <property name="correo" type="string">
             <column name="correo" length="45" not-null="true" />

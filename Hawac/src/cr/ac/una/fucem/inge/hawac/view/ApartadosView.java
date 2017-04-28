@@ -77,7 +77,7 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
         CodigoRadioButton2 = new javax.swing.JRadioButton();
         buscarLb = new javax.swing.JLabel();
         mostrar_abonoB = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        verTodoB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("APARTADOS");
@@ -167,10 +167,10 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
             }
         });
 
-        jButton1.setText("Ver Todo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        verTodoB.setText("Ver Todo");
+        verTodoB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                verTodoBActionPerformed(evt);
             }
         });
 
@@ -184,7 +184,7 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(34, 34, 34)
-                        .addComponent(jButton1))
+                        .addComponent(verTodoB))
                     .addComponent(buscarLb)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(CodigoRadioButton2)
@@ -218,14 +218,14 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
                 .addGap(8, 8, 8)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(verTodoB))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CodigoRadioButton2)
                     .addComponent(clienteRB))
                 .addGap(18, 18, 18)
-                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BuscarLabel)
                     .addComponent(AgregarLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -235,8 +235,8 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
                     .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(eliminarB, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mostrar_abonoB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(mostrar_abonoB, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(26, 26, 26))
         );
 
         pack();
@@ -257,7 +257,7 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
     }//GEN-LAST:event_eliminarBActionPerformed
 
     private void agregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarButtonActionPerformed
-        Application.PRODUCTO_VIEW.setLocation(this.agregarButton.getLocationOnScreen());
+        Application.PRODUCTO_VIEW.setLocation(this.verTodoB.getLocationOnScreen());
         controller.preAgregar();
     }//GEN-LAST:event_agregarButtonActionPerformed
 
@@ -307,10 +307,10 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
             controller.abrirAbonos(row);
     }//GEN-LAST:event_mostrar_abonoBActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void verTodoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTodoBActionPerformed
         // TODO add your handling code here:
         controller.buscar();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_verTodoBActionPerformed
 
     @Override
     public void update(java.util.Observable updatedModel, Object parametros) {
@@ -388,8 +388,8 @@ public class ApartadosView extends javax.swing.JInternalFrame implements java.ut
     public javax.swing.JRadioButton clienteRB;
     private javax.swing.JButton eliminarB;
     private javax.swing.JLabel eliminarLabel;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton mostrar_abonoB;
+    private javax.swing.JButton verTodoB;
     // End of variables declaration//GEN-END:variables
 
 }

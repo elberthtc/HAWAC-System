@@ -121,6 +121,9 @@ public class ApartadoController {
                         Factura f = new Factura();
                         f.setCliente(p1.getCliente());
                         f.setCodigoFactura(Application.CANTIDAD);
+                        Cliente c = domainModel.getClienteBl().findById(p1.getCliente());
+                        c.setTotalComprado(c.getTotalComprado()+ ((float) (p1.getP().getPrecio()-p1.getSaldo())));
+                        domainModel.getClienteBl().merge(c);
                         Application.CANTIDAD = Application.CANTIDAD + 1;
                         Application.FACTURA_VIEW.getModel().getCurrent().setCodigoFactura(Application.CANTIDAD);
                         Application.FACTURA_VIEW.update( Application.FACTURA_VIEW.getModel(), 1);
@@ -144,12 +147,6 @@ public class ApartadoController {
                         view.setVisible(false);
                         break;
                     case Application.MODO_EDITAR:
-                       /* domainModel.getProductoBl().merge(p1);
-                        model.setMensaje("PRODUCTO MODIFICADO");
-                        model.setCurrent(p1);
-                        productos = domainModel.getProductoBl().findAll(Producto.class.getName());
-                        productosModel.setProductos(productos);
-                        view.setVisible(false); */
                         break;
                 }
             } catch (Exception e) {

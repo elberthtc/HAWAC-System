@@ -31,7 +31,7 @@ public class FacturaController {
     Session session;
     FacturaView view;
     FacturaModel model;
-    public static int CONTADOR = 1;
+    //public static int CONTADOR = 1;
 
     public FacturaController(FacturaView v, FacturaModel m, Model domainModel, Session session) {
         this.view = v;
@@ -51,13 +51,11 @@ public class FacturaController {
             model.commit();
             return;
         }
-//        if (view.idClienteTextFd.getText().length() != 0) {
             ClientesModel clientesModel = Application.CLIENTES_FACTURA_VIEW.getModel();
             clientesModel.clearErrors();
             model.clearErrors();
             clientesModel.setFilter(new Cliente());
             Application.CLIENTES_FACTURA_VIEW.setVisible(true);
-//        }
     }
 
     public void preAgregarProducto() {
@@ -78,22 +76,27 @@ public class FacturaController {
     public void guardarDatosBasicos(){
         Factura factura = model.getCurrent();
         factura.setCodigoFactura(Application.CANTIDAD);
-        //factura.setFecha(model.getCurrent().getFecha());
         factura.setMonto(0);
         factura.setUsuario(model.getEmpleado().getIdUsuario());
         factura.setApartado(null);
         if(factura.getCliente()==0 || factura.getCliente()==-1){
+            Cliente c = domainModel.getClienteBl().findById(0);
             factura.setCliente(0);
-        }else
+            factura.setC(c);
+            if(c==null){
+                c = new Cliente(0,"NULO",0,"NULO","NULO");
+                domainModel.getClienteBl().save(c);
+                factura.setC(c);
+            }
+        }else{
             factura.setCliente(model.getCurrent().getCliente());
+            factura.setC(model.getCurrent().getC());
+        }
     }
 
     public void eliminar(int row) {
         model.clearErrors();
         Linea l1 = model.getLineas().getRowAt(row);
-        int cantidad;
-        //InventarioId iId = new InventarioId("Tienda", l1.getProducto().getIdProducto());
-        //Inventario i1 = domainModel.getInventarioBl().findById(iId);
         Usuario e1 = (Usuario) session.getAttribute("Usuario");
         if (e1.getTipo() != 0) {
             model.setMensaje(Application.ROL_NOTAUTHORIZED);
@@ -101,20 +104,15 @@ public class FacturaController {
             return;
         }
         try {
-            //cantidad = i1.getCantidad() + l1.getCantidad();
-            //i1.setCantidad(cantidad);
-            //domainModel.getInventarioBl().merge(i1);
             domainModel.getLineaBl().delete(l1);
         } catch (Exception ex) {
         }
-        //List<Linea> lineas = domainModel.getLineaBl().findAll(Linea.class.getName());
         model.getLineas2().remove(l1);
         model.setLineas(model.getLineas2());
     }
 
     public void guardar() {
         model.clearErrors();
-        //FacturasVentasModel facturas = Application.FACTURAS_VENTAS_VIEW.getModel();
         FacturaModel facturaModel = Application.FACTURA_VIEW.getModel();
         Usuario e1 = (Usuario) session.getAttribute("Usuario");
         Factura f1 = Application.FACTURA_VIEW.getModel().getCurrent();
@@ -123,8 +121,6 @@ public class FacturaController {
             model.commit();
             return;
         }
-        int a = view.ListProductosTable.getRowCount();
-        int b = view.ListProductosTable.getSelectedRow();
         if (view.ListProductosTable.getRowCount() != 0) {
             if (model.getLineas().getRowCount() == 0) {
                 model.getErrores().put("GRABAR", "Factura Vacia");
@@ -158,6 +154,8 @@ public class FacturaController {
                     model.setCurrent(new Factura());
                     model.setCliente(new Cliente());
                     model.setFiltro(new Linea());
+                    view.pagoT.setText("");
+                    view.cambioT.setText("");
                     model.setMensaje("FACTURA AGREGADA");
                     model.setLineas(nuevo);
                     model.setLineas2(nuevo);

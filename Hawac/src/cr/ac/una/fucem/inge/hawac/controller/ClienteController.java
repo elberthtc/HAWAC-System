@@ -5,6 +5,7 @@ import cr.ac.una.fucem.inge.hawac.domain.Cliente;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.ClienteModel;
 import cr.ac.una.fucem.inge.hawac.model.ClientesModel;
+import cr.ac.una.fucem.inge.hawac.utils.Validaciones;
 import cr.ac.una.fucem.inge.hawac.view.ClienteView;
 import hawac.Application;
 import hawac.Session;
@@ -34,16 +35,26 @@ public class ClienteController {
         ClientesModel clientesModel = Application.CLIENTES_VIEW.getModel();
         Cliente c1 = new Cliente();
         c1.setNombre(view.nombreTextFd.getText());
-        if (view.nombreTextFd.getText().length() == 0) {
+        if(view.nombreTextFd.getText().length() == 0) {
             model.getErrores().put("Nombre", "Nombre requerido");
         }
-        if (view.idTextFd.getText().length() == 0 || !cr.ac.una.fucem.inge.hawac.logic.Model.isNumeric(view.idTextFd.getText())) {
+        if(!Validaciones.validarCedula(view.idTextFd.getText())) {
             model.getErrores().put("Id", "Id Incorrecto");
         } else {
             c1.setCedula(Integer.parseInt(view.idTextFd.getText()));
         }
-        c1.setTelefono(view.numTelefonoTextFd.getText());
-        c1.setCorreo(view.correoTextFd.getText());
+        if(view.correoTextFd.getText().length()==0 || !Validaciones.validarEmail(view.correoTextFd.getText())){
+            model.getErrores().put("Correo", "Correo Incorrecto");
+        }else{
+            c1.setCorreo(view.correoTextFd.getText());
+        }
+        String telefono = view.numTelefonoTextFd.getText();
+        telefono = Validaciones.validarTel(telefono);
+        if(telefono==null || telefono.length()==0){
+            model.getErrores().put("Telefono","Telefono Incorrecto");
+        }else{
+            c1.setTelefono(telefono);
+        }
         List<Cliente> clientes;
         if (model.getErrores().isEmpty()) {
             try {

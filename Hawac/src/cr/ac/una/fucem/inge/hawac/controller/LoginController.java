@@ -6,6 +6,7 @@
 package cr.ac.una.fucem.inge.hawac.controller;
 
 import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
+import cr.ac.una.fucem.inge.hawac.domain.Cliente;
 import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.LoginModel;
@@ -50,6 +51,11 @@ public class LoginController {
                 view.setVisible(false);
                 Application.USUARIO = real;
                 Application.APPLICATION_VIEW.getController().enter();
+                Cliente c = domainModel.getClienteBl().findById(0);
+                if(c==null){
+                    c = new Cliente(0,"NULO",0,"NULO","NULO");
+                    domainModel.getClienteBl().save(c);
+                }
                 Bitacora b = new Bitacora(real.getIdUsuario(),real.getNombre()+" se ha logueado.",new Date());
                 domainModel.getBitacoraBl().save(b);
                 Application.FACTURA_VIEW.getModel().setEmpleado(real);

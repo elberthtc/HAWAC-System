@@ -305,7 +305,7 @@
     <Component class="javax.swing.JComboBox" name="tallaCB">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="16">
+          <StringArray count="17">
             <StringItem index="0" value="2"/>
             <StringItem index="1" value="4"/>
             <StringItem index="2" value="6"/>
@@ -313,15 +313,16 @@
             <StringItem index="4" value="10"/>
             <StringItem index="5" value="12"/>
             <StringItem index="6" value="14"/>
-            <StringItem index="7" value="16XXS"/>
-            <StringItem index="8" value="XS"/>
-            <StringItem index="9" value="S"/>
-            <StringItem index="10" value="M"/>
-            <StringItem index="11" value="L"/>
-            <StringItem index="12" value="XL"/>
-            <StringItem index="13" value="XXL"/>
-            <StringItem index="14" value="XXXL"/>
-            <StringItem index="15" value="4XL"/>
+            <StringItem index="7" value="16"/>
+            <StringItem index="8" value="XXS"/>
+            <StringItem index="9" value="XS"/>
+            <StringItem index="10" value="S"/>
+            <StringItem index="11" value="M"/>
+            <StringItem index="12" value="L"/>
+            <StringItem index="13" value="XL"/>
+            <StringItem index="14" value="XXL"/>
+            <StringItem index="15" value="XXXL"/>
+            <StringItem index="16" value="4XL"/>
           </StringArray>
         </Property>
       </Properties>

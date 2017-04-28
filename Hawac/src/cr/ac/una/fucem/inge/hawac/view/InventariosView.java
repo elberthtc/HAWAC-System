@@ -61,7 +61,7 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
         eliminarL = new javax.swing.JLabel();
         IdRadioButton = new javax.swing.JRadioButton();
         descripcionRB = new javax.swing.JRadioButton();
-        jButton1 = new javax.swing.JButton();
+        verTodoB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("INVENTARIO");
@@ -142,10 +142,10 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
             }
         });
 
-        jButton1.setText("Ver Todo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        verTodoB.setText("Ver Todo");
+        verTodoB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                verTodoBActionPerformed(evt);
             }
         });
 
@@ -176,7 +176,7 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(nombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1))
+                        .addComponent(verTodoB))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 10, Short.MAX_VALUE))
         );
@@ -188,14 +188,14 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nombreTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
+                    .addComponent(verTodoB))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IdRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(descripcionRB, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(agregarL)
@@ -204,8 +204,8 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(agregarB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(eliminarB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(buscarButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(12, Short.MAX_VALUE))
+                    .addComponent(buscarButton))
+                .addContainerGap())
         );
 
         pack();
@@ -243,7 +243,7 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
     }//GEN-LAST:event_buscarButtonActionPerformed
 
     private void agregarBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarBActionPerformed
-        Application.INVENTARIO_VIEW.setLocation(this.agregarB.getLocationOnScreen());
+        Application.INVENTARIO_VIEW.setLocation(this.verTodoB.getLocationOnScreen());
         controller.preAgregar();
     }//GEN-LAST:event_agregarBActionPerformed
 
@@ -278,10 +278,10 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
         // TODO add your handling code here:
     }//GEN-LAST:event_descripcionRBActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void verTodoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTodoBActionPerformed
         // TODO add your handling code here:
         controller.buscar();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_verTodoBActionPerformed
 
     @Override
     public void update(java.util.Observable updatedModel,Object parametros) {
@@ -353,11 +353,11 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
     private javax.swing.JRadioButton descripcionRB;
     private javax.swing.JButton eliminarB;
     private javax.swing.JLabel eliminarL;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nombreLb;
     public javax.swing.JTextField nombreTF;
     private javax.swing.JTable tablaEmpleados;
+    private javax.swing.JButton verTodoB;
     // End of variables declaration//GEN-END:variables
 }

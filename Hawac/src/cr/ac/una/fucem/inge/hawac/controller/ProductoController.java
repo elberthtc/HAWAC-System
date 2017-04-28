@@ -59,11 +59,9 @@ public class ProductoController {
                 model.getErrores().put("Precio", "Digito Invalido");
             }
             p1.setPrecio((float) prec);
+        }else{
+            model.getErrores().put("Precio", "Precio Incorrecto");
         }
-        if (view.PrecioText.getText().length() == 0) {
-            model.getErrores().put("Precio", "Precio Requerido");
-        }
-        
         p1.setColor(view.ColorText.getText());
         
         if (view.ColorText.getText().length() == 0) {

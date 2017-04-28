@@ -5,6 +5,7 @@ import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.UsuarioModel;
 import cr.ac.una.fucem.inge.hawac.model.UsuariosModel;
+import cr.ac.una.fucem.inge.hawac.utils.Validaciones;
 import cr.ac.una.fucem.inge.hawac.view.UsuarioView;
 import hawac.Application;
 import hawac.Session;
@@ -31,23 +32,20 @@ public class UsuarioController {
         model.clearErrors();
         UsuariosModel empleadosModel= Application.USUARIOS_VIEW.getModel();
         Usuario empleadoNuevo= new Usuario();
-        if(view.idTextField.getText().length()==0){
-            model.getErrores().put("id", "Id requerido");
-            view.IdLb.setBorder(Application.BORDER_ERROR);
-        } else if(!Model.isNumeric(view.idTextField.getText())){
-            model.getErrores().put("id", "Id debe ser numerico");
+        if(!Validaciones.validarCedula(view.idTextField.getText())){
+            model.getErrores().put("Id", "Id debe ser numerico");
             view.IdLb.setBorder(Application.BORDER_ERROR);
         } else{
             empleadoNuevo.setIdUsuario(Integer.parseInt(view.idTextField.getText()));
         }
         empleadoNuevo.setPassword(view.passwordText.getText());
         if(empleadoNuevo.getPassword().length()==0){
-            model.getErrores().put("password", "Contraseña Requerida");
+            model.getErrores().put("Password", "Contraseña Requerida");
             view.passwordLB.setBorder(Application.BORDER_ERROR);
         }
         empleadoNuevo.setNombre(view.nombreTextField.getText());
         if(view.nombreTextField.getText().length()==0){
-            model.getErrores().put("nombre", "Nombre requerido");
+            model.getErrores().put("Nombre", "Nombre requerido");
             view.nombreLb.setBorder(Application.BORDER_ERROR);
         }
         if(view.administradorRB.isSelected()){

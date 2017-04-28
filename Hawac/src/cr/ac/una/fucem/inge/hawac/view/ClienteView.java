@@ -53,7 +53,7 @@ public class ClienteView extends javax.swing.JDialog implements java.util.Observ
         nombreLb.setText("Nombre");
 
         idLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        idLb.setText("Id");
+        idLb.setText("Cédula");
 
         numTelefonoLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         numTelefonoLb.setText("Numero Telefono");

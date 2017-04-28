@@ -189,7 +189,7 @@ public class BitacorasView extends javax.swing.JInternalFrame implements java.ut
                     .addComponent(usuarioRB)
                     .addComponent(descripcionRB))
                 .addGap(13, 13, 13)
-                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
+                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()

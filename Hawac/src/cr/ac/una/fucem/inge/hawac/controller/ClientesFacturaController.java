@@ -38,7 +38,9 @@ public class ClientesFacturaController {
         model.clearErrors();
         model.getFilter().setNombre(view.nombreTextFd.getText());
         List<Cliente> aux = domainModel.getClienteBl().findAll(Cliente.class.getName());
-        aux.remove(aux.get(0));
+        if(aux.size()>0){
+            aux.remove(aux.get(0));
+        }
         int i=0, cont= aux.size();
         while(i<aux.size() && cont>0){
             if(aux.get(i).getNombre().toLowerCase().indexOf(view.nombreTextFd.getText().toLowerCase())==-1){
@@ -59,7 +61,9 @@ public class ClientesFacturaController {
         model.clearErrors();
         model.getFilter().setNombre((view.nombreTextFd.getText()));
         List<Cliente> rows = domainModel.getClienteBl().findAll(Cliente.class.getName()); //ACA BUSCA POR ID
-        rows.remove(rows.get(0));
+        if(rows.size()>0){
+            rows.remove(rows.get(0));
+        }
         int i=0, cont= rows.size();
         while(i<rows.size() && cont>0){
             if(String.valueOf(rows.get(i).getCedula()).indexOf(view.nombreTextFd.getText())==-1){
@@ -96,7 +100,9 @@ public class ClientesFacturaController {
         model.clearErrors();
         model.getFilter().setNombre(view.nombreTextFd.getText());
         List<Cliente> rows = domainModel.getClienteBl().findAll(Cliente.class.getName());
-        rows.remove(rows.get(0));
+        if(rows.size()>0){
+            rows.remove(rows.get(0));
+        }
         if(rows.isEmpty()){
             model.getErrores().put("nombreTextFd","Ningun registro coincide");
             model.setMensaje("Ningun registro coincide con el criterio de busqueda");
