@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cr.ac.una.fucem.inge.hawac.view;
 
 import cr.ac.una.fucem.inge.hawac.controller.ProductosController;
 import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
 import hawac.Application;
 import javax.swing.JOptionPane;
-import javax.swing.ButtonGroup;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 public class ProductosView extends javax.swing.JInternalFrame implements java.util.Observer {

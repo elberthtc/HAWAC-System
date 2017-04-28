@@ -1,5 +1,5 @@
-
 package cr.ac.una.fucem.inge.hawac.model;
+
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import java.util.HashMap;
@@ -74,6 +74,4 @@ public class InventarioModel extends java.util.Observable {
     public void setProductoActual(Producto productoActual) {
         this.productoActual = productoActual;
     }
-    
-    
 }

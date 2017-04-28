@@ -126,6 +126,8 @@ public class InventariosController {
         } else {
             inventarioModel.setModo(Application.MODO_CONSULTAR);
         }
+        Application.INVENTARIO_VIEW.getModelo().setCurrent(seleccionado);
+        Application.INVENTARIO_VIEW.getModelo().setProductoActual(seleccionado.getProducto());
         inventarioModel.setCurrent(seleccionado);
         Application.INVENTARIO_VIEW.setVisible(true);
     }

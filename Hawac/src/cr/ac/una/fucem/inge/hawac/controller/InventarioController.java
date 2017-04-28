@@ -1,5 +1,5 @@
-
 package cr.ac.una.fucem.inge.hawac.controller;
+
 import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
 import cr.ac.una.fucem.inge.hawac.domain.InventarioId;
@@ -36,23 +36,21 @@ public class InventarioController {
     public void guardar() {
         model.clearErrors();
         InventariosModel empleadosModel = Application.INVENTARIO_TIENDA_VIEW.getModel();
-
-        Inventario inventarioNuevo = new Inventario();
+        Inventario inventarioNuevo = Application.INVENTARIO_VIEW.getModelo().getCurrent();
+        inventarioNuevo.setProducto(Application.INVENTARIO_VIEW.getModelo().getProductoActual());
         if (view.idTextField.getText().length() == 0) {
-            model.getErrores().put("id", "Id requerido");
+            model.getErrores().put("Id", "Id requerido");
         }else{
             inventarioNuevo.setId(new InventarioId(Application.INVENTARIO,Integer.parseInt(view.idTextField.getText())));
+            inventarioNuevo.setProducto(domainModel.getProductoBl().findById(inventarioNuevo.getId().getProducto()));
         }
-
         if (view.cantidadTextField.getText().length() == 0) {
-            model.getErrores().put("cantidad", "Cantidad requerida");
+            model.getErrores().put("Cantidad", "Cantidad requerida");
         } else if(!Model.isNumeric(view.cantidadTextField.getText())){
-            model.getErrores().put("cantidad", "La cantidad debe ser numerica");
+            model.getErrores().put("Cantidad", "La cantidad debe ser numerica");
         } else
             inventarioNuevo.setCantidad(Integer.parseInt(view.cantidadTextField.getText()));
-        
-        inventarioNuevo.setProducto(Application.INVENTARIO_VIEW.getModelo().getProductoActual());
-        inventarioNuevo.setEstado(view.estadoCB.getSelectedItem().toString());
+        inventarioNuevo.setEstado("Listo");
         
         List<Inventario> empleados;
         if (model.getErrores().isEmpty()) {
@@ -88,6 +86,9 @@ public class InventarioController {
                         model.setCurrent(inventarioNuevo);
                         model.setProductoActual(new Producto());
                         empleados = domainModel.getInventario();
+                        for(int i = 0; i<empleados.size();i++){
+                            empleados.get(i).setProducto(domainModel.getProductoBl().findById(empleados.get(i).getId().getProducto()));
+                        }
                         empleadosModel.setInventarios(empleados);
                         view.setVisible(false);
                         break;
@@ -102,6 +103,5 @@ public class InventarioController {
             model.setCurrent(inventarioNuevo);
             model.setProductoActual(new Producto());
         }
-
     }
 }

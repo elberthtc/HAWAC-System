@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cr.ac.una.fucem.inge.hawac.model;
 
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
@@ -29,7 +24,7 @@ public class InventariosModel extends java.util.Observable {
     }
     
     public void setInventarios(List<Inventario> empleados){
-        int[] cols={InventarioTableModel.PRODUCTO,InventarioTableModel.NOMBRE,InventarioTableModel.CANTIDAD,InventarioTableModel.INVENTARIO,InventarioTableModel.ESTADO};
+        int[] cols={InventarioTableModel.PRODUCTO,InventarioTableModel.NOMBRE,InventarioTableModel.CANTIDAD};
         this.empleados= new InventarioTableModel(cols, empleados);
         setChanged();
         notifyObservers();

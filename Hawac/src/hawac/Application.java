@@ -90,19 +90,11 @@ public class Application {
         applicationView.addInternalFrame(inventariosView);
         InventariosController inventariosController = new InventariosController(inventariosView, inventariosModel, domainModel, session);
 
-        //InventariosModel inventariosModel = new InventariosModel();
         InventariosView inventariosView2 = new InventariosView();
         INVENTARIO_FABRICA_VIEW = inventariosView2;
         applicationView.addInternalFrame(inventariosView2);
         InventariosController inventariosController1 = new InventariosController(inventariosView2, inventariosModel, domainModel, session);
 
-        /*FacturasVentasModel facturasVentasModel = new FacturasVentasModel();
-        FacturasVentasView facturasVentasView = new FacturasVentasView();
-        FACTURAS_VENTAS_VIEW = facturasVentasView;
-        applicationView.addInternalFrame(facturasVentasView);
-        FacturasVentasController factVentasController = new FacturasVentasController(facturasVentasView,facturasVentasModel,domainModel,session);
-        
-         */
         FacturasPagadasModel facturasPagadasModel = new FacturasPagadasModel();
         FacturasPagadasView facturasPagadasView = new FacturasPagadasView();
         FACTURAS_PAGADAS_VIEW = facturasPagadasView;
@@ -151,34 +143,6 @@ public class Application {
         applicationView.addInternalFrame(facturaView);
         FacturaController facturaController = new FacturaController(facturaView, facturaModel, domainModel, session);
 
-        /*
-        
-        FacturaCompraModel facturaCompraModel= new FacturaCompraModel();
-        FacturaCompraView facturaCompraView = new FacturaCompraView();
-        FACTURA_COMPRA_VIEW=facturaCompraView;
-        applicationView.addInternalFrame(facturaCompraView);
-        FacturaCompraController facturaCompraController = new FacturaCompraController(facturaCompraView, facturaCompraModel, domainModel, session);
-        
-        
-        ChequeModel chequeModel = new ChequeModel();
-        ChequeView chequeView = new ChequeView(applicationView,true);
-        Cheque_VIEW = chequeView;
-        ChequeController  chequeController = new ChequeController(chequeView,chequeModel,domainModel,session);
-
-        
-        EfectivoModel efectivoModel = new EfectivoModel();
-        EfectivoView efectivoView = new EfectivoView(applicationView, true);
-        Efectivo_VIEW = efectivoView;
-        EfectivoController efectivoController = new EfectivoController(efectivoView, efectivoModel, domainModel, session);
-
-        
-        
-        TarjetaCreditoModel tarjetacreditoModel = new TarjetaCreditoModel();
-        TarjetaCreditoView tarjetacreditoView = new TarjetaCreditoView(applicationView,true);
-        TarjetaCredito_VIEW = tarjetacreditoView;
-        TarjetaCreditoController  tarjetacreditoController = new TarjetaCreditoController(tarjetacreditoView,tarjetacreditoModel,domainModel,session);
-        
-         */
         LoginModel loginModel = new LoginModel();
         LoginView loginView = new LoginView();
         LOGIN_VIEW = loginView;

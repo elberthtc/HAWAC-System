@@ -8,7 +8,7 @@ public class Validaciones {
     public static final String emailPatron = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
     public static final Pattern pMail = Pattern.compile(emailPatron);
-
+    public static final Pattern pNum = Pattern.compile("\\d");
     public static final String telPatron = "(\\d{8}|(\\d{2}-){3}\\d{2})";
     public static final String telPatron1 = "\\d{8}";
     public static final Pattern pTel = Pattern.compile(telPatron);
@@ -50,6 +50,11 @@ public class Validaciones {
         Matcher m = pBus.matcher(cadena);
         return m.matches();
 
+    }
+    
+    public static boolean isNumeric(String arg){
+        Matcher m = pNum.matcher(arg);
+        return m.matches();
     }
 
 //	public static void main(String [] args){

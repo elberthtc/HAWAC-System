@@ -1,12 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cr.ac.una.fucem.inge.hawac.view;
+
 import cr.ac.una.fucem.inge.hawac.controller.InventariosController;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.InventariosModel;
+import cr.ac.una.fucem.inge.hawac.utils.Validaciones;
 import hawac.Application;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -86,7 +83,7 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         jLabel1.setText("Buscar");
 
-        agregarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/addUser.png"))); // NOI18N
+        agregarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/agregar.png"))); // NOI18N
         agregarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 agregarBActionPerformed(evt);
@@ -114,7 +111,7 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
         });
         jScrollPane1.setViewportView(tablaEmpleados);
 
-        eliminarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/deleteUser.png"))); // NOI18N
+        eliminarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/cancel (2).png"))); // NOI18N
         eliminarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarBActionPerformed(evt);
@@ -212,33 +209,14 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
-        if (IdRadioButton.isSelected() == false && descripcionRB.isSelected() == false) {
-            nombreLb.setBorder(Application.BORDER_ERROR);
-            nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
-        } else {
-            nombreLb.setBorder(null);
-            nombreLb.setToolTipText("");
-            if (IdRadioButton.isSelected() == true && nombreTF.getText().length() == 0) {
-                model.getErrores().put("nombreTextFd", "Digite la identificación a buscar");
-                nombreLb.setBorder(Application.BORDER_ERROR);
-                nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
-            }
-            if (IdRadioButton.isSelected() == true && nombreTF.getText().length() != 0 && Model.isNumeric(nombreTF.getText())) {
+        String key = nombreTF.getText();
+        if(key.isEmpty())
+            controller.buscar();
+        else{
+            if(Validaciones.isNumeric(key))
                 controller.buscarPorId();
-                return;
-            } else {
-                model.getErrores().put("nombreTextFd", "Digite solo caracteres numericos");
-                nombreLb.setBorder(Application.BORDER_ERROR);
-                nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
-            }
-            if(descripcionRB.isSelected() && nombreTF.getText().length() != 0){
-                controller.buscarPorDescripcion();
-                return;
-            }
-            if(descripcionRB.isSelected() && nombreTF.getText().length() == 0){
-                nombreLb.setBorder(Application.BORDER_ERROR);
-                model.getErrores().put("nombreTextFd", "Digite la descripcion a buscar");
-            }
+            else
+                controller.buscarPorDescripcion();            
         }
     }//GEN-LAST:event_buscarButtonActionPerformed
 

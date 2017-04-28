@@ -51,9 +51,7 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
         canceljButton = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        estadoLb = new javax.swing.JLabel();
         buscarB = new javax.swing.JButton();
-        estadoCB = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("AGREGAR AL INVENTARIO");
@@ -98,17 +96,12 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
         jLabel5.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         jLabel5.setText("Salir");
 
-        estadoLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        estadoLb.setText("Estado:");
-
         buscarB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
         buscarB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarBActionPerformed(evt);
             }
         });
-
-        estadoCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Espera", "En Proceso", "Listo" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,11 +111,9 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(productoLb)
-                    .addComponent(cantidadLb)
-                    .addComponent(estadoLb))
+                    .addComponent(cantidadLb))
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(estadoCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cantidadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -153,11 +144,7 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cantidadLb)
                     .addComponent(cantidadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(estadoLb, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(estadoCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(guardarjButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(canceljButton, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -165,7 +152,7 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
@@ -194,9 +181,9 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
 
    
     public void update(java.util.Observable o, Object arg) {
-        Producto current = model.getProductoActual();
         Inventario inv = model.getCurrent();
-        if (current.getIdProducto() == -1) {
+        Producto current = inv.getProducto();
+        if (current.getIdProducto() == -1 || current.getIdProducto() == 0) {
             this.idTextField.setText("");
             this.idTextField.setEditable(false);
         } else {
@@ -215,30 +202,8 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
             cantidadTextField.setText("");
         } else
             cantidadTextField.setText(inv.getCantidad()+"");
-        
-        if (model.getErrores().get("cantidad") != null) {
-            estadoLb.setBorder(Application.BORDER_ERROR);
-            estadoLb.setToolTipText(model.getErrores().get("cantidad"));
-        } else {
-            estadoLb.setBorder(null);
-            estadoLb.setToolTipText("");
-        }
 
         Boolean editable = Arrays.asList(Application.MODO_AGREGAR, Application.MODO_EDITAR).contains(model.getModo());
-        //cantidadTextField.setEnabled(editable);
-        // nombreTextField.setText(current.getNombre());
-        /*if (model.getErrores().get("Nombre") != null) {
-            cantidadLb.setBorder(Application.BORDER_ERROR);
-            cantidadLb.setToolTipText(model.getErrores().get("Nombre"));
-        } else {
-            cantidadLb.setBorder(null);
-            cantidadLb.setToolTipText("");
-        }
-        */
-        
-        if(inv.getEstado().compareTo("")!=0){
-            estadoCB.setSelectedItem(inv.getEstado());
-        }
 
         guardarjButton.setVisible(editable);
         this.validate();
@@ -288,8 +253,6 @@ public class InventarioView extends javax.swing.JDialog implements java.util.Obs
     private javax.swing.JButton canceljButton;
     private javax.swing.JLabel cantidadLb;
     public javax.swing.JTextField cantidadTextField;
-    public javax.swing.JComboBox estadoCB;
-    private javax.swing.JLabel estadoLb;
     private javax.swing.JButton guardarjButton;
     public javax.swing.JTextField idTextField;
     private javax.swing.JLabel jLabel4;
