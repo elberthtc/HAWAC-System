@@ -64,7 +64,7 @@ public class CierreCajaView extends javax.swing.JInternalFrame implements java.u
         ));
         jScrollPane1.setViewportView(tablaFacturas);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 67, 547, 360));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(24, 67, 550, 360));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 18)); // NOI18N
         jLabel1.setText("CIERRE DE CAJA");

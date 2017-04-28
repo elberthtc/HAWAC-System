@@ -15,6 +15,7 @@ import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
 import cr.ac.una.fucem.inge.hawac.view.ProductoInventarioView;
 import hawac.Application;
 import hawac.Session;
+import java.util.LinkedList;
 import java.util.List;
 import javax.swing.JOptionPane;
 
@@ -37,7 +38,7 @@ public class ProductoInventarioController {
 
     public void buscar() {
         model.clearErrors();
-        model.getFilter().setDescripcion(view.DescripcionText.getText());
+        model.getFilter().setDescripcion(view.descripcionT.getText());
         List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
         for(int i=0;i<rows.size();i++){
             Inventario inv = domainModel.getInventarioBl().findById(new InventarioId("Tienda",rows.get(i).getIdProducto()));
@@ -56,7 +57,7 @@ public class ProductoInventarioController {
 
     public void buscarPorDescripcion() {
         model.clearErrors();
-        model.getFilter().setDescripcion(view.DescripcionText.getText());
+        model.getFilter().setDescripcion(view.descripcionT.getText());
         List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
         for(int i=0;i<rows.size();i++){
             Inventario inv = domainModel.getInventarioBl().findById(new InventarioId("Tienda",rows.get(i).getIdProducto()));
@@ -67,7 +68,7 @@ public class ProductoInventarioController {
         }
         int i = 0, cont = rows.size();
         while (i < rows.size() && cont > 0) {
-            if (rows.get(i).getDescripcion().toLowerCase().indexOf(view.DescripcionText.getText().toLowerCase()) != 0) {
+            if (rows.get(i).getDescripcion().toLowerCase().indexOf(view.descripcionT.getText().toLowerCase()) != 0) {
                 rows.remove(rows.get(i));
             } else {
                 i++;
@@ -94,6 +95,7 @@ public class ProductoInventarioController {
         try {
 
             Application.INVENTARIO_VIEW.getModelo().setProductoActual(c1);
+            Application.INVENTARIO_VIEW.getModelo().getCurrent().setProducto(c1);
 
         } catch (Exception ex) {
             model.setMensaje("Problemas con la Base de Datos");
@@ -101,11 +103,14 @@ public class ProductoInventarioController {
         view.setVisible(false);
         Application.INVENTARIO_VIEW.update(model, e1);
         Application.INVENTARIO_VIEW.setVisible(true);
+        view.getModel().setFilter(new Producto());
+        List<Producto> p = new LinkedList<Producto>();
+        view.getModel().setProductos(p);
     }
 
     public void buscarPorId() {
         model.clearErrors();
-        model.getFilter().setIdProducto(Integer.parseInt(view.DescripcionText.getText()));
+        model.getFilter().setIdProducto(Integer.parseInt(view.descripcionT.getText()));
         List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
         for(int i=0;i<rows.size();i++){
             Inventario inv = domainModel.getInventarioBl().findById(new InventarioId("Tienda",rows.get(i).getIdProducto()));
@@ -116,7 +121,7 @@ public class ProductoInventarioController {
         }
         int i = 0, cont = rows.size();
         while (i < rows.size() && cont > 0) {
-            if (String.valueOf(rows.get(i).getIdProducto()).compareTo(view.DescripcionText.getText()) != 0) {
+            if (String.valueOf(rows.get(i).getIdProducto()).compareTo(view.descripcionT.getText()) != 0) {
                 rows.remove(rows.get(i));
             } else {
                 i++;

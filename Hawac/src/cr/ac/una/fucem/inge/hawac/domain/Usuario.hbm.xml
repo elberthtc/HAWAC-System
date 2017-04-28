@@ -9,13 +9,13 @@
             <generator class="assigned" />
         </id>
         <property name="password" type="string">
-            <column name="password" length="45" not-null="true" />
+            <column name="password" length="300" not-null="true" />
         </property>
         <property name="tipo" type="int">
             <column name="tipo" not-null="true" />
         </property>
         <property name="nombre" type="string">
-            <column name="nombre" length="100" not-null="true" />
+            <column name="nombre" length="300" not-null="true" />
         </property>
         <set name="facturas" table="factura" inverse="true" lazy="true" fetch="select">
             <key>

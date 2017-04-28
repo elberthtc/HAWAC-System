@@ -32,7 +32,7 @@ public class UsuariosController {
 
     public void buscar() {
         modelo.borrarErrores();
-        modelo.getFiltro().setNombre(vista.nomjTextField.getText());
+        modelo.getFiltro().setNombre(vista.nombreT.getText());
         List<Usuario> filas = domainModel.getUsuarioBl().findAll(Usuario.class.getName());
         if (filas.isEmpty()) {
             modelo.getErrores().put("nomjTextField", "Ningún registro coincide con la busqueda");
@@ -43,8 +43,8 @@ public class UsuariosController {
 
     public void buscarPorNombre() {
         modelo.borrarErrores();
-        modelo.getFiltro().setNombre(vista.nomjTextField.getText());
-        String nombre = vista.nomjTextField.getText();
+        modelo.getFiltro().setNombre(vista.nombreT.getText());
+        String nombre = vista.nombreT.getText();
         List<Usuario> filas = domainModel.getUsuarioBl().findAll(Usuario.class.getName());
         //for(int i = 0; i<filas.size();i++){
         int i = 0, cont = filas.size();
@@ -66,7 +66,7 @@ public class UsuariosController {
     public void buscarPorId() {
         modelo.borrarErrores();
         //modelo.getFiltro().setIdUsuario(Integer.parseInt(vista.nomjTextField.getText()));
-        String nombre = vista.nomjTextField.getText();
+        String nombre = vista.nombreT.getText();
         List<Usuario> filas = domainModel.getUsuarioBl().findAll(Usuario.class.getName());
         int i = 0, cont = filas.size();
         while (i < filas.size() && cont > 0) {

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cr.ac.una.fucem.inge.hawac.controller;
 
 import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
@@ -39,7 +34,7 @@ public class ProductosController {
 
     public void buscar() {
         model.clearErrors();
-        model.getFilter().setDescripcion(view.DescripcionText.getText());
+        model.getFilter().setDescripcion(view.descripcionT.getText());
         List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
         for(int i = 0; i< rows.size(); i++){
             Inventario inv = domainModel.getInventarioBl().findById(new InventarioId("Tienda",rows.get(i).getIdProducto()));
@@ -59,7 +54,7 @@ public class ProductosController {
 
     public void buscarPorDescripcion() {
         model.clearErrors();
-        model.getFilter().setDescripcion(view.DescripcionText.getText());
+        model.getFilter().setDescripcion(view.descripcionT.getText());
         List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
         for(int i = 0; i< rows.size(); i++){
             Inventario inv = domainModel.getInventarioBl().findById(new InventarioId("Tienda",rows.get(i).getIdProducto()));
@@ -70,7 +65,7 @@ public class ProductosController {
         }
         int i = 0, cont = rows.size();
         while (i < rows.size() && cont > 0) {
-            if (rows.get(i).getDescripcion().toLowerCase().indexOf(view.DescripcionText.getText().toLowerCase()) == -1) {
+            if (rows.get(i).getDescripcion().toLowerCase().indexOf(view.descripcionT.getText().toLowerCase()) == -1) {
                 rows.remove(rows.get(i));
             } else {
                 i++;
@@ -93,7 +88,7 @@ public class ProductosController {
     
     public void buscarPorCodigo() {
         model.clearErrors();
-        model.getFilter().setDescripcion(view.DescripcionText.getText());
+        model.getFilter().setDescripcion(view.descripcionT.getText());
         List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
         for(int i = 0; i< rows.size(); i++){
             Inventario inv = domainModel.getInventarioBl().findById(new InventarioId("Tienda",rows.get(i).getIdProducto()));
@@ -104,7 +99,7 @@ public class ProductosController {
         }
         int i = 0, cont = rows.size();
         while (i < rows.size() && cont > 0) {
-            if (String.valueOf(rows.get(i).getIdProducto()).indexOf(view.DescripcionText.getText()) == -1) {
+            if (String.valueOf(rows.get(i).getIdProducto()).indexOf(view.descripcionT.getText()) == -1) {
                 rows.remove(rows.get(i));
             } else {
                 i++;
@@ -144,8 +139,15 @@ public class ProductosController {
             }
         } catch (Exception ex) {
         }
-        List<Producto> rowsMod = domainModel.getProductoBl().findAll(Producto.class.getName());
-        model.setProductos(rowsMod);
+        List<Producto> rows = domainModel.getProductoBl().findAll(Producto.class.getName());
+        for(int i = 0; i< rows.size(); i++){
+            Inventario inv = domainModel.getInventarioBl().findById(new InventarioId("Tienda",rows.get(i).getIdProducto()));
+            if(inv!=null){
+                int cantidad = inv.getCantidad();
+                rows.get(i).setCantidad(cantidad);
+            }
+        }
+        model.setProductos(rows);
     }
 
     public void preAgregar() {

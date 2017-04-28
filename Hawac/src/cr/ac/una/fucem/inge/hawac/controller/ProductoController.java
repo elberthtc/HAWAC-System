@@ -7,6 +7,7 @@ package cr.ac.una.fucem.inge.hawac.controller;
 
 import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
 import cr.ac.una.fucem.inge.hawac.domain.Inventario;
+import cr.ac.una.fucem.inge.hawac.domain.InventarioId;
 import cr.ac.una.fucem.inge.hawac.domain.Producto;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.ProductoModel;
@@ -92,6 +93,13 @@ public class ProductoController {
                         model.setMensaje("PRODUCTO AGREGADO");
                         model.setCurrent(new Producto());
                         productos = domainModel.getProductoBl().findAll(Producto.class.getName());
+                        for (int j = 0; j < productos.size(); j++) {
+                            Inventario inventario = domainModel.getInventarioBl().findById(new InventarioId("Tienda", productos.get(j).getIdProducto()));
+                            if (inventario != null) {
+                                int cantidad = inventario.getCantidad();
+                                productos.get(j).setCantidad(cantidad);
+                            }
+                        }
                         productosModel.setProductos(productos);
                         view.setVisible(false);
                         break;
@@ -102,6 +110,13 @@ public class ProductoController {
                         model.setMensaje("PRODUCTO MODIFICADO");
                         model.setCurrent(p1);
                         productos = domainModel.getProductoBl().findAll(Producto.class.getName());
+                        for (int j = 0; j < productos.size(); j++) {
+                            Inventario inventario = domainModel.getInventarioBl().findById(new InventarioId("Tienda", productos.get(j).getIdProducto()));
+                            if (inventario != null) {
+                                int cantidad = inventario.getCantidad();
+                                productos.get(j).setCantidad(cantidad);
+                            }
+                        }
                         productosModel.setProductos(productos);
                         view.setVisible(false);
                         break;

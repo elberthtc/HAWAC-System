@@ -12,13 +12,13 @@
             <column name="precio" precision="12" scale="0" not-null="true" />
         </property>
         <property name="descripcion" type="string">
-            <column name="descripcion" length="200" not-null="true" />
+            <column name="descripcion" length="300" not-null="true" />
         </property>
         <property name="talla" type="string">
             <column name="talla" length="5" not-null="true" />
         </property>
         <property name="color" type="string">
-            <column name="color" length="30" not-null="true" />
+            <column name="color" length="300" not-null="true" />
         </property>
         <property name="genero" type="boolean">
             <column name="genero" not-null="true" />

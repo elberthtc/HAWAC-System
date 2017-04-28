@@ -33,7 +33,7 @@ public class ProductoApartadoController {
     
     public void buscar(){
         model.clearErrors();
-        model.getFilter().setDescripcion(view.DescripcionText.getText());
+        model.getFilter().setDescripcion(view.descripcionT.getText());
         List<Producto> rows = new LinkedList<Producto>();//domainModel.getProductoBl().findAll(Producto.class.getName()); 
         List<Inventario> inv = domainModel.getInventarioBl().findAll(Inventario.class.getName());
         for(int i = 0; i< inv.size(); i++){
@@ -74,17 +74,13 @@ public class ProductoApartadoController {
             switch (model.getModo()) {
                 case Application.MODO_AGREGAR:
                     int cantidad = i1.getCantidad()-1;
-                    //i1.setCantidad(cantidad);
-                    //domainModel.getInventarioBl().merge(i1);
                     Application.APARTADO_VIEW.getModel().getCurrent().setProducto(p1.getIdProducto());
                     Application.APARTADO_VIEW.getModel().getCurrent().setP(p1);
                     Application.APARTADO_VIEW.update(model, row);
-                    //model.setMensaje("PRODUCTO AGREGADO");
-                    //lineas.add(l1);
-                    //f1.setCliente(Application.FACTURA_VIEW.getModel().getCliente());
-                    //facturaModel.setCurrent(f1);
-                    //view.cantidadTextField.setText("0");
                     Application.PRODUCTO_APARTADO_VIEW.setVisible(false);
+                    view.getModel().setFilter(new Producto());
+                    List<Producto> p = new LinkedList<Producto>();
+                    view.getModel().setProductos(p);
                     Application.APARTADO_VIEW.setVisible(true);
                     break;
 
@@ -98,7 +94,7 @@ public class ProductoApartadoController {
   
     public void buscarPorDescripcion(){
         model.clearErrors();
-        model.getFilter().setDescripcion(view.DescripcionText.getText());
+        model.getFilter().setDescripcion(view.descripcionT.getText());
         List<Producto> rows = new LinkedList<Producto>();//domainModel.getProductoBl().findAll(Producto.class.getName()); 
         List<Inventario> inv = domainModel.getInventarioBl().findAll(Inventario.class.getName());
         for(int i = 0; i< inv.size(); i++){
@@ -115,7 +111,7 @@ public class ProductoApartadoController {
         }
         int j=0, cont=rows.size();
         while(j<rows.size() && cont>0){
-            if(rows.get(j).getDescripcion().toLowerCase().indexOf(view.DescripcionText.getText().toLowerCase())!=0){
+            if(rows.get(j).getDescripcion().toLowerCase().indexOf(view.descripcionT.getText().toLowerCase())!=0){
                 rows.remove(rows.get(j));
             }else
                 j++;
@@ -131,7 +127,7 @@ public class ProductoApartadoController {
     
      public void buscarPorId(){
         model.clearErrors();
-        model.getFilter().setIdProducto(Integer.parseInt(view.DescripcionText.getText()));
+        model.getFilter().setIdProducto(Integer.parseInt(view.descripcionT.getText()));
         List<Producto> rows = new LinkedList<Producto>();//domainModel.getProductoBl().findAll(Producto.class.getName()); 
         List<Inventario> inv = domainModel.getInventarioBl().findAll(Inventario.class.getName());
         for(int i = 0; i< inv.size(); i++){
@@ -148,7 +144,7 @@ public class ProductoApartadoController {
         }
         int j=0, cont=rows.size();
         while(j<rows.size() && cont>0){
-            if(String.valueOf(rows.get(j).getIdProducto()).compareTo(view.DescripcionText.getText())!=0){
+            if(String.valueOf(rows.get(j).getIdProducto()).compareTo(view.descripcionT.getText())!=0){
                 rows.remove(rows.get(j));
             }else
                 j++;

@@ -43,7 +43,7 @@ public class ApartadosController {
         
         
         model.clearErrors();
-        model.getFilter().getC().setNombre(view.DescripcionText.getText());
+        model.getFilter().getC().setNombre(view.descripcionText.getText());
         List<Apartado> rows = domainModel.getApartadoBl().findAll(Apartado.class.getName());
         for(int i = 0; i < rows.size(); i++){
             rows.get(i).setC(domainModel.getClienteBl().findById(rows.get(i).getCliente()));
@@ -60,7 +60,7 @@ public class ApartadosController {
 
     public void buscarPorCliente() {
         model.clearErrors();
-        model.getFilter().getC().setNombre(view.DescripcionText.getText());
+        model.getFilter().getC().setNombre(view.descripcionText.getText());
         List<Apartado> rows = domainModel.getApartadoBl().findAll(Apartado.class.getName());
         int i = 0, cont = rows.size();
         
@@ -71,7 +71,7 @@ public class ApartadosController {
         }
         
         while (i < rows.size() && cont > 0) {
-            if (rows.get(i).getC().getNombre().toLowerCase().indexOf(view.DescripcionText.getText().toLowerCase()) == -1) {
+            if (rows.get(i).getC().getNombre().toLowerCase().indexOf(view.descripcionText.getText().toLowerCase()) == -1) {
                 rows.remove(rows.get(i));
             } else {
                 i++;
@@ -96,7 +96,7 @@ public class ApartadosController {
             rows.get(j).setU(domainModel.getUsuarioBl().findById(rows.get(j).getUsuario()));
         }
         while (i < rows.size() && cont > 0) {
-            if (String.valueOf(rows.get(i).getIdApartado()).indexOf(view.DescripcionText.getText()) == -1) {
+            if (String.valueOf(rows.get(i).getIdApartado()).indexOf(view.descripcionText.getText()) == -1) {
                 rows.remove(rows.get(i));
             } else {
                 i++;

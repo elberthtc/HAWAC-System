@@ -36,14 +36,14 @@ public class ClientesApartadoController {
     
     public void buscarPorNombre() {
         model.clearErrors();
-        model.getFilter().setNombre(view.nombreTextFd.getText());
+        model.getFilter().setNombre(view.nombreT.getText());
         List<Cliente> aux = domainModel.getClienteBl().findAll(Cliente.class.getName());
         if(aux.size()>0){
             aux.remove(aux.get(0));
         }
         int i=0, cont= aux.size();
         while(i<aux.size() && cont>0){
-            if(aux.get(i).getNombre().toLowerCase().indexOf(view.nombreTextFd.getText().toLowerCase())==-1){
+            if(aux.get(i).getNombre().toLowerCase().indexOf(view.nombreT.getText().toLowerCase())==-1){
                 aux.remove(aux.get(i));
             }else
                 i++;
@@ -59,14 +59,14 @@ public class ClientesApartadoController {
     
     public void buscarPorId(){
         model.clearErrors();
-        model.getFilter().setNombre(view.nombreTextFd.getText());
+        model.getFilter().setNombre(view.nombreT.getText());
         List<Cliente> rows = domainModel.getClienteBl().findAll(Cliente.class.getName()); //ACA BUSCA POR ID
         if(rows.size()>0){
             rows.remove(rows.get(0));
         }
         int i=0, cont= rows.size();
         while(i<rows.size() && cont>0){
-            if(String.valueOf(rows.get(i).getCedula()).indexOf(view.nombreTextFd.getText())==-1){
+            if(String.valueOf(rows.get(i).getCedula()).indexOf(view.nombreT.getText())==-1){
                 rows.remove(rows.get(i));
             }else
                 i++;
@@ -82,7 +82,7 @@ public class ClientesApartadoController {
     
     public void buscar(){
         model.clearErrors();
-        model.getFilter().setNombre(view.nombreTextFd.getText());
+        model.getFilter().setNombre(view.nombreT.getText());
         List<Cliente> rows = domainModel.getClienteBl().findAll(Cliente.class.getName());
         if(rows.size()>0){
             rows.remove(rows.get(0));

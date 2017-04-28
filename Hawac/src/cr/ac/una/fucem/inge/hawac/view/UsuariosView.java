@@ -2,6 +2,7 @@ package cr.ac.una.fucem.inge.hawac.view;
 
 import cr.ac.una.fucem.inge.hawac.controller.UsuariosController;
 import cr.ac.una.fucem.inge.hawac.model.UsuariosModel;
+import cr.ac.una.fucem.inge.hawac.utils.Validaciones;
 import hawac.Application;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -45,7 +46,7 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
 
         busqueda = new javax.swing.ButtonGroup();
         nombreLb = new javax.swing.JLabel();
-        nomjTextField = new javax.swing.JTextField();
+        nombreT = new javax.swing.JTextField();
         buscarButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         agregarButton = new javax.swing.JButton();
@@ -54,20 +55,17 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
         tablaEmpleados = new javax.swing.JTable();
         eliminarButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        IdRadioButton = new javax.swing.JRadioButton();
-        NombreRadioButton = new javax.swing.JRadioButton();
-        verTodoB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("Planilla De Empleados");
 
         nombreLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        nombreLb.setText("Seleccione el argumento a buscar");
+        nombreLb.setText("Escriba el criterio a buscar");
 
-        nomjTextField.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        nomjTextField.addActionListener(new java.awt.event.ActionListener() {
+        nombreT.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        nombreT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nomjTextFieldActionPerformed(evt);
+                nombreTActionPerformed(evt);
             }
         });
 
@@ -119,27 +117,6 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
         jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         jLabel3.setText("Eliminar");
 
-        busqueda.add(IdRadioButton);
-        IdRadioButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        IdRadioButton.setText("Id");
-        IdRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IdRadioButtonActionPerformed(evt);
-            }
-        });
-
-        busqueda.add(NombreRadioButton);
-        NombreRadioButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        NombreRadioButton.setText("Nombre");
-
-        verTodoB.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        verTodoB.setText("Ver Todo");
-        verTodoB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verTodoBActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -161,14 +138,7 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
                             .addComponent(eliminarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(nombreLb)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 414, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(nomjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(verTodoB))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(IdRadioButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(NombreRadioButton)))
+                    .addComponent(nombreT, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 10, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -176,16 +146,10 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(nombreLb)
-                .addGap(8, 8, 8)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomjTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(verTodoB))
+                .addGap(11, 11, 11)
+                .addComponent(nombreT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(NombreRadioButton)
-                    .addComponent(IdRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 384, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -203,33 +167,19 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
-        if (IdRadioButton.isSelected() == false && NombreRadioButton.isSelected() == false) {
-            nombreLb.setBorder(Application.BORDER_ERROR);
-            nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
-        } else {
-            nombreLb.setBorder(null);
-            nombreLb.setToolTipText("");
-            if (NombreRadioButton.isSelected() == true && nomjTextField.getText().length() == 0) {
-                model.getErrores().put("nombreTextFd", "Digite el nombre a buscar");
-                nombreLb.setBorder(Application.BORDER_ERROR);
-                nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
-            }
-            if (NombreRadioButton.isSelected() == true && nomjTextField.getText().length() != 0) {
-                controller.buscarPorNombre();
-            }
-            if (IdRadioButton.isSelected() == true && nomjTextField.getText().length() == 0) {
-                model.getErrores().put("nombreTextFd", "Digite la identificación a buscar");
-                nombreLb.setBorder(Application.BORDER_ERROR);
-                nombreLb.setToolTipText(model.getErrores().get("nomjTextField"));
-            }
-            if (IdRadioButton.isSelected() == true && nomjTextField.getText().length() != 0) {
+        String key = nombreT.getText();
+        if(key.isEmpty())
+            controller.buscar();
+        else{
+            if(Validaciones.isNumeric(key))
                 controller.buscarPorId();
-            }
+            else
+                controller.buscarPorNombre();
         }
     }//GEN-LAST:event_buscarButtonActionPerformed
 
     private void agregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarButtonActionPerformed
-        Application.EMPLEADO_VIEW.setLocation(this.verTodoB.getLocationOnScreen());
+        Application.EMPLEADO_VIEW.setLocation(this.nombreT.getLocationOnScreen());
         controller.preAgregar();
     }//GEN-LAST:event_agregarButtonActionPerformed
 
@@ -252,27 +202,18 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
 
     }//GEN-LAST:event_tablaEmpleadosMouseClicked
 
-    private void nomjTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomjTextFieldActionPerformed
+    private void nombreTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nomjTextFieldActionPerformed
-
-    private void IdRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdRadioButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_IdRadioButtonActionPerformed
-
-    private void verTodoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTodoBActionPerformed
-        // TODO add your handling code here:
-        controller.buscar();
-    }//GEN-LAST:event_verTodoBActionPerformed
+    }//GEN-LAST:event_nombreTActionPerformed
 
     @Override
     public void update(java.util.Observable updatedModel,Object parametros) {
         if(model.getFiltro().getNombre().length()==0 && model.getFiltro().getIdUsuario() == 0){
-            nomjTextField.setText(model.getFiltro().getNombre());
+            nombreT.setText(model.getFiltro().getNombre());
         } else if(model.getFiltro().getNombre().length()==0){
-            nomjTextField.setText(model.getFiltro().getIdUsuario()+"");
+            nombreT.setText(model.getFiltro().getIdUsuario()+"");
         } else
-            nomjTextField.setText(model.getFiltro().getNombre());
+            nombreT.setText(model.getFiltro().getNombre());
         
         if(model.getErrores().get("nomjTextField")!= null){
             nombreLb.setBorder(Application.BORDER_ERROR);
@@ -329,8 +270,6 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton IdRadioButton;
-    private javax.swing.JRadioButton NombreRadioButton;
     private javax.swing.JButton agregarButton;
     private javax.swing.JButton buscarButton;
     private javax.swing.ButtonGroup busqueda;
@@ -340,8 +279,7 @@ public class UsuariosView extends javax.swing.JInternalFrame implements java.uti
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nombreLb;
-    public javax.swing.JTextField nomjTextField;
+    public javax.swing.JTextField nombreT;
     private javax.swing.JTable tablaEmpleados;
-    private javax.swing.JButton verTodoB;
     // End of variables declaration//GEN-END:variables
 }

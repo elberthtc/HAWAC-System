@@ -7,6 +7,7 @@ package cr.ac.una.fucem.inge.hawac.view;
 
 import cr.ac.una.fucem.inge.hawac.controller.ClientesController;
 import cr.ac.una.fucem.inge.hawac.model.ClientesModel;
+import cr.ac.una.fucem.inge.hawac.utils.Validaciones;
 import hawac.Application;
 import javax.swing.JOptionPane;
 /*import ferreteria.Application;
@@ -52,7 +53,7 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
 
         Busqueda = new javax.swing.ButtonGroup();
         nombreLb = new javax.swing.JLabel();
-        nombreTextFd = new javax.swing.JTextField();
+        nombreT = new javax.swing.JTextField();
         searchButton = new javax.swing.JButton();
         agregarButton = new javax.swing.JButton();
         agregarLb = new javax.swing.JLabel();
@@ -61,17 +62,14 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
         deleteButton = new javax.swing.JButton();
         eliminarLb = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        IdRadioButton = new javax.swing.JRadioButton();
-        NombreRadioButton = new javax.swing.JRadioButton();
-        verTodoB = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("Catálogo de Clientes");
 
         nombreLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        nombreLb.setText("Seleccione el argumento a buscar");
+        nombreLb.setText("Escriba el criterio a buscar");
 
-        nombreTextFd.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        nombreT.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
         searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -121,31 +119,6 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         jLabel1.setText("Buscar");
 
-        Busqueda.add(IdRadioButton);
-        IdRadioButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        IdRadioButton.setText("Id");
-        IdRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IdRadioButtonActionPerformed(evt);
-            }
-        });
-
-        Busqueda.add(NombreRadioButton);
-        NombreRadioButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        NombreRadioButton.setText("Nombre");
-        NombreRadioButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NombreRadioButtonActionPerformed(evt);
-            }
-        });
-
-        verTodoB.setText("Ver Todo");
-        verTodoB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                verTodoBActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -155,14 +128,7 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(nombreLb, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(NombreRadioButton)
-                        .addGap(18, 18, 18)
-                        .addComponent(IdRadioButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(nombreTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(verTodoB))
+                    .addComponent(nombreT, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -182,17 +148,11 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(nombreLb)
-                .addGap(4, 4, 4)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nombreTextFd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(verTodoB))
-                .addGap(5, 5, 5)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(IdRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(NombreRadioButton, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(7, 7, 7)
+                .addComponent(nombreT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(agregarLb)
@@ -209,34 +169,20 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
     }// </editor-fold>//GEN-END:initComponents
 
     private void agregarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarButtonActionPerformed
-       Application.CLIENTE_VIEW.setLocation(this.verTodoB.getLocationOnScreen());
+       Application.CLIENTE_VIEW.setLocation(this.nombreT.getLocationOnScreen());
        controller.preAgregar();
     }//GEN-LAST:event_agregarButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-      if(IdRadioButton.isSelected()==false && NombreRadioButton.isSelected()==false){
-              nombreLb.setBorder(Application.BORDER_ERROR);
-              nombreLb.setToolTipText(model.getErrores().get("nombreTextFd"));
-        }else{
-                nombreLb.setBorder(null);
-                nombreLb.setToolTipText("");
-                if(NombreRadioButton.isSelected()==true && nombreTextFd.getText().length()==0){
-                    model.getErrores().put("nombreTextFd","Digite la descripcion a buscar");
-                    nombreLb.setBorder(Application.BORDER_ERROR);
-                    nombreLb.setToolTipText(model.getErrores().get("nombreTextFd"));
-                }
-                if(NombreRadioButton.isSelected()==true && nombreTextFd.getText().length()!=0){
-                    controller.buscarPorNombre();
-                }
-                if(IdRadioButton.isSelected()==true && nombreTextFd.getText().length()==0){
-                    model.getErrores().put("nombreTextFd","Digite la descripcion a buscar");
-                    nombreLb.setBorder(Application.BORDER_ERROR);
-                    nombreLb.setToolTipText(model.getErrores().get("nombreTextFd"));
-                }
-                if(IdRadioButton.isSelected()==true && nombreTextFd.getText().length()!=0){
-                    controller.buscarPorId();
-                }
-      }
+      String key = nombreT.getText();
+        if(key.isEmpty())
+            controller.buscar();
+        else{
+            if(Validaciones.isNumeric(key))
+                controller.buscarPorId();
+            else
+                controller.buscarPorNombre();
+        }
     }//GEN-LAST:event_searchButtonActionPerformed
 
     private void clientesTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clientesTableMouseClicked
@@ -257,22 +203,9 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
         }
     }//GEN-LAST:event_deleteButtonActionPerformed
 
-    private void IdRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdRadioButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_IdRadioButtonActionPerformed
-
-    private void NombreRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombreRadioButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NombreRadioButtonActionPerformed
-
-    private void verTodoBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_verTodoBActionPerformed
-        // TODO add your handling code here:
-        controller.buscar();
-    }//GEN-LAST:event_verTodoBActionPerformed
-
     @Override
     public void update(java.util.Observable updatedModel,Object parametros) {
-        nombreTextFd.setText(model.getFilter().getNombre());
+        nombreT.setText(model.getFilter().getNombre());
         if(model.getErrores().get("nombreTextFd")!=null){
             nombreLb.setBorder(Application.BORDER_ERROR);
             nombreLb.setToolTipText(model.getErrores().get("nombreTextFd"));
@@ -341,8 +274,6 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup Busqueda;
-    private javax.swing.JRadioButton IdRadioButton;
-    private javax.swing.JRadioButton NombreRadioButton;
     public javax.swing.JButton agregarButton;
     public javax.swing.JLabel agregarLb;
     private javax.swing.JTable clientesTable;
@@ -351,8 +282,7 @@ public class ClientesView extends javax.swing.JInternalFrame implements java.uti
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nombreLb;
-    public javax.swing.JTextField nombreTextFd;
+    public javax.swing.JTextField nombreT;
     private javax.swing.JButton searchButton;
-    private javax.swing.JButton verTodoB;
     // End of variables declaration//GEN-END:variables
 }

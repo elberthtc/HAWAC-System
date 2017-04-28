@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package cr.ac.una.fucem.inge.hawac.controller;
 
 import cr.ac.una.fucem.inge.hawac.domain.Bitacora;
-import cr.ac.una.fucem.inge.hawac.domain.Usuario;
 import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.ApplicationModel;
 import cr.ac.una.fucem.inge.hawac.view.ApplicationView;
@@ -120,9 +114,5 @@ public class ApplicationController {
 
     public void about() {
         Application.ABOUT.setVisible(true);
-    }
-
-    public void inventarioMenuShow(){
-        Application.INVENTARIO_MENU.setVisible(true);
     }
 }

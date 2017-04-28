@@ -222,7 +222,7 @@ public class ClienteView extends javax.swing.JDialog implements java.util.Observ
         
         numTelefonoTextFd.setEnabled(editable);
         numTelefonoTextFd.setText(current.getTelefono());
-        if(model.getErrores().get("Numero Telefono")!= null){
+        if(model.getErrores().get("Telefono")!= null){
             numTelefonoLb.setBorder(Application.BORDER_ERROR);
             numTelefonoLb.setToolTipText(model.getErrores().get("Numero Telefono"));
         }else{

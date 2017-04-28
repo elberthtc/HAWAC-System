@@ -9,7 +9,7 @@
             <generator class="assigned" />
         </id>
         <property name="nombre" type="string">
-            <column name="nombre" length="50" not-null="true" />
+            <column name="nombre" length="300" not-null="true" />
         </property>
         <property name="totalComprado" type="float">
             <column name="totalComprado" precision="12" scale="0" not-null="true" />
@@ -18,7 +18,7 @@
             <column name="telefono" length="11" not-null="true" />
         </property>
         <property name="correo" type="string">
-            <column name="correo" length="45" not-null="true" />
+            <column name="correo" length="300" not-null="true" />
         </property>
         <set name="apartados" table="apartado" inverse="true" lazy="true" fetch="select">
             <key>

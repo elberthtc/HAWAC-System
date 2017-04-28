@@ -149,9 +149,6 @@ public class Application {
         LoginController logincontroller = new LoginController(loginView, loginModel, domainModel, session);
         loginView.setVisible(true);
 
-        InventarioMenuView inventarioMenu = new InventarioMenuView(applicationView, true);
-        INVENTARIO_MENU = inventarioMenu;
-
         About about = new About();
         ABOUT = about;
 
@@ -160,7 +157,6 @@ public class Application {
     public static Usuario USUARIO;
 
     public static About ABOUT;
-    public static InventarioMenuView INVENTARIO_MENU;
     public static ApplicationView APPLICATION_VIEW;
     public static LoginView LOGIN_VIEW;
     public static ClientesView CLIENTES_VIEW;

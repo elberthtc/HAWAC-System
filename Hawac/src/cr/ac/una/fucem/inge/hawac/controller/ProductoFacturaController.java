@@ -36,7 +36,7 @@ public class ProductoFacturaController {
     }
     public void buscar(){
         model.clearErrors();
-        model.getFilter().setDescripcion(view.DescripcionText.getText());
+        model.getFilter().setDescripcion(view.descripcionT.getText());
         List<Producto> rows = new LinkedList<Producto>();//domainModel.getProductoBl().findAll(Producto.class.getName()); 
         List<Inventario> inv = domainModel.getInventarioBl().findAll(Inventario.class.getName());
         for(int i = 0; i< inv.size(); i++){
@@ -130,6 +130,9 @@ public class ProductoFacturaController {
                     facturaModel.setLineas(lineas);
                     facturaModel.setLineas2(lineas);
                     view.cantidadTextField.setText("0");
+                    view.getModel().setFilter(new Producto());
+                    List<Producto> p = new LinkedList<Producto>();
+                    view.getModel().setProductos(p);
                     Application.PRODUCTOFACTURA_VIEW.setVisible(false);
                     break;
                 case Application.MODO_EDITAR:
@@ -142,7 +145,7 @@ public class ProductoFacturaController {
   
     public void buscarPorDescripcion(){
         model.clearErrors();
-        model.getFilter().setDescripcion(view.DescripcionText.getText());
+        model.getFilter().setDescripcion(view.descripcionT.getText());
         List<Producto> rows = new LinkedList<Producto>();//domainModel.getProductoBl().findAll(Producto.class.getName()); 
         List<Inventario> inv = domainModel.getInventarioBl().findAll(Inventario.class.getName());
         for(int i = 0; i< inv.size(); i++){
@@ -159,7 +162,7 @@ public class ProductoFacturaController {
         }
         int j=0, cont=rows.size();
         while(j<rows.size() && cont>0){
-            if(rows.get(j).getDescripcion().toLowerCase().indexOf(view.DescripcionText.getText().toLowerCase())!=0){
+            if(rows.get(j).getDescripcion().toLowerCase().indexOf(view.descripcionT.getText().toLowerCase())!=0){
                 rows.remove(rows.get(j));
             }else
                 j++;
@@ -175,7 +178,7 @@ public class ProductoFacturaController {
     
      public void buscarPorId(){
         model.clearErrors();
-        model.getFilter().setIdProducto(Integer.parseInt(view.DescripcionText.getText()));
+        model.getFilter().setIdProducto(Integer.parseInt(view.descripcionT.getText()));
         List<Producto> rows = new LinkedList<Producto>();//domainModel.getProductoBl().findAll(Producto.class.getName()); 
         List<Inventario> inv = domainModel.getInventarioBl().findAll(Inventario.class.getName());
         for(int i = 0; i< inv.size(); i++){
@@ -192,7 +195,7 @@ public class ProductoFacturaController {
         }
         int j=0, cont=rows.size();
         while(j<rows.size() && cont>0){
-            if(String.valueOf(rows.get(j).getIdProducto()).compareTo(view.DescripcionText.getText())!=0){
+            if(String.valueOf(rows.get(j).getIdProducto()).compareTo(view.descripcionT.getText())!=0){
                 rows.remove(rows.get(j));
             }else
                 j++;

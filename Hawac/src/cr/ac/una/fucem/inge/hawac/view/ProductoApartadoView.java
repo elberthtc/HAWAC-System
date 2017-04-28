@@ -6,6 +6,7 @@
 package cr.ac.una.fucem.inge.hawac.view;
 import cr.ac.una.fucem.inge.hawac.controller.ProductoApartadoController;
 import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
+import cr.ac.una.fucem.inge.hawac.utils.Validaciones;
 import hawac.Application;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -61,21 +62,18 @@ public class ProductoApartadoView extends javax.swing.JInternalFrame implements 
     private void initComponents() {
 
         Busqueda = new javax.swing.ButtonGroup();
-        DescripcionText = new javax.swing.JTextField();
+        descripcionT = new javax.swing.JTextField();
         BuscarButton = new javax.swing.JButton();
         BuscarLabel = new javax.swing.JLabel();
         ProductosScrollPane = new javax.swing.JScrollPane();
         CatalogoTable = new javax.swing.JTable();
-        DescripcionRadioButton = new javax.swing.JRadioButton();
-        CodigoRadioButton2 = new javax.swing.JRadioButton();
         buscarLb = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("Catalogo de Productos");
 
-        DescripcionText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        descripcionT.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         BuscarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
         BuscarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -112,34 +110,14 @@ public class ProductoApartadoView extends javax.swing.JInternalFrame implements 
         ));
         ProductosScrollPane.setViewportView(CatalogoTable);
 
-        Busqueda.add(DescripcionRadioButton);
-        DescripcionRadioButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        DescripcionRadioButton.setText("Descripcion");
-
-        Busqueda.add(CodigoRadioButton2);
-        CodigoRadioButton2.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        CodigoRadioButton2.setText("Codigo");
-        CodigoRadioButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CodigoRadioButton2ActionPerformed(evt);
-            }
-        });
-
         buscarLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        buscarLb.setText("Seleccione el argumento a buscar");
+        buscarLb.setText("Escriba el criterio a buscar");
 
         jButton1.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         jButton1.setText("Seleccionar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("Ver Todo");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
             }
         });
 
@@ -150,28 +128,21 @@ public class ProductoApartadoView extends javax.swing.JInternalFrame implements 
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(buscarLb)
-                            .addGap(88, 88, 88))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(CodigoRadioButton2)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(DescripcionRadioButton)
-                            .addGap(139, 139, 139)))
-                    .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2))
+                        .addComponent(buscarLb)
+                        .addContainerGap(316, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BuscarLabel))
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton1)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(descripcionT, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BuscarLabel))
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton1)))
+                        .addContainerGap(21, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -179,15 +150,9 @@ public class ProductoApartadoView extends javax.swing.JInternalFrame implements 
                 .addContainerGap()
                 .addComponent(buscarLb)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton2))
-                .addGap(7, 7, 7)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CodigoRadioButton2)
-                    .addComponent(DescripcionRadioButton))
+                .addComponent(descripcionT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(BuscarLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -201,33 +166,15 @@ public class ProductoApartadoView extends javax.swing.JInternalFrame implements 
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void CodigoRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CodigoRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CodigoRadioButton2ActionPerformed
-
     private void BuscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarButtonActionPerformed
-        if(CodigoRadioButton2.isSelected()==false && DescripcionRadioButton.isSelected()==false){
-              buscarLb.setBorder(Application.BORDER_ERROR);
-              buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
-        }else{
-             buscarLb.setBorder(null);
-             buscarLb.setToolTipText("");
-             if(DescripcionRadioButton.isSelected()==true && DescripcionText.getText().length()==0){
-                   model.getErrores().put("DescripcionText","Digite la descripcion a buscar");
-                   buscarLb.setBorder(Application.BORDER_ERROR);
-                   buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
-             }
-            if(DescripcionRadioButton.isSelected()==true && DescripcionText.getText().length()!=0){
+        String key = descripcionT.getText();
+        if(key.isEmpty())
+            controller.buscar();
+        else{
+            if(Validaciones.isNumeric(key))
+                controller.buscarPorId();
+            else
                 controller.buscarPorDescripcion();
-            }
-            if(CodigoRadioButton2.isSelected()==true && DescripcionText.getText().length()==0){
-                   model.getErrores().put("DescripcionText","Digite la descripcion a buscar");
-                   buscarLb.setBorder(Application.BORDER_ERROR);
-                   buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
-             }
-            if(CodigoRadioButton2.isSelected()==true && DescripcionText.getText().length()!=0){
-                 controller.buscarPorId();
-             }
         }
     }//GEN-LAST:event_BuscarButtonActionPerformed
 
@@ -242,14 +189,9 @@ public class ProductoApartadoView extends javax.swing.JInternalFrame implements 
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        controller.buscar();
-    }//GEN-LAST:event_jButton2ActionPerformed
-
     @Override
     public void update(java.util.Observable updatedModel,Object parametros) {
-        DescripcionText.setText(model.getFilter().getDescripcion());
+        descripcionT.setText(model.getFilter().getDescripcion());
         if(model.getErrores().get("DescripcionText")!=null){
             buscarLb.setBorder(Application.BORDER_ERROR);
             buscarLb.setToolTipText(model.getErrores().get("DescripcionText"));
@@ -304,13 +246,10 @@ public class ProductoApartadoView extends javax.swing.JInternalFrame implements 
     private javax.swing.JLabel BuscarLabel;
     private javax.swing.ButtonGroup Busqueda;
     public javax.swing.JTable CatalogoTable;
-    public javax.swing.JRadioButton CodigoRadioButton2;
-    public javax.swing.JRadioButton DescripcionRadioButton;
-    public javax.swing.JTextField DescripcionText;
     private javax.swing.JScrollPane ProductosScrollPane;
     private javax.swing.JLabel buscarLb;
+    public javax.swing.JTextField descripcionT;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     // End of variables declaration//GEN-END:variables
 
 }

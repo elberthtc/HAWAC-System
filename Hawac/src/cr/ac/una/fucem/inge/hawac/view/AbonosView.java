@@ -255,7 +255,7 @@ public class AbonosView extends javax.swing.JInternalFrame implements java.util.
     private javax.swing.JScrollPane ProductosScrollPane;
     private javax.swing.JButton agregarButton;
     private javax.swing.JLabel buscarLb;
-    private javax.swing.JTextField descripcionT;
+    public javax.swing.JTextField descripcionT;
     private javax.swing.JButton verTodoB;
     // End of variables declaration//GEN-END:variables
 }
