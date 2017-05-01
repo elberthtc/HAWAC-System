@@ -486,12 +486,14 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         int row = this.ListProductosTable.getSelectedRow();
-        if(row != -1){
-        int ax = JOptionPane.showConfirmDialog(null, "Estas seguro que desea eliminarlo?");
-        if(ax == JOptionPane.YES_OPTION){
-            controller.eliminar(row);
-       }
-      }
+        if (row != -1) {
+            int ax = JOptionPane.showConfirmDialog(null, "Estas seguro que desea eliminarlo?");
+            if (ax == JOptionPane.YES_OPTION) {
+                controller.eliminar(row);
+                pagoT.setText("");
+                cambioT.setText("");
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void nomClienteTextFdMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nomClienteTextFdMouseClicked

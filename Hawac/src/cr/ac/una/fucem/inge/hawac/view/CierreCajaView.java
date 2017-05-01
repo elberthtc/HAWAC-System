@@ -87,10 +87,10 @@ public class CierreCajaView extends javax.swing.JInternalFrame implements java.u
 
         totalL.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         totalL.setText("TOTAL:");
-        getContentPane().add(totalL, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 490, -1, -1));
+        getContentPane().add(totalL, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 530, -1, -1));
 
         montoL.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        getContentPane().add(montoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 490, 66, 21));
+        getContentPane().add(montoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 530, 230, 21));
 
         habilitarCB.setText("Buscar entre Fechas");
         habilitarCB.addActionListener(new java.awt.event.ActionListener() {

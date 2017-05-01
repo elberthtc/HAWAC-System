@@ -99,12 +99,11 @@ public class ProductoFacturaController {
                         model.getErrores().put("Cantidad", "Existencias Insuficientes");
                         model.setMensaje("En este momento solo existen "+ i1.getCantidad()+" de el producto seleccionado");
                         JOptionPane.showMessageDialog(view, model.getMensaje());
-                    }
-                    if (ex == 0) {
+                    }else if (ex == 0) {
                         model.getErrores().put("Cantidad", "Digito Invalido");
                         model.setMensaje("La cantidad debe ser mayor a 0");
                         JOptionPane.showMessageDialog(view, model.getMensaje());
-                    }
+                    }else
                     l1.setProducto(p1);
                     l1.setCantidad(ex);
                 }
@@ -120,7 +119,10 @@ public class ProductoFacturaController {
                     boolean existe = false;
                     for(int i = 0; i<lineas.size();i++){
                         if (lineas.get(i).getProducto().getIdProducto()==l1.getProducto().getIdProducto()){
-                            lineas.get(i).setCantidad(lineas.get(i).getCantidad()+l1.getCantidad());
+                            if(lineas.get(i).getCantidad()+ l1.getCantidad() > i1.getCantidad() )
+                                lineas.get(i).setCantidad(i1.getCantidad());
+                            else
+                                lineas.get(i).setCantidad(lineas.get(i).getCantidad()+l1.getCantidad());
                             existe = true;
                         }
                     }

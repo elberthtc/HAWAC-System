@@ -224,6 +224,11 @@ public class InventariosView extends javax.swing.JInternalFrame implements java.
             agregarB.setVisible(false);
             eliminarL.setVisible(false);
             eliminarB.setVisible(false);
+        }else{
+            agregarL.setVisible(true);
+            agregarB.setVisible(true);
+            eliminarL.setVisible(true);
+            eliminarB.setVisible(true);
         }
         
         tablaEmpleados.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
