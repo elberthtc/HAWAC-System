@@ -5,6 +5,7 @@
  */
 package cr.ac.una.fucem.inge.hawac.view;
 import cr.ac.una.fucem.inge.hawac.controller.ProductoFacturaController;
+import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.ProductosModel;
 import cr.ac.una.fucem.inge.hawac.utils.Validaciones;
 import hawac.Application;
@@ -64,7 +65,6 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
         Busqueda = new javax.swing.ButtonGroup();
         BuscarButton = new javax.swing.JButton();
         descripcionT = new javax.swing.JTextField();
-        BuscarLabel = new javax.swing.JLabel();
         ProductosScrollPane = new javax.swing.JScrollPane();
         CatalogoTable = new javax.swing.JTable();
         buscarLb = new javax.swing.JLabel();
@@ -74,6 +74,7 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("Catalogo de Productos");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         BuscarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
         BuscarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -81,11 +82,10 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
                 BuscarButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(BuscarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(173, 34, 36, 36));
 
         descripcionT.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        BuscarLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        BuscarLabel.setText("Buscar");
+        getContentPane().add(descripcionT, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 42, 157, -1));
 
         ProductosScrollPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -112,8 +112,11 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
         ));
         ProductosScrollPane.setViewportView(CatalogoTable);
 
+        getContentPane().add(ProductosScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 76, -1, 127));
+
         buscarLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         buscarLb.setText("Seleccione el argumento a buscar");
+        getContentPane().add(buscarLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         seleccionarB.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         seleccionarB.setText("Seleccionar");
@@ -122,60 +125,12 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
                 seleccionarBActionPerformed(evt);
             }
         });
+        getContentPane().add(seleccionarB, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, 36));
+        getContentPane().add(cantidadTextField, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 40, 70, -1));
 
         cantidadLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         cantidadLb.setText("Cantidad");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(buscarLb))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(descripcionT, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(cantidadLb)
-                .addGap(4, 4, 4)
-                .addComponent(cantidadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(10, 10, 10)
-                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(BuscarLabel)
-                .addGap(4, 4, 4)
-                .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(seleccionarB))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(buscarLb)
-                .addGap(6, 6, 6)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(2, 2, 2)
-                        .addComponent(descripcionT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(1, 1, 1)
-                        .addComponent(cantidadLb))
-                    .addComponent(cantidadTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addComponent(BuscarLabel))
-                    .addComponent(seleccionarB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(16, Short.MAX_VALUE))
-        );
+        getContentPane().add(cantidadLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -186,7 +141,7 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
         if(key.isEmpty())
             controller.buscar();
         else{
-            if(Validaciones.isNumeric(key))
+            if(Model.isNumeric(key))
                 controller.buscarPorId();
             else
                 controller.buscarPorDescripcion();
@@ -268,7 +223,6 @@ public class ProductoFacturaView extends javax.swing.JInternalFrame implements j
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BuscarButton;
-    private javax.swing.JLabel BuscarLabel;
     private javax.swing.ButtonGroup Busqueda;
     public javax.swing.JTable CatalogoTable;
     private javax.swing.JScrollPane ProductosScrollPane;

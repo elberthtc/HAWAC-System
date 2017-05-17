@@ -32,7 +32,7 @@ public class UsuarioController {
         model.clearErrors();
         UsuariosModel empleadosModel= Application.USUARIOS_VIEW.getModel();
         Usuario empleadoNuevo= new Usuario();
-        if(!Validaciones.validarCedula(view.idTextField.getText())){
+        if(!Validaciones.validarCedula(view.idTextField.getText()) || view.idTextField.getText().length()!=9){
             model.getErrores().put("Id", "Id debe ser numerico");
             view.IdLb.setBorder(Application.BORDER_ERROR);
         } else{
@@ -85,7 +85,7 @@ public class UsuarioController {
             }
         }   
         else{
-            model.setMensaje("HAY ERRORES");
+            model.setMensaje("CAMPOS REQUERIDOS SIN LLENAR O CON FORMATO INCORRECTO POR FAVOR VERIFICAR");
             model.setCurrent(empleadoNuevo);
         }
     }

@@ -26,26 +26,25 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
 
         desktopPane = new javax.swing.JDesktopPane();
         MenuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        salirItem = new javax.swing.JMenuItem();
+        SistemaMenu = new javax.swing.JMenu();
+        MantenimientoMenu = new javax.swing.JMenu();
+        ListaClientesItem = new javax.swing.JMenuItem();
+        productosItem = new javax.swing.JMenuItem();
+        usuarioItem = new javax.swing.JMenuItem();
+        bitacoraMenu = new javax.swing.JMenuItem();
         FacturacionMenu = new javax.swing.JMenu();
         ventaItem = new javax.swing.JMenuItem();
         compraItem = new javax.swing.JMenuItem();
         facturasItem = new javax.swing.JMenuItem();
         apartadoItem = new javax.swing.JMenuItem();
         cierreItem = new javax.swing.JMenuItem();
-        MantenimientoMenu = new javax.swing.JMenu();
-        ListaClientesItem = new javax.swing.JMenuItem();
-        productosItem = new javax.swing.JMenuItem();
-        usuarioItem = new javax.swing.JMenuItem();
         cobrosMenu = new javax.swing.JMenu();
         cobrosMenuItem = new javax.swing.JMenuItem();
         inventariosMenu = new javax.swing.JMenu();
         tiendaMenuItem = new javax.swing.JMenuItem();
-        bitacoraMenu = new javax.swing.JMenu();
-        entradaItem = new javax.swing.JMenuItem();
         HelpMenu = new javax.swing.JMenu();
         AboutItem = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("TIENDA");
@@ -60,25 +59,54 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         );
         desktopPaneLayout.setVerticalGroup(
             desktopPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 231, Short.MAX_VALUE)
+            .addGap(0, 218, Short.MAX_VALUE)
         );
 
         getContentPane().add(desktopPane);
 
         MenuBar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        fileMenu.setText("SISTEMA");
-        fileMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+        SistemaMenu.setText("SISTEMA");
+        SistemaMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
 
-        salirItem.setText("Cerrar sesion");
-        salirItem.addActionListener(new java.awt.event.ActionListener() {
+        MantenimientoMenu.setText("MANTENIMIENTO");
+        MantenimientoMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
+
+        ListaClientesItem.setText("Clientes");
+        ListaClientesItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salirItemActionPerformed(evt);
+                ListaClientesItemActionPerformed(evt);
             }
         });
-        fileMenu.add(salirItem);
+        MantenimientoMenu.add(ListaClientesItem);
 
-        MenuBar.add(fileMenu);
+        productosItem.setText("Productos");
+        productosItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productosItemActionPerformed(evt);
+            }
+        });
+        MantenimientoMenu.add(productosItem);
+
+        usuarioItem.setText("Usuarios");
+        usuarioItem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuarioItemActionPerformed(evt);
+            }
+        });
+        MantenimientoMenu.add(usuarioItem);
+
+        SistemaMenu.add(MantenimientoMenu);
+
+        bitacoraMenu.setText("Bitácora");
+        bitacoraMenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bitacoraMenuActionPerformed(evt);
+            }
+        });
+        SistemaMenu.add(bitacoraMenu);
+
+        MenuBar.add(SistemaMenu);
 
         FacturacionMenu.setText("CAJA");
         FacturacionMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
@@ -125,35 +153,6 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
 
         MenuBar.add(FacturacionMenu);
 
-        MantenimientoMenu.setText("MANTENIMIENTO");
-        MantenimientoMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-
-        ListaClientesItem.setText("Clientes");
-        ListaClientesItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ListaClientesItemActionPerformed(evt);
-            }
-        });
-        MantenimientoMenu.add(ListaClientesItem);
-
-        productosItem.setText("Productos");
-        productosItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                productosItemActionPerformed(evt);
-            }
-        });
-        MantenimientoMenu.add(productosItem);
-
-        usuarioItem.setText("Usuarios");
-        usuarioItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usuarioItemActionPerformed(evt);
-            }
-        });
-        MantenimientoMenu.add(usuarioItem);
-
-        MenuBar.add(MantenimientoMenu);
-
         cobrosMenu.setText("COBROS");
         cobrosMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
 
@@ -180,24 +179,6 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
 
         MenuBar.add(inventariosMenu);
 
-        bitacoraMenu.setText("BITACORA");
-        bitacoraMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
-        bitacoraMenu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bitacoraMenuActionPerformed(evt);
-            }
-        });
-
-        entradaItem.setText("Entradas");
-        entradaItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                entradaItemActionPerformed(evt);
-            }
-        });
-        bitacoraMenu.add(entradaItem);
-
-        MenuBar.add(bitacoraMenu);
-
         HelpMenu.setText("AYUDA");
         HelpMenu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         HelpMenu.addActionListener(new java.awt.event.ActionListener() {
@@ -216,14 +197,20 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
 
         MenuBar.add(HelpMenu);
 
+        jMenu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/exit2.png"))); // NOI18N
+        jMenu2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jMenu2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu2MouseClicked(evt);
+            }
+        });
+        MenuBar.add(jMenu2);
+
         setJMenuBar(MenuBar);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void salirItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirItemActionPerformed
-        controller.exit();
-    }//GEN-LAST:event_salirItemActionPerformed
 
     private void ListaClientesItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ListaClientesItemActionPerformed
          controller.clientesShow();
@@ -270,17 +257,17 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
         controller.apartadosShow();
     }//GEN-LAST:event_apartadoItemActionPerformed
 
-    private void entradaItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entradaItemActionPerformed
-        controller.bitacorasShow();
-    }//GEN-LAST:event_entradaItemActionPerformed
-
-    private void bitacoraMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bitacoraMenuActionPerformed
-       
-    }//GEN-LAST:event_bitacoraMenuActionPerformed
-
     private void cierreItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cierreItemActionPerformed
         controller.cierreShow();
     }//GEN-LAST:event_cierreItemActionPerformed
+
+    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
+        controller.exit();
+    }//GEN-LAST:event_jMenu2MouseClicked
+
+    private void bitacoraMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bitacoraMenuActionPerformed
+        controller.bitacorasShow();
+    }//GEN-LAST:event_bitacoraMenuActionPerformed
 
     public ApplicationController getController() {
         return controller;
@@ -366,19 +353,18 @@ public class ApplicationView extends javax.swing.JFrame implements java.util.Obs
     private javax.swing.JMenuItem ListaClientesItem;
     private javax.swing.JMenu MantenimientoMenu;
     private javax.swing.JMenuBar MenuBar;
+    private javax.swing.JMenu SistemaMenu;
     private javax.swing.JMenuItem apartadoItem;
-    private javax.swing.JMenu bitacoraMenu;
+    private javax.swing.JMenuItem bitacoraMenu;
     private javax.swing.JMenuItem cierreItem;
     private javax.swing.JMenu cobrosMenu;
     private javax.swing.JMenuItem cobrosMenuItem;
     private javax.swing.JMenuItem compraItem;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenuItem entradaItem;
     private javax.swing.JMenuItem facturasItem;
-    private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu inventariosMenu;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuItem productosItem;
-    private javax.swing.JMenuItem salirItem;
     private javax.swing.JMenuItem tiendaMenuItem;
     private javax.swing.JMenuItem usuarioItem;
     private javax.swing.JMenuItem ventaItem;

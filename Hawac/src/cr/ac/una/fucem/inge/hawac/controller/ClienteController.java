@@ -38,7 +38,7 @@ public class ClienteController {
         if(view.nombreTextFd.getText().length() == 0) {
             model.getErrores().put("Nombre", "Nombre requerido");
         }
-        if(!Validaciones.validarCedula(view.idTextFd.getText())) {
+        if(!Validaciones.validarCedula(view.idTextFd.getText()) || view.idTextFd.getText().length()!=9) {
             model.getErrores().put("Id", "Id Incorrecto");
         } else {
             c1.setCedula(Integer.parseInt(view.idTextFd.getText()));
@@ -92,7 +92,7 @@ public class ClienteController {
                 }
             }
         } else {
-            model.setMensaje("CAMPOS REQUERIDOS SIN LLENAR");
+            model.setMensaje("CAMPOS REQUERIDOS SIN LLENAR O CON FORMATO INCORRECTO POR FAVOR VERIFICAR");
             model.setCurrent(c1);
         }
     }

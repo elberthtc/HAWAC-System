@@ -169,10 +169,12 @@ public class CierreCajaController {
     public void vendidoHoyB(){
         vendidoHoy();
         view.montoL.setText(totalVendido() + "");
+        view.impuestoL.setText(totalVendido()*0.13 + "");
     }
     
     public void vendidoEntreFechasB(Date a, Date b){
         vendidoEntreFechas(a,b);
+        view.impuestoL.setText(totalVendido()*0.13 + "");
         view.montoL.setText(totalVendido() + "");
     }
     
@@ -203,13 +205,40 @@ public class CierreCajaController {
         int da = a.getDate(), db = b.getDate(), dc = c.getDate();
         int ma = a.getMonth(), mb = b.getMonth(), mc = c.getMonth();
         int aa = a.getYear(), ab = b.getYear(), ac = c.getYear();
-        if (aa <= ac && ac <= ab) {
-            if (ma <= mc && mc <= mb) {
-                if (da <= dc && dc <= db) {
-                    return true;
+//        if (aa <= ac && ac <= ab) {
+//            if (ma <= mc && mc <= mb) {
+//                if (da <= dc && dc <= db) {
+//                    return true;
+//                }
+//            }
+//        }
+        boolean c_mayor_a = false, c_menor_b = false;
+        if (aa < ac) {
+            c_mayor_a = true;
+        } else if (aa == ac) {
+            if (ma < mc) {
+                c_mayor_a = true;
+            } else if (ma == mc) {
+                if (da <= dc) {
+                    c_mayor_a = true;
                 }
             }
         }
+        if (c_mayor_a) {
+            if (ac < ab) {
+                c_menor_b = true;
+            } else if (ac == ab) {
+                if (mc < mb) {
+                    c_menor_b = true;
+                } else if (mc == mb) {
+                    if (dc <= db) {
+                        c_menor_b = true;
+                    }
+                }
+            }
+        }
+        if(c_mayor_a && c_menor_b)
+            return true;
         return false;
     }
 }

@@ -127,17 +127,8 @@ public class ProductoController {
                 model.setCurrent(p1);
             }
         } else {
-            model.setMensaje("CAMPOS REQUERIDOS SIN LLENAR");
+            model.setMensaje("CAMPOS REQUERIDOS SIN LLENAR O CON FORMATO INCORRECTO POR FAVOR VERIFICAR");
             model.setCurrent(p1);
-        }
-    }
-
-    private static boolean isNumeric(String cadena) {
-        try {
-            Integer.parseInt(cadena);
-            return true;
-        } catch (NumberFormatException exc) {
-            return false;
         }
     }
 

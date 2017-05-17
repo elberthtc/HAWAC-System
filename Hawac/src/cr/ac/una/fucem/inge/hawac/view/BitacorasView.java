@@ -65,7 +65,6 @@ public class BitacorasView extends javax.swing.JInternalFrame implements java.ut
         Busqueda = new javax.swing.ButtonGroup();
         DescripcionText = new javax.swing.JTextField();
         BuscarButton = new javax.swing.JButton();
-        BuscarLabel = new javax.swing.JLabel();
         ProductosScrollPane = new javax.swing.JScrollPane();
         CatalogoTable = new javax.swing.JTable();
         usuarioRB = new javax.swing.JRadioButton();
@@ -77,8 +76,10 @@ public class BitacorasView extends javax.swing.JInternalFrame implements java.ut
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("BITACORAS");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         DescripcionText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        getContentPane().add(DescripcionText, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 157, -1));
 
         BuscarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
         BuscarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -86,9 +87,7 @@ public class BitacorasView extends javax.swing.JInternalFrame implements java.ut
                 BuscarButtonActionPerformed(evt);
             }
         });
-
-        BuscarLabel.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        BuscarLabel.setText("Buscar");
+        getContentPane().add(BuscarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 40, 36, 36));
 
         ProductosScrollPane.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -120,12 +119,16 @@ public class BitacorasView extends javax.swing.JInternalFrame implements java.ut
         });
         ProductosScrollPane.setViewportView(CatalogoTable);
 
+        getContentPane().add(ProductosScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 600, 402));
+
         Busqueda.add(usuarioRB);
         usuarioRB.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         usuarioRB.setText("Usuario");
+        getContentPane().add(usuarioRB, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, -1, -1));
 
         buscarLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         buscarLb.setText("Seleccione el argumento a buscar");
+        getContentPane().add(buscarLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
 
         jButton1.setText("Ver Todo");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -133,10 +136,13 @@ public class BitacorasView extends javax.swing.JInternalFrame implements java.ut
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, -1, 30));
 
         Busqueda.add(descripcionRB);
         descripcionRB.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         descripcionRB.setText("Descripcion");
+        getContentPane().add(descripcionRB, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
+        getContentPane().add(fechaC, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 40, -1, -1));
 
         jButton2.setText("Buscar Por Fecha");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -144,64 +150,7 @@ public class BitacorasView extends javax.swing.JInternalFrame implements java.ut
                 jButton2ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ProductosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 600, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(usuarioRB)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(descripcionRB))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1))
-                            .addComponent(buscarLb)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton2))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BuscarLabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(fechaC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(buscarLb)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DescripcionText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usuarioRB)
-                    .addComponent(descripcionRB))
-                .addGap(13, 13, 13)
-                .addComponent(ProductosScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(BuscarLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BuscarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(fechaC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
-        );
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -313,7 +262,6 @@ public class BitacorasView extends javax.swing.JInternalFrame implements java.ut
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BuscarButton;
-    private javax.swing.JLabel BuscarLabel;
     private javax.swing.ButtonGroup Busqueda;
     public javax.swing.JTable CatalogoTable;
     public javax.swing.JTextField DescripcionText;

@@ -52,10 +52,11 @@ public class Validaciones {
 
     }
     
-    public static boolean isNumeric(String arg){
-        Matcher m = pNum.matcher(arg);
-        return m.matches();
-    }
+//    public static boolean isNumeric(String arg){
+//        Matcher m = pNum.matcher(arg);
+//        boolean j = m.matches();
+//        return m.matches();
+//    }
 
 //	public static void main(String [] args){
 //		/*if(validarBusqueda(args[0],args[1])){

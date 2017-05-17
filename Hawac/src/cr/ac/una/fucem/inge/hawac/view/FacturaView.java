@@ -229,7 +229,7 @@ public class FacturaView extends javax.swing.JInternalFrame implements java.util
         });
 
         GrabarLb.setFont(new java.awt.Font("Segoe UI Black", 0, 14)); // NOI18N
-        GrabarLb.setText("Guardar");
+        GrabarLb.setText("Facturar");
 
         horaLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         horaLb.setText("Hora");

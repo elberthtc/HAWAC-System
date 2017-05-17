@@ -46,6 +46,8 @@ public class CierreCajaView extends javax.swing.JInternalFrame implements java.u
         aL = new javax.swing.JLabel();
         buscarB = new javax.swing.JButton();
         buscarL = new javax.swing.JLabel();
+        totalL1 = new javax.swing.JLabel();
+        impuestoL = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("FACTURAS PAGADAS");
@@ -118,6 +120,13 @@ public class CierreCajaView extends javax.swing.JInternalFrame implements java.u
 
         buscarL.setText("Buscar");
         getContentPane().add(buscarL, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 500, -1, -1));
+
+        totalL1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        totalL1.setText("IMPUESTO:");
+        getContentPane().add(totalL1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 480, -1, -1));
+
+        impuestoL.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(impuestoL, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 480, 230, 21));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -250,11 +259,13 @@ public class CierreCajaView extends javax.swing.JInternalFrame implements java.u
     private com.toedter.calendar.JDateChooser fecha2;
     private javax.swing.JCheckBox habilitarCB;
     public javax.swing.JButton hoyB;
+    public javax.swing.JLabel impuestoL;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     public javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel montoL;
     public javax.swing.JTable tablaFacturas;
     private javax.swing.JLabel totalL;
+    private javax.swing.JLabel totalL1;
     // End of variables declaration//GEN-END:variables
 }

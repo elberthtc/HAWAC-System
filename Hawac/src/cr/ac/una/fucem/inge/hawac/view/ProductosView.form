@@ -30,27 +30,24 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="descripcionT" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
-                  <Component id="buscarLb" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="ProductosScrollPane" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="BuscarLabel" min="-2" max="-2" attributes="0"/>
-                          <Component id="BuscarButton" min="-2" pref="44" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="AgregarLabel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="EliminarLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="agregarButton" min="-2" pref="45" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="BorrarButton" min="-2" pref="47" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="descripcionT" alignment="0" min="-2" pref="157" max="-2" attributes="0"/>
+                          <Component id="buscarLb" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="BuscarButton" min="-2" pref="44" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="AgregarLabel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                      <Component id="EliminarLabel" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="agregarButton" min="-2" pref="45" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="BorrarButton" min="-2" pref="47" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace pref="23" max="32767" attributes="0"/>
@@ -61,20 +58,23 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="buscarLb" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="buscarLb" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="descripcionT" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Component id="BuscarButton" alignment="1" min="-2" pref="36" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="descripcionT" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="ProductosScrollPane" min="-2" pref="426" max="-2" attributes="0"/>
+              <Component id="ProductosScrollPane" min="-2" pref="410" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="BuscarLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="AgregarLabel" alignment="3" max="32767" attributes="0"/>
                   <Component id="EliminarLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="BuscarButton" min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="agregarButton" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
                   <Component id="BorrarButton" alignment="0" min="-2" pref="36" max="-2" attributes="0"/>
               </Group>
@@ -125,14 +125,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BuscarButtonActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="BuscarLabel">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI Black" size="11" style="0"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Buscar"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="AgregarLabel">
       <Properties>

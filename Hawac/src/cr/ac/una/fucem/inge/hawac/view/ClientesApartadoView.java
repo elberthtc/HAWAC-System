@@ -6,6 +6,7 @@
 package cr.ac.una.fucem.inge.hawac.view;
 
 import cr.ac.una.fucem.inge.hawac.controller.ClientesApartadoController;
+import cr.ac.una.fucem.inge.hawac.logic.Model;
 import cr.ac.una.fucem.inge.hawac.model.ClientesModel;
 import cr.ac.una.fucem.inge.hawac.utils.Validaciones;
 import hawac.Application;
@@ -55,16 +56,17 @@ public class ClientesApartadoView extends javax.swing.JInternalFrame implements 
         searchButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         clientesTable = new javax.swing.JTable();
-        jLabel1 = new javax.swing.JLabel();
         seleccionarButton = new javax.swing.JButton();
         agregarLb = new javax.swing.JLabel();
         agregarButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("Catálogo de Clientes");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         nombreLb.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         nombreLb.setText("Escriba el criterio a buscar");
+        getContentPane().add(nombreLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 12, 228, -1));
 
         nombreT.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         nombreT.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +74,7 @@ public class ClientesApartadoView extends javax.swing.JInternalFrame implements 
                 nombreTActionPerformed(evt);
             }
         });
+        getContentPane().add(nombreT, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 47, 132, -1));
 
         searchButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/search2.png"))); // NOI18N
         searchButton.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +82,7 @@ public class ClientesApartadoView extends javax.swing.JInternalFrame implements 
                 searchButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(searchButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 40, 39, 32));
 
         clientesTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -98,8 +102,7 @@ public class ClientesApartadoView extends javax.swing.JInternalFrame implements 
         });
         jScrollPane1.setViewportView(clientesTable);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        jLabel1.setText("Buscar");
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 80, 483, 119));
 
         seleccionarButton.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         seleccionarButton.setText("Seleccionar");
@@ -108,9 +111,11 @@ public class ClientesApartadoView extends javax.swing.JInternalFrame implements 
                 seleccionarButtonActionPerformed(evt);
             }
         });
+        getContentPane().add(seleccionarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, 32));
 
         agregarLb.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
         agregarLb.setText("Agregar");
+        getContentPane().add(agregarLb, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
         agregarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/cr/ac/una/fucem/inge/hawac/view/icons/addUser.png"))); // NOI18N
         agregarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -118,56 +123,7 @@ public class ClientesApartadoView extends javax.swing.JInternalFrame implements 
                 agregarButtonActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(nombreT, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(nombreLb, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(seleccionarButton))
-                                    .addComponent(agregarLb))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(12, 12, 12)
-                .addComponent(nombreLb)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(nombreT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(searchButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(agregarLb)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(seleccionarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(agregarButton, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
+        getContentPane().add(agregarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 44, 32));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -177,7 +133,7 @@ public class ClientesApartadoView extends javax.swing.JInternalFrame implements 
         if(key.isEmpty())
             controller.buscar();
         else{
-            if(Validaciones.isNumeric(key))
+            if(Model.isNumeric(key))
                 controller.buscarPorId();
             else
                 controller.buscarPorNombre();            
@@ -274,7 +230,6 @@ public class ClientesApartadoView extends javax.swing.JInternalFrame implements 
     public javax.swing.JButton agregarButton;
     public javax.swing.JLabel agregarLb;
     private javax.swing.JTable clientesTable;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel nombreLb;
     public javax.swing.JTextField nombreT;
